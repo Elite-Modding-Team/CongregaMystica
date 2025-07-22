@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "congregamystica",
+    "name": "Congrega Mystica",
+    "description": "The Thaumcraft 6 integration addon.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/Elite-Modding-Team/CongregaMystica",
+    "authorList": [
+      "invadermonky", "IcarussOne"
+    ],
+    "credits": "",
+    "logoFile": ""
+  }
+]

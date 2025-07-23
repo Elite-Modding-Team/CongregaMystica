@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 public enum ModIds {
     blood_magic(ConstIds.blood_magic),
     botania(ConstIds.botania),
+    harken_scythe(ConstIds.harken_scythe),
     immersive_engineering(ConstIds.immersive_engineering),
     thaumic_wonders(ConstIds.thaumic_wonders, ConstVersions.thaumic_wonders, true, false);
 
@@ -38,6 +39,7 @@ public enum ModIds {
     public static class ConstIds {
         public static final String blood_magic = "blood_magic";
         public static final String botania = "botania";
+        public static final String harken_scythe = "harkenscythe";
         public static final String immersive_engineering = "immersiveengineering";
         public static final String thaumcraft = "thaumcraft";
         public static final String thaumic_wonders = "thaumicwonders";

@@ -1,23 +1,22 @@
 package congregamystica.integrations;
 
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import congregamystica.api.IProxy;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class InitIntegrations {
+    private static List<IProxy> MOD_ADDITIONS;
 
-    public static void preInit() {}
+    private static void initModAdditions() {
+        //Mod integration modules are initialized and added to the MOD_ADDITIONS list here.
+    }
 
-    public static void init() {}
-
-    public static void postInit() {}
-
-    @SideOnly(Side.CLIENT)
-    public static void preInitClient() {}
-
-    @SideOnly(Side.CLIENT)
-    public static void initClient() {}
-
-    @SideOnly(Side.CLIENT)
-    public static void postInitClient() {}
-
+    public static List<IProxy> getModAdditions() {
+        if(MOD_ADDITIONS == null) {
+            MOD_ADDITIONS = new ArrayList<>();
+            initModAdditions();
+        }
+        return MOD_ADDITIONS;
+    }
 }

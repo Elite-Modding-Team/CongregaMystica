@@ -8,21 +8,21 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit() {
         super.preInit();
-        InitIntegrations.preInitClient();
+        InitIntegrations.getModAdditions().forEach(IProxy::preInitClient);
         RegistrarCM.getProxyAdditions().forEach(IProxy::preInitClient);
     }
 
     @Override
     public void init() {
         super.init();
-        InitIntegrations.initClient();
+        InitIntegrations.getModAdditions().forEach(IProxy::initClient);
         RegistrarCM.getProxyAdditions().forEach(IProxy::initClient);
     }
 
     @Override
     public void postINit() {
         super.postINit();
-        InitIntegrations.postInitClient();
+        InitIntegrations.getModAdditions().forEach(IProxy::postInitClient);
         RegistrarCM.getProxyAdditions().forEach(IProxy::postInitClient);
     }
 }

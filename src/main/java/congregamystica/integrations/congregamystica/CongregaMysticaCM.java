@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @GameRegistry.ObjectHolder(CongregaMystica.MOD_ID)
 public class CongregaMysticaCM implements IProxy {
     @Override
-    public void preInit() {
+    public void init() {
         RegistrarCM.addAdditionToRegister(new GolemMaterialSteel());
     }
 }

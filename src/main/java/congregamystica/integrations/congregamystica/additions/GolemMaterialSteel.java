@@ -36,23 +36,13 @@ public class GolemMaterialSteel extends GolemMaterial implements IAddition, IPro
     }
 
     @Override
-    public void postInit() {
-        //Any FMLPostInitialization phase actions here. You can also override the postInitClient() for a client-side version.
-    }
-
-    @Override
-    public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //Register recipes here
-    }
-
-    @Override
     public void registerResearchLocation() {
         //Register associated research here
     }
 
     @Override
     public boolean isEnabled() {
-        //Configuration or OreDict toggles here
-        return true;
+        //Configuration toggles here
+        return ConfigHandlerCM.golems.steel.enable;
     }
 }

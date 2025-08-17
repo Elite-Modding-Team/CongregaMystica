@@ -3,6 +3,7 @@ package congregamystica.integrations;
 import congregamystica.api.IProxy;
 import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.examplemod.ExampleModCM;
+import congregamystica.integrations.immersiveengineering.ImmersiveEngineeringCM;
 import congregamystica.utils.libs.ModIds;
 
 import java.util.ArrayList;
@@ -21,6 +22,10 @@ public class InitIntegrations {
         }
         
         MOD_ADDITIONS.add(new CongregaMysticaCM());
+        
+        if(ModIds.immersive_engineering.isLoaded) {
+            MOD_ADDITIONS.add(new ImmersiveEngineeringCM());
+        }
     }
 
     public static List<IProxy> getModAdditions() {

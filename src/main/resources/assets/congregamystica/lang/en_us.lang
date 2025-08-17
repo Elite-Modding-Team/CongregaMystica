@@ -1,3 +1,6 @@
 # Golems
 golem.material.cm_steel=Steel
 golem.material.text.cm_steel=This golem is crafted from steel. It is heavy and clumsy, but sturdier than most materials. It is fireproof and resistant to explosions.
+
+golem.material.cm_treated_wood=Treated Wood
+golem.material.text.cm_treated_wood=This golem is crafted from treated wood. It is well lubricated, allowing it to perform complicated tasks with ease.

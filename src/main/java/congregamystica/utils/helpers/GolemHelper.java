@@ -9,6 +9,7 @@ public class GolemHelper {
      * Registers and returns a new EnumGolemTrait. This only registers the trait enum. Trait effects
      * will need to be handled separately.
      *
+     * @param traitName The name of the enum trait
      * @param iconLocation The icon resource location. Must be the full texture path ending in .png
      * @return The new EnumGolemTrait. Must be stored so it can be accessed later.
      */

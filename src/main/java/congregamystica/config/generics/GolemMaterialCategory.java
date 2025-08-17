@@ -37,6 +37,9 @@ public class GolemMaterialCategory {
         if(this.stackCache.isEmpty()) {
             this.stackCache = RegistryHelper.getConfigStack(this.materialItem);
         }
-        return !this.stackCache.isEmpty() ? this.stackCache : OreDictionary.getOres("ingotSteel").stream().findFirst().orElse(ItemStack.EMPTY);
+        if(this.stackCache.isEmpty()) {
+            this.stackCache = OreDictionary.getOres("ingotSteel").stream().findFirst().orElse(ItemStack.EMPTY);
+        }
+        return this.stackCache;
     }
 }

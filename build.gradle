@@ -105,15 +105,21 @@ dependencies {
         implementation 'zone.rong:mixinbooter:9.1'
     }
 
+    // Include StripLatestForgeRequirements by default for the dev env, saves everyone a hassle
+    runtimeOnly 'com.cleanroommc:strip-latest-forge-requirements:1.0'
+    // Include OSXNarratorBlocker by default for the dev env, for M1+ Macs
+    runtimeOnly 'com.cleanroommc:osxnarratorblocker:1.0'
+    compileOnly 'org.jetbrains:annotations:24.1.0'
+
     // Example of deobfuscating a dependency
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
+    implementation rfg.deobf('curse.maven:thaumic-jei-285492:2705304')
 
     implementation rfg.deobf("curse.maven:thaumcraft-223628:2629023")
     implementation rfg.deobf('curse.maven:baubles-227083:2518667')
 
+    implementation rfg.deobf("curse.maven:harken-scythe-resharpened-1163747:6842654")
     implementation rfg.deobf("curse.maven:immersive-engineering-231951:2974106")
-
-    implementation rfg.deobf("curse.maven:harken-scythe-resharpened-1163747-6842654")
 
     if (project.use_mixins.toBoolean()) {
         // Change your mixin refmap name here:

@@ -1,13 +1,13 @@
 package congregamystica;
 
 import congregamystica.proxy.CommonProxy;
+import congregamystica.utils.helpers.LogHelper;
 import mod.emt.congregamystica.Tags;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import org.apache.logging.log4j.Logger;
 
 @Mod(
         modid = CongregaMystica.MOD_ID,
@@ -24,8 +24,6 @@ public class CongregaMystica {
     public static final String CLIENT_PROXY = "congregamystica.proxy.ClientProxy";
     public static final String COMMON_PROXY = "congregamystica.proxy.CommonProxy";
 
-    public static Logger LOGGER;
-
     @Mod.Instance(MOD_ID)
     public static CongregaMystica instance;
 
@@ -34,21 +32,20 @@ public class CongregaMystica {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        LOGGER = event.getModLog();
-        LOGGER.info("Starting " + MOD_NAME);
+        LogHelper.info("Starting " + MOD_NAME);
         proxy.preInit();
-        LOGGER.debug("Finished preInit phase.");
+        LogHelper.debug("Finished preInit phase.");
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init();
-        LOGGER.debug("Finished init phase.");
+        LogHelper.debug("Finished init phase.");
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit();
-        LOGGER.debug("Finished postInit phase.");
+        LogHelper.debug("Finished postInit phase.");
     }
 }

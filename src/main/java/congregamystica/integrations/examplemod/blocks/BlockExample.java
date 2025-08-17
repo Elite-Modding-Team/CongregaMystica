@@ -4,7 +4,6 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IBlockAddition;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -14,7 +13,6 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 public class BlockExample extends Block implements IBlockAddition {

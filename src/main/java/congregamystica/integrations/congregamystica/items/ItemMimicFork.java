@@ -19,13 +19,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityNote;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -39,10 +33,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.tiles.devices.TileArcaneEar;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
-
-import javax.annotation.Nullable;
 
 public class ItemMimicFork extends Item implements IItemAddition {
     public ItemMimicFork() {

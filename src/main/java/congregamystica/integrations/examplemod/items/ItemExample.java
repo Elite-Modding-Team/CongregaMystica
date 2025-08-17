@@ -2,7 +2,6 @@ package congregamystica.integrations.examplemod.items;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.IItemAddition;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;

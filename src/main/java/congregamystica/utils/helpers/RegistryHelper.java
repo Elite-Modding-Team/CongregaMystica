@@ -30,8 +30,7 @@ public class RegistryHelper {
                 }
             }
         } catch (NumberFormatException exception) {
-            //TODO: Need to fix the logging so it's not annoying to use.
-            //CongregaMystica.LOGGER.error("Invalid configuration string: %s" + configString);
+            LogHelper.error("Invalid configuration string: %s" + configString);
         }
         return ItemStack.EMPTY;
     }

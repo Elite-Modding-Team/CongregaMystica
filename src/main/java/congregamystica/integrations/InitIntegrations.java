@@ -1,6 +1,7 @@
 package congregamystica.integrations;
 
 import congregamystica.api.IProxy;
+import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.examplemod.ExampleModCM;
 import congregamystica.utils.libs.ModIds;
 
@@ -18,6 +19,8 @@ public class InitIntegrations {
         if(ModIds.exampleMod.isLoaded) {
             MOD_ADDITIONS.add(new ExampleModCM());
         }
+        
+        MOD_ADDITIONS.add(new CongregaMysticaCM());
     }
 
     public static List<IProxy> getModAdditions() {

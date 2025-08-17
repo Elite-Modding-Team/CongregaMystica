@@ -17,7 +17,7 @@ public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition
         super(
                 "CM_LIVINGMETAL",
                 new String[] {"MATSTUDIRON"},
-                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/mat_livingmetal.png"),
+                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/harkenscythe/mat_livingmetal.png"),
                 46030,
                 16,
                 6,

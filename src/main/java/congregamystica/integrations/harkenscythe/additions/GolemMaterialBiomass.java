@@ -17,7 +17,7 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
         super(
                 "CM_BIOMASS",
                 new String[] {"MATSTUDIRON"},
-                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/mat_biomass.png"),
+                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/harkenscythe/mat_biomass.png"),
                 8588557,
                 16,
                 6,

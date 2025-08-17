@@ -17,7 +17,7 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
         super(
                 "CM_TREATED_WOOD",
                 new String[] {"MATSTUDIRON"},
-                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/mat_treated_wood.png"),
+                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/immersiveengineering/mat_treated_wood.png"),
                 6566425,
                 6,
                 2,

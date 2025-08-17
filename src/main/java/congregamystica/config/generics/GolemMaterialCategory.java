@@ -39,6 +39,9 @@ public class GolemMaterialCategory {
         }
         if(this.stackCache.isEmpty()) {
             this.stackCache = OreDictionary.getOres(this.fallbackOreDict).stream().findFirst().orElse(ItemStack.EMPTY);
+            if(this.stackCache.getItemDamage() == Short.MAX_VALUE) {
+                this.stackCache.setItemDamage(0);
+            }
         }
         return this.stackCache;
     }

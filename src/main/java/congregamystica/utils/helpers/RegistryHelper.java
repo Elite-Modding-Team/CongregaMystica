@@ -19,14 +19,14 @@ public class RegistryHelper {
                 ResourceLocation loc = new ResourceLocation(split[0], split[1]);
                 int meta = split.length == 3 ? Integer.parseInt(split[2]) : 0;
 
-                Item item = getRegisteredItem(loc);
-                if (item != Items.AIR) {
-                    return new ItemStack(item, 1, meta);
-                }
-
                 Block block = getRegisteredBlock(loc);
                 if (block != Blocks.AIR) {
                     return new ItemStack(block, 1, meta);
+                }
+
+                Item item = getRegisteredItem(loc);
+                if (item != Items.AIR) {
+                    return new ItemStack(item, 1, meta);
                 }
             }
         } catch (NumberFormatException exception) {

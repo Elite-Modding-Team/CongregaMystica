@@ -1,3 +1,20 @@
+# Items
+item.congregamystica:mimic_fork.name=Mimic Fork
+
+mimic_fork.instrument=Instrument: %s
+mimic_fork.note=Note: %s
+
+mimic_fork.instrument.piano=Piano
+mimic_fork.instrument.bassdrum=Bass Drum
+mimic_fork.instrument.snare=Snare
+mimic_fork.instrument.clicks=Clicks
+mimic_fork.instrument.bassguitar=Bass Guitar
+mimic_fork.instrument.flute=Flute
+mimic_fork.instrument.bell=Bell
+mimic_fork.instrument.guitar=Guitar
+mimic_fork.instrument.chime=Chime
+mimic_fork.instrument.xylophone=Xylophone
+
 # Golems
 golem.material.cm_biomass=Biomass
 golem.material.text.cm_biomass=This golem is infected with biomass.

@@ -1,4 +1,4 @@
-package congregamystica.integrations.congregamystica.additions;
+package congregamystica.integrations.harkenscythe.additions;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
@@ -11,26 +11,26 @@ import thaumcraft.api.golems.parts.GolemMaterial;
 import thaumcraft.api.items.ItemsTC;
 
 //Because this feature is not a block or item, it should extend the IProxy so it can be registered correctly.
-public class GolemMaterialSteel extends GolemMaterial implements IAddition, IProxy {
+public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IProxy {
 	
-    public GolemMaterialSteel() {
+    public GolemMaterialBiomass() {
         super(
-                "CM_STEEL",
+                "CM_BIOMASS",
                 new String[] {"MATSTUDIRON"},
-                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/mat_steel.png"),
-                4934475,
+                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/mat_biomass.png"),
+                8588557,
                 16,
-                12,
                 6,
-                ConfigHandlerCM.golems.steel.getMaterialStack(),
+                3,
+                ConfigHandlerCM.golems.biomass.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
-                new EnumGolemTrait[] {EnumGolemTrait.HEAVY, EnumGolemTrait.CLUMSY, EnumGolemTrait.BLASTPROOF, EnumGolemTrait.FIREPROOF}
+                new EnumGolemTrait[] {}
         );
     }
 
     @Override
     public void init() {
-        register(this);
+    	register(this);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class GolemMaterialSteel extends GolemMaterial implements IAddition, IPro
 
     @Override
     public boolean isEnabled() {
-        //Configuration toggles here
-        return ConfigHandlerCM.golems.steel.enable;
+        //Configuration or OreDict toggles here
+        return ConfigHandlerCM.golems.biomass.enable;
     }
 }

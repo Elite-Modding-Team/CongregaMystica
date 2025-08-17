@@ -1,4 +1,10 @@
 # Golems
+golem.material.cm_biomass=Biomass
+golem.material.text.cm_biomass=This golem is infected with biomass.
+
+golem.material.cm_livingmetal=Livingmetal
+golem.material.text.cm_livingmetal=This golem is crafted from livingmetal.
+
 golem.material.cm_steel=Steel
 golem.material.text.cm_steel=This golem is crafted from steel. It is heavy and clumsy, but sturdier than most materials. It is fireproof and resistant to explosions.
 

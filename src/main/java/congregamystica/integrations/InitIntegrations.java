@@ -3,6 +3,7 @@ package congregamystica.integrations;
 import congregamystica.api.IProxy;
 import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.examplemod.ExampleModCM;
+import congregamystica.integrations.harkenscythe.HarkenScytheCM;
 import congregamystica.integrations.immersiveengineering.ImmersiveEngineeringCM;
 import congregamystica.utils.libs.ModIds;
 
@@ -22,6 +23,10 @@ public class InitIntegrations {
         }
         
         MOD_ADDITIONS.add(new CongregaMysticaCM());
+        
+        if(ModIds.harken_scythe.isLoaded) {
+            MOD_ADDITIONS.add(new HarkenScytheCM());
+        }
         
         if(ModIds.immersive_engineering.isLoaded) {
             MOD_ADDITIONS.add(new ImmersiveEngineeringCM());

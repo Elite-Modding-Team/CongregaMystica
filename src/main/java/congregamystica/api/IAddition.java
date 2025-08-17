@@ -1,21 +1,18 @@
 package congregamystica.api;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.AspectList;
 
+import java.util.Collections;
+import java.util.Map;
+
+/**
+ * Interface used to help register
+ */
 public interface IAddition {
-    /**
-     * Registers a block from within the block class. This must be called to register the block.
-     */
-    default void registerBlock(IForgeRegistry<Block> registry) {}
-    /**
-     * Registers an item from within the item or block class. This must be called to register the item.
-     */
-    default void registerItem(IForgeRegistry<Item> registry) {}
-
     /**
      * Registers a recipe during the IRecipe registry event. Always try to use this over proxy recipe
      * registries to avoid incompatibilities.
@@ -26,6 +23,20 @@ public interface IAddition {
      * Registers the model for the item or block. This method must be called to register the model.
      */
     default void registerModel(ModelRegistryEvent event) {}
+
+    /**
+     * Registers a research location. This method will only be called if {@link IAddition#isEnabled()} returns true.
+     * This method fires in the {@link net.minecraftforge.fml.common.event.FMLInitializationEvent} stage.
+     */
+    default void registerResearchLocation() {}
+
+    /**
+     * A helper method for registering item aspects. This event is fired in the {@link net.minecraftforge.fml.common.event.FMLPostInitializationEvent}
+     * stage. You can either handle the aspect registration manually, or add them to the return map.
+     */
+    default Map<ItemStack, AspectList> registerAspects() {
+        return Collections.emptyMap();
+    }
 
     /**
      * Returns true if this item is enabled. Used for additions with configurable Enable/Disable or if they

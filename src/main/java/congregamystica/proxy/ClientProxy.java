@@ -20,8 +20,8 @@ public class ClientProxy extends CommonProxy {
     }
 
     @Override
-    public void postINit() {
-        super.postINit();
+    public void postInit() {
+        super.postInit();
         InitIntegrations.getModAdditions().forEach(IProxy::postInitClient);
         RegistrarCM.getProxyAdditions().forEach(IProxy::postInitClient);
     }

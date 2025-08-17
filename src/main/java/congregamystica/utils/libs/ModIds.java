@@ -9,7 +9,10 @@ public enum ModIds {
     botania(ConstIds.botania),
     harken_scythe(ConstIds.harken_scythe),
     immersive_engineering(ConstIds.immersive_engineering),
-    thaumic_wonders(ConstIds.thaumic_wonders, ConstVersions.thaumic_wonders, true, false);
+    thaumic_wonders(ConstIds.thaumic_wonders, ConstVersions.thaumic_wonders, true, false),
+
+    //An example mod to show how the stuff works without actually loading
+    exampleMod("examplemod");
 
     public final String modId;
     public final String version;

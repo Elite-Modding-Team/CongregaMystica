@@ -1,6 +1,9 @@
 package congregamystica.registry;
 
+import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
+import congregamystica.api.IBlockAddition;
+import congregamystica.api.IItemAddition;
 import congregamystica.api.IProxy;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -13,56 +16,58 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-//TODO: Modid
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = CongregaMystica.MOD_ID)
 public class RegistrarCM {
-    private static final List<Block> BLOCK_ADDITIONS = new ArrayList<>();
-    private static final List<Item> ITEM_ADDITIONS = new ArrayList<>();
-    private static final List<IProxy> PROXY_ADDITIONS = new ArrayList<>();
+
+    private static final List<IAddition> ADDITIONS = new ArrayList<>();
 
     public static void addAdditionToRegister(IAddition addition) {
-        if(addition != null && addition.isEnabled()) {
-            if (addition instanceof Block) {
-                BLOCK_ADDITIONS.add((Block) addition);
-            } else if (addition instanceof Item) {
-                ITEM_ADDITIONS.add((Item) addition);
-            }
-
-            if (addition instanceof IProxy) {
-                PROXY_ADDITIONS.add((IProxy) addition);
-            }
+        if (addition != null && addition.isEnabled()) {
+            ADDITIONS.add(addition);
         }
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
-        BLOCK_ADDITIONS.stream().filter(block -> block instanceof IAddition).forEach(block -> ((IAddition) block).registerBlock(registry));
+        getBlockAdditions().forEach(block -> block.registerBlock(registry));
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
-        BLOCK_ADDITIONS.stream().filter(block -> block instanceof IAddition).forEach(block -> ((IAddition) block).registerItem(registry));
-        ITEM_ADDITIONS.stream().filter(item -> item instanceof IAddition).forEach(item -> ((IAddition) item).registerItem(registry));
+        getItemAdditions().forEach(item -> item.registerItem(registry));
     }
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-        BLOCK_ADDITIONS.stream().filter(block -> block instanceof IAddition).forEach(block -> ((IAddition) block).registerModel(event));
-        ITEM_ADDITIONS.stream().filter(item -> item instanceof IAddition).forEach(item -> ((IAddition) item).registerModel(event));
+        getAdditions().forEach(addition -> addition.registerModel(event));
     }
 
     @SubscribeEvent
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         IForgeRegistry<IRecipe> registry = event.getRegistry();
-        BLOCK_ADDITIONS.stream().filter(block -> block instanceof IAddition).forEach(block -> ((IAddition) block).registerRecipe(registry));
-        ITEM_ADDITIONS.stream().filter(item -> item instanceof IAddition).forEach(item -> ((IAddition) item).registerRecipe(registry));
-        PROXY_ADDITIONS.stream().filter(proxy -> proxy instanceof IAddition).forEach(proxy -> ((IAddition) proxy).registerRecipe(registry));
+        getAdditions().forEach(addition -> addition.registerRecipe(registry));
+    }
+
+    public static List<IAddition> getAdditions() {
+        return ADDITIONS;
+    }
+
+    public static List<IBlockAddition> getBlockAdditions() {
+        return getAdditions().stream().filter(addition -> addition instanceof IBlockAddition)
+                .map(addition -> (IBlockAddition) addition).collect(Collectors.toList());
+    }
+
+    public static List<IItemAddition> getItemAdditions() {
+        return getAdditions().stream().filter(addition -> addition instanceof IItemAddition)
+                .map(addition -> (IItemAddition) addition).collect(Collectors.toList());
     }
 
     public static List<IProxy> getProxyAdditions() {
-        return PROXY_ADDITIONS;
+        return getAdditions().stream().filter(addition -> addition instanceof IProxy)
+                .map(addition -> (IProxy) addition).collect(Collectors.toList());
     }
 }

@@ -4,6 +4,9 @@ import congregamystica.proxy.CommonProxy;
 import mod.emt.congregamystica.Tags;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.Logger;
 
 @Mod(
@@ -30,20 +33,21 @@ public class CongregaMystica {
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public void preInit() {
+    public void preInit(FMLPreInitializationEvent event) {
+        LOGGER = event.getModLog();
         LOGGER.info("Starting " + MOD_NAME);
         proxy.preInit();
         LOGGER.debug("Finished preInit phase.");
     }
 
     @Mod.EventHandler
-    public void init() {
+    public void init(FMLInitializationEvent event) {
         proxy.init();
         LOGGER.debug("Finished init phase.");
     }
 
     @Mod.EventHandler
-    public void postInit() {
+    public void postInit(FMLPostInitializationEvent event) {
         proxy.postInit();
         LOGGER.debug("Finished postInit phase.");
     }

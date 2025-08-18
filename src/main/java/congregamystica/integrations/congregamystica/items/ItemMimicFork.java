@@ -66,8 +66,8 @@ public class ItemMimicFork extends Item implements IItemAddition {
     }
 
     @Override
-    public Map<ItemStack, AspectList> registerAspects() {
-        return IItemAddition.super.registerAspects();
+    public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
+
     }
 
     @Override

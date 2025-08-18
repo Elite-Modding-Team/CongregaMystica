@@ -1,11 +1,11 @@
 package congregamystica.integrations.bloodmagic.items;
 
-import java.util.List;
-import java.util.Map;
-
+import WayofTime.bloodmagic.altar.AltarTier;
+import WayofTime.bloodmagic.api.impl.BloodMagicAPI;
 import WayofTime.bloodmagic.core.data.Binding;
 import WayofTime.bloodmagic.core.data.SoulNetwork;
 import WayofTime.bloodmagic.core.data.SoulTicket;
+import WayofTime.bloodmagic.iface.IBindable;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
 import WayofTime.bloodmagic.util.helper.TextHelper;
 import congregamystica.CongregaMystica;
@@ -17,15 +17,20 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.IScribeTools;
-import WayofTime.bloodmagic.iface.IBindable;
+import thaumcraft.api.items.ItemsTC;
+
+import java.util.List;
+import java.util.Map;
 
 public class ItemBloodScribingTools extends Item implements IItemAddition, IScribeTools, IBindable {
     public ItemBloodScribingTools() {
@@ -86,7 +91,14 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //Register any recipes associated with the item here
+        BloodMagicAPI.INSTANCE.getRecipeRegistrar().addBloodAltar(
+                Ingredient.fromStacks(new ItemStack(ItemsTC.scribingTools)),
+                new ItemStack(this),
+                AltarTier.TWO.ordinal(),
+                2000,
+                5,
+                5
+        );
     }
 
     @Override
@@ -100,8 +112,9 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
     }
 
     @Override
-    public Map<ItemStack, AspectList> registerAspects() {
-        return IItemAddition.super.registerAspects();
+    public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
+        aspectMap.put(new ItemStack(this),
+                new AspectList().add(Aspect.LIFE, 10).add(Aspect.SENSES, 3).add(Aspect.WATER, 1).add(Aspect.BEAST, 1));
     }
 
     @Override

@@ -6,7 +6,6 @@ import congregamystica.integrations.immersiveengineering.additions.GolemMaterial
 import congregamystica.integrations.immersiveengineering.items.ItemDrillHeadThaumium;
 import congregamystica.integrations.immersiveengineering.items.ItemDrillHeadVoid;
 import congregamystica.integrations.immersiveengineering.items.ItemUpgradeRefining;
-import congregamystica.integrations.immersiveengineering.util.DrillStats;
 import congregamystica.registry.RegistrarCM;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;

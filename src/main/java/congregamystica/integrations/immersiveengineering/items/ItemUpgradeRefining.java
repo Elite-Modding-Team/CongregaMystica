@@ -35,7 +35,10 @@ import thaumcraft.api.crafting.IngredientNBTTC;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.lib.utils.Utils;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition, IProxy {
     public static final String UPGRADE_REFINING = "refining";

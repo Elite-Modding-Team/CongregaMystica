@@ -6,7 +6,6 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.AspectList;
 
-import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -34,9 +33,7 @@ public interface IAddition {
      * A helper method for registering item aspects. This event is fired in the {@link net.minecraftforge.fml.common.event.FMLPostInitializationEvent}
      * stage. You can either handle the aspect registration manually, or add them to the return map.
      */
-    default Map<ItemStack, AspectList> registerAspects() {
-        return Collections.emptyMap();
-    }
+    default void registerAspects(Map<ItemStack, AspectList> aspectMap) {}
 
     /**
      * Returns true if this item is enabled. Used for additions with configurable Enable/Disable or if they

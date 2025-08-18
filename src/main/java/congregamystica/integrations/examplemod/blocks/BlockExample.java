@@ -12,7 +12,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
-import java.util.Collections;
 import java.util.Map;
 
 public class BlockExample extends Block implements IBlockAddition {
@@ -48,9 +47,9 @@ public class BlockExample extends Block implements IBlockAddition {
     }
 
     @Override
-    public Map<ItemStack, AspectList> registerAspects() {
+    public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
         //Register any aspects here. ItemStacks are handled automatically so long as they are added to the return map.
-        return Collections.singletonMap(new ItemStack(this), new AspectList().add(Aspect.EARTH, 5));
+        aspectMap.put(new ItemStack(this), new AspectList().add(Aspect.EARTH, 5));
     }
 
     @Override

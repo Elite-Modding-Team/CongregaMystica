@@ -9,6 +9,9 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.internal.CommonInternals;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CommonProxy {
     public void preInit() {
         InitIntegrations.getModAdditions().forEach(IProxy::preInit);
@@ -34,8 +37,14 @@ public class CommonProxy {
     }
 
     private void registerAspects() {
+        Map<ItemStack, AspectList> aspectMap = new HashMap<>();
         RegistrarCM.getAdditions().forEach(addition -> {
-            addition.registerAspects().forEach(this::appendAspects);
+            addition.registerAspects(aspectMap);
+        });
+        aspectMap.forEach((stack, list) -> {
+            if(!stack.isEmpty()) {
+                this.appendAspects(stack, list);
+            }
         });
     }
 

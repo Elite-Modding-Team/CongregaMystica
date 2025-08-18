@@ -58,4 +58,9 @@ public class CongregaMystica {
     // General:
     // A system to easily make more native clusters. It will allow you to make native clusters from custom textures and dynamic textures
     // A system to easily make more gauntlets. Having it depend on Thaumic Augmentation might be the better way in order to utilize augments
+    // Blood Magic:
+    // Bound Scribing Tools - Automatically gives the player research at specific points, probably indestructible?
+    // Harken Scythe:
+    // Biomass Gauntlet - Uses blood essence instead of vis, should also do other things to differentiate it more from the livingmetal one
+    // Livingmetal Gauntlet - Uses soul essence instead of vis, should also do other things to differentiate it more from the biomass one
 }

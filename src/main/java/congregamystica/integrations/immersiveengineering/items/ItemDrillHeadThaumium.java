@@ -13,7 +13,7 @@ public class ItemDrillHeadThaumium extends AbstractDrillHead {
             ConfigHandlerCM.immersive_engineering.thaumium_drill_head.drillSpeed,
             ConfigHandlerCM.immersive_engineering.thaumium_drill_head.drillAttack,
             ConfigHandlerCM.immersive_engineering.thaumium_drill_head.drillDurability,
-            CongregaMystica.MOD_ID + ":items/immersiveengineering/drill_thaumium");
+            CongregaMystica.MOD_ID + ":models/immersiveengineering/drill_thaumium");
 
     public ItemDrillHeadThaumium() {
         super("drill_head_thaumium", THAUMIUM_HEAD_STATS);

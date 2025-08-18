@@ -23,7 +23,7 @@ public class ItemDrillHeadVoid extends AbstractDrillHead {
             ConfigHandlerCM.immersive_engineering.void_drill_head.drillSpeed,
             ConfigHandlerCM.immersive_engineering.void_drill_head.drillAttack,
             ConfigHandlerCM.immersive_engineering.void_drill_head.drillDurability,
-            CongregaMystica.MOD_ID + ":items/immersiveengineering/drill_void");
+            CongregaMystica.MOD_ID + ":models/immersiveengineering/drill_void");
 
     public ItemDrillHeadVoid() {
         super("drill_head_void", VOID_HEAD_STATS);

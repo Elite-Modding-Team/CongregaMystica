@@ -7,12 +7,12 @@ import congregamystica.integrations.immersiveengineering.util.DrillStats;
 public class ItemDrillHeadThaumium extends AbstractDrillHead {
     public static final DrillStats THAUMIUM_HEAD_STATS = new DrillStats(
             "ingotThaumium",
-            ConfigHandlerCM.immersive_engineering.thaumium_drill_head.drillSize,
+            ConfigHandlerCM.immersive_engineering.thaumiumDrillHead.drillSize,
             1,
-            ConfigHandlerCM.immersive_engineering.thaumium_drill_head.drillLevel,
-            ConfigHandlerCM.immersive_engineering.thaumium_drill_head.drillSpeed,
-            ConfigHandlerCM.immersive_engineering.thaumium_drill_head.drillAttack,
-            ConfigHandlerCM.immersive_engineering.thaumium_drill_head.drillDurability,
+            ConfigHandlerCM.immersive_engineering.thaumiumDrillHead.drillLevel,
+            ConfigHandlerCM.immersive_engineering.thaumiumDrillHead.drillSpeed,
+            ConfigHandlerCM.immersive_engineering.thaumiumDrillHead.drillAttack,
+            ConfigHandlerCM.immersive_engineering.thaumiumDrillHead.drillDurability,
             CongregaMystica.MOD_ID + ":models/immersiveengineering/drill_thaumium");
 
     public ItemDrillHeadThaumium() {
@@ -26,7 +26,7 @@ public class ItemDrillHeadThaumium extends AbstractDrillHead {
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerCM.immersive_engineering.thaumium_drill_head.enabled;
+        return ConfigHandlerCM.immersive_engineering.thaumiumDrillHead.enable;
     }
 
 }

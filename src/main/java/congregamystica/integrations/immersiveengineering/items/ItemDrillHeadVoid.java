@@ -17,12 +17,12 @@ import org.jetbrains.annotations.NotNull;
 public class ItemDrillHeadVoid extends AbstractDrillHead {
     public static final DrillStats VOID_HEAD_STATS = new DrillStats(
             "ingotVoid",
-            ConfigHandlerCM.immersive_engineering.void_drill_head.drillSize,
+            ConfigHandlerCM.immersive_engineering.voidDrillHead.drillSize,
             1,
-            ConfigHandlerCM.immersive_engineering.void_drill_head.drillLevel,
-            ConfigHandlerCM.immersive_engineering.void_drill_head.drillSpeed,
-            ConfigHandlerCM.immersive_engineering.void_drill_head.drillAttack,
-            ConfigHandlerCM.immersive_engineering.void_drill_head.drillDurability,
+            ConfigHandlerCM.immersive_engineering.voidDrillHead.drillLevel,
+            ConfigHandlerCM.immersive_engineering.voidDrillHead.drillSpeed,
+            ConfigHandlerCM.immersive_engineering.voidDrillHead.drillAttack,
+            ConfigHandlerCM.immersive_engineering.voidDrillHead.drillDurability,
             CongregaMystica.MOD_ID + ":models/immersiveengineering/drill_void");
 
     public ItemDrillHeadVoid() {
@@ -67,6 +67,6 @@ public class ItemDrillHeadVoid extends AbstractDrillHead {
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerCM.immersive_engineering.thaumium_drill_head.enabled && ConfigHandlerCM.immersive_engineering.void_drill_head.enabled;
+        return ConfigHandlerCM.immersive_engineering.thaumiumDrillHead.enable && ConfigHandlerCM.immersive_engineering.voidDrillHead.enable;
     }
 }

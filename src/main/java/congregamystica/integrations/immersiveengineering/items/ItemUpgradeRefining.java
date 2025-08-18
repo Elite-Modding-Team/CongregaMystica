@@ -1,0 +1,151 @@
+package congregamystica.integrations.immersiveengineering.items;
+
+import blusunrize.immersiveengineering.ImmersiveEngineering;
+import blusunrize.immersiveengineering.api.tool.IUpgrade;
+import blusunrize.immersiveengineering.common.items.ItemDrill;
+import blusunrize.immersiveengineering.common.util.ItemNBTHelper;
+import congregamystica.CongregaMystica;
+import congregamystica.api.IItemAddition;
+import congregamystica.api.IProxy;
+import congregamystica.config.ConfigHandlerCM;
+import congregamystica.utils.helpers.StringHelper;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.world.World;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.Nullable;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.crafting.IngredientNBTTC;
+import thaumcraft.api.items.ItemsTC;
+import thaumcraft.common.lib.utils.Utils;
+
+import java.util.*;
+
+public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition, IProxy {
+    public static final String UPGRADE_REFINING = "refining";
+
+    public ItemUpgradeRefining() {
+        this.setRegistryName(CongregaMystica.MOD_ID, "upgrade_refining");
+        this.setTranslationKey(this.getRegistryName().toString());
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public int getItemStackLimit() {
+        return ConfigHandlerCM.immersive_engineering.refiningUpgrade.maxUpgrades;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        String[] flavorText = ImmersiveEngineering.proxy.splitStringOnWidth(StringHelper.getTranslatedString(UPGRADE_REFINING, "tooltip", "info"), 200);
+        tooltip.addAll(Arrays.asList(flavorText));
+    }
+
+    @SubscribeEvent
+    public void onBlockHarvest(BlockEvent.HarvestDropsEvent event) {
+        if(!event.getWorld().isRemote && event.getHarvester() != null) {
+            ItemStack heldStack = event.getHarvester().getHeldItemMainhand();
+            if(heldStack.getItem() instanceof ItemDrill) {
+                int refining = ((ItemDrill) heldStack.getItem()).getUpgrades(heldStack).getInteger(UPGRADE_REFINING);
+                if(refining > 0) {
+                    float chance = (float) refining * 0.1f;
+                    boolean did = false;
+                    for(int i = 0; i < event.getDrops().size(); i++) {
+                        ItemStack drop = event.getDrops().get(i);
+                        ItemStack refined = Utils.findSpecialMiningResult(drop, chance, event.getWorld().rand);
+                        if(!ItemStack.areItemsEqual(drop, refined)) {
+                            event.getDrops().set(i, refined);
+                            did = true;
+                        }
+                    }
+
+                    if(did) {
+                        event.getWorld().playSound(null, event.getPos(), SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.PLAYERS, 0.2f, 0.7f + event.getWorld().rand.nextFloat() * 0.2f);
+                    }
+                }
+            }
+        }
+    }
+
+    //##########################################################
+    // IUpgrade
+
+    @Override
+    public Set<String> getUpgradeTypes(ItemStack itemStack) {
+        return Collections.singleton("DRILL");
+    }
+
+    @Override
+    public boolean canApplyUpgrades(ItemStack target, ItemStack upgrade) {
+        return true;
+    }
+
+    @Override
+    public void applyUpgrades(ItemStack target, ItemStack upgrade, NBTTagCompound modifications) {
+        ItemNBTHelper.modifyInt(modifications, UPGRADE_REFINING, upgrade.getCount());
+    }
+
+    //##########################################################
+    // IItemAddition
+
+    @Override
+    public void preInit() {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @Override
+    public void registerItem(IForgeRegistry<Item> registry) {
+        registry.register(this);
+    }
+
+    @Override
+    public void registerRecipe(IForgeRegistry<IRecipe> registry) {
+        ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
+                "CM_REFINING_UPGRADE",
+                new ItemStack(this),
+                2,
+                new AspectList().add(Aspect.ORDER, 80).add(Aspect.EXCHANGE, 60),
+                new ItemStack(ItemsTC.mechanismSimple),
+                new ItemStack(ItemsTC.nuggets, 1, 10),
+                new ItemStack(ItemsTC.salisMundus),
+                new ItemStack(ItemsTC.nuggets, 1, 10),
+                new IngredientNBTTC(new ItemStack(Items.ENCHANTED_BOOK))
+        ));
+    }
+
+    @Override
+    public void registerModel(ModelRegistryEvent event) {
+        ModelResourceLocation loc = new ModelResourceLocation(this.getRegistryName(), "inventory");
+        ModelLoader.setCustomModelResourceLocation(this, 0, loc);
+    }
+
+    @Override
+    public void registerResearchLocation() {
+        //TODO
+    }
+
+    @Override
+    public Map<ItemStack, AspectList> registerAspects() {
+        return IItemAddition.super.registerAspects();
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return ConfigHandlerCM.immersive_engineering.refiningUpgrade.enable;
+    }
+}

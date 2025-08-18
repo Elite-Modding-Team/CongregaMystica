@@ -78,9 +78,9 @@ public abstract class AbstractDrillHead extends Item implements IDrillHead, IIte
         tooltip.add(I18n.format(Lib.DESC_FLAVOUR + "drillhead.speed", Utils.formatDouble(this.getMiningSpeed(head), "0.###")));
         tooltip.add(I18n.format(Lib.DESC_FLAVOUR + "drillhead.damage", Utils.formatDouble(this.getAttackDamage(head), "0.###")));
 
-        int maxDmg = getMaximumHeadDamage(head);
-        int dmg = maxDmg-getHeadDamage(head);
-        float quote = dmg / (float)maxDmg;
+        int maxDmg = this.getMaximumHeadDamage(head);
+        int dmg = maxDmg - this.getHeadDamage(head);
+        float quote = dmg / (float) maxDmg;
         String color = "" + (quote < .1 ? TextFormatting.RED : quote < .3 ? TextFormatting.GOLD: quote < .6 ? TextFormatting.YELLOW : TextFormatting.GREEN);
         String dura = color + (this.getMaximumHeadDamage(head) - this.getHeadDamage(head)) + "/" + this.getMaximumHeadDamage(head);
         tooltip.add(I18n.format(Lib.DESC_INFO + "durability", dura));

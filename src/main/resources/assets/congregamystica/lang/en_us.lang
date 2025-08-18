@@ -2,7 +2,7 @@
 item.congregamystica:drill_head_thaumium.name=Thaumium Drill Head
 item.congregamystica:drill_head_void.name=Void Metal Drill Head
 item.congregamystica:mimic_fork.name=Mimic Fork
-item.congregamystica:upgrade_refining.name=Refining Module
+item.congregamystica:upgrade_refining.name=Native Cluster Extraction Module
 
 mimic_fork.instrument=Instrument: %s
 mimic_fork.note=Note: %s

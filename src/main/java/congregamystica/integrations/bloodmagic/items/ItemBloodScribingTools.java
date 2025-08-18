@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import WayofTime.bloodmagic.core.data.Binding;
+import WayofTime.bloodmagic.core.data.SoulNetwork;
 import WayofTime.bloodmagic.core.data.SoulTicket;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
 import WayofTime.bloodmagic.util.helper.TextHelper;
 import congregamystica.CongregaMystica;
 import congregamystica.api.IItemAddition;
+import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -31,9 +33,51 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(CongregaMystica.tabCM);
         this.setMaxStackSize(1);
-        this.setMaxDamage(100);
+        this.setMaxDamage(20);
         this.setHasSubtypes(false);
     }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
+        if (!stack.hasTagCompound())
+            return;
+
+        Binding binding = getBinding(stack);
+        if (binding != null) {
+            tooltip.add(TextHelper.localizeEffect("tooltip.bloodmagic.currentOwner", binding.getOwnerName()));
+        }
+    }
+
+    @Override
+    public void onUpdate(ItemStack stack, World world, Entity holder, int itemSlot, boolean isSelected) {
+        if (!world.isRemote && holder.ticksExisted % 100 == 0 && stack.getItemDamage() > 0) {
+            Binding binding = getBinding(stack);
+
+            if (binding != null) {
+                SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
+                if (network.syphonAndDamage(network.getCachedPlayer(), SoulTicket.item(stack, world, holder, ConfigHandlerCM.blood_magic.bloodyScribingTools.lpCost)).isSuccess()) {
+                    stack.setItemDamage(stack.getItemDamage() - 1);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void setDamage(ItemStack stack, int damage) {
+        Binding binding = getBinding(stack);
+        if (binding != null) {
+            SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
+            if (!network.syphonAndDamage(network.getCachedPlayer(), SoulTicket.item(stack, ConfigHandlerCM.blood_magic.bloodyScribingTools.lpCost * damage)).isSuccess()) {
+                super.setDamage(stack, damage);
+            }
+        } else {
+            super.setDamage(stack, damage);
+        }
+    }
+
+    //##########################################################
+    // IItemAddition
 
     @Override
     public void registerItem(IForgeRegistry<Item> registry) {
@@ -62,46 +106,7 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return ConfigHandlerCM.blood_magic.bloodyScribingTools.enable;
     }
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-        if (!stack.hasTagCompound())
-            return;
-
-        Binding binding = getBinding(stack);
-        if (binding != null) {
-            tooltip.add(TextHelper.localizeEffect("tooltip.bloodmagic.currentOwner", binding.getOwnerName()));
-        }
-    }
-
-    @Override
-    public void onUpdate(ItemStack stack, World world, Entity holder, int itemSlot, boolean isSelected) {
-        if (stack.getItemDamage() > 0) {
-            Binding binding = getBinding(stack);
-
-            if (binding != null) {
-                if (NetworkHelper.getSoulNetwork(binding).syphon(SoulTicket.item(stack, world, holder, 25)) > 0) {
-                    stack.setItemDamage(stack.getItemDamage() - 1);
-                }
-            }
-        }
-    }
-
-    @Override
-    public void setDamage(ItemStack stack, int damage) {
-        Binding binding = getBinding(stack);
-
-        if (binding != null) {
-            if (NetworkHelper.getSoulNetwork(binding).syphon(SoulTicket.item(stack, 25 * damage)) > 0) {
-                super.setDamage(stack, 0);
-            } else {
-                super.setDamage(stack, damage);
-            }
-        } else {
-            super.setDamage(stack, damage);
-        }
-    }
 }

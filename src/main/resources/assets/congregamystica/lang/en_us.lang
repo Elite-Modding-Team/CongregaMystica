@@ -32,7 +32,7 @@ golem.material.cm_treated_wood=Treated Wood
 golem.material.text.cm_treated_wood=This golem is crafted from treated wood. It is well lubricated, allowing it to perform complicated tasks with ease.
 
 # Tooltips
-tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract Native Clusters from mined ores, stacks up to %d
+tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract native clusters from mined ores, stacks up to %d
 
 # Research
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass

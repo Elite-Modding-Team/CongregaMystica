@@ -1,4 +1,6 @@
 # Items
+item.congregamystica:drill_head_thaumium.name=Thaumium Drill Head
+item.congregamystica:drill_head_void.name=Void Metal Drill Head
 item.congregamystica:mimic_fork.name=Mimic Fork
 
 mimic_fork.instrument=Instrument: %s

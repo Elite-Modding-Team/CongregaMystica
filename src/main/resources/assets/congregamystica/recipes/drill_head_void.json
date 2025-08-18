@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "congregamystica:drill_head_void"
+  },
+  "pattern": [
+    "II ",
+    "BBI",
+    "II "
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotVoid"
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "blockVoid"
+    }
+  }
+}

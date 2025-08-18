@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "congregamystica:items/bloodmagic/blood_scribing_tools"
+  }
+}

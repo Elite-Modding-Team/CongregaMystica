@@ -1,4 +1,5 @@
 # Items
+item.congregamystica:blood_scribing_tools.name=Bloody Scrivener's Tools
 item.congregamystica:drill_head_thaumium.name=Thaumium Drill Head
 item.congregamystica:drill_head_void.name=Void Metal Drill Head
 item.congregamystica:mimic_fork.name=Mimic Fork
@@ -35,6 +36,10 @@ golem.material.text.cm_treated_wood=This golem is crafted from treated wood. It 
 tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract native clusters from mined ores, stacks up to %d
 
 # Research
+congregamystica.research.blood_scribing_tools.title=Bloody Scrivener's Tools
+congregamystica.research.blood_scribing_tools.stage.1=Refilling the inkwell of my scribing tools can be frustrating sometimes. I should look towards more ways to refill it, even through more uncanny ways if I have to...
+congregamystica.research.blood_scribing_tools.stage.2=By enhancing my scribing tools with a much more sinister type of magic, I've created a set of scribing tools that fills themselves from lifeforce instead of ink. The Bloody Scrivener's Tools can draw from LP instead of ink when writing, but may need contact with human warmth to recharge if they run out.<BR>Right-clicking the tool will bind it to my LP network. It will take 25 LP per point of damage taken.
+
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
 congregamystica.research.golem_mat_biomass.stage.1=[WIP]
 

@@ -2,6 +2,7 @@
 item.congregamystica:drill_head_thaumium.name=Thaumium Drill Head
 item.congregamystica:drill_head_void.name=Void Metal Drill Head
 item.congregamystica:mimic_fork.name=Mimic Fork
+item.congregamystica:upgrade_refining.name=Refining Module
 
 mimic_fork.instrument=Instrument: %s
 mimic_fork.note=Note: %s
@@ -29,6 +30,9 @@ golem.material.text.cm_steel=This golem is crafted from steel. It is heavy and c
 
 golem.material.cm_treated_wood=Treated Wood
 golem.material.text.cm_treated_wood=This golem is crafted from treated wood. It is well lubricated, allowing it to perform complicated tasks with ease.
+
+# Tooltips
+tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract Native Clusters from mined ores, stacks up to %d
 
 # Research
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass

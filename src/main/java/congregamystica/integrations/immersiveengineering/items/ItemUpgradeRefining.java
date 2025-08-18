@@ -10,6 +10,7 @@ import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.utils.helpers.StringHelper;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -52,7 +53,8 @@ public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        String[] flavorText = ImmersiveEngineering.proxy.splitStringOnWidth(StringHelper.getTranslatedString(UPGRADE_REFINING, "tooltip", "info"), 200);
+        String[] flavorText = ImmersiveEngineering.proxy.splitStringOnWidth(
+                I18n.format(StringHelper.getTranslationKey(UPGRADE_REFINING, "tooltip", "info"), this.getItemStackLimit()), 200);
         tooltip.addAll(Arrays.asList(flavorText));
     }
 

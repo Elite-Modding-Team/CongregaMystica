@@ -120,6 +120,8 @@ dependencies {
 
     implementation rfg.deobf("curse.maven:harken-scythe-resharpened-1163747:6842654")
     implementation rfg.deobf("curse.maven:immersive-engineering-231951:2974106")
+    implementation rfg.deobf("curse.maven:blood-magic-224791:2822288")
+    implementation rfg.deobf("curse.maven:guide-api-228832:2645992")
 
     if (project.use_mixins.toBoolean()) {
         // Change your mixin refmap name here:

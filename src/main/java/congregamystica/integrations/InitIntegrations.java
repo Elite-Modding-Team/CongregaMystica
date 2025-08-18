@@ -1,6 +1,7 @@
 package congregamystica.integrations;
 
 import congregamystica.api.IProxy;
+import congregamystica.integrations.bloodmagic.BloodMagicCM;
 import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.examplemod.ExampleModCM;
 import congregamystica.integrations.harkenscythe.HarkenScytheCM;
@@ -14,6 +15,8 @@ public class InitIntegrations {
     private static List<IProxy> MOD_ADDITIONS;
 
     private static void initModAdditions() {
+        MOD_ADDITIONS.add(new CongregaMysticaCM());
+
         //Mod integration modules are initialized and added to the MOD_ADDITIONS list here. The array is initialized prior to this method call.
 
         //When adding an integration, check that the mod or mods are loaded then add it to the MOD_ADDITIONS. Specific item checks should be included
@@ -21,8 +24,10 @@ public class InitIntegrations {
         if(ModIds.exampleMod.isLoaded) {
             MOD_ADDITIONS.add(new ExampleModCM());
         }
-        
-        MOD_ADDITIONS.add(new CongregaMysticaCM());
+
+        if(ModIds.blood_magic.isLoaded) {
+            MOD_ADDITIONS.add(new BloodMagicCM());
+        }
         
         if(ModIds.harken_scythe.isLoaded) {
             MOD_ADDITIONS.add(new HarkenScytheCM());

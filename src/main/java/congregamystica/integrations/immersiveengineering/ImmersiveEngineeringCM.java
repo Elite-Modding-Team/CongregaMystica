@@ -19,9 +19,9 @@ public class ImmersiveEngineeringCM implements IProxy {
 
     @Override
     public void preInit() {
-        RegistrarCM.addAdditionToRegister(new ItemUpgradeRefining());
         RegistrarCM.addAdditionToRegister(new ItemDrillHeadThaumium());
         RegistrarCM.addAdditionToRegister(new ItemDrillHeadVoid());
+        RegistrarCM.addAdditionToRegister(new ItemUpgradeRefining());
     }
 
     @Override

@@ -18,13 +18,19 @@ public class CommonProxy {
     public void init() {
         InitIntegrations.getModAdditions().forEach(IProxy::init);
         RegistrarCM.getProxyAdditions().forEach(IProxy::init);
-        RegistrarCM.getAdditions().forEach(IAddition::registerResearchLocation);
+        registerResearch();
     }
 
     public void postInit() {
         InitIntegrations.getModAdditions().forEach(IProxy::postInit);
         RegistrarCM.getProxyAdditions().forEach(IProxy::postInit);
-        this.registerAspects();
+        registerAspects();
+    }
+
+    private void registerResearch() {
+        //Set up research categories here. Make sure to do it before the IAddition research is fired.
+
+        RegistrarCM.getAdditions().forEach(IAddition::registerResearchLocation);
     }
 
     private void registerAspects() {

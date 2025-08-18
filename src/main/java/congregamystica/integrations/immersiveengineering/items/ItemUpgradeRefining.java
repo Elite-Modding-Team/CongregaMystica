@@ -142,11 +142,6 @@ public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition
     }
 
     @Override
-    public Map<ItemStack, AspectList> registerAspects() {
-        return IItemAddition.super.registerAspects();
-    }
-
-    @Override
     public boolean isEnabled() {
         return ConfigHandlerCM.immersive_engineering.refiningUpgrade.enable;
     }

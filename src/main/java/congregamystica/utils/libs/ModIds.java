@@ -40,7 +40,7 @@ public enum ModIds {
     }
 
     public static class ConstIds {
-        public static final String blood_magic = "blood_magic";
+        public static final String blood_magic = "bloodmagic";
         public static final String botania = "botania";
         public static final String harken_scythe = "harkenscythe";
         public static final String immersive_engineering = "immersiveengineering";

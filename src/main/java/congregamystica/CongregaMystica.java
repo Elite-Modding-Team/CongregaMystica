@@ -54,8 +54,4 @@ public class CongregaMystica {
     // General:
     // A system to easily make more native clusters. It will allow you to make native clusters from custom textures and dynamic textures
     // A system to easily make more gauntlets. Having it depend on Thaumic Augmentation might be the better way in order to utilize augments
-    // Immersive Engineering:
-    // Native Cluster Extraction Module - Drill upgrade that extracts native clusters from ores
-    // Thaumium Drill Head - 3x3, slightly faster than iron
-    // Void Drill Head - 5x5, slower than steel, repairs durability over time
 }

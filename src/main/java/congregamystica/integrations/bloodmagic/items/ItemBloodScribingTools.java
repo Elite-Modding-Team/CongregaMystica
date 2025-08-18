@@ -29,6 +29,7 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
     public ItemBloodScribingTools() {
         this.setRegistryName(CongregaMystica.MOD_ID, "blood_scribing_tools");
         this.setTranslationKey(this.getRegistryName().toString());
+        this.setCreativeTab(CongregaMystica.tabCM);
         this.setMaxStackSize(1);
         this.setMaxDamage(100);
         this.setHasSubtypes(false);

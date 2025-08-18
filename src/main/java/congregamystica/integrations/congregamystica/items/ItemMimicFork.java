@@ -41,6 +41,7 @@ public class ItemMimicFork extends Item implements IItemAddition {
     public ItemMimicFork() {
         this.setRegistryName(CongregaMystica.MOD_ID, "mimic_fork");
         this.setTranslationKey(this.getRegistryName().toString());
+        this.setCreativeTab(CongregaMystica.tabCM);
         this.setMaxStackSize(1);
     }
 

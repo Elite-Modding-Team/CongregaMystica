@@ -1,7 +1,9 @@
 package congregamystica;
 
 import congregamystica.proxy.CommonProxy;
+import congregamystica.registry.CreativeTabsCM;
 import congregamystica.utils.helpers.LogHelper;
+import net.minecraft.creativetab.CreativeTabs;
 import mod.emt.congregamystica.Tags;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -23,6 +25,8 @@ public class CongregaMystica {
 
     public static final String CLIENT_PROXY = "congregamystica.proxy.ClientProxy";
     public static final String COMMON_PROXY = "congregamystica.proxy.CommonProxy";
+
+    public static final CreativeTabs tabCM = new CreativeTabsCM(CreativeTabs.CREATIVE_TAB_ARRAY.length, "CongregaMysticaTab");
 
     @Mod.Instance(MOD_ID)
     public static CongregaMystica instance;

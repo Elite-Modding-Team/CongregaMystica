@@ -43,6 +43,7 @@ public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition
     public ItemUpgradeRefining() {
         this.setRegistryName(CongregaMystica.MOD_ID, "upgrade_refining");
         this.setTranslationKey(this.getRegistryName().toString());
+        this.setCreativeTab(CongregaMystica.tabCM);
     }
 
     @SuppressWarnings("deprecation")

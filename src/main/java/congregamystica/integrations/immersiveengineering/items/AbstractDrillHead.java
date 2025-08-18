@@ -48,6 +48,7 @@ public abstract class AbstractDrillHead extends Item implements IDrillHead, IIte
     public AbstractDrillHead(String unlocName, DrillStats drillStats) {
         this.setRegistryName(CongregaMystica.MOD_ID, unlocName);
         this.setTranslationKey(this.getRegistryName().toString());
+        this.setCreativeTab(CongregaMystica.tabCM);
         this.setMaxStackSize(1);
         this.drillStats = drillStats;
     }

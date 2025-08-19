@@ -19,11 +19,6 @@ public class InitIntegrations {
     private static void initModAdditions() {
         //The built-in additions should register first
         MOD_ADDITIONS.add(new CongregaMysticaCM());
-        //Thaumic Wonders registers second to keep the clusters together
-        if(ModIds.thaumic_wonders.isLoaded) {
-            MOD_ADDITIONS.add(new ThaumicWondersCM());
-        }
-
         //Mod integration modules are initialized and added to the MOD_ADDITIONS list here. The array is initialized prior to this method call.
 
         //When adding an integration, check that the mod or mods are loaded then add it to the MOD_ADDITIONS. Specific item checks should be included
@@ -47,6 +42,11 @@ public class InitIntegrations {
         if(ModIds.immersive_engineering.isLoaded) {
             MOD_ADDITIONS.add(new ImmersiveEngineeringCM());
         }
+
+        if(ModIds.thaumic_wonders.isLoaded) {
+            MOD_ADDITIONS.add(new ThaumicWondersCM());
+        }
+
     }
 
     public static List<IProxy> getModAdditions() {

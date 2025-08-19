@@ -24,7 +24,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.AspectRegistryEvent;
-import thaumcraft.api.internal.CommonInternals;
 import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
 import java.awt.*;
@@ -70,6 +69,7 @@ public class RegistrarCM {
             }
         }
         itemAdditions.forEach(item -> item.registerItem(registry));
+        getAdditions().forEach(IAddition::registerOreDicts);
     }
 
     @SideOnly(Side.CLIENT)

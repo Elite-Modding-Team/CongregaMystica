@@ -1,6 +1,7 @@
 package congregamystica.integrations.congregamystica.util;
 
 import java.awt.*;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,5 +49,18 @@ public class ClusterData {
 
     public ClusterData(String associatedOre, String outputType) {
         this(associatedOre, outputType, Color.WHITE.getRGB());
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof ClusterData))
+            return false;
+        ClusterData that = (ClusterData) object;
+        return Objects.equals(clusterId, that.clusterId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(clusterId);
     }
 }

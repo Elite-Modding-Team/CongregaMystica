@@ -6,7 +6,6 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.aspects.AspectRegistryEvent;
 
 import java.util.Map;
 
@@ -38,6 +37,11 @@ public interface IAddition {
      * For reference on how to register entity aspects, see {@link thaumcraft.common.config.ConfigAspects}.
      */
     default void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {}
+
+    /**
+     * A helper method for registering ore dictionary values. This fires right after the item registry event completes.
+     */
+    default void registerOreDicts() {};
 
     /**
      * Returns true if this item is enabled. Used for additions with configurable Enable/Disable or if they

@@ -2,8 +2,8 @@ package congregamystica.integrations.thaumicwonders.items;
 
 import com.verdantartifice.thaumicwonders.common.crafting.catalyzationchamber.CatalyzationChamberRecipeRegistry;
 import congregamystica.CongregaMystica;
-import congregamystica.api.IProxy;
 import congregamystica.api.item.IItemAddition;
+import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -17,13 +17,15 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
+import thaumcraft.api.aspects.AspectHelper;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.ItemsTC;
 
 import java.util.Map;
 
-public class ItemEldritchCluster extends Item implements IItemAddition, IProxy {
+public class ItemEldritchCluster extends Item implements IItemAddition {
     protected ClusterData clusterData;
 
     public ItemEldritchCluster(ClusterData clusterData) {
@@ -54,11 +56,6 @@ public class ItemEldritchCluster extends Item implements IItemAddition, IProxy {
     //##########################################################
     // IItemAddition
 
-
-    @Override
-    public void init() {
-        OreDictionary.registerOre(this.clusterData.eldritchOreDict, this);
-    }
 
     @Override
     public void registerItem(IForgeRegistry<Item> registry) {
@@ -103,7 +100,21 @@ public class ItemEldritchCluster extends Item implements IItemAddition, IProxy {
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        //TODO: Eldritch clusters need aspects
+        Item cluster = CongregaMysticaCM.NATIVE_CLUSTERS.stream().filter(item -> item.getClusterData().equals(this.getClusterData())).findFirst().orElse(null);
+        if(cluster != null) {
+            AspectList list = new AspectList().add(Aspect.FLUX, 10).add(Aspect.EARTH, 5);
+            AspectHelper.getObjectAspects(cluster.getDefaultInstance()).aspects.forEach((aspect, amount) -> {
+                if(aspect != Aspect.ORDER || aspect != Aspect.EARTH) {
+                    list.add(aspect, amount + 5);
+                }
+            });
+            aspectMap.put(this.getDefaultInstance(), list);
+        }
+    }
+
+    @Override
+    public void registerOreDicts() {
+        OreDictionary.registerOre(this.clusterData.eldritchOreDict, this);
     }
 
     @Override

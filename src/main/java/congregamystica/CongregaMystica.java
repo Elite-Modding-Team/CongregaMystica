@@ -3,6 +3,7 @@ package congregamystica;
 import congregamystica.proxy.CommonProxy;
 import congregamystica.registry.CreativeTabsCM;
 import congregamystica.utils.helpers.LogHelper;
+import congregamystica.utils.libs.ModIds;
 import mod.emt.congregamystica.Tags;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
@@ -21,7 +22,8 @@ public class CongregaMystica {
     public static final String MOD_ID = Tags.MOD_ID;
     public static final String MOD_NAME = "Congrega Mystica";
     public static final String MOD_VERSION = Tags.VERSION;
-    public static final String DEPENDENCIES = "required-after:thaumcraft";
+    public static final String DEPENDENCIES = "required-after:thaumcraft" +
+            ";after:" + ModIds.ConstIds.applied_energistics;
 
     public static final String CLIENT_PROXY = "congregamystica.proxy.ClientProxy";
     public static final String COMMON_PROXY = "congregamystica.proxy.CommonProxy";

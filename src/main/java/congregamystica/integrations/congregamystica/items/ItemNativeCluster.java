@@ -1,7 +1,6 @@
 package congregamystica.integrations.congregamystica.items;
 
 import congregamystica.CongregaMystica;
-import congregamystica.api.IProxy;
 import congregamystica.api.item.IItemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
@@ -26,7 +25,7 @@ import thaumcraft.common.lib.utils.Utils;
 
 import java.util.Map;
 
-public class ItemNativeCluster extends Item implements IItemAddition, IProxy {
+public class ItemNativeCluster extends Item implements IItemAddition {
     protected ClusterData clusterData;
 
     public ItemNativeCluster(ClusterData clusterData) {
@@ -56,12 +55,6 @@ public class ItemNativeCluster extends Item implements IItemAddition, IProxy {
 
     //##########################################################
     // IItemAddition
-
-
-    @Override
-    public void init() {
-        OreDictionary.registerOre(this.clusterData.clusterOreDict, this);
-    }
 
     @Override
     public void registerItem(IForgeRegistry<Item> registry) {
@@ -126,6 +119,11 @@ public class ItemNativeCluster extends Item implements IItemAddition, IProxy {
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
 
+    }
+
+    @Override
+    public void registerOreDicts() {
+        OreDictionary.registerOre(this.clusterData.clusterOreDict, this);
     }
 
     @Override

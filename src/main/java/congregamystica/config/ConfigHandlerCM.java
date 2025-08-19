@@ -48,9 +48,12 @@ public class ConfigHandlerCM {
                         "  oreUranium;ingot"
                 })
         public String[] additionalClusters = new String[] {
-                //General Ores
+                //Vanilla Ores
                 "oreDiamond;gem",
                 "oreEmerald;gem",
+                //Thaumcraft Ores
+                "oreAmber;gem",
+                //General Ores
                 "oreAluminum;ingot;0xefeff1",
                 "oreNickel;ingot;0x9ea59e",
                 "oreUranium;ingot;0x57744b",

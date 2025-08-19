@@ -5,6 +5,7 @@ import congregamystica.utils.helpers.ModHelper;
 import javax.annotation.Nullable;
 
 public enum ModIds {
+    applied_energistics(ConstIds.applied_energistics),
     blood_magic(ConstIds.blood_magic),
     botania(ConstIds.botania),
     harken_scythe(ConstIds.harken_scythe),
@@ -40,6 +41,7 @@ public enum ModIds {
     }
 
     public static class ConstIds {
+        public static final String applied_energistics = "appliedenergistics2";
         public static final String blood_magic = "bloodmagic";
         public static final String botania = "botania";
         public static final String harken_scythe = "harkenscythe";

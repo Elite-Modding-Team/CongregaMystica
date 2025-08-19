@@ -1,6 +1,7 @@
 package congregamystica.integrations;
 
 import congregamystica.api.IProxy;
+import congregamystica.integrations.appliedenergistics2.AppliedEnergisticsCM;
 import congregamystica.integrations.bloodmagic.BloodMagicCM;
 import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.examplemod.ExampleModCM;
@@ -29,6 +30,10 @@ public class InitIntegrations {
         //in the specific mod integration IProxy class.
         if(ModIds.exampleMod.isLoaded) {
             MOD_ADDITIONS.add(new ExampleModCM());
+        }
+
+        if(ModIds.applied_energistics.isLoaded) {
+            MOD_ADDITIONS.add(new AppliedEnergisticsCM());
         }
 
         if(ModIds.blood_magic.isLoaded) {

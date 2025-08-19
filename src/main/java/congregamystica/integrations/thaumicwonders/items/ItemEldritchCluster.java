@@ -2,6 +2,7 @@ package congregamystica.integrations.thaumicwonders.items;
 
 import com.verdantartifice.thaumicwonders.common.crafting.catalyzationchamber.CatalyzationChamberRecipeRegistry;
 import congregamystica.CongregaMystica;
+import congregamystica.api.IProxy;
 import congregamystica.api.item.IItemAddition;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -21,7 +22,7 @@ import thaumcraft.api.items.ItemsTC;
 
 import java.util.Map;
 
-public class ItemEldritchCluster extends Item implements IItemAddition {
+public class ItemEldritchCluster extends Item implements IItemAddition, IProxy {
     protected ClusterData clusterData;
 
     public ItemEldritchCluster(ClusterData clusterData) {
@@ -29,7 +30,6 @@ public class ItemEldritchCluster extends Item implements IItemAddition {
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(CongregaMystica.tabCM);
         this.clusterData = clusterData;
-        OreDictionary.registerOre(this.clusterData.eldritchOreDict, this);
     }
 
     public ClusterData getClusterData() {
@@ -52,6 +52,12 @@ public class ItemEldritchCluster extends Item implements IItemAddition {
 
     //##########################################################
     // IItemAddition
+
+
+    @Override
+    public void init() {
+        OreDictionary.registerOre(this.clusterData.eldritchOreDict, this);
+    }
 
     @Override
     public void registerItem(IForgeRegistry<Item> registry) {

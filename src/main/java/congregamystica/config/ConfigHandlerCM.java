@@ -33,21 +33,21 @@ public class ConfigHandlerCM {
                 })
         public String[] additionalClusters = new String[] {
                 //General Ores
-                "oreAluminum;0xbcbcbc",
-                "oreNickel;0xe9efdc",
-                "oreUranium;0x79896b",
+                "oreAluminum;0xefeff1",
+                "oreIridium;0xbdbed1",
+                "oreNickel;0x9ea59e",
+                "orePlatinum;0xc6d5f2",
+                "oreUranium;0x57744b",
                 //Thermal Foundation Ores
-                "oreMithril;0x63d1ff",
-                "oreIridium;0xb2b2cc",
-                "orePlatinum;0x2bb9ff",
+                "oreMithril;0x5cd6ff", //aka Mana Infused
                 //Tinkers Construct Ores
-                "oreCobalt;0x173b75",
-                "oreArdite;0xc7a13c"
+                "oreArdite;0xe5b740",
+                "oreCobalt;0x2e7ce6"
         };
     }
 
     public static class BloodMagicCategory {
-        @Config.Name("Blood Scrivener's Tools")
+        @Config.Name("Bloody Scrivener's Tools")
         public BloodScribingToolsCategory bloodyScribingTools = new BloodScribingToolsCategory();
 
         public static class BloodScribingToolsCategory {

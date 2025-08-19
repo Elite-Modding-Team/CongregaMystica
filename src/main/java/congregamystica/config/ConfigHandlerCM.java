@@ -7,10 +7,40 @@ import net.minecraftforge.common.config.Config;
 public class ConfigHandlerCM {
     public static GolemCategory golems = new GolemCategory();
 
+    public static ClustersCategory clusters = new ClustersCategory();
+
     @Config.Name("Blood Magic")
     public static BloodMagicCategory blood_magic = new BloodMagicCategory();
     @Config.Name("Immersive Engineering")
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
+
+    public static class ClustersCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Additional Cluster Types")
+        @Config.Comment
+                ({
+                        "Additional Native Clusters that will be registered.",
+                        "If the color code value is excluded, a non-dynamic cluster will be registered, requiring the manual",
+                        "creation of a model and texture file loaded from a resource pack.",
+                        "",
+                        "Examples: (oreDictValue;colorcode)",
+                        "  oreUranium;0x79896b",
+                        "  oreUranium"
+                })
+        public String[] additionalClusters = new String[] {
+                //General Ores
+                "oreAluminum;0xbcbcbc",
+                "oreNickel;0xe9efdc",
+                "oreUranium;0x79896b",
+                //Thermal Foundation Ores
+                "oreMithril;0x63d1ff",
+                "oreIridium;0xb2b2cc",
+                "orePlatinum;0x2bb9ff",
+                //Tinkers Construct Ores
+                "oreCobalt;0x173b75",
+                "oreArdite;0xc7a13c"
+        };
+    }
 
     public static class BloodMagicCategory {
         @Config.Name("Blood Scrivener's Tools")

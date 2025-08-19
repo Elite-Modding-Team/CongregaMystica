@@ -9,7 +9,7 @@ import WayofTime.bloodmagic.iface.IBindable;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
 import WayofTime.bloodmagic.util.helper.TextHelper;
 import congregamystica.CongregaMystica;
-import congregamystica.api.IItemAddition;
+import congregamystica.api.item.IItemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;

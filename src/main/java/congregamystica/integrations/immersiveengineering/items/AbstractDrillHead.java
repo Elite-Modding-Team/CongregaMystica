@@ -9,7 +9,7 @@ import blusunrize.immersiveengineering.common.util.ItemNBTHelper;
 import blusunrize.immersiveengineering.common.util.Utils;
 import com.google.common.collect.ImmutableList;
 import congregamystica.CongregaMystica;
-import congregamystica.api.IItemAddition;
+import congregamystica.api.item.IItemAddition;
 import congregamystica.api.IProxy;
 import congregamystica.integrations.immersiveengineering.util.DrillStats;
 import net.minecraft.block.Block;

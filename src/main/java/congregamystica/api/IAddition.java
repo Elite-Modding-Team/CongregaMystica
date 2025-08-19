@@ -31,7 +31,9 @@ public interface IAddition {
 
     /**
      * A helper method for registering item aspects. This event is fired in the {@link net.minecraftforge.fml.common.event.FMLPostInitializationEvent}
-     * stage. You can either handle the aspect registration manually, or add them to the return map.
+     * stage. You can either handle the aspect registration manually, or add them to the passed map.
+     * <p>
+     * For reference on how to register entity aspects, see {@link thaumcraft.common.config.ConfigAspects}.
      */
     default void registerAspects(Map<ItemStack, AspectList> aspectMap) {}
 

@@ -2,18 +2,25 @@ package congregamystica.registry;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
-import congregamystica.api.IBlockAddition;
-import congregamystica.api.IItemAddition;
+import congregamystica.api.block.IBlockAddition;
+import congregamystica.api.item.IColoredItem;
+import congregamystica.api.item.IItemAddition;
 import congregamystica.api.IProxy;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,9 +48,29 @@ public class RegistrarCM {
         getItemAdditions().forEach(item -> item.registerItem(registry));
     }
 
+    @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
         getAdditions().forEach(addition -> addition.registerModel(event));
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void registerItemColors(ColorHandlerEvent.Item event) {
+        getItemAdditions().stream().filter(item -> item instanceof IColoredItem).forEach(item -> {
+            IItemColor itemColor = (stack, tintIndex) -> {
+                if(stack.getItem() instanceof IColoredItem) {
+                    switch (tintIndex) {
+                        case 0:
+                            return Color.WHITE.getRGB();
+                        case 1:
+                            return ((IColoredItem) stack.getItem()).getOverlayColor();
+                    }
+                }
+                return Color.BLACK.getRGB();
+            };
+            event.getItemColors().registerItemColorHandler(itemColor, (Item) item);
+        });
     }
 
     @SubscribeEvent

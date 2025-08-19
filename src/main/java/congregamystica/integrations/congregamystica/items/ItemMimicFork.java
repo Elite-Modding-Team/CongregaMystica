@@ -1,7 +1,7 @@
 package congregamystica.integrations.congregamystica.items;
 
 import congregamystica.CongregaMystica;
-import congregamystica.api.IItemAddition;
+import congregamystica.api.item.IItemAddition;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

@@ -1,7 +1,7 @@
 package congregamystica.items;
 
 import congregamystica.CongregaMystica;
-import congregamystica.api.IItemAddition;
+import congregamystica.api.item.IItemAddition;
 import net.minecraft.item.Item;
 
 public class ItemAddition extends Item implements IItemAddition {

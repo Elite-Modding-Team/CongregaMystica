@@ -1,7 +1,7 @@
 package congregamystica.integrations.examplemod.blocks;
 
 import congregamystica.CongregaMystica;
-import congregamystica.api.IBlockAddition;
+import congregamystica.api.block.IBlockAddition;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;

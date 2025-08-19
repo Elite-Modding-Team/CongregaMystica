@@ -5,7 +5,7 @@ import blusunrize.immersiveengineering.api.tool.IUpgrade;
 import blusunrize.immersiveengineering.common.items.ItemDrill;
 import blusunrize.immersiveengineering.common.util.ItemNBTHelper;
 import congregamystica.CongregaMystica;
-import congregamystica.api.IItemAddition;
+import congregamystica.api.item.IItemAddition;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.utils.helpers.StringHelper;

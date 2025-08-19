@@ -1,5 +1,6 @@
-package congregamystica.api;
+package congregamystica.api.item;
 
+import congregamystica.api.IAddition;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 

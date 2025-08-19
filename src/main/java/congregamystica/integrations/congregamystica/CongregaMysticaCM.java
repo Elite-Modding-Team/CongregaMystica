@@ -38,15 +38,16 @@ public class CongregaMysticaCM implements IProxy {
     private void getClustersFromConfig() {
         for(String configString : ConfigHandlerCM.clusters.additionalClusters) {
             try {
-                Pattern pattern = Pattern.compile("^(ore\\w+);?(0[xX][0-9a-fA-F]{6})?$");
+                Pattern pattern = Pattern.compile("^(ore\\w+);(\\w+);?(0[xX][0-9a-fA-F]{6})?$");
                 Matcher matcher = pattern.matcher(configString);
                 if(matcher.find()) {
                     String associatedOre = matcher.group(1);
-                    if(matcher.groupCount() > 1) {
-                        int color = Integer.decode(matcher.group(2));
-                        NATIVE_CLUSTERS.add(new ItemNativeClusterDynamic(new ClusterData(associatedOre, color)));
+                    String outputType = matcher.group(2);
+                    if(matcher.groupCount() > 2) {
+                        int color = Integer.decode(matcher.group(3));
+                        NATIVE_CLUSTERS.add(new ItemNativeClusterDynamic(new ClusterData(associatedOre, outputType, color)));
                     } else {
-                        NATIVE_CLUSTERS.add(new ItemNativeCluster(new ClusterData(associatedOre)));
+                        NATIVE_CLUSTERS.add(new ItemNativeCluster(new ClusterData(associatedOre, outputType)));
                     }
                 }
             } catch (Exception e) {

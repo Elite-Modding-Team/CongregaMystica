@@ -33,16 +33,18 @@ public class ConfigHandlerCM {
                 })
         public String[] additionalClusters = new String[] {
                 //General Ores
-                "oreAluminum;0xefeff1",
-                "oreIridium;0xbdbed1",
-                "oreNickel;0x9ea59e",
-                "orePlatinum;0xc6d5f2",
-                "oreUranium;0x57744b",
+                "oreAluminum;ingot;0xefeff1",
+                "oreNickel;ingot;0x9ea59e",
+                "oreUranium;ingot;0x57744b",
+                "orePlatinum;ingot;0xc6d5f2",
+                "oreIridium;ingot;0xbdbed1",
                 //Thermal Foundation Ores
-                "oreMithril;0x5cd6ff", //aka Mana Infused
+                "oreMithril;ingot;0x5cd6ff", //aka Mana Infused
                 //Tinkers Construct Ores
-                "oreArdite;0xe5b740",
-                "oreCobalt;0x2e7ce6"
+                "oreCobalt;ingot;0x2e7ce6",
+                "oreArdite;ingot;0xe5b740",
+
+                "oreEmerald;gem;0xffffff"
         };
     }
 

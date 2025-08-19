@@ -6,6 +6,8 @@ import congregamystica.api.IProxy;
 import congregamystica.api.block.IBlockAddition;
 import congregamystica.api.item.IColoredItem;
 import congregamystica.api.item.IItemAddition;
+import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
+import congregamystica.integrations.thaumicwonders.items.ItemEldritchCluster;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
@@ -21,6 +23,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,7 +47,24 @@ public class RegistrarCM {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
-        getItemAdditions().forEach(item -> item.registerItem(registry));
+        //Sorting items so clusters are first.
+        //It's not efficient, but IDGAF. It works and it only runs once.
+        List<IItemAddition> itemAdditions = new LinkedList<>();
+        int clusterIndex = 0;
+        int eldritchIndex = 0;
+        for(IItemAddition addition : getItemAdditions()) {
+            if(addition instanceof ItemNativeCluster) {
+                itemAdditions.add(clusterIndex, addition);
+                clusterIndex++;
+                eldritchIndex++;
+            } else if(addition instanceof ItemEldritchCluster) {
+                itemAdditions.add(eldritchIndex, addition);
+                eldritchIndex++;
+            } else {
+                itemAdditions.add(addition);
+            }
+        }
+        itemAdditions.forEach(item -> item.registerItem(registry));
     }
 
     @SideOnly(Side.CLIENT)

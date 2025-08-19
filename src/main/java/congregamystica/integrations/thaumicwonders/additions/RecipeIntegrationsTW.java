@@ -13,9 +13,9 @@ public class RecipeIntegrationsTW implements IAddition {
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
         CongregaMysticaCM.NATIVE_CLUSTERS.stream()
-                .filter(cluster -> !OreDictionary.getOres(cluster.getClusterData().getAssociatedOre()).isEmpty())
+                .filter(cluster -> !OreDictionary.getOres(cluster.getAssociatedOre()).isEmpty())
                 .forEach(cluster -> CatalyzationChamberRecipeRegistry.addAlchemistRecipe(
-                        new OreIngredient(cluster.getClusterData().getAssociatedOre()),
+                        new OreIngredient(cluster.getAssociatedOre()),
                         new ItemStack(cluster)));
     }
 

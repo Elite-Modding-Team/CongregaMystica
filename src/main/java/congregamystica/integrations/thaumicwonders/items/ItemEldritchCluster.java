@@ -25,11 +25,11 @@ public class ItemEldritchCluster extends Item implements IItemAddition {
     protected ClusterData clusterData;
 
     public ItemEldritchCluster(ClusterData clusterData) {
-        this.setRegistryName(CongregaMystica.MOD_ID, clusterData.getEldritchId());
+        this.setRegistryName(CongregaMystica.MOD_ID, clusterData.eldritchId);
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(CongregaMystica.tabCM);
         this.clusterData = clusterData;
-        OreDictionary.registerOre(this.clusterData.getClusterOreDict(), this);
+        OreDictionary.registerOre(this.clusterData.eldritchOreDict, this);
     }
 
     public ClusterData getClusterData() {
@@ -37,7 +37,7 @@ public class ItemEldritchCluster extends Item implements IItemAddition {
     }
 
     public String getAssociatedOre() {
-        return this.clusterData.getAssociatedOre();
+        return this.clusterData.associatedOre;
     }
 
     @Override
@@ -46,7 +46,7 @@ public class ItemEldritchCluster extends Item implements IItemAddition {
         if(I18n.canTranslate(key)) {
             return I18n.translateToLocal(key).trim();
         } else {
-            return this.clusterData.getEldritchDisplayName();
+            return this.clusterData.eldritchDisplayName;
         }
     }
 
@@ -60,23 +60,26 @@ public class ItemEldritchCluster extends Item implements IItemAddition {
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        ItemStack inputOre = OreDictionary.getOres(this.getAssociatedOre()).stream().findFirst().orElse(ItemStack.EMPTY);
-        ItemStack outputIngot = OreDictionary.getOres(this.clusterData.getAssociatedIngot()).stream().findFirst().orElse(ItemStack.EMPTY);
-        ItemStack outputNugget = OreDictionary.getOres(this.clusterData.getAssociatedNugget()).stream().findFirst().orElse(ItemStack.EMPTY);
+        ItemStack inputOre = OreDictionary.getOres(this.getAssociatedOre()).stream().findFirst().orElse(ItemStack.EMPTY).copy();
+        ItemStack outputIngot = OreDictionary.getOres(this.clusterData.associatedIngot).stream().findFirst().orElse(ItemStack.EMPTY).copy();
+        ItemStack outputNugget = OreDictionary.getOres(this.clusterData.associatedNugget).stream().findFirst().orElse(ItemStack.EMPTY).copy();
 
-        if(!inputOre.isEmpty() && !outputIngot.isEmpty()) {
-            //Cluster smelting
-            outputIngot.setCount(3);
-            GameRegistry.addSmelting(this, outputIngot, 1.0f);
-
-            //Infernal Smelting Bonus
-            if(!outputNugget.isEmpty()) {
-                ThaumcraftApi.addSmeltingBonus(this.clusterData.getClusterOreDict(), outputNugget);
-            }
-            ThaumcraftApi.addSmeltingBonus(this.clusterData.getClusterOreDict(), new ItemStack(ItemsTC.nuggets, 1, 10), 0.025f);
-
+        if(!inputOre.isEmpty()) {
             //Ore conversion
             CatalyzationChamberRecipeRegistry.addAlienistRecipe(new OreIngredient(this.getAssociatedOre()), new ItemStack(this));
+
+            if (!outputIngot.isEmpty()) {
+                //Cluster smelting
+                outputIngot.setCount(3);
+                GameRegistry.addSmelting(this.getDefaultInstance(), outputIngot, 1.0f);
+
+                //Infernal Smelting Bonus
+                if (!outputNugget.isEmpty()) {
+                    ThaumcraftApi.addSmeltingBonus(this.clusterData.eldritchOreDict, outputNugget);
+                }
+                ThaumcraftApi.addSmeltingBonus(this.clusterData.eldritchOreDict, new ItemStack(ItemsTC.nuggets, 1, 10), 0.025f);
+
+            }
         }
     }
 

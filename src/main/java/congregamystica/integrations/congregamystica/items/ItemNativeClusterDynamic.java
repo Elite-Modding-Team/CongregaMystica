@@ -15,7 +15,7 @@ public class ItemNativeClusterDynamic extends ItemNativeCluster implements IColo
 
     @Override
     public int getOverlayColor() {
-        return clusterData.getOverlayColor();
+        return clusterData.overlayColor;
     }
 
     //##########################################################

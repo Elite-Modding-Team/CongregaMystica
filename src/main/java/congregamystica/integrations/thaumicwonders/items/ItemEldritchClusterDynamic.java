@@ -15,7 +15,7 @@ public class ItemEldritchClusterDynamic extends ItemEldritchCluster implements I
 
     @Override
     public int getOverlayColor() {
-        return clusterData.getOverlayColor();
+        return clusterData.overlayColor;
     }
 
     //##########################################################

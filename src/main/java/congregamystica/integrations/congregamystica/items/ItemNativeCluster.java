@@ -28,11 +28,11 @@ public class ItemNativeCluster extends Item implements IItemAddition {
     protected ClusterData clusterData;
 
     public ItemNativeCluster(ClusterData clusterData) {
-        this.setRegistryName(CongregaMystica.MOD_ID, clusterData.getClusterId());
+        this.setRegistryName(CongregaMystica.MOD_ID, clusterData.clusterId);
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(CongregaMystica.tabCM);
         this.clusterData = clusterData;
-        OreDictionary.registerOre(this.clusterData.getClusterOreDict(), this);
+        OreDictionary.registerOre(this.clusterData.clusterOreDict, this);
     }
 
     public ClusterData getClusterData() {
@@ -40,7 +40,7 @@ public class ItemNativeCluster extends Item implements IItemAddition {
     }
 
     public String getAssociatedOre() {
-        return this.clusterData.getAssociatedOre();
+        return this.clusterData.associatedOre;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ItemNativeCluster extends Item implements IItemAddition {
         if(I18n.canTranslate(key)) {
             return I18n.translateToLocal(key).trim();
         } else {
-            return this.clusterData.getNativeDisplayName();
+            return this.clusterData.nativeDisplayName;
         }
     }
 
@@ -63,24 +63,11 @@ public class ItemNativeCluster extends Item implements IItemAddition {
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        ItemStack inputOre = OreDictionary.getOres(this.getAssociatedOre()).stream().findFirst().orElse(ItemStack.EMPTY);
-        ItemStack outputIngot = OreDictionary.getOres(this.clusterData.getAssociatedIngot()).stream().findFirst().orElse(ItemStack.EMPTY);
-        ItemStack outputNugget = OreDictionary.getOres(this.clusterData.getAssociatedNugget()).stream().findFirst().orElse(ItemStack.EMPTY);
+        ItemStack inputOre = OreDictionary.getOres(this.getAssociatedOre()).stream().findFirst().orElse(ItemStack.EMPTY).copy();
+        ItemStack outputIngot = OreDictionary.getOres(this.clusterData.associatedIngot).stream().findFirst().orElse(ItemStack.EMPTY).copy();
+        ItemStack outputNugget = OreDictionary.getOres(this.clusterData.associatedNugget).stream().findFirst().orElse(ItemStack.EMPTY).copy();
 
-        if(!inputOre.isEmpty() && !outputIngot.isEmpty()) {
-            //Cluster smelting
-            outputIngot.setCount(2);
-            GameRegistry.addSmelting(this, outputIngot, 1.0f);
-
-            //Infernal Smelting Bonus
-            if(!outputNugget.isEmpty()) {
-                if(ConfigHandlerCM.clusters.registerSmeltingBonuses) {
-                    ThaumcraftApi.addSmeltingBonus(this.getAssociatedOre(), outputNugget);
-                }
-                ThaumcraftApi.addSmeltingBonus(this.clusterData.getClusterOreDict(), outputNugget);
-            }
-            ThaumcraftApi.addSmeltingBonus(this.clusterData.getClusterOreDict(), new ItemStack(ItemsTC.nuggets, 1, 10), 0.02f);
-
+        if(!inputOre.isEmpty()) {
             //Ore conversion
             ThaumcraftApi.addCrucibleRecipe(this.getRegistryName(), new CrucibleRecipe(
                     "METALPURIFICATION",
@@ -90,8 +77,23 @@ public class ItemNativeCluster extends Item implements IItemAddition {
             ));
 
             //Mining Bonus - This may need to be moved to IProxy postInit()
-            for(ItemStack stack : OreDictionary.getOres(this.getAssociatedOre())) {
+            for (ItemStack stack : OreDictionary.getOres(this.getAssociatedOre())) {
                 Utils.addSpecialMiningResult(stack, new ItemStack(this), 1.0f);
+            }
+
+            if (!outputIngot.isEmpty()) {
+                //Cluster smelting
+                outputIngot.setCount(2);
+                GameRegistry.addSmelting(this.getDefaultInstance(), outputIngot, 1.0f);
+
+                //Infernal Smelting Bonus
+                if (!outputNugget.isEmpty()) {
+                    if (ConfigHandlerCM.clusters.registerSmeltingBonuses) {
+                        ThaumcraftApi.addSmeltingBonus(this.getAssociatedOre(), outputNugget);
+                    }
+                    ThaumcraftApi.addSmeltingBonus(this.clusterData.clusterOreDict, outputNugget);
+                }
+                ThaumcraftApi.addSmeltingBonus(this.clusterData.clusterOreDict, new ItemStack(ItemsTC.nuggets, 1, 10), 0.02f);
             }
         }
     }

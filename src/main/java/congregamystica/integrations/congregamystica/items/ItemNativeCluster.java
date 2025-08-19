@@ -4,6 +4,7 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.item.IItemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
+import congregamystica.utils.helpers.ClusterHelper;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -118,7 +119,7 @@ public class ItemNativeCluster extends Item implements IItemAddition {
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
+        aspectMap.put(this.getDefaultInstance(), ClusterHelper.getNativeClusterAspects(this.clusterData));
     }
 
     @Override

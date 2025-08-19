@@ -8,6 +8,7 @@ import congregamystica.api.item.IColoredItem;
 import congregamystica.api.item.IItemAddition;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.thaumicwonders.items.ItemEldritchCluster;
+import congregamystica.utils.libs.OreAspects;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
@@ -24,7 +25,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.AspectRegistryEvent;
-import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
 import java.awt.*;
 import java.util.*;
@@ -106,24 +106,21 @@ public class RegistrarCM {
     @SubscribeEvent
     public static void registerAspects(AspectRegistryEvent event) {
         AspectEventProxy registry = event.register;
+        //Ore Aspects register first so cluster aspects register correctly.
+        OreAspects.getOreAspects().forEach((oreDict, aspectList) -> {
+            if(!oreDict.isEmpty() && aspectList.size() > 0) {
+                registry.registerObjectTag(oreDict, aspectList);
+            }
+        });
         Map<ItemStack, AspectList> aspectMap = new HashMap<>();
         RegistrarCM.getAdditions().forEach(addition -> {
             addition.registerAspects(registry, aspectMap);
         });
         aspectMap.forEach((stack, list) -> {
             if(!stack.isEmpty()) {
-                appendAspects(registry, stack, list);
+                registry.registerObjectTag(stack, list);
             }
         });
-    }
-
-    private static void appendAspects(AspectEventProxy registry, ItemStack stack, AspectList toAdd) {
-        toAdd = toAdd.copy();
-        AspectList existing = ThaumcraftCraftingManager.getObjectTags(stack);
-        if (existing != null) {
-            toAdd = toAdd.add(existing);
-        }
-        registry.registerObjectTag(stack, toAdd);
     }
 
     public static List<IAddition> getAdditions() {

@@ -4,6 +4,8 @@ import congregamystica.config.generics.DrillHeadCategory;
 import congregamystica.config.generics.GolemMaterialCategory;
 import net.minecraftforge.common.config.Config;
 
+//TODO: Remove comment before release
+// @Mod(modid = CongregaMystica.MOD_ID)
 public class ConfigHandlerCM {
     public static GolemCategory golems = new GolemCategory();
 
@@ -24,8 +26,8 @@ public class ConfigHandlerCM {
         @Config.Name("Special Gem Harvest")
         @Config.Comment
                 ({
-                        "For registered gem cluster types, allows gems harvested by tools with refining to have a chance to transform",
-                        "the into native gem clusters. Setting this to true mirrors the behavior of Native Quartz Clusters."
+                        "Registered cluster types with an output type of 'gem' have a chance be converted into Native Clusters when",
+                        "harvested by tools with refining. A value of true will mirror the behavior of Native Quartz Clusters."
                 })
         public boolean specialGemHarvest = true;
 
@@ -33,19 +35,21 @@ public class ConfigHandlerCM {
         @Config.Name("Additional Cluster Types")
         @Config.Comment
                 ({
-                        "Additional Native Clusters that will be registered.",
-                        " Syntax: oreblock;outputtype;colorcode",
-                        "  oreblock - the ore block oredictionary value",
-                        "  outputtype - the output oredict type (ingot, gem, cluster, et cetera)",
-                        "  colorcode - (optional) The hexidecimal RBG color color code used for dynamic generation. If the",
-                        "color code value is excluded, a non-dynamic cluster will be registered, requiring manual creation",
-                        "of a model and texture file loaded from a resource pack.",
+                        "Additional Native Clusters that will be registered. If Thaumic Wonders Unofficial is installed",
+                        "Eldritch Cluster variants will also be registered.",
+                        "Format:",
+                        "  oreblock;outputtype;colorcode",
+                        "  oreblock;outputtype",
                         "",
-                        "Examples:",
-                        "  oreEmerald;gem;0x42a200",
-                        "  oreEmerald;gem",
-                        "  oreUranium;ingot;0x57744b",
-                        "  oreUranium;ingot"
+                        "  oreblock - The ore block oredictionary value. This value is case sensitive.",
+                        "  outputtype - The output oredict type (ingotIron = ingot, gemDiamond = gem, et cetera)",
+                        "  colorcode - (optional) The hexidecimal RBG color color code used for dynamic generation.",
+                        "",
+                        "If the color code value is excluded from a cluster, a non-dynamic cluster will be registered, requiring",
+                        "manual creation of a model and texture file.",
+                        "",
+                        "Due to the dynamic nature of these clusters, occasionally the cluster display name will be incorrect.",
+                        "You can override the default name by adding the cluster's translation key to a language file."
                 })
         public String[] additionalClusters = new String[] {
                 //Vanilla Ores

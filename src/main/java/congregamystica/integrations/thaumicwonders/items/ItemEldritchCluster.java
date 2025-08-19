@@ -3,8 +3,8 @@ package congregamystica.integrations.thaumicwonders.items;
 import com.verdantartifice.thaumicwonders.common.crafting.catalyzationchamber.CatalyzationChamberRecipeRegistry;
 import congregamystica.CongregaMystica;
 import congregamystica.api.item.IItemAddition;
-import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
+import congregamystica.utils.helpers.ClusterHelper;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,9 +17,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
-import thaumcraft.api.aspects.AspectHelper;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.ItemsTC;
 
@@ -100,16 +98,7 @@ public class ItemEldritchCluster extends Item implements IItemAddition {
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        Item cluster = CongregaMysticaCM.NATIVE_CLUSTERS.stream().filter(item -> item.getClusterData().equals(this.getClusterData())).findFirst().orElse(null);
-        if(cluster != null) {
-            AspectList list = new AspectList().add(Aspect.FLUX, 10).add(Aspect.EARTH, 5);
-            AspectHelper.getObjectAspects(cluster.getDefaultInstance()).aspects.forEach((aspect, amount) -> {
-                if(aspect != Aspect.ORDER || aspect != Aspect.EARTH) {
-                    list.add(aspect, amount + 5);
-                }
-            });
-            aspectMap.put(this.getDefaultInstance(), list);
-        }
+        aspectMap.put(this.getDefaultInstance(), ClusterHelper.getEldritchClusterAspects(this.clusterData));
     }
 
     @Override

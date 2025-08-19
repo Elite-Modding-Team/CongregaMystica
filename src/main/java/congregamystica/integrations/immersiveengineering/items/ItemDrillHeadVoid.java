@@ -44,7 +44,7 @@ public class ItemDrillHeadVoid extends AbstractDrillHead {
                 ItemStack stack = player.inventory.getStackInSlot(slot);
                 if(stack.getItem() instanceof ItemDrill) {
                     ItemStack head = ((ItemDrill) stack.getItem()).getHead(stack);
-                    if(head.getItem() instanceof IDrillHead) {
+                    if(head.getItem() instanceof ItemDrillHeadVoid) {
                         ((IDrillHead) head.getItem()).damageHead(head, -1);
                     }
                 }

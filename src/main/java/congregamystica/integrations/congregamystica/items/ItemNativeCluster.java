@@ -76,15 +76,22 @@ public class ItemNativeCluster extends Item implements IItemAddition {
                     new AspectList().add(Aspect.METAL, 5).add(Aspect.ORDER, 5)
             ));
 
-            //Mining Bonus - This may need to be moved to IProxy postInit()
-            for (ItemStack stack : OreDictionary.getOres(this.getAssociatedOre())) {
-                Utils.addSpecialMiningResult(stack, new ItemStack(this), 1.0f);
-            }
 
             if (!outputIngot.isEmpty()) {
                 //Cluster smelting
                 outputIngot.setCount(2);
                 GameRegistry.addSmelting(this.getDefaultInstance(), outputIngot, 1.0f);
+
+                //Mining Bonus - This may need to be moved to IProxy postInit()
+                if(this.clusterData.associatedIngot.startsWith("gem") && ConfigHandlerCM.clusters.specialGemHarvest) {
+                    for(ItemStack stack : OreDictionary.getOres(this.clusterData.associatedIngot)) {
+                        Utils.addSpecialMiningResult(stack, new ItemStack(this), 1.0f);
+                    }
+                } else {
+                    for (ItemStack stack : OreDictionary.getOres(this.getAssociatedOre())) {
+                        Utils.addSpecialMiningResult(stack, new ItemStack(this), 1.0f);
+                    }
+                }
 
                 //Infernal Smelting Bonus
                 if (!outputNugget.isEmpty()) {

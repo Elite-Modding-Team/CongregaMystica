@@ -15,9 +15,19 @@ public class ConfigHandlerCM {
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
 
     public static class ClustersCategory {
+        @Config.RequiresMcRestart
         @Config.Name("Register Smelting Bonus")
         @Config.Comment("Registers infernal smelting metal nugget bonuses when smelting ores associated with new native clusters.")
         public boolean registerSmeltingBonuses = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Special Gem Harvest")
+        @Config.Comment
+                ({
+                        "For registered gem cluster types, allows gems harvested by tools with refining to have a chance to transform",
+                        "the into native gem clusters. Setting this to true mirrors the behavior of Native Quartz Clusters."
+                })
+        public boolean specialGemHarvest = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Additional Cluster Types")

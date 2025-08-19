@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "congregamystica:items/thaumicwonders/eldritch_cluster_base",
+    "layer1": "congregamystica:items/thaumicwonders/eldritch_cluster_tint"
+  }
+}

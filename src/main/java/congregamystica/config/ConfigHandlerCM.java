@@ -15,6 +15,10 @@ public class ConfigHandlerCM {
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
 
     public static class ClustersCategory {
+        @Config.Name("Register Smelting Bonus")
+        @Config.Comment("Registers infernal smelting metal nugget bonuses when smelting ores associated with new native clusters.")
+        public boolean registerSmeltingBonuses = true;
+
         @Config.RequiresMcRestart
         @Config.Name("Additional Cluster Types")
         @Config.Comment

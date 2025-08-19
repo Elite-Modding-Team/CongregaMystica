@@ -122,6 +122,7 @@ dependencies {
     implementation rfg.deobf("curse.maven:immersive-engineering-231951:2974106")
     implementation rfg.deobf("curse.maven:blood-magic-224791:2822288")
     implementation rfg.deobf("curse.maven:guide-api-228832:2645992")
+    implementation rfg.deobf("curse.maven:thaumic-wonders-unofficial-1307741:6894375")
 
     if (project.use_mixins.toBoolean()) {
         // Change your mixin refmap name here:

@@ -1,8 +1,8 @@
-package congregamystica.integrations.congregamystica.items;
+package congregamystica.integrations.thaumicwonders.items;
 
+import com.verdantartifice.thaumicwonders.common.crafting.catalyzationchamber.CatalyzationChamberRecipeRegistry;
 import congregamystica.CongregaMystica;
 import congregamystica.api.item.IItemAddition;
-import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -16,19 +16,16 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.crafting.CrucibleRecipe;
 import thaumcraft.api.items.ItemsTC;
-import thaumcraft.common.lib.utils.Utils;
 
 import java.util.Map;
 
-public class ItemNativeCluster extends Item implements IItemAddition {
+public class ItemEldritchCluster extends Item implements IItemAddition {
     protected ClusterData clusterData;
 
-    public ItemNativeCluster(ClusterData clusterData) {
-        this.setRegistryName(CongregaMystica.MOD_ID, clusterData.getClusterId());
+    public ItemEldritchCluster(ClusterData clusterData) {
+        this.setRegistryName(CongregaMystica.MOD_ID, clusterData.getEldritchId());
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(CongregaMystica.tabCM);
         this.clusterData = clusterData;
@@ -49,7 +46,7 @@ public class ItemNativeCluster extends Item implements IItemAddition {
         if(I18n.canTranslate(key)) {
             return I18n.translateToLocal(key).trim();
         } else {
-            return this.clusterData.getNativeDisplayName();
+            return this.clusterData.getEldritchDisplayName();
         }
     }
 
@@ -69,30 +66,17 @@ public class ItemNativeCluster extends Item implements IItemAddition {
 
         if(!inputOre.isEmpty() && !outputIngot.isEmpty()) {
             //Cluster smelting
-            outputIngot.setCount(2);
+            outputIngot.setCount(3);
             GameRegistry.addSmelting(this, outputIngot, 1.0f);
 
             //Infernal Smelting Bonus
             if(!outputNugget.isEmpty()) {
-                if(ConfigHandlerCM.clusters.registerSmeltingBonuses) {
-                    ThaumcraftApi.addSmeltingBonus(this.getAssociatedOre(), outputNugget);
-                }
                 ThaumcraftApi.addSmeltingBonus(this.clusterData.getClusterOreDict(), outputNugget);
             }
-            ThaumcraftApi.addSmeltingBonus(this.clusterData.getClusterOreDict(), new ItemStack(ItemsTC.nuggets, 1, 10), 0.02f);
+            ThaumcraftApi.addSmeltingBonus(this.clusterData.getClusterOreDict(), new ItemStack(ItemsTC.nuggets, 1, 10), 0.025f);
 
             //Ore conversion
-            ThaumcraftApi.addCrucibleRecipe(this.getRegistryName(), new CrucibleRecipe(
-                    "METALPURIFICATION",
-                    new ItemStack(this),
-                    new OreIngredient(this.getAssociatedOre()),
-                    new AspectList().add(Aspect.METAL, 5).add(Aspect.ORDER, 5)
-            ));
-
-            //Mining Bonus - This may need to be moved to IProxy postInit()
-            for(ItemStack stack : OreDictionary.getOres(this.getAssociatedOre())) {
-                Utils.addSpecialMiningResult(stack, new ItemStack(this), 1.0f);
-            }
+            CatalyzationChamberRecipeRegistry.addAlienistRecipe(new OreIngredient(this.getAssociatedOre()), new ItemStack(this));
         }
     }
 
@@ -109,7 +93,7 @@ public class ItemNativeCluster extends Item implements IItemAddition {
 
     @Override
     public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
-
+        //TODO: Eldritch clusters need aspects
     }
 
     @Override

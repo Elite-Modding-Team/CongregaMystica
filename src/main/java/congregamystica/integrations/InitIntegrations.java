@@ -6,6 +6,7 @@ import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.examplemod.ExampleModCM;
 import congregamystica.integrations.harkenscythe.HarkenScytheCM;
 import congregamystica.integrations.immersiveengineering.ImmersiveEngineeringCM;
+import congregamystica.integrations.thaumicwonders.ThaumicWondersCM;
 import congregamystica.utils.libs.ModIds;
 
 import java.util.ArrayList;
@@ -15,7 +16,12 @@ public class InitIntegrations {
     private static List<IProxy> MOD_ADDITIONS;
 
     private static void initModAdditions() {
+        //The built-in additions should register first
         MOD_ADDITIONS.add(new CongregaMysticaCM());
+        //Thaumic Wonders registers second to keep the clusters together
+        if(ModIds.thaumic_wonders.isLoaded) {
+            MOD_ADDITIONS.add(new ThaumicWondersCM());
+        }
 
         //Mod integration modules are initialized and added to the MOD_ADDITIONS list here. The array is initialized prior to this method call.
 

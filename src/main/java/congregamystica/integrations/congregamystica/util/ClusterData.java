@@ -5,8 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ClusterData {
-    private final String displayName;
+    private final String nativeDisplayName;
+    private final String eldritchDisplayName;
     private final String clusterId;
+    private final String eldritchId;
     private final String clusterOreDict;
     private final String associatedOre;
     private final String associatedIngot;
@@ -26,8 +28,10 @@ public class ClusterData {
             }
         }
         name = sBuilder.toString();
-        this.displayName = "Native " + name + " Cluster";
+        this.nativeDisplayName = "Native " + name + " Cluster";
+        this.eldritchDisplayName = "Eldritch " + name + " Cluster";
         this.clusterId = "cluster_" + name.toLowerCase().replaceAll("\\s", "_");
+        this.eldritchId = "eldritch_cluster_" + name.toLowerCase().replaceAll("\\s", "_");
         this.clusterOreDict = associatedOre.replaceFirst("^ore", "cluster");
         this.associatedOre = associatedOre;
         this.associatedIngot = associatedOre.replaceFirst("^ore", "ingot");
@@ -39,12 +43,20 @@ public class ClusterData {
         this(associatedOre, Color.WHITE.getRGB());
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getNativeDisplayName() {
+        return nativeDisplayName;
+    }
+
+    public String getEldritchDisplayName() {
+        return eldritchDisplayName;
     }
 
     public String getClusterId() {
         return clusterId;
+    }
+
+    public String getEldritchId() {
+        return eldritchId;
     }
 
     public String getClusterOreDict() {

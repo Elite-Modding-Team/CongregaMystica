@@ -2,7 +2,6 @@ package congregamystica.integrations.congregamystica;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.IProxy;
-import congregamystica.api.item.IItemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.additions.GolemMaterialSteel;
 import congregamystica.integrations.congregamystica.items.ItemMimicFork;
@@ -21,16 +20,14 @@ import java.util.regex.Pattern;
 
 @GameRegistry.ObjectHolder(CongregaMystica.MOD_ID)
 public class CongregaMysticaCM implements IProxy {
-    public static List<Item> NATIVE_CLUSTERS = new ArrayList<>();
+    public static List<ItemNativeCluster> NATIVE_CLUSTERS = new ArrayList<>();
     public static final Item MIMIC_FORK = null;
 
     @Override
     public void preInit() {
-        getClustersFromConfig();
-        for(Item item : NATIVE_CLUSTERS) {
-            RegistrarCM.addAdditionToRegister((IItemAddition) item);
-        }
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
+        getClustersFromConfig();
+        NATIVE_CLUSTERS.forEach(RegistrarCM::addAdditionToRegister);
     }
     
     @Override

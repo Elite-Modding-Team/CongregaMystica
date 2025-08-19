@@ -2,14 +2,13 @@ package congregamystica.registry;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
+import congregamystica.api.IProxy;
 import congregamystica.api.block.IBlockAddition;
 import congregamystica.api.item.IColoredItem;
 import congregamystica.api.item.IItemAddition;
-import congregamystica.api.IProxy;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;

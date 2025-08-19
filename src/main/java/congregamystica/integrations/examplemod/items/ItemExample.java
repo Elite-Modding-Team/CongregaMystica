@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.Map;
@@ -38,7 +39,7 @@ public class ItemExample extends Item implements IItemAddition {
     }
 
     @Override
-    public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
 
     }
 

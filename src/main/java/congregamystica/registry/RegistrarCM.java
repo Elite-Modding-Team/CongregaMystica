@@ -11,6 +11,7 @@ import congregamystica.integrations.thaumicwonders.items.ItemEldritchCluster;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -20,10 +21,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.AspectEventProxy;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.AspectRegistryEvent;
+import thaumcraft.api.internal.CommonInternals;
+import thaumcraft.common.lib.crafting.ThaumcraftCraftingManager;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -96,6 +101,29 @@ public class RegistrarCM {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         IForgeRegistry<IRecipe> registry = event.getRegistry();
         getAdditions().forEach(addition -> addition.registerRecipe(registry));
+    }
+
+    @SubscribeEvent
+    public static void registerAspects(AspectRegistryEvent event) {
+        AspectEventProxy registry = event.register;
+        Map<ItemStack, AspectList> aspectMap = new HashMap<>();
+        RegistrarCM.getAdditions().forEach(addition -> {
+            addition.registerAspects(registry, aspectMap);
+        });
+        aspectMap.forEach((stack, list) -> {
+            if(!stack.isEmpty()) {
+                appendAspects(registry, stack, list);
+            }
+        });
+    }
+
+    private static void appendAspects(AspectEventProxy registry, ItemStack stack, AspectList toAdd) {
+        toAdd = toAdd.copy();
+        AspectList existing = ThaumcraftCraftingManager.getObjectTags(stack);
+        if (existing != null) {
+            toAdd = toAdd.add(existing);
+        }
+        registry.registerObjectTag(stack, toAdd);
     }
 
     public static List<IAddition> getAdditions() {

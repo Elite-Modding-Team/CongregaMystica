@@ -25,6 +25,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.IScribeTools;
 import thaumcraft.api.items.ItemsTC;
@@ -112,7 +113,7 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
     }
 
     @Override
-    public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
         aspectMap.put(new ItemStack(this),
                 new AspectList().add(Aspect.LIFE, 10).add(Aspect.SENSES, 3).add(Aspect.WATER, 1).add(Aspect.BEAST, 1));
     }

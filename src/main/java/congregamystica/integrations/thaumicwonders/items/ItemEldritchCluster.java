@@ -17,6 +17,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.ItemsTC;
 
@@ -101,7 +102,7 @@ public class ItemEldritchCluster extends Item implements IItemAddition, IProxy {
     }
 
     @Override
-    public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
         //TODO: Eldritch clusters need aspects
     }
 

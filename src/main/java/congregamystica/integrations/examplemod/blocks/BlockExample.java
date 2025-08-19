@@ -10,6 +10,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.Map;
@@ -47,7 +48,7 @@ public class BlockExample extends Block implements IBlockAddition {
     }
 
     @Override
-    public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
         //Register any aspects here. ItemStacks are handled automatically so long as they are added to the return map.
         aspectMap.put(new ItemStack(this), new AspectList().add(Aspect.EARTH, 5));
     }

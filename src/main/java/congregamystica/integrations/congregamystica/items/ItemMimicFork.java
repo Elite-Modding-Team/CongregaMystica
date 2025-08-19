@@ -30,6 +30,7 @@ import net.minecraftforge.event.world.NoteBlockEvent.Instrument;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.tiles.devices.TileArcaneEar;
 
@@ -66,7 +67,7 @@ public class ItemMimicFork extends Item implements IItemAddition {
     }
 
     @Override
-    public void registerAspects(Map<ItemStack, AspectList> aspectMap) {
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
 
     }
 

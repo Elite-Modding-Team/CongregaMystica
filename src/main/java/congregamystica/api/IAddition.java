@@ -4,7 +4,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.aspects.AspectRegistryEvent;
 
 import java.util.Map;
 
@@ -35,7 +37,7 @@ public interface IAddition {
      * <p>
      * For reference on how to register entity aspects, see {@link thaumcraft.common.config.ConfigAspects}.
      */
-    default void registerAspects(Map<ItemStack, AspectList> aspectMap) {}
+    default void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {}
 
     /**
      * Returns true if this item is enabled. Used for additions with configurable Enable/Disable or if they

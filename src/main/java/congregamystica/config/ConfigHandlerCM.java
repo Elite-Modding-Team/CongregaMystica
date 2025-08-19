@@ -34,12 +34,18 @@ public class ConfigHandlerCM {
         @Config.Comment
                 ({
                         "Additional Native Clusters that will be registered.",
-                        "If the color code value is excluded, a non-dynamic cluster will be registered, requiring the manual",
-                        "creation of a model and texture file loaded from a resource pack.",
+                        " Syntax: oreblock;outputtype;colorcode",
+                        "  oreblock - the ore block oredictionary value",
+                        "  outputtype - the output oredict type (ingot, gem, cluster, et cetera)",
+                        "  colorcode - (optional) The hexidecimal RBG color color code used for dynamic generation. If the",
+                        "color code value is excluded, a non-dynamic cluster will be registered, requiring manual creation",
+                        "of a model and texture file loaded from a resource pack.",
                         "",
-                        "Examples: (oreDictValue;colorcode)",
-                        "  oreUranium;0x79896b",
-                        "  oreUranium"
+                        "Examples:",
+                        "  oreEmerald;gem;0x42a200",
+                        "  oreEmerald;gem",
+                        "  oreUranium;ingot;0x57744b",
+                        "  oreUranium;ingot"
                 })
         public String[] additionalClusters = new String[] {
                 //General Ores

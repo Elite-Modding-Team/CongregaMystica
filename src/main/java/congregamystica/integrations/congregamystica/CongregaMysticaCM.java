@@ -43,12 +43,14 @@ public class CongregaMysticaCM implements IProxy {
                 if(matcher.find()) {
                     String associatedOre = matcher.group(1);
                     String outputType = matcher.group(2);
-                    if(matcher.groupCount() > 2) {
+                    if(matcher.group(3) != null) {
                         int color = Integer.decode(matcher.group(3));
                         NATIVE_CLUSTERS.add(new ItemNativeClusterDynamic(new ClusterData(associatedOre, outputType, color)));
                     } else {
                         NATIVE_CLUSTERS.add(new ItemNativeCluster(new ClusterData(associatedOre, outputType)));
                     }
+                } else {
+                    LogHelper.error("Invalid cluster configuration string: " + configString);
                 }
             } catch (Exception e) {
                 LogHelper.error("Invalid cluster configuration string: " + configString);

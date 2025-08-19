@@ -48,6 +48,11 @@ public class ConfigHandlerCM {
                 "oreUranium;ingot;0x57744b",
                 "orePlatinum;ingot;0xc6d5f2",
                 "oreIridium;ingot;0xbdbed1",
+                //Applied Energistics 2
+                "oreQuartzCertus;gem",
+                "oreChargedQuartzCertus;gem",
+                //Astral Sorcery Ores
+                "oreAstralStarmetal;ingot",
                 //Thermal Foundation Ores
                 "oreMithril;ingot;0x5cd6ff", //aka Mana Infused
                 //Tinkers Construct Ores

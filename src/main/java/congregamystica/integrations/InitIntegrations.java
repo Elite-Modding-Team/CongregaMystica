@@ -4,7 +4,6 @@ import congregamystica.api.IProxy;
 import congregamystica.integrations.appliedenergistics2.AppliedEnergisticsCM;
 import congregamystica.integrations.bloodmagic.BloodMagicCM;
 import congregamystica.integrations.congregamystica.CongregaMysticaCM;
-import congregamystica.integrations.examplemod.ExampleModCM;
 import congregamystica.integrations.harkenscythe.HarkenScytheCM;
 import congregamystica.integrations.immersiveengineering.ImmersiveEngineeringCM;
 import congregamystica.integrations.thaumicwonders.ThaumicWondersCM;

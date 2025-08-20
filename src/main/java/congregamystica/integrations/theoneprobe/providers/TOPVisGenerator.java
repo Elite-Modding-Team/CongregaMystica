@@ -13,7 +13,6 @@ import thaumcraft.common.tiles.devices.TileVisGenerator;
 
 import java.util.function.Function;
 
-@SuppressWarnings("unused")
 public class TOPVisGenerator implements Function<ITheOneProbe, Void> {
     @Override
     public Void apply(ITheOneProbe input) {

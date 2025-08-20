@@ -21,19 +21,17 @@ public class TOPBrainJar implements Function<ITheOneProbe, Void> {
 
             @Override
             public void addProbeInfo(ProbeMode mode, IProbeInfo info, EntityPlayer player, World world, IBlockState state, IProbeHitData data) {
-                if (mode == ProbeMode.EXTENDED) {
-                    TileEntity tile = world.getTileEntity(data.getPos());
-                    if(tile instanceof TileJarBrain) {
-                        int xp = ((TileJarBrain) tile).xp;
-                        int xpMax = ((TileJarBrain) tile).xpMax;
-                        info.progress(xp, xpMax, info.defaultProgressStyle()
-                                .suffix("xp")
-                                //TODO: .filledColor()
-                                //TODO: .alternateFilledColor()
-                                .borderColor(0xff555555)
-                                .numberFormat(NumberFormat.FULL));
+                TileEntity tile = world.getTileEntity(data.getPos());
+                if(tile instanceof TileJarBrain) {
+                    int xp = ((TileJarBrain) tile).xp;
+                    int xpMax = ((TileJarBrain) tile).xpMax;
+                    info.progress(xp, xpMax, info.defaultProgressStyle()
+                            .suffix("xp")
+                            .filledColor(0xff16b900)
+                            .alternateFilledColor(0xff128c00)
+                            .borderColor(0xff555555)
+                            .numberFormat(NumberFormat.FULL));
 
-                    }
                 }
             }
         });

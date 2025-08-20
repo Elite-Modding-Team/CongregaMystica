@@ -16,7 +16,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 @ZenClass("mods." + CongregaMystica.MOD_ID + ".PechTrades")
 public class PechTradesCT {
     @ZenMethod
-    public static void addPechTrade(String pechType, int tradeLevel, IItemStack stack) {
+    public static void addTrade(String pechType, int tradeLevel, IItemStack stack) {
         try {
             EnumPechType type = EnumPechType.valueOf(pechType);
             if(tradeLevel > 5 || tradeLevel < 1) {
@@ -30,7 +30,7 @@ public class PechTradesCT {
     }
 
     @ZenMethod
-    public static void removePechTrade(String pechType, IIngredient ingredient) {
+    public static void removeTrade(String pechType, IIngredient ingredient) {
         try {
             EnumPechType type = EnumPechType.valueOf(pechType);
             PechHelper.removePechTrade(type, CraftTweakerMC.getIngredient(ingredient));
@@ -40,7 +40,7 @@ public class PechTradesCT {
     }
 
     @ZenMethod
-    public static void removeAllPechTrades(String pechType) {
+    public static void removeAllTrades(String pechType) {
         try {
             EnumPechType type = EnumPechType.valueOf(pechType);
             PechHelper.removeAllPechTrades(type);
@@ -50,7 +50,7 @@ public class PechTradesCT {
     }
 
     @ZenMethod
-    public static void removeAllPechTrades() {
+    public static void removeAllTrades() {
         PechHelper.removeAllPechTrades();
     }
 }

@@ -12,6 +12,7 @@ import congregamystica.utils.misc.PechTrade;
 import net.minecraft.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("unused")
 @RegistryDescription(
         linkGenerator = CongregaMystica.MOD_ID,
         reloadability = RegistryDescription.Reloadability.FLAWED
@@ -67,7 +68,7 @@ public class PechTrades extends VirtualizedRegistry<PechTrade> {
             type = MethodDescription.Type.REMOVAL,
             description = "groovyscript.wiki.congregamystica.pech_trades.removeAllTrades2"
     )
-    public void removeAll() {
+    public void removeAllTrades() {
         PechHelper.removeAllPechTrades();
     }
 

@@ -67,16 +67,18 @@ public class ItemNativeCluster extends Item implements IItemAddition {
         ItemStack inputOre = OreDictionary.getOres(this.getAssociatedOre()).stream().findFirst().orElse(ItemStack.EMPTY).copy();
         ItemStack outputIngot = OreDictionary.getOres(this.clusterData.associatedIngot).stream().findFirst().orElse(ItemStack.EMPTY).copy();
         ItemStack outputNugget = OreDictionary.getOres(this.clusterData.associatedNugget).stream().findFirst().orElse(ItemStack.EMPTY).copy();
+        boolean isGemOutput = this.clusterData.associatedIngot.startsWith("gem");
 
         if(!inputOre.isEmpty()) {
             //Ore conversion
-            ThaumcraftApi.addCrucibleRecipe(this.getRegistryName(), new CrucibleRecipe(
-                    "METALPURIFICATION",
-                    new ItemStack(this),
-                    new OreIngredient(this.getAssociatedOre()),
-                    new AspectList().add(Aspect.METAL, 5).add(Aspect.ORDER, 5)
-            ));
-
+            if(!isGemOutput || ConfigHandlerCM.clusters.registerGemCrucibleRefining) {
+                ThaumcraftApi.addCrucibleRecipe(this.getRegistryName(), new CrucibleRecipe(
+                        "METALPURIFICATION",
+                        new ItemStack(this),
+                        new OreIngredient(this.getAssociatedOre()),
+                        new AspectList().add(Aspect.METAL, 5).add(Aspect.ORDER, 5)
+                ));
+            }
 
             if (!outputIngot.isEmpty()) {
                 //Cluster smelting
@@ -84,7 +86,7 @@ public class ItemNativeCluster extends Item implements IItemAddition {
                 GameRegistry.addSmelting(this.getDefaultInstance(), outputIngot, 1.0f);
 
                 //Mining Bonus - This may need to be moved to IProxy postInit()
-                if(this.clusterData.associatedIngot.startsWith("gem") && ConfigHandlerCM.clusters.specialGemHarvest) {
+                if(isGemOutput && ConfigHandlerCM.clusters.specialGemHarvest) {
                     for(ItemStack stack : OreDictionary.getOres(this.clusterData.associatedIngot)) {
                         Utils.addSpecialMiningResult(stack, new ItemStack(this), 1.0f);
                     }

@@ -18,6 +18,15 @@ public class ConfigHandlerCM {
 
     public static class ClustersCategory {
         @Config.RequiresMcRestart
+        @Config.Name("Register Gem Ore Refining")
+        @Config.Comment
+                ({
+                        "Enables Crucible gem ore refining, registering the Crucible recipe that refines gem ores into clusters.",
+                        "A value of false will mirror the behavior of Native Quartz Clusters."
+                })
+        public boolean registerGemCrucibleRefining = false;
+
+        @Config.RequiresMcRestart
         @Config.Name("Register Smelting Bonus")
         @Config.Comment("Registers infernal smelting metal nugget bonuses when smelting ores associated with new native clusters.")
         public boolean registerSmeltingBonuses = true;

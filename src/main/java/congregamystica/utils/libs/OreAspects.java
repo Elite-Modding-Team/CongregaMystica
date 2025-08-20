@@ -77,6 +77,7 @@ public class OreAspects {
         addOreAspect("oreIridium", new AspectList().add(Aspect.METAL, 10).add(Aspect.EARTH, 5).add(Aspect.CRYSTAL, 5));
         addOreAspect("oreMithril", new AspectList().add(Aspect.METAL, 10).add(Aspect.EARTH, 5).add(Aspect.MAGIC, 5));
         addOreAspect("oreNickel", new AspectList().add(Aspect.METAL, 10).add(Aspect.EARTH, 5).add(Aspect.MECHANISM, 5));
+        addOreAspect("oreOsmium", new AspectList().add(Aspect.METAL, 10).add(Aspect.EARTH, 5).add(Aspect.ALCHEMY, 5));
         addOreAspect("orePlatinum", new AspectList().add(Aspect.METAL, 10).add(Aspect.EARTH, 5).add(Aspect.DESIRE, 10).add(Aspect.CRYSTAL, 5));
         addOreAspect("oreQuartzCertus", new AspectList().add(Aspect.CRYSTAL, 10).add(Aspect.EARTH, 5));
     }

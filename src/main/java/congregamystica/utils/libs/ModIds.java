@@ -11,9 +11,8 @@ public enum ModIds {
     harken_scythe(ConstIds.harken_scythe),
     immersive_engineering(ConstIds.immersive_engineering),
     thaumic_wonders(ConstIds.thaumic_wonders, ConstVersions.thaumic_wonders, true, false),
-
-    //An example mod to show how the stuff works without actually loading
-    exampleMod("examplemod");
+    the_one_probe(ConstIds.the_one_probe)
+    ;
 
     public final String modId;
     public final String version;
@@ -48,6 +47,7 @@ public enum ModIds {
         public static final String immersive_engineering = "immersiveengineering";
         public static final String thaumcraft = "thaumcraft";
         public static final String thaumic_wonders = "thaumicwonders";
+        public static final String the_one_probe = "theoneprobe";
     }
 
     public static class ConstVersions {

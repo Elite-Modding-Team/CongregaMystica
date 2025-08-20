@@ -8,6 +8,7 @@ import congregamystica.integrations.examplemod.ExampleModCM;
 import congregamystica.integrations.harkenscythe.HarkenScytheCM;
 import congregamystica.integrations.immersiveengineering.ImmersiveEngineeringCM;
 import congregamystica.integrations.thaumicwonders.ThaumicWondersCM;
+import congregamystica.integrations.theoneprobe.TheOneProbeCM;
 import congregamystica.utils.libs.ModIds;
 
 import java.util.ArrayList;
@@ -19,32 +20,23 @@ public class InitIntegrations {
     private static void initModAdditions() {
         //The built-in additions should register first
         MOD_ADDITIONS.add(new CongregaMysticaCM());
-        //Mod integration modules are initialized and added to the MOD_ADDITIONS list here. The array is initialized prior to this method call.
-
-        //When adding an integration, check that the mod or mods are loaded then add it to the MOD_ADDITIONS. Specific item checks should be included
-        //in the specific mod integration IProxy class.
-        if(ModIds.exampleMod.isLoaded) {
-            MOD_ADDITIONS.add(new ExampleModCM());
-        }
-
         if(ModIds.applied_energistics.isLoaded) {
             MOD_ADDITIONS.add(new AppliedEnergisticsCM());
         }
-
         if(ModIds.blood_magic.isLoaded) {
             MOD_ADDITIONS.add(new BloodMagicCM());
         }
-        
         if(ModIds.harken_scythe.isLoaded) {
             MOD_ADDITIONS.add(new HarkenScytheCM());
         }
-        
         if(ModIds.immersive_engineering.isLoaded) {
             MOD_ADDITIONS.add(new ImmersiveEngineeringCM());
         }
-
         if(ModIds.thaumic_wonders.isLoaded) {
             MOD_ADDITIONS.add(new ThaumicWondersCM());
+        }
+        if(ModIds.the_one_probe.isLoaded) {
+            MOD_ADDITIONS.add(new TheOneProbeCM());
         }
 
     }

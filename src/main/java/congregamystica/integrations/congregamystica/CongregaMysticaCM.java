@@ -4,6 +4,7 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.additions.GolemMaterialSteel;
+import congregamystica.integrations.congregamystica.additions.IntegrationsCM;
 import congregamystica.integrations.congregamystica.items.ItemMimicFork;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.congregamystica.items.ItemNativeClusterDynamic;
@@ -25,6 +26,7 @@ public class CongregaMysticaCM implements IProxy {
 
     @Override
     public void preInit() {
+        RegistrarCM.addAdditionToRegister(new IntegrationsCM());
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         getClustersFromConfig();
         NATIVE_CLUSTERS.forEach(RegistrarCM::addAdditionToRegister);

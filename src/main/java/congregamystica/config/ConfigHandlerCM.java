@@ -15,6 +15,8 @@ public class ConfigHandlerCM {
     public static BloodMagicCategory blood_magic = new BloodMagicCategory();
     @Config.Name("Immersive Engineering")
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
+    @Config.Name("The One Probe")
+    public static TheOneProbeCategory the_one_probe = new TheOneProbeCategory();
 
     public static class ClustersCategory {
         @Config.RequiresMcRestart
@@ -134,5 +136,27 @@ public class ConfigHandlerCM {
             @Config.Comment("The maximum number of refining upgrades that can be stacked in a drill at once. Each upgrade increases the chance of a native cluster drop by 10%.")
             public int maxUpgrades = 4;
         }
+    }
+
+    public static class TheOneProbeCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Brain in a Jar")
+        @Config.Comment("Enables Brain in a Jar The One Probe progress info.")
+        public boolean brainJar = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Vis Battery")
+        @Config.Comment("Enables Vis Battery The One Probe storage info.")
+        public boolean visBattery = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Vis Generator")
+        @Config.Comment("Enables Vis Generator The One Probe rf storage info.")
+        public boolean visGenerator = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Void Siphon")
+        @Config.Comment("Enables Void Siphon The One Probe progress info.")
+        public boolean voidSiphon = true;
     }
 }

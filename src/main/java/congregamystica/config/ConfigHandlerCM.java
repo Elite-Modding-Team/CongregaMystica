@@ -82,6 +82,8 @@ public class ConfigHandlerCM {
                 "oreAstralStarmetal;ingot",
                 //Mekanism
                 "oreOsmium;ingot;0xb5cacc",
+                //Mystical World
+                "oreAmethyst;gem",
                 //Project Red
                 "orePeridot;gem",
                 "oreRuby;gem",

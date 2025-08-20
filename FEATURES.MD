@@ -18,6 +18,8 @@ Eldritch Clusters are only added when Thaumic Wonders Unofficial is also install
   - Uranium
 - Mekanism
   - Osmium
+- Mystical World
+  - Amethyst
 - Project Red
   - Peridot
   - Ruby

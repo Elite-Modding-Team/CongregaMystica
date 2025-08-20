@@ -24,11 +24,5 @@ public class TheOneProbeCM implements IProxy {
         if(ConfigHandlerCM.the_one_probe.voidSiphon) {
             FMLInterModComms.sendFunctionMessage(ModIds.ConstIds.the_one_probe, "getTheOneProbe", TOPVoidSiphon.class.getName());
         }
-        //TODO
-        //  Vis Battery charge value
-        //  Void Siphon progress
-        //  Vis Generator charge meter
-        //  Brain in a jar XP meter
-
     }
 }

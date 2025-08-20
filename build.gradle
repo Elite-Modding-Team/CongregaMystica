@@ -93,6 +93,9 @@ repositories {
             includeGroup 'curse.maven'
         }
     }
+    maven {
+        url "https://maven.blamejared.com/"
+    }
     mavenLocal() // Must be last for caching to work
 }
 
@@ -118,6 +121,11 @@ dependencies {
     implementation rfg.deobf("curse.maven:thaumcraft-223628:2629023")
     implementation rfg.deobf('curse.maven:baubles-227083:2518667')
 
+    implementation "CraftTweaker2:CraftTweaker2-API:4.1.20.695"
+    implementation "CraftTweaker2:ZenScript:4.1.20.695"
+    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695"
+    implementation("com.cleanroommc:groovyscript:1.2.2") { transitive = false }
+
     def modMap = [:]
     def loadMap = [:]
 
@@ -126,6 +134,7 @@ dependencies {
     modMap.put(["curse.maven:blood-magic-224791:2822288", "curse.maven:guide-api-228832:2645992"], project.use_bloodmagic)
     modMap.put(["curse.maven:harken-scythe-resharpened-1163747:6842654"], project.use_harkenscythe)
     modMap.put(["curse.maven:immersive-engineering-231951:2974106"], project.use_immersiveengineering)
+    modMap.put(["curse.maven:thaumic-augmentation-319441:6047659"], project.use_thaumicaugmentation)
     modMap.put(["curse.maven:thaumic-wonders-unofficial-1307741:6894375"], project.use_thaumicwonders)
     modMap.put(["curse.maven:the-one-probe-245211:2667280"], project.use_theoneprobe)
 

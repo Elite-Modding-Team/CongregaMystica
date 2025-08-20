@@ -11,7 +11,14 @@ import congregamystica.integrations.congregamystica.items.ItemNativeClusterDynam
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.registry.RegistrarCM;
 import congregamystica.utils.helpers.LogHelper;
+import congregamystica.utils.helpers.PechHelper;
+import congregamystica.utils.misc.EnumPechType;
+import net.minecraft.init.Items;
+import net.minecraft.init.PotionTypes;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.potion.PotionUtils;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
@@ -35,6 +42,12 @@ public class CongregaMysticaCM implements IProxy {
     @Override
     public void init() {
         RegistrarCM.addAdditionToRegister(new GolemMaterialSteel());
+
+        //Pech trade fixes
+        PechHelper.removePechTrade(EnumPechType.MAGE, Ingredient.fromStacks(new ItemStack(Items.POTIONITEM, 1, 8193)));
+        PechHelper.removePechTrade(EnumPechType.MAGE, Ingredient.fromStacks(new ItemStack(Items.POTIONITEM, 1, 8261)));
+        PechHelper.addPechTrade(EnumPechType.MAGE, 2, PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.REGENERATION));
+        PechHelper.addPechTrade(EnumPechType.MAGE, 2, PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.HEALING));
     }
 
     private void getClustersFromConfig() {

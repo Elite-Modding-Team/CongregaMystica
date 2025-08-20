@@ -82,6 +82,10 @@ public class ConfigHandlerCM {
                 "oreAstralStarmetal;ingot",
                 //Mekanism
                 "oreOsmium;ingot;0xb5cacc",
+                //Project Red
+                "orePeridot;gem",
+                "oreRuby;gem",
+                "oreSapphire;gem",
                 //Thermal Foundation Ores
                 "oreMithril;ingot;0x5cd6ff", //aka Mana Infused
                 //Tinkers Construct Ores

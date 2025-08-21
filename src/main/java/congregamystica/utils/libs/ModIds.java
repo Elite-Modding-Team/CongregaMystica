@@ -4,12 +4,14 @@ import congregamystica.utils.helpers.ModHelper;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("unused")
 public enum ModIds {
     applied_energistics(ConstIds.applied_energistics),
     blood_magic(ConstIds.blood_magic),
     botania(ConstIds.botania),
     crafttweaker(ConstIds.crafttweaker),
     harken_scythe(ConstIds.harken_scythe),
+    harvestcraft(ConstIds.harvestcraft),
     immersive_engineering(ConstIds.immersive_engineering),
     thaumic_wonders(ConstIds.thaumic_wonders, ConstVersions.thaumic_wonders, true, false),
     the_one_probe(ConstIds.the_one_probe)
@@ -46,6 +48,7 @@ public enum ModIds {
         public static final String botania = "botania";
         public static final String crafttweaker = "crafttweaker";
         public static final String harken_scythe = "harkenscythe";
+        public static final String harvestcraft = "harvestcraft";
         public static final String immersive_engineering = "immersiveengineering";
         public static final String thaumcraft = "thaumcraft";
         public static final String thaumic_wonders = "thaumicwonders";

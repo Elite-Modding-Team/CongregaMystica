@@ -7,9 +7,13 @@ import net.minecraftforge.common.config.Config;
 //TODO: Remove comment before release
 // @Mod(modid = CongregaMystica.MOD_ID)
 public class ConfigHandlerCM {
+    @Config.Name("Aspects")
+    public static AspectsCategory aspects = new AspectsCategory();
+    @Config.Name("Golem Materials")
     public static GolemCategory golems = new GolemCategory();
-
+    @Config.Name("Native Clusters")
     public static ClustersCategory clusters = new ClustersCategory();
+
 
     @Config.Name("Blood Magic")
     public static BloodMagicCategory blood_magic = new BloodMagicCategory();
@@ -17,6 +21,10 @@ public class ConfigHandlerCM {
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
     @Config.Name("The One Probe")
     public static TheOneProbeCategory the_one_probe = new TheOneProbeCategory();
+
+    public static class AspectsCategory {
+        public boolean generalOreDict = true;
+    }
 
     public static class ClustersCategory {
         @Config.RequiresMcRestart
@@ -32,6 +40,11 @@ public class ConfigHandlerCM {
         @Config.Name("Register Smelting Bonus")
         @Config.Comment("Registers infernal smelting metal nugget bonuses when smelting ores associated with new native clusters.")
         public boolean registerSmeltingBonuses = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Register Pech Trades")
+        @Config.Comment("Native Clusters added by this mod will be included on the Pech Forager trade table.")
+        public boolean registerPechTrades = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Special Gem Harvest")

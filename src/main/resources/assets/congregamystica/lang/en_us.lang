@@ -1,13 +1,13 @@
 itemGroup.CongregaMysticaTab=Congrega Mystica
 
 # Items
+item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb
 item.congregamystica:blood_scribing_tools.name=Bloody Scrivener's Tools
 item.congregamystica:cluster_astral_starmetal.name=Native Starmetal Cluster
 item.congregamystica:cluster_charged_quartz_certus.name=Native Charged Certus Quartz Cluster
 item.congregamystica:cluster_quartz_certus.name=Native Certus Quartz Cluster
 item.congregamystica:drill_head_thaumium.name=Thaumium Drill Head
 item.congregamystica:drill_head_void.name=Void Metal Drill Head
-item.congregamystica:eldritch_blood_orb.name=Eldritch Blood Orb
 item.congregamystica:eldritch_cluster_astral_starmetal.name=Eldritch Starmetal Cluster
 item.congregamystica:eldritch_cluster_charged_quartz_certus.name=Eldritch Charged Certus Quartz Cluster
 item.congregamystica:eldritch_cluster_quartz_certus.name=Eldritch Certus Quartz Cluster

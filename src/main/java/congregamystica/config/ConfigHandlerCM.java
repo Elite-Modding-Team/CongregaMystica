@@ -112,6 +112,8 @@ public class ConfigHandlerCM {
     public static class BloodMagicCategory {
         @Config.Name("Bloody Scrivener's Tools")
         public BloodScribingToolsCategory bloodyScribingTools = new BloodScribingToolsCategory();
+        @Config.Name("Eldritch Blood Orb")
+        public EldritchOrbCategory eldritchOrb = new EldritchOrbCategory();
 
         public static class BloodScribingToolsCategory {
             @Config.RequiresMcRestart
@@ -122,6 +124,24 @@ public class ConfigHandlerCM {
             @Config.Name("LP Cost")
             @Config.Comment("The amount of LP drained from the player's soul network per use.")
             public int lpCost = 100;
+        }
+
+        public static class EldritchOrbCategory {
+            @Config.RequiresMcRestart
+            @Config.Name("Enable Eldritch Blood Orb")
+            @Config.Comment("Enables the high capacity end-game blood orb.")
+            public boolean enable = true;
+
+            @Config.RequiresMcRestart
+            @Config.Name("Eldritch Orb Capacity")
+            @Config.Comment("The Eldritch Blood Orb soul network capacity")
+            public int capacity = 50000000;
+
+            @Config.RequiresMcRestart
+            @Config.RangeInt(min = 1, max = 6)
+            @Config.Name("Required Altar Tier")
+            @Config.Comment("The Blood Atlar tier required to fill the Eldritch Blood Orb.")
+            public int tier = 5;
         }
     }
 

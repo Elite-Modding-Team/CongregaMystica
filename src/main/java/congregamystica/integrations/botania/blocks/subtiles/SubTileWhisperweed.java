@@ -8,8 +8,8 @@ import net.minecraft.util.math.MathHelper;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.IPlayerWarp;
-import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategory;
+import thecodex6824.thaumcraftfix.api.research.ResearchCategoryTheorycraftFilter;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.SubTileFunctional;
 
@@ -22,7 +22,7 @@ public class SubTileWhisperweed extends SubTileFunctional {
     public static int manaCost = 6000;
     public static int range = 3;
 
-    ResearchCategory[] rc = ResearchCategories.researchCategories.values().toArray(new ResearchCategory[0]);
+    ResearchCategory[] rc = ResearchCategoryTheorycraftFilter.getAllowedTheorycraftCategories().toArray(new ResearchCategory[0]);
 
     int tProg = IPlayerKnowledge.EnumKnowledgeType.THEORY.getProgression();
 

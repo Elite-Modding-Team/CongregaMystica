@@ -1,5 +1,6 @@
 package congregamystica.integrations.bloodmagic.additions;
 
+import WayofTime.bloodmagic.api.impl.BloodMagicAPI;
 import WayofTime.bloodmagic.core.registry.OrbRegistry;
 import WayofTime.bloodmagic.orb.BloodOrb;
 import congregamystica.CongregaMystica;
@@ -9,6 +10,7 @@ import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -17,6 +19,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.items.ItemsTC;
 
 import java.util.Map;
 
@@ -42,25 +45,35 @@ public class BloodOrbCM implements IAddition, IProxy {
         MinecraftForge.EVENT_BUS.register(this);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-
+        BloodMagicAPI.INSTANCE.getRecipeRegistrar().addBloodAltar(
+                Ingredient.fromStacks(new ItemStack(ItemsTC.primordialPearl)),
+                OrbRegistry.getOrbStack(this.ORB_ELDRITCH),
+                ConfigHandlerCM.blood_magic.eldritchOrb.tier - 1,
+                500000,
+                200,
+                400
+        );
     }
 
     @Override
     public void registerResearchLocation() {
-        //Register any associated research here
+        //TODO: Register any associated research here
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
+        //TODO: Thaumcraft hates item data. The orb has to have data to register itself, but it also has to be bound so players can use it. = No Aspects
         ItemStack eldritchOrb = OrbRegistry.getOrbStack(this.ORB_ELDRITCH);
         aspectMap.put(eldritchOrb, new AspectList().add(Aspect.LIFE, 10).add(Aspect.SENSES, 3).add(Aspect.WATER, 1).add(Aspect.BEAST, 1));
     }
 
     @Override
     public boolean isEnabled() {
+        //TODO: Maybe require Tier 6 altar enabled.
         return ConfigHandlerCM.blood_magic.eldritchOrb.enable;
     }
 

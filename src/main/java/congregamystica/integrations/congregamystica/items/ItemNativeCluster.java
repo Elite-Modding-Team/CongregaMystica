@@ -25,9 +25,13 @@ import java.util.Map;
 public class ItemNativeCluster extends AbstractItemAddition {
     protected ClusterData clusterData;
 
-    public ItemNativeCluster(ClusterData clusterData) {
-        super(clusterData.clusterId);
+    public ItemNativeCluster(String unlocName, ClusterData clusterData) {
+        super(unlocName);
         this.clusterData = clusterData;
+    }
+
+    public ItemNativeCluster(ClusterData clusterData) {
+        this(clusterData.clusterId, clusterData);
     }
 
     public ClusterData getClusterData() {

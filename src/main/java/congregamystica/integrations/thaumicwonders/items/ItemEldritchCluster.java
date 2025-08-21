@@ -6,10 +6,12 @@ import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.utils.helpers.ClusterHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
@@ -19,7 +21,18 @@ import java.util.Map;
 
 public class ItemEldritchCluster extends ItemNativeCluster {
     public ItemEldritchCluster(ClusterData clusterData) {
-        super(clusterData);
+        super(clusterData.eldritchId, clusterData);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public @NotNull String getItemStackDisplayName(@NotNull ItemStack stack) {
+        String key = (this.getUnlocalizedNameInefficiently(stack) + ".name");
+        if(I18n.canTranslate(key)) {
+            return I18n.translateToLocal(key).trim();
+        } else {
+            return this.clusterData.eldritchDisplayName;
+        }
     }
 
     //##########################################################

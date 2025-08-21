@@ -6,7 +6,6 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
-import congregamystica.integrations.bloodmagic.BloodMagicCM;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -22,9 +21,11 @@ import thaumcraft.api.aspects.AspectList;
 import java.util.Map;
 
 public class BloodOrbCM implements IAddition, IProxy {
+    public BloodOrb ORB_ELDRITCH = new BloodOrb("bloodmagic:eldritch", ConfigHandlerCM.blood_magic.eldritchOrb.tier, Math.max(1000, ConfigHandlerCM.blood_magic.eldritchOrb.capacity), 100);
+
     @SubscribeEvent
     public void registerBloodOrb(RegistryEvent.Register<BloodOrb> event) {
-        event.getRegistry().register(new BloodOrb("bloodmagic:eldritch", ConfigHandlerCM.blood_magic.eldritchOrb.tier, Math.max(1000, ConfigHandlerCM.blood_magic.eldritchOrb.capacity), 100)
+        event.getRegistry().register(ORB_ELDRITCH
                 .withModel(new ModelResourceLocation(new ResourceLocation(CongregaMystica.MOD_ID, "eldritch_blood_orb"), "inventory"))
                 .setRegistryName("eldritch"));
     }
@@ -50,7 +51,7 @@ public class BloodOrbCM implements IAddition, IProxy {
     @SuppressWarnings("deprecation")
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        aspectMap.put(OrbRegistry.getOrbStack(BloodMagicCM.ORB_ELDRITCH), new AspectList().add(Aspect.LIFE, 10).add(Aspect.SENSES, 3).add(Aspect.WATER, 1).add(Aspect.BEAST, 1));
+        aspectMap.put(OrbRegistry.getOrbStack(this.ORB_ELDRITCH), new AspectList().add(Aspect.LIFE, 10).add(Aspect.SENSES, 3).add(Aspect.WATER, 1).add(Aspect.BEAST, 1));
     }
 
     @Override

@@ -6,8 +6,10 @@ import congregamystica.api.IProxy;
 import congregamystica.api.block.IBlockAddition;
 import congregamystica.api.item.IColoredItem;
 import congregamystica.api.item.IItemAddition;
+import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.thaumicwonders.items.ItemEldritchCluster;
+import congregamystica.utils.helpers.AspectHelperCM;
 import congregamystica.utils.libs.OreAspects;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.color.IItemColor;
@@ -18,6 +20,7 @@ import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -103,7 +106,7 @@ public class RegistrarCM {
         getAdditions().forEach(addition -> addition.registerRecipe(registry));
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerAspects(AspectRegistryEvent event) {
         AspectEventProxy registry = event.register;
         //Ore Aspects register first so cluster aspects register correctly.
@@ -121,6 +124,10 @@ public class RegistrarCM {
                 registry.registerObjectTag(stack, list);
             }
         });
+        //TODO: Config option
+        if(ConfigHandlerCM.aspects.fancyDynamicOreDict) {
+            AspectHelperCM.doFancyOreDictAspectRegistration(registry);
+        }
     }
 
     public static List<IAddition> getAdditions() {

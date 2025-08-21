@@ -55,7 +55,8 @@ public class BloodOrbCM implements IAddition, IProxy {
     @SuppressWarnings("deprecation")
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        aspectMap.put(OrbRegistry.getOrbStack(this.ORB_ELDRITCH), new AspectList().add(Aspect.LIFE, 10).add(Aspect.SENSES, 3).add(Aspect.WATER, 1).add(Aspect.BEAST, 1));
+        ItemStack eldritchOrb = OrbRegistry.getOrbStack(this.ORB_ELDRITCH);
+        aspectMap.put(eldritchOrb, new AspectList().add(Aspect.LIFE, 10).add(Aspect.SENSES, 3).add(Aspect.WATER, 1).add(Aspect.BEAST, 1));
     }
 
     @Override

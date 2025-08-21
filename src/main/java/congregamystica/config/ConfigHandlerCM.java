@@ -7,6 +7,7 @@ import net.minecraftforge.common.config.Config;
 //TODO: Remove comment before release
 // @Mod(modid = CongregaMystica.MOD_ID)
 public class ConfigHandlerCM {
+    @Config.RequiresMcRestart
     @Config.Name("Aspects")
     public static AspectsCategory aspects = new AspectsCategory();
     @Config.Name("Golem Materials")
@@ -23,7 +24,17 @@ public class ConfigHandlerCM {
     public static TheOneProbeCategory the_one_probe = new TheOneProbeCategory();
 
     public static class AspectsCategory {
+        @Config.Name("General Ore Dict Aspects")
+        @Config.Comment("Register general ore dictionary aspects for common oreDict values.")
         public boolean generalOreDict = true;
+
+        @Config.Name("Fancy Ore Dict Aspects")
+        @Config.Comment
+                ({
+                        "Enables the fancy dynamic ore dictionary generation for ingots, gems, nuggets, and dust. Disable",
+                        "this feature if you are experiencing long load times caused by this mod."
+                })
+        public boolean fancyDynamicOreDict = true;
     }
 
     public static class ClustersCategory {
@@ -112,6 +123,7 @@ public class ConfigHandlerCM {
     public static class BloodMagicCategory {
         @Config.Name("Bloody Scrivener's Tools")
         public BloodScribingToolsCategory bloodyScribingTools = new BloodScribingToolsCategory();
+        @Config.RequiresMcRestart
         @Config.Name("Eldritch Blood Orb")
         public EldritchOrbCategory eldritchOrb = new EldritchOrbCategory();
 
@@ -127,23 +139,19 @@ public class ConfigHandlerCM {
         }
 
         public static class EldritchOrbCategory {
-            @Config.RequiresMcRestart
             @Config.Name("Enable Eldritch Blood Orb")
             @Config.Comment("Enables the high capacity end-game blood orb.")
             public boolean enable = true;
 
-            @Config.RequiresMcRestart
             @Config.Name("Eldritch Orb Capacity")
             @Config.Comment("The Eldritch Blood Orb soul network capacity")
             public int capacity = 50000000;
 
-            @Config.RequiresMcRestart
             @Config.RangeInt(min = 1, max = 6)
             @Config.Name("Required Altar Tier")
             @Config.Comment("The Blood Atlar tier required to fill the Eldritch Blood Orb.")
             public int tier = 5;
 
-            @Config.RequiresMcRestart
             @Config.RangeInt(min = 1, max = 10000)
             @Config.Name("Eldritch Orb Fill Rate")
             @Config.Comment("The speed the Eldritch Orb can drain LP from the Blood Altar. A drain rate of 50 is equal to the Archmage Blood Orb.")

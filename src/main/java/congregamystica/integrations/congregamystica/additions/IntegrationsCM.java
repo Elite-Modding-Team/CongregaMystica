@@ -29,11 +29,6 @@ public class IntegrationsCM implements IAddition, IProxy {
     }
 
     @Override
-    public void postInit() {
-        int x = 0;
-    }
-
-    @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
         if(!ConfigHandlerCM.aspects.generalOreDict)
             return;
@@ -59,8 +54,7 @@ public class IntegrationsCM implements IAddition, IProxy {
         AspectHelperCM.registerNonOverridingOreDictTags(registry, "listAllmeatcooked", new AspectList().add(Aspect.BEAST, 5).add(Aspect.LIFE, 5).add(Aspect.CRAFT, 1));
         //Misc Stuff
         AspectHelperCM.registerNonOverridingOreDictTags(registry, "listAllmilk", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.LIFE, 10));
-        //General Crop
-        AspectHelperCM.registerNonOverridingOreDictTypeTags(registry, "^crop.+", new AspectList().add(Aspect.PLANT, 5).add(Aspect.LIFE, 5));
+        //Late
 
 
         /*
@@ -72,6 +66,13 @@ public class IntegrationsCM implements IAddition, IProxy {
         AspectHelperCM.registerNonOverridingOreDictTags(registry, "", new AspectList());
         AspectHelperCM.registerNonOverridingOreDictTags(registry, "", new AspectList());
          */
+
+        //Late register oredict aspects. These are last resort for generating item aspects.
+        registerLateAspectOreDictTypes(registry);
+    }
+
+    private void registerLateAspectOreDictTypes(AspectEventProxy registry) {
+        AspectHelperCM.registerNonOverridingOreDictTypeTags(registry, "^crop.+", new AspectList().add(Aspect.PLANT, 5).add(Aspect.LIFE, 5));
     }
 
     @Override

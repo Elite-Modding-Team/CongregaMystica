@@ -9,6 +9,7 @@ import congregamystica.integrations.botania.BotaniaCM;
 import congregamystica.utils.libs.ModIds;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
@@ -23,6 +24,7 @@ import thecodex6824.thaumcraftfix.api.research.ResearchCategoryTheorycraftFilter
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.lexicon.LexiconEntry;
+import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lexicon.BasicLexiconEntry;
@@ -30,9 +32,11 @@ import vazkii.botania.common.lexicon.page.PageText;
 
 // TODO: Need to see if this is balanced properly
 public class SubTileWhisperweed extends SubTileFunctional implements IAddition, IProxy {
-    private static final int MANA_COST = 6000;
-    private static final int RANGE = 3;
+    private static final int MANA_COST = 300;
+    private static final int RANGE = 2;
     public static LexiconEntry WHISPERWEED_ENTRY;
+
+    public int progress = 0;
 
     @Override
     public boolean acceptsRedstone() {
@@ -42,16 +46,23 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
     @Override
     public void onUpdate() {
         super.onUpdate();
+        if(this.supertile.getWorld().isRemote) {
+            //if is ready to provide research
+            //  Search for nearby players (larger than activation range) and whisper sound effect to them
+            //  Add particle effects
+        } else if(this.redstoneSignal <= 0 && this.mana >= MANA_COST && this.ticksExisted % 300 == 0) {
+            //Search for players in range and randomly apply warp to them
+            //if needs progress
+            //    consume mana and increment progress
+            //else
+            //    searches for nearby players
+            //    if player found, reset progress, grant player research, and chance to add warp
 
-        ResearchCategory[] rc = ResearchCategoryTheorycraftFilter.getAllowedTheorycraftCategories().toArray(new ResearchCategory[0]);
-        int tProg = IPlayerKnowledge.EnumKnowledgeType.THEORY.getProgression();
+            ResearchCategory[] categories = ResearchCategoryTheorycraftFilter.getAllowedTheorycraftCategories().toArray(new ResearchCategory[0]);
+            int theoryProgress = IPlayerKnowledge.EnumKnowledgeType.THEORY.getProgression();
 
-        if (redstoneSignal > 0)
-            return;
-
-        if (!supertile.getWorld().isRemote && mana >= MANA_COST && this.ticksExisted % 300 == 0) {
-            List<EntityPlayer> players = supertile.getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(supertile.getPos().getX() - RANGE, supertile.getPos().getY() - RANGE, supertile.getPos().getZ() - RANGE, supertile.getPos().getX() + RANGE + 1, supertile.getPos().getY() + RANGE + 1, supertile.getPos().getZ() + RANGE + 1));
-            if (players.size() > 0) {
+            List<EntityPlayer> players = supertile.getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.supertile.getPos()).grow(RANGE));
+            if (!players.isEmpty()) {
                 EntityPlayer player = players.get(supertile.getWorld().rand.nextInt(players.size()));
                 int amt = 1 + player.world.rand.nextInt(3);
                 if (player.world.rand.nextInt(10) < 2) {
@@ -60,12 +71,24 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
                 }
 
                 for (int a = 0; a < amt; ++a) {
-                    ThaumcraftApi.internalMethods.addKnowledge(player, IPlayerKnowledge.EnumKnowledgeType.THEORY, rc[player.getRNG().nextInt(rc.length)], MathHelper.getInt(player.getRNG(), tProg / 12, tProg / 6));
+                    ThaumcraftApi.internalMethods.addKnowledge(player, IPlayerKnowledge.EnumKnowledgeType.THEORY, categories[player.getRNG().nextInt(categories.length)], MathHelper.getInt(player.getRNG(), theoryProgress / 12, theoryProgress / 6));
                 }
                 mana -= MANA_COST;
             }
 
         }
+    }
+
+    @Override
+    public void readFromPacketNBT(NBTTagCompound cmp) {
+        super.readFromPacketNBT(cmp);
+        this.progress = cmp.getInteger("progress");
+    }
+
+    @Override
+    public void writeToPacketNBT(NBTTagCompound cmp) {
+        super.writeToPacketNBT(cmp);
+        cmp.setInteger("progress", this.progress);
     }
 
     @Override
@@ -83,8 +106,13 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
         return WHISPERWEED_ENTRY;
     }
 
+    @Override
+    public RadiusDescriptor getRadius() {
+        return new RadiusDescriptor.Circle(this.toBlockPos(), RANGE);
+    }
+
     //##########################################################
-    // IItemAddition
+    // IAddition
 
     @Override
     public void preInit() {
@@ -109,6 +137,7 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
 
     @Override
     public boolean isEnabled() {
+        //TODO: Add config disable
         return ModIds.thaumcraft_fix.isLoaded;
     }
 }

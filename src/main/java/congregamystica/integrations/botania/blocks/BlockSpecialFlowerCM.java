@@ -10,10 +10,14 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.AspectEventProxy;
+import thaumcraft.api.aspects.AspectList;
 import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.block.BlockSpecialFlower;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
+
+import java.util.Map;
 
 public class BlockSpecialFlowerCM<T extends SubTileEntity & IAddition & IProxy> extends BlockSpecialFlower implements IAddition, IProxy {
     private final T subTile;
@@ -41,13 +45,28 @@ public class BlockSpecialFlowerCM<T extends SubTileEntity & IAddition & IProxy> 
     }
 
     @Override
+    public void preInitClient() {
+        this.subTile.preInitClient();
+    }
+
+    @Override
     public void init() {
         this.subTile.init();
     }
 
     @Override
+    public void initClient() {
+        this.subTile.initClient();
+    }
+
+    @Override
     public void postInit() {
         this.subTile.postInit();
+    }
+
+    @Override
+    public void postInitClient() {
+        this.subTile.postInitClient();
     }
 
     @Override
@@ -62,7 +81,17 @@ public class BlockSpecialFlowerCM<T extends SubTileEntity & IAddition & IProxy> 
 
     @Override
     public void registerResearchLocation() {
-        //Register any associated research here
+        this.subTile.registerResearchLocation();
+    }
+
+    @Override
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
+        this.subTile.registerAspects(registry, aspectMap);
+    }
+
+    @Override
+    public void registerOreDicts() {
+        this.subTile.registerOreDicts();
     }
 
     @Override

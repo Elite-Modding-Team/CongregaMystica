@@ -2,7 +2,7 @@ itemGroup.CongregaMysticaTab=Congrega Mystica
 
 # Blocks
 tile.botania:flower.whisperweed.name=Whisperweed
-tile.botania:flower.whisperweed.reference=Whisper whisper
+tile.botania:flower.whisperweed.reference=§kThe Void Calls
 
 # Items
 item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb
@@ -71,7 +71,7 @@ congregamystica.research.mimic_fork.stage.2=I've found my answer with Mimic Fork
 
 # Botania
 botania.entry.whisperweed=Whisperweed
-botania.tagline.whisperweed=Whispers secrets to those around it
+botania.tagline.whisperweed=Whispers arcane secrets
 botania.page.whisperweed0=The &1Whisperweed&0 is an unpleasant plant that whispers secrets into the ears of anyone who'll listen. There doesn't seem to be much point to the plant, since the secrets aren't even relevant to Botany. Bringing one to a Thaumaturge seems to be the only relevance it has.<br>&oMore secrets than Wan Shi Tong&r
 
 # GroovyScript

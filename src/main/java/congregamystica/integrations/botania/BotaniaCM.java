@@ -3,6 +3,7 @@ package congregamystica.integrations.botania;
 import congregamystica.api.IProxy;
 import congregamystica.integrations.botania.blocks.BlockSpecialFlowerCM;
 import congregamystica.integrations.botania.blocks.subtiles.SubTileWhisperweed;
+import congregamystica.registry.RegistrarCM;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -13,35 +14,6 @@ public class BotaniaCM implements IProxy {
 
     @Override
     public void preInit() {
-        if (whisperweed.isEnabled()) {
-            whisperweed.preInit();
-        }
-    }
-
-    @Override
-    public void init() {
-        if (whisperweed.isEnabled()) {
-            whisperweed.init();
-        }
-    }
-
-    @Override
-    public void postInit() {
-        if (whisperweed.isEnabled()) {
-            whisperweed.postInit();
-        }
-    }
-
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void preInitClient() {
-        if (whisperweed.isEnabled()) {
-            whisperweed.registerModel(null);
-        }
-    }
-
-    static {
-        whisperweed = new BlockSpecialFlowerCM<>(new SubTileWhisperweed(), WHISPERWEED);
-
+        RegistrarCM.addAdditionToRegister(whisperweed = new BlockSpecialFlowerCM<>(new SubTileWhisperweed(), WHISPERWEED));
     }
 }

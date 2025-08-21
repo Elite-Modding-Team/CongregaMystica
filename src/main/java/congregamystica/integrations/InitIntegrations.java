@@ -3,6 +3,7 @@ package congregamystica.integrations;
 import congregamystica.api.IProxy;
 import congregamystica.integrations.appliedenergistics2.AppliedEnergisticsCM;
 import congregamystica.integrations.bloodmagic.BloodMagicCM;
+import congregamystica.integrations.botania.BotaniaCM;
 import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.crafttweaker.CrafttweakerCM;
 import congregamystica.integrations.harkenscythe.HarkenScytheCM;
@@ -25,6 +26,9 @@ public class InitIntegrations {
         }
         if(ModIds.blood_magic.isLoaded) {
             MOD_ADDITIONS.add(new BloodMagicCM());
+        }
+        if(ModIds.botania.isLoaded) {
+            MOD_ADDITIONS.add(new BotaniaCM());
         }
         if(ModIds.crafttweaker.isLoaded) {
             MOD_ADDITIONS.add(new CrafttweakerCM());

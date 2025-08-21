@@ -1,5 +1,9 @@
 itemGroup.CongregaMysticaTab=Congrega Mystica
 
+# Blocks
+tile.botania:flower.whisperweed.name=Whisperweed
+tile.botania:flower.whisperweed.reference=Whisper whisper
+
 # Items
 item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb
 item.congregamystica:blood_scribing_tools.name=Bloody Scrivener's Tools
@@ -64,6 +68,11 @@ congregamystica.research.golem_mat_treated_wood.stage.1=Treated Wood is of highe
 congregamystica.research.mimic_fork.title=Mimic Fork
 congregamystica.research.mimic_fork.stage.1=Note Blocks are a device I've been thinking of a lot lately. They are simple things that respond to touch or Redstone to emit one single pure note... But of what utility are they really?<BR>Any usage requires a Note Block to be setup in a specific location and manually configured to the desired note.<BR>There must be a better way...
 congregamystica.research.mimic_fork.stage.2=I've found my answer with Mimic Fork!<BR>The Mimic Fork has a few functions, It can store musical notes to evoke them at a later point. It also allows you to set an Arcane Ear or Note Block's Note setting by right-clicking the Mimic Fork on either device. You are also able to set the Instrument and Note type of a given Note Block or Arcane Ear by instead sneaking and right-clicking on the device.
+
+# Botania
+botania.entry.whisperweed=Whisperweed
+botania.tagline.whisperweed=Whispers secrets to those around it
+botania.page.whisperweed0=The &1Whisperweed&0 is an unpleasant plant that whispers secrets into the ears of anyone who'll listen. There doesn't seem to be much point to the plant, since the secrets aren't even relevant to Botany. Bringing one to a Thaumaturge seems to be the only relevance it has.<br>&oMore secrets than Wan Shi Tong&r
 
 # GroovyScript
 groovyscript.wiki.congregamystica.pech_trades.title=Thaumcraft Pech Trades

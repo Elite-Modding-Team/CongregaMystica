@@ -2,50 +2,33 @@ package congregamystica.integrations.botania.blocks;
 
 import org.jetbrains.annotations.NotNull;
 
-import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
-import congregamystica.integrations.botania.blocks.subtiles.SubTileWhisperweed;
-import congregamystica.utils.libs.ModIds;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-import vazkii.botania.api.BotaniaAPI;
-import vazkii.botania.api.BotaniaAPIClient;
+import vazkii.botania.api.subtile.SubTileEntity;
 import vazkii.botania.common.block.BlockSpecialFlower;
 import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
-import vazkii.botania.common.lexicon.BasicLexiconEntry;
-import vazkii.botania.common.lexicon.page.PagePetalRecipe;
-import vazkii.botania.common.lexicon.page.PageText;
 
-// TODO: Config stuff
-public class BlockSpecialFlowerCM extends BlockSpecialFlower implements IAddition, IProxy {
-    public static final BlockSpecialFlowerCM BLOCK_SPECIAL_FLOWER = new BlockSpecialFlowerCM();
+public class BlockSpecialFlowerCM<T extends SubTileEntity & IAddition & IProxy> extends BlockSpecialFlower implements IAddition, IProxy {
+    private final T subTile;
+    private final String name;
 
-    public BlockSpecialFlowerCM() {
-        //isAuromeriaEnabled = ModIds.thaumcraft.isLoaded && SubTileAuromeria.AUROMERIA.isEnabled();
+    public BlockSpecialFlowerCM(T subTile, String subTileName) {
+        this.subTile = subTile;
+        this.name = subTileName;
     }
 
     @Override
     public void getSubBlocks(CreativeTabs tab, @NotNull NonNullList<ItemStack> stacks) {
-        if (ModIds.thaumcraft_fix.isLoaded) {
-            stacks.add(ItemBlockSpecialFlower.ofType(SubTileWhisperweed.NAME));
-            stacks.add(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), SubTileWhisperweed.NAME));
-        }
-    }
-
-    @Override
-    public void postInit() {
-        if (ModIds.thaumcraft_fix.isLoaded) {
-            SubTileWhisperweed.WHISPERWEED_ENTRY = new BasicLexiconEntry("whisperweed", BotaniaAPI.categoryFunctionalFlowers);
-            SubTileWhisperweed.WHISPERWEED_ENTRY.setLexiconPages(
-                    new PageText("0"));
+        if (this.isEnabled()) {
+            stacks.add(ItemBlockSpecialFlower.ofType(this.name));
+            stacks.add(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), this.name));
         }
     }
 
@@ -53,16 +36,28 @@ public class BlockSpecialFlowerCM extends BlockSpecialFlower implements IAdditio
     // IItemAddition
 
     @Override
+    public void preInit() {
+        this.subTile.preInit();
+    }
+
+    @Override
+    public void init() {
+        this.subTile.init();
+    }
+
+    @Override
+    public void postInit() {
+        this.subTile.postInit();
+    }
+
+    @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //SubTileAuromeria.auromeriaRecipe = new RecipePetals(ItemBlockSpecialFlower.ofType(SubTileAuromeria.NAME), ModPetalRecipes.green, ModPetalRecipes.red, ModPetalRecipes.red, ModPetalRecipes.purple, "runeManaB", new ItemStack(ItemsTC.visResonator), "redstoneRoot");
-        //BotaniaAPI.registerPetalRecipe(SubTileAuromeria.auromeriaRecipe.getOutput(), SubTileAuromeria.auromeriaRecipe.getInputs().toArray());
+        this.subTile.registerRecipe(registry);
     }
 
     @Override
     public void registerModel(ModelRegistryEvent event) {
-        if (ModIds.thaumcraft_fix.isLoaded) {
-            BotaniaAPIClient.registerSubtileModel(SubTileWhisperweed.class, new ModelResourceLocation(new ResourceLocation(CongregaMystica.MOD_ID, SubTileWhisperweed.NAME), "normal"));
-        }
+        this.subTile.registerModel(event);
     }
 
     @Override
@@ -72,12 +67,6 @@ public class BlockSpecialFlowerCM extends BlockSpecialFlower implements IAdditio
 
     @Override
     public boolean isEnabled() {
-        boolean enabled = false;
-        if (ModIds.thaumcraft_fix.isLoaded) {
-            BotaniaAPI.addSubTileToCreativeMenu(SubTileWhisperweed.NAME);
-            BotaniaAPI.registerSubTile(SubTileWhisperweed.NAME, SubTileWhisperweed.class);
-            enabled = true;
-        }
-        return enabled;
+        return this.subTile.isEnabled();
     }
 }

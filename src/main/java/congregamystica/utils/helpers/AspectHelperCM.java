@@ -2,6 +2,7 @@ package congregamystica.utils.helpers;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectHelper;
 import thaumcraft.api.aspects.AspectList;
@@ -24,8 +25,15 @@ public class AspectHelperCM {
         }
     }
 
+    @NotNull
     public static AspectList getStackAspects(ItemStack stack) {
         AspectList stackAspects = AspectHelper.getObjectAspects(stack);
         return stackAspects != null ? stackAspects : new AspectList();
+    }
+
+    @NotNull
+    public static AspectList getOreDictAspects(String oreDict) {
+        AspectList aspects = AspectHelper.getObjectAspects(OreDictionary.getOres(oreDict).stream().findFirst().orElse(ItemStack.EMPTY));
+        return aspects != null ? aspects : new AspectList();
     }
 }

@@ -8,22 +8,18 @@ import WayofTime.bloodmagic.core.data.SoulTicket;
 import WayofTime.bloodmagic.iface.IBindable;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
 import WayofTime.bloodmagic.util.helper.TextHelper;
-import congregamystica.CongregaMystica;
-import congregamystica.api.item.IItemAddition;
+import congregamystica.api.item.AbstractItemAddition;
 import congregamystica.config.ConfigHandlerCM;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
@@ -33,11 +29,9 @@ import thaumcraft.api.items.ItemsTC;
 import java.util.List;
 import java.util.Map;
 
-public class ItemBloodScribingTools extends Item implements IItemAddition, IScribeTools, IBindable {
+public class ItemBloodScribingTools extends AbstractItemAddition implements IScribeTools, IBindable {
     public ItemBloodScribingTools() {
-        this.setRegistryName(CongregaMystica.MOD_ID, "blood_scribing_tools");
-        this.setTranslationKey(this.getRegistryName().toString());
-        this.setCreativeTab(CongregaMystica.tabCM);
+        super("blood_scribing_tools");
         this.setMaxStackSize(1);
         this.setMaxDamage(20);
         this.setHasSubtypes(false);
@@ -45,7 +39,7 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
+    public void addInformation(ItemStack stack, World world, @NotNull List<String> tooltip, @NotNull ITooltipFlag flag) {
         if (!stack.hasTagCompound())
             return;
 
@@ -56,7 +50,7 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
     }
 
     @Override
-    public void onUpdate(ItemStack stack, World world, Entity holder, int itemSlot, boolean isSelected) {
+    public void onUpdate(@NotNull ItemStack stack, World world, @NotNull Entity holder, int itemSlot, boolean isSelected) {
         if (!world.isRemote && holder.ticksExisted % 100 == 0 && stack.getItemDamage() > 0) {
             Binding binding = getBinding(stack);
 
@@ -70,7 +64,7 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
     }
 
     @Override
-    public void setDamage(ItemStack stack, int damage) {
+    public void setDamage(@NotNull ItemStack stack, int damage) {
         Binding binding = getBinding(stack);
         if (binding != null) {
             SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
@@ -86,11 +80,6 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
     // IItemAddition
 
     @Override
-    public void registerItem(IForgeRegistry<Item> registry) {
-        registry.register(this);
-    }
-
-    @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
         BloodMagicAPI.INSTANCE.getRecipeRegistrar().addBloodAltar(
                 Ingredient.fromStacks(new ItemStack(ItemsTC.scribingTools)),
@@ -100,11 +89,6 @@ public class ItemBloodScribingTools extends Item implements IItemAddition, IScri
                 5,
                 5
         );
-    }
-
-    @Override
-    public void registerModel(ModelRegistryEvent event) {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(this.getRegistryName(), "inventory"));
     }
 
     @Override

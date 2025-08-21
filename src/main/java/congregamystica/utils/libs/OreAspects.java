@@ -1,9 +1,7 @@
 package congregamystica.utils.libs;
 
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
+import congregamystica.utils.helpers.AspectHelperCM;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectHelper;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.HashMap;
@@ -24,8 +22,8 @@ public class OreAspects {
         if(ORE_ASPECTS.containsKey(oreDict)) {
             return ORE_ASPECTS.get(oreDict);
         } else {
-            AspectList oreAspects = AspectHelper.getObjectAspects(OreDictionary.getOres(oreDict).stream().findFirst().orElse(ItemStack.EMPTY));
-            if(oreAspects != null && oreAspects.size() > 0) {
+            AspectList oreAspects = AspectHelperCM.getOreDictAspects(oreDict);
+            if(!oreAspects.aspects.isEmpty()) {
                 addOreAspect(oreDict, oreAspects, true);
                 return oreAspects;
             } else {

@@ -4,28 +4,24 @@ import blusunrize.immersiveengineering.ImmersiveEngineering;
 import blusunrize.immersiveengineering.api.tool.IUpgrade;
 import blusunrize.immersiveengineering.common.items.ItemDrill;
 import blusunrize.immersiveengineering.common.util.ItemNBTHelper;
-import congregamystica.CongregaMystica;
 import congregamystica.api.IProxy;
-import congregamystica.api.item.IItemAddition;
+import congregamystica.api.item.AbstractItemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.utils.helpers.StringHelper;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
@@ -40,13 +36,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition, IProxy {
+public class ItemUpgradeRefining extends AbstractItemAddition implements IUpgrade, IProxy {
     public static final String UPGRADE_REFINING = "refining";
 
     public ItemUpgradeRefining() {
-        this.setRegistryName(CongregaMystica.MOD_ID, "upgrade_refining");
-        this.setTranslationKey(this.getRegistryName().toString());
-        this.setCreativeTab(CongregaMystica.tabCM);
+        super("upgrade_refining");
     }
 
     @SuppressWarnings("deprecation")
@@ -56,7 +50,7 @@ public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+    public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, List<String> tooltip, @NotNull ITooltipFlag flagIn) {
         String[] flavorText = ImmersiveEngineering.proxy.splitStringOnWidth(
                 I18n.format(StringHelper.getTranslationKey(UPGRADE_REFINING, "tooltip", "info"), this.getItemStackLimit()), 200);
         tooltip.addAll(Arrays.asList(flavorText));
@@ -115,11 +109,6 @@ public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition
     }
 
     @Override
-    public void registerItem(IForgeRegistry<Item> registry) {
-        registry.register(this);
-    }
-
-    @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
         ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
                 "CM_REFINING_UPGRADE",
@@ -132,12 +121,6 @@ public class ItemUpgradeRefining extends Item implements IUpgrade, IItemAddition
                 new ItemStack(ItemsTC.nuggets, 1, 10),
                 new IngredientNBTTC(new ItemStack(Items.ENCHANTED_BOOK))
         ));
-    }
-
-    @Override
-    public void registerModel(ModelRegistryEvent event) {
-        ModelResourceLocation loc = new ModelResourceLocation(this.getRegistryName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(this, 0, loc);
     }
 
     @Override

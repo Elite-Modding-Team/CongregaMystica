@@ -8,18 +8,15 @@ import blusunrize.immersiveengineering.common.items.ItemDrill;
 import blusunrize.immersiveengineering.common.util.ItemNBTHelper;
 import blusunrize.immersiveengineering.common.util.Utils;
 import com.google.common.collect.ImmutableList;
-import congregamystica.CongregaMystica;
 import congregamystica.api.IProxy;
-import congregamystica.api.item.IItemAddition;
+import congregamystica.api.item.AbstractItemAddition;
 import congregamystica.integrations.immersiveengineering.util.DrillStats;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -27,32 +24,28 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class AbstractDrillHead extends Item implements IDrillHead, IItemAddition, IProxy {
+public abstract class AbstractDrillHead extends AbstractItemAddition implements IDrillHead, IProxy {
     public static final String HEAD_DAMAGE = "headDamage";
 
     protected DrillStats drillStats;
 
     public AbstractDrillHead(String unlocName, DrillStats drillStats) {
-        this.setRegistryName(CongregaMystica.MOD_ID, unlocName);
-        this.setTranslationKey(this.getRegistryName().toString());
-        this.setCreativeTab(CongregaMystica.tabCM);
+        super(unlocName);
         this.setMaxStackSize(1);
         this.drillStats = drillStats;
     }
 
+    @SuppressWarnings("unused")
     public DrillStats getDrillStats() {
         return this.drillStats;
     }
@@ -104,6 +97,7 @@ public abstract class AbstractDrillHead extends Item implements IDrillHead, IIte
     @Override
     public void afterBlockbreak(ItemStack itemStack, ItemStack itemStack1, EntityPlayer entityPlayer) {}
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public ImmutableList<BlockPos> getExtraBlocksDug(ItemStack itemStack, World world, EntityPlayer player, RayTraceResult trace) {
         int diameter = this.drillStats.drillSize;
@@ -211,23 +205,8 @@ public abstract class AbstractDrillHead extends Item implements IDrillHead, IIte
     //##########################################################
     // IItemAddition
 
-
     @Override
     public void preInitClient() {
         MinecraftForge.EVENT_BUS.register(this);
     }
-
-    @Override
-    public void registerItem(IForgeRegistry<Item> registry) {
-        registry.register(this);
-    }
-
-    @Override
-    public void registerModel(ModelRegistryEvent event) {
-        ModelResourceLocation loc = new ModelResourceLocation(this.getRegistryName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(this, 0, loc);
-    }
-
-    @Override
-    public abstract boolean isEnabled();
 }

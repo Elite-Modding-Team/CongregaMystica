@@ -1,11 +1,9 @@
 package congregamystica.integrations.congregamystica.items;
 
-import congregamystica.CongregaMystica;
-import congregamystica.api.item.IItemAddition;
+import congregamystica.api.item.AbstractItemAddition;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -22,14 +19,13 @@ import net.minecraft.tileentity.TileEntityNote;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.NoteBlockEvent;
 import net.minecraftforge.event.world.NoteBlockEvent.Instrument;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.tiles.devices.TileArcaneEar;
@@ -38,27 +34,15 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 
-public class ItemMimicFork extends Item implements IItemAddition {
+public class ItemMimicFork extends AbstractItemAddition {
     public ItemMimicFork() {
-        this.setRegistryName(CongregaMystica.MOD_ID, "mimic_fork");
-        this.setTranslationKey(this.getRegistryName().toString());
-        this.setCreativeTab(CongregaMystica.tabCM);
+        super("mimic_fork");
         this.setMaxStackSize(1);
-    }
-
-    @Override
-    public void registerItem(IForgeRegistry<Item> registry) {
-        registry.register(this);
     }
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
         //Register any recipes associated with the item here
-    }
-
-    @Override
-    public void registerModel(ModelRegistryEvent event) {
-    	ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(this.getRegistryName(), "inventory"));
     }
 
     @Override
@@ -77,7 +61,7 @@ public class ItemMimicFork extends Item implements IItemAddition {
     }
 
     @Override
-    public void onCreated(ItemStack stack, World world, EntityPlayer player) {
+    public void onCreated(@NotNull ItemStack stack, @NotNull World world, @NotNull EntityPlayer player) {
         super.onCreated(stack, world, player);
 
         NBTTagCompound tagCompound = new NBTTagCompound();
@@ -89,7 +73,7 @@ public class ItemMimicFork extends Item implements IItemAddition {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
+    public void addInformation(@NotNull ItemStack stack, @Nullable World world, @NotNull List<String> tooltip, @NotNull ITooltipFlag flag) {
         super.addInformation(stack, world, tooltip, flag);
 
         if (stack.hasTagCompound() && stack.getTagCompound() != null) {
@@ -104,7 +88,7 @@ public class ItemMimicFork extends Item implements IItemAddition {
     }
 
     @Override
-    public EnumActionResult onItemUseFirst(EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, EnumHand hand) {
+    public @NotNull EnumActionResult onItemUseFirst(EntityPlayer player, @NotNull World world, @NotNull BlockPos pos, @NotNull EnumFacing side, float hitX, float hitY, float hitZ, @NotNull EnumHand hand) {
         ItemStack heldStack = player.getHeldItem(hand);
         NBTTagCompound tagCompound = heldStack.getTagCompound();
 
@@ -118,25 +102,25 @@ public class ItemMimicFork extends Item implements IItemAddition {
 
         if (!world.isRemote && player.isSneaking()) {
 
-            if (tile != null && tile instanceof TileEntityNote) {
+            if (tile instanceof TileEntityNote) {
                 IBlockState iblockstate = world.getBlockState(pos.down());
 
                 tagCompound.setByte("note", ((TileEntityNote) tile).note);
                 tagCompound.setInteger("tone", getToneFromState(iblockstate));
 
                 return EnumActionResult.SUCCESS;
-            } else if (tile != null && tile instanceof TileArcaneEar) {
+            } else if (tile instanceof TileArcaneEar) {
                 tagCompound.setByte("note", ((TileArcaneEar) tile).note);
                 tagCompound.setInteger("tone", ((TileArcaneEar) tile).tone);
             }
         } else if (!world.isRemote && !player.isSneaking()) {
-            if (tile != null && tile instanceof TileArcaneEar) {
+            if (tile instanceof TileArcaneEar) {
                 ((TileArcaneEar) tile).note = tagCompound.getByte("note");
                 tile.markDirty();
                 return EnumActionResult.SUCCESS;
             }
 
-            if (tile != null && tile instanceof TileEntityNote) {
+            if (tile instanceof TileEntityNote) {
                 ((TileEntityNote) tile).note = tagCompound.getByte("note");
                 tile.markDirty();
                 return EnumActionResult.SUCCESS;
@@ -193,32 +177,29 @@ public class ItemMimicFork extends Item implements IItemAddition {
     }
 
     @Override
-    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
+    public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, EntityPlayer player, @NotNull EnumHand hand) {
         ItemStack itemstack = player.getHeldItem(hand);
         player.setActiveHand(hand);
         return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
     }
 
     @Override
-    public EnumAction getItemUseAction(ItemStack stack) {
+    public @NotNull EnumAction getItemUseAction(@NotNull ItemStack stack) {
         return EnumAction.BOW;
     }
 
     @Override
-    public int getMaxItemUseDuration(ItemStack stack) {
+    public int getMaxItemUseDuration(@NotNull ItemStack stack) {
         return 100;
     }
 
     @Override
-    public void onPlayerStoppedUsing(ItemStack stack, World world, EntityLivingBase entity, int timeLeft) {
+    public void onPlayerStoppedUsing(ItemStack stack, @NotNull World world, @NotNull EntityLivingBase entity, int timeLeft) {
         if (stack.hasTagCompound()) {
             NBTTagCompound tagCompound = stack.getTagCompound();
 
-            int note = 0;
-            int tone = 0;
-
-            note = tagCompound.getByte("note");
-            tone = tagCompound.getInteger("tone");
+            int note = tagCompound.getByte("note");
+            int tone = tagCompound.getInteger("tone");
 
             NoteBlockEvent.Play event = new NoteBlockEvent.Play(world, entity.getPosition(), null, note, tone);
 

@@ -54,7 +54,6 @@ public class IntegrationsCM implements IAddition, IProxy {
         AspectHelperCM.registerNonOverridingOreDictTags(registry, "listAllmeatcooked", new AspectList().add(Aspect.BEAST, 5).add(Aspect.LIFE, 5).add(Aspect.CRAFT, 1));
         //Misc Stuff
         AspectHelperCM.registerNonOverridingOreDictTags(registry, "listAllmilk", new AspectList().add(Aspect.BEAST, 5).add(Aspect.WATER, 5).add(Aspect.LIFE, 10));
-        //Late
 
 
         /*

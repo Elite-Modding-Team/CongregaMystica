@@ -1,21 +1,17 @@
 package congregamystica.integrations.congregamystica.items;
 
-import congregamystica.CongregaMystica;
-import congregamystica.api.item.IItemAddition;
+import congregamystica.api.item.AbstractItemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.utils.helpers.ClusterHelper;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.text.translation.I18n;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
@@ -26,13 +22,11 @@ import thaumcraft.common.lib.utils.Utils;
 
 import java.util.Map;
 
-public class ItemNativeCluster extends Item implements IItemAddition {
+public class ItemNativeCluster extends AbstractItemAddition {
     protected ClusterData clusterData;
 
     public ItemNativeCluster(ClusterData clusterData) {
-        this.setRegistryName(CongregaMystica.MOD_ID, clusterData.clusterId);
-        this.setTranslationKey(this.getRegistryName().toString());
-        this.setCreativeTab(CongregaMystica.tabCM);
+        super(clusterData.clusterId);
         this.clusterData = clusterData;
     }
 
@@ -44,8 +38,9 @@ public class ItemNativeCluster extends Item implements IItemAddition {
         return this.clusterData.associatedOre;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public String getItemStackDisplayName(ItemStack stack) {
+    public @NotNull String getItemStackDisplayName(@NotNull ItemStack stack) {
         String key = (this.getUnlocalizedNameInefficiently(stack) + ".name");
         if(I18n.canTranslate(key)) {
             return I18n.translateToLocal(key).trim();
@@ -56,11 +51,6 @@ public class ItemNativeCluster extends Item implements IItemAddition {
 
     //##########################################################
     // IItemAddition
-
-    @Override
-    public void registerItem(IForgeRegistry<Item> registry) {
-        registry.register(this);
-    }
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
@@ -106,12 +96,6 @@ public class ItemNativeCluster extends Item implements IItemAddition {
                 ThaumcraftApi.addSmeltingBonus(this.clusterData.clusterOreDict, new ItemStack(ItemsTC.nuggets, 1, 10), 0.02f);
             }
         }
-    }
-
-    @Override
-    public void registerModel(ModelRegistryEvent event) {
-        ModelResourceLocation loc = new ModelResourceLocation(this.getRegistryName(), "inventory");
-        ModelLoader.setCustomModelResourceLocation(this, 0, loc);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package congregamystica.integrations.congregamystica;
 
-import congregamystica.CongregaMystica;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.additions.GolemMaterialSteel;
@@ -9,38 +8,27 @@ import congregamystica.integrations.congregamystica.items.ItemMimicFork;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.congregamystica.items.ItemNativeClusterDynamic;
 import congregamystica.integrations.congregamystica.util.ClusterData;
+import congregamystica.registry.ModItemsCM;
 import congregamystica.registry.RegistrarCM;
 import congregamystica.utils.helpers.LogHelper;
 import congregamystica.utils.helpers.PechHelper;
 import congregamystica.utils.misc.EnumPechType;
 import net.minecraft.init.Items;
 import net.minecraft.init.PotionTypes;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.PotionUtils;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@GameRegistry.ObjectHolder(CongregaMystica.MOD_ID)
 public class CongregaMysticaCM implements IProxy {
-    private static final List<ItemNativeCluster> NATIVE_CLUSTERS = new ArrayList<>();
-    public static final Item MIMIC_FORK = null;
-
-    public static List<ItemNativeCluster> getNativeClusters() {
-        return NATIVE_CLUSTERS;
-    }
-
     @Override
     public void preInit() {
         RegistrarCM.addAdditionToRegister(new IntegrationsCM());
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         getClustersFromConfig();
-        NATIVE_CLUSTERS.forEach(RegistrarCM::addAdditionToRegister);
+        ModItemsCM.getNativeClusters().forEach(RegistrarCM::addAdditionToRegister);
     }
     
     @Override
@@ -64,9 +52,9 @@ public class CongregaMysticaCM implements IProxy {
                     String outputType = matcher.group(2);
                     if(matcher.group(3) != null) {
                         int color = Integer.decode(matcher.group(3));
-                        NATIVE_CLUSTERS.add(new ItemNativeClusterDynamic(new ClusterData(associatedOre, outputType, color)));
+                        ModItemsCM.addNativeCluster(new ItemNativeClusterDynamic(new ClusterData(associatedOre, outputType, color)));
                     } else {
-                        NATIVE_CLUSTERS.add(new ItemNativeCluster(new ClusterData(associatedOre, outputType)));
+                        ModItemsCM.addNativeCluster(new ItemNativeCluster(new ClusterData(associatedOre, outputType)));
                     }
                 } else {
                     LogHelper.error("Invalid cluster configuration string: " + configString);

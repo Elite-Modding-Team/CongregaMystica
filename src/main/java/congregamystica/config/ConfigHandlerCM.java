@@ -142,6 +142,12 @@ public class ConfigHandlerCM {
             @Config.Name("Required Altar Tier")
             @Config.Comment("The Blood Atlar tier required to fill the Eldritch Blood Orb.")
             public int tier = 5;
+
+            @Config.RequiresMcRestart
+            @Config.RangeInt(min = 1, max = 10000)
+            @Config.Name("Eldritch Orb Fill Rate")
+            @Config.Comment("The speed the Eldritch Orb can drain LP from the Blood Altar. A drain rate of 50 is equal to the Archmage Blood Orb.")
+            public int drainRate = 100;
         }
     }
 

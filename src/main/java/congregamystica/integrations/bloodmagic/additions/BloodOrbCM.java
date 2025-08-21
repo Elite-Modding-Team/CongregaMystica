@@ -21,7 +21,11 @@ import thaumcraft.api.aspects.AspectList;
 import java.util.Map;
 
 public class BloodOrbCM implements IAddition, IProxy {
-    public BloodOrb ORB_ELDRITCH = new BloodOrb("bloodmagic:eldritch", ConfigHandlerCM.blood_magic.eldritchOrb.tier, Math.max(1000, ConfigHandlerCM.blood_magic.eldritchOrb.capacity), 100);
+    public BloodOrb ORB_ELDRITCH = new BloodOrb(
+            "bloodmagic:eldritch",
+            ConfigHandlerCM.blood_magic.eldritchOrb.tier,
+            Math.max(1000, ConfigHandlerCM.blood_magic.eldritchOrb.capacity),
+            ConfigHandlerCM.blood_magic.eldritchOrb.drainRate);
 
     @SubscribeEvent
     public void registerBloodOrb(RegistryEvent.Register<BloodOrb> event) {

@@ -12,12 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThaumicWondersCM implements IProxy {
-    public static List<ItemEldritchCluster> ELDRITCH_CLUSTERS = new ArrayList<>();
+    private static final List<ItemEldritchCluster> ELDRITCH_CLUSTERS = new ArrayList<>();
+
+    public static List<ItemEldritchCluster> getEldritchClusters() {
+        return ELDRITCH_CLUSTERS;
+    }
 
     @Override
     public void preInit() {
         RegistrarCM.addAdditionToRegister(new IntegrationsTW());
-        CongregaMysticaCM.NATIVE_CLUSTERS.forEach(item -> {
+        CongregaMysticaCM.getNativeClusters().forEach(item -> {
             if(item instanceof ItemNativeClusterDynamic) {
                 ELDRITCH_CLUSTERS.add(new ItemEldritchClusterDynamic(item.getClusterData()));
             } else {

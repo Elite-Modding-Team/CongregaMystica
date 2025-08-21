@@ -28,8 +28,12 @@ import java.util.regex.Pattern;
 
 @GameRegistry.ObjectHolder(CongregaMystica.MOD_ID)
 public class CongregaMysticaCM implements IProxy {
-    public static List<ItemNativeCluster> NATIVE_CLUSTERS = new ArrayList<>();
+    private static final List<ItemNativeCluster> NATIVE_CLUSTERS = new ArrayList<>();
     public static final Item MIMIC_FORK = null;
+
+    public static List<ItemNativeCluster> getNativeClusters() {
+        return NATIVE_CLUSTERS;
+    }
 
     @Override
     public void preInit() {

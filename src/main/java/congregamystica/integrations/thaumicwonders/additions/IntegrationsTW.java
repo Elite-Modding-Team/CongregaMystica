@@ -12,7 +12,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class IntegrationsTW implements IAddition {
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        CongregaMysticaCM.NATIVE_CLUSTERS.stream()
+        CongregaMysticaCM.getNativeClusters().stream()
                 .filter(cluster -> !OreDictionary.getOres(cluster.getAssociatedOre()).isEmpty())
                 .forEach(cluster -> CatalyzationChamberRecipeRegistry.addAlchemistRecipe(
                         new OreIngredient(cluster.getAssociatedOre()),

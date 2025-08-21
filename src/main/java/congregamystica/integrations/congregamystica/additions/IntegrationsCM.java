@@ -20,7 +20,7 @@ public class IntegrationsCM implements IAddition, IProxy {
     @Override
     public void init() {
         if(ConfigHandlerCM.clusters.registerPechTrades) {
-            for (ItemNativeCluster cluster : CongregaMysticaCM.NATIVE_CLUSTERS) {
+            for (ItemNativeCluster cluster : CongregaMysticaCM.getNativeClusters()) {
                 if (!OreDictionary.getOres(cluster.getAssociatedOre()).isEmpty()) {
                     PechHelper.addPechTrade(EnumPechType.MINER, 1, cluster.getDefaultInstance());
                 }

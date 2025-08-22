@@ -35,6 +35,19 @@ public class ConfigHandlerCM {
                         "this feature if you are experiencing long load times caused by this mod."
                 })
         public boolean fancyDynamicOreDict = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Mod Aspects")
+        public ModAspectsCategory modAspects = new ModAspectsCategory();
+
+        public static class ModAspectsCategory {
+            @Config.Name("Applied Energistics 2")
+            public boolean appliedEnergistics = true;
+            @Config.Name("Blood Magic")
+            public boolean bloodMagic = true;
+            @Config.Name("Pam's Harvestcraft")
+            public boolean harvestcraft = true;
+        }
     }
 
     public static class ClustersCategory {

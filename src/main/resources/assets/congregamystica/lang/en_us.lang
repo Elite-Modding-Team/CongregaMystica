@@ -2,7 +2,7 @@ itemGroup.CongregaMysticaTab=Congrega Mystica
 
 # Blocks
 tile.botania:flower.whisperweed.name=Whisperweed
-tile.botania:flower.whisperweed.reference=§kThe Void Calls
+tile.botania:flower.whisperweed.reference=§5§o§kThe void calls
 
 # Items
 item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb

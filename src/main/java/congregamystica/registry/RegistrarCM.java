@@ -10,12 +10,14 @@ import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.thaumicwonders.items.ItemEldritchCluster;
 import congregamystica.utils.helpers.AspectHelperCM;
+import congregamystica.utils.helpers.LogHelper;
 import congregamystica.utils.libs.OreAspects;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.profiler.Profiler;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -108,6 +110,8 @@ public class RegistrarCM {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public static void registerAspects(AspectRegistryEvent event) {
+        long launchTime = System.currentTimeMillis();
+
         AspectEventProxy registry = event.register;
         //Ore Aspects register first so cluster aspects register correctly.
         OreAspects.getOreAspects().forEach((oreDict, aspectList) -> {
@@ -124,10 +128,10 @@ public class RegistrarCM {
                 registry.registerObjectTag(stack, list);
             }
         });
-        //TODO: Config option
         if(ConfigHandlerCM.aspects.fancyDynamicOreDict) {
             AspectHelperCM.doFancyOreDictAspectRegistration(registry);
         }
+        LogHelper.info(String.format("Congrega Mystica aspect registry finished in approximately %dms", (int) (System.currentTimeMillis() - launchTime)));
     }
 
     public static List<IAddition> getAdditions() {

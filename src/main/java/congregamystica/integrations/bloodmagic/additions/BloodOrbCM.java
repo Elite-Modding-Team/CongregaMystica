@@ -63,14 +63,6 @@ public class BloodOrbCM implements IAddition, IProxy {
         //TODO: Register any associated research here
     }
 
-    @SuppressWarnings("deprecation")
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        //TODO: Thaumcraft hates item data. The orb has to have data to register itself, but it also has to be bound so players can use it. = No Aspects
-        ItemStack eldritchOrb = OrbRegistry.getOrbStack(this.ORB_ELDRITCH);
-        aspectMap.put(eldritchOrb, new AspectList().add(Aspect.LIFE, 10).add(Aspect.SENSES, 3).add(Aspect.WATER, 1).add(Aspect.BEAST, 1));
-    }
-
     @Override
     public boolean isEnabled() {
         //TODO: Maybe require Tier 6 altar enabled.

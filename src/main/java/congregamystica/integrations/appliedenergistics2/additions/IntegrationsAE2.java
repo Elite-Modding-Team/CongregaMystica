@@ -1,7 +1,18 @@
 package congregamystica.integrations.appliedenergistics2.additions;
 
+import appeng.api.definitions.IBlockDefinition;
+import appeng.api.definitions.IItemDefinition;
+import appeng.api.util.AEColor;
 import appeng.core.Api;
+import appeng.core.api.ApiPart;
+import appeng.core.api.definitions.ApiBlocks;
+import appeng.core.api.definitions.ApiItems;
+import appeng.core.api.definitions.ApiMaterials;
+import appeng.core.api.definitions.ApiParts;
 import congregamystica.api.IAddition;
+import congregamystica.api.IProxy;
+import congregamystica.config.ConfigHandlerCM;
+import congregamystica.utils.helpers.AspectHelperCM;
 import congregamystica.utils.helpers.RegistryHelper;
 import congregamystica.utils.libs.ModIds;
 import net.minecraft.block.Block;
@@ -13,23 +24,16 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
+import thaumcraft.api.aspects.AspectHelper;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.Map;
 
 public class IntegrationsAE2 implements IAddition {
-
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        registry.registerObjectTag("crystalCertusQuartz",       new AspectList().add(Aspect.CRYSTAL, 5));
-        registry.registerObjectTag("gemChargedQuartzCertus",    new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5));
-        registry.registerObjectTag("crystalPureCertusQuartz",   new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ORDER, 1));
-        registry.registerObjectTag("crystalPureNetherQuartz",   new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ORDER, 1));
-        registry.registerObjectTag("dustCertusQuartz",          new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENTROPY, 1));
-        registry.registerObjectTag("crystalFluix",              new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5));
-        registry.registerObjectTag("crystalPureFluix",          new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5).add(Aspect.ORDER, 1));
-        registry.registerObjectTag("dustFluix",                 new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5).add(Aspect.ENTROPY, 1));
-
+        registry.registerObjectTag("crystalCertusQuartz",       new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 2));
+        registry.registerObjectTag("gemChargedQuartzCertus",    new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 10));
     }
 
     @Override

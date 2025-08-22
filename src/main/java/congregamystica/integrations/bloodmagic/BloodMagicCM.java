@@ -8,7 +8,7 @@ import congregamystica.registry.RegistrarCM;
 public class BloodMagicCM implements IProxy {
     @Override
     public void preInit() {
-        RegistrarCM.addAdditionToRegister(new ItemBloodScribingTools());
         RegistrarCM.addAdditionToRegister(new BloodOrbCM());
+        RegistrarCM.addAdditionToRegister(new ItemBloodScribingTools());
     }
 }

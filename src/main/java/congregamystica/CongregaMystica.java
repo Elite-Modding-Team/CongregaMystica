@@ -24,9 +24,11 @@ public class CongregaMystica {
     public static final String MOD_VERSION = Tags.VERSION;
     public static final String DEPENDENCIES = "required-after:thaumcraft" +
             ";after:" + ModIds.ConstIds.applied_energistics +
+            ";after:" + ModIds.ConstIds.blood_magic +
             ";after:" + ModIds.ConstIds.botania +
             ";after:" + ModIds.ConstIds.harvestcraft +
-            ";after:" + ModIds.ConstIds.harken_scythe;
+            ";after:" + ModIds.ConstIds.harken_scythe +
+            ";after:" + ModIds.ConstIds.immersive_engineering;
 
     public static final String CLIENT_PROXY = "congregamystica.proxy.ClientProxy";
     public static final String COMMON_PROXY = "congregamystica.proxy.CommonProxy";

@@ -22,7 +22,7 @@ public class OreAspects {
         if(ORE_ASPECTS.containsKey(oreDict)) {
             return ORE_ASPECTS.get(oreDict);
         } else {
-            AspectList oreAspects = AspectHelperCM.getOreDictAspects(oreDict);
+            AspectList oreAspects = AspectHelperCM.getDefaultingOreDictAspects(oreDict);
             if(!oreAspects.aspects.isEmpty()) {
                 addOreAspect(oreDict, oreAspects, true);
                 return oreAspects;

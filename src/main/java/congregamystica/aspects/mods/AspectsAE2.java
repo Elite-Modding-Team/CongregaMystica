@@ -8,8 +8,12 @@ import appeng.core.api.definitions.ApiItems;
 import appeng.core.api.definitions.ApiMaterials;
 import appeng.core.api.definitions.ApiParts;
 import congregamystica.api.IAspectProvider;
+import congregamystica.aspects.AspectCalculator;
+import congregamystica.utils.helpers.AspectHelperCM;
 import net.minecraft.item.ItemStack;
-import thaumcraft.api.aspects.AspectEventProxy;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.Tuple;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.Map;
@@ -21,19 +25,20 @@ public class AspectsAE2 implements IAspectProvider {
         ApiMaterials materials = Api.INSTANCE.definitions().materials();
         ApiBlocks blocks = Api.INSTANCE.definitions().blocks();
         ApiParts parts = Api.INSTANCE.definitions().parts();
-        /*
-        registry.registerObjectTag("crystalPureCertusQuartz",   new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ORDER, 5).add(Aspect.ENERGY, 2));
-        registry.registerObjectTag("crystalPureNetherQuartz",   new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ORDER, 5));
-        registry.registerObjectTag("dustCertusQuartz",          new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENTROPY, 1));
-        registry.registerObjectTag("crystalFluix",              new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5));
-        registry.registerObjectTag("crystalPureFluix",          new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5).add(Aspect.ORDER, 5));
-        registry.registerObjectTag("dustFluix",                 new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5).add(Aspect.ENTROPY, 1));
 
+        //Ore Dictionary Values
+        AspectCalculator.addAllOreDictItems(aspects,"crystalPureCertusQuartz",  new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ORDER, 5).add(Aspect.ENERGY, 2));
+        AspectCalculator.addAllOreDictItems(aspects,"crystalPureNetherQuartz",  new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ORDER, 5));
+        AspectCalculator.addAllOreDictItems(aspects,"dustCertusQuartz",         new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENTROPY, 1));
+        AspectCalculator.addAllOreDictItems(aspects,"crystalFluix",             new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5));
+        AspectCalculator.addAllOreDictItems(aspects,"crystalPureFluix",         new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5).add(Aspect.ORDER, 5));
+        AspectCalculator.addAllOreDictItems(aspects,"dustFluix",                new AspectList().add(Aspect.CRYSTAL, 5).add(Aspect.ENERGY, 5).add(Aspect.ENTROPY, 1));
         //Blocks
-        handleAspectRegister(registry, blocks.skyStoneBlock(),          new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1));
-        handleAspectRegister(registry, blocks.smoothSkyStoneBlock(),    new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1).add(Aspect.ORDER, 1));
-        handleAspectRegister(registry, blocks.skyStoneBrick(),          new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1).add(Aspect.ORDER, 1));
-        handleAspectRegister(registry, blocks.skyStoneSmallBrick(),     new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1).add(Aspect.ORDER, 1));
+        aspects.put(getItemStack(blocks.skyStoneBlock()),               new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1));
+        aspects.put(getItemStack(blocks.smoothSkyStoneBlock()),         new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1).add(Aspect.ORDER, 1));
+        aspects.put(getItemStack(blocks.skyStoneBrick()),               new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1).add(Aspect.ORDER, 1));
+        aspects.put(getItemStack(blocks.skyStoneSmallBrick()),          new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1).add(Aspect.ORDER, 1));
+        /*
         //Materials
         handleAspectRegister(registry, materials.calcProcessorPress(),  new AspectList().add(Aspect.METAL, 75).add(Aspect.CRAFT, 20));
         handleAspectRegister(registry, materials.calcProcessorPrint(),  new AspectList().add(Aspect.MECHANISM, 10).add(Aspect.ORDER, 5).add(Aspect.CRYSTAL, 5));
@@ -48,21 +53,22 @@ public class AspectsAE2 implements IAspectProvider {
         handleAspectRegister(registry, materials.siliconPrint(),        new AspectList().add(Aspect.MECHANISM, 10).add(Aspect.ORDER, 10)); //Printed Silicon
         handleAspectRegister(registry, materials.namePress(),           new AspectList().add(Aspect.METAL, 75).add(Aspect.CRAFT, 20)); //Name Press
         handleAspectRegister(registry, materials.skyDust(),             new AspectList().add(Aspect.EARTH, 5).add(Aspect.ELDRITCH, 1).add(Aspect.ENTROPY, 1)); //Sky Stone Dust
-        //Parts - Missing Values
-        handleAspectRegister(registry, parts.p2PTunnelRedstone(),       AspectHelperCM.getStackAspects(parts.p2PTunnelME().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.p2PTunnelItems(),          AspectHelperCM.getStackAspects(parts.p2PTunnelME().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.p2PTunnelFluids(),         AspectHelperCM.getStackAspects(parts.p2PTunnelME().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.p2PTunnelLight(),          AspectHelperCM.getStackAspects(parts.p2PTunnelME().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.p2PTunnelFE(),             AspectHelperCM.getStackAspects(parts.p2PTunnelME().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.p2PTunnelEU(),             AspectHelperCM.getStackAspects(parts.p2PTunnelME().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.p2PTunnelGTEU(),           AspectHelperCM.getStackAspects(parts.p2PTunnelME().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.interfaceTerminal(),       AspectHelperCM.getStackAspects(blocks.iface().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.fluidIface(),              AspectHelperCM.getStackAspects(blocks.fluidIface().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.monitor(),                 AspectHelperCM.getStackAspects(parts.semiDarkMonitor().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.darkMonitor(),             AspectHelperCM.getStackAspects(parts.semiDarkMonitor().maybeStack(1).orElse(ItemStack.EMPTY)));
-        handleAspectRegister(registry, parts.interfaceConfigurationTerminal(), AspectHelperCM.getStackAspects(parts.interfaceTerminal().maybeStack(1).orElse(ItemStack.EMPTY)));
+        */
+        //Parts - Shared Values
+        aspects.put(getItemStack(parts.p2PTunnelRedstone()),                AspectHelperCM.getStackAspects(getItemStack(parts.p2PTunnelME())));
+        aspects.put(getItemStack(parts.p2PTunnelItems()),                   AspectHelperCM.getStackAspects(getItemStack(parts.p2PTunnelME())));
+        aspects.put(getItemStack(parts.p2PTunnelFluids()),                  AspectHelperCM.getStackAspects(getItemStack(parts.p2PTunnelME())));
+        aspects.put(getItemStack(parts.p2PTunnelLight()),                   AspectHelperCM.getStackAspects(getItemStack(parts.p2PTunnelME())));
+        aspects.put(getItemStack(parts.p2PTunnelFE()),                      AspectHelperCM.getStackAspects(getItemStack(parts.p2PTunnelME())));
+        aspects.put(getItemStack(parts.p2PTunnelEU()),                      AspectHelperCM.getStackAspects(getItemStack(parts.p2PTunnelME())));
+        aspects.put(getItemStack(parts.p2PTunnelGTEU()),                    AspectHelperCM.getStackAspects(getItemStack(parts.p2PTunnelME())));
+        aspects.put(getItemStack(parts.interfaceTerminal()),                AspectHelperCM.getStackAspects(getItemStack(blocks.iface())));
+        aspects.put(getItemStack(parts.fluidIface()),                       AspectHelperCM.getStackAspects(getItemStack(blocks.fluidIface())));
+        aspects.put(getItemStack(parts.monitor()),                          AspectHelperCM.getStackAspects(getItemStack(parts.semiDarkMonitor())));
+        aspects.put(getItemStack(parts.darkMonitor()),                      AspectHelperCM.getStackAspects(getItemStack(parts.semiDarkMonitor())));
+        aspects.put(getItemStack(parts.interfaceConfigurationTerminal()),   AspectHelperCM.getStackAspects(getItemStack(parts.interfaceTerminal())));
 
-
+        /*
         //Standardize Cable Values
         registry.registerObjectTag(parts.cableGlass().stack(AEColor.TRANSPARENT, 1),        new AspectList().add(Aspect.CRYSTAL, 3).add(Aspect.ENERGY, 1));
         registry.registerObjectTag(parts.cableCovered().stack(AEColor.TRANSPARENT, 1),      new AspectList().add(Aspect.CRYSTAL, 3).add(Aspect.ENERGY, 1).add(Aspect.BEAST, 8).add(Aspect.PLANT, 2).add(Aspect.SENSES, 2).add(Aspect.CRAFT, 2));
@@ -79,20 +85,28 @@ public class AspectsAE2 implements IAspectProvider {
             registry.registerObjectTag(parts.cableDenseSmart().stack(color, 1),     AspectHelperCM.getStackAspects(parts.cableDenseSmart().stack(AEColor.TRANSPARENT, 1)));
         }
          */
+
+
+        handleInscriberRecipes(aspects);
     }
 
-    private void handleAspectRegister(AspectEventProxy registry, IItemDefinition itemDefinition, AspectList aspectList) {
-        ItemStack stack = itemDefinition.maybeStack(1).orElse(ItemStack.EMPTY);
-        if(!stack.isEmpty()) {
-            registry.registerObjectTag(stack, aspectList);
-        }
+    private ItemStack getItemStack(IItemDefinition itemDefinition) {
+        return itemDefinition.maybeStack(1).orElse(ItemStack.EMPTY);
     }
 
-    private void handleAspectRegister(AspectEventProxy registry, IBlockDefinition blockDefinition, AspectList aspectList) {
-        ItemStack stack = blockDefinition.maybeStack(1).orElse(ItemStack.EMPTY);
-        if(!stack.isEmpty()) {
-            registry.registerObjectTag(stack, aspectList);
-        }
+    private ItemStack getItemStack(IBlockDefinition itemDefinition) {
+        return itemDefinition.maybeStack(1).orElse(ItemStack.EMPTY);
+    }
+
+    private void handleInscriberRecipes(Map<ItemStack, AspectList> aspects) {
+        Api.INSTANCE.registries().inscriber().getRecipes().forEach(recipe -> {
+            Ingredient[] ingredients = recipe.getInputs().stream().map(Ingredient::fromStacks).toArray(Ingredient[]::new);
+            Tuple<ItemStack, AspectList> tuple = AspectCalculator.generateAspectsFromIngredients(recipe.getOutput(), ingredients);
+            if(!tuple.getFirst().isEmpty() && !tuple.getSecond().aspects.isEmpty()) {
+                tuple.getSecond().aspects.put(Aspect.MECHANISM, 10);
+                aspects.put(tuple.getFirst(), tuple.getSecond());
+            }
+        });
     }
 
 }

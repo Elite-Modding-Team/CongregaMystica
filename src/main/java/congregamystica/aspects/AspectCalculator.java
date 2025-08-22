@@ -1,0 +1,274 @@
+package congregamystica.aspects;
+
+import congregamystica.utils.helpers.AspectHelperCM;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.Tuple;
+import net.minecraftforge.oredict.OreDictionary;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AspectCalculator {
+    //TODO: Change this from static stuff to an instance so it gets GC after being fired.
+
+
+    private static final Map<String, AspectList> oreDictCache = new HashMap<>();
+
+    /**
+     * Generates aspects for an output based on the passed ingredients. This method replicates calculations used in
+     * {@link thaumcraft.common.lib.crafting.ThaumcraftCraftingManager#getAspectsFromIngredients(NonNullList, ItemStack, IRecipe, ArrayList)}.
+     *
+     * @param output the recipe output
+     * @param ingredients the recipe ingredients used in the creation of the item
+     * @return A tuple containing the ItemStack and calculated aspect values. The returned ItemStack will have a
+     *         wildcard metadata if the output is a damageable ItemStack, or will be EMPTY if the aspect calculation
+     *         failed.
+     */
+    public static Tuple<ItemStack, AspectList> generateAspectsFromIngredients(ItemStack output, Ingredient... ingredients) {
+        //TODO: Need to compare this to previously generated items to make sure there is no overwriting.
+        if(shouldGenerateRecipeAspects(output)) {
+            int outputCount = output.getCount();
+            output = output.copy();
+            output.setCount(1);
+            if (output.isItemStackDamageable() && !output.getHasSubtypes()) {
+                output.setItemDamage(OreDictionary.WILDCARD_VALUE);
+            }
+            AspectList outputAspects = new AspectList();
+            for (Ingredient ingredient : ingredients) {
+                if(ingredient == null || ingredient == Ingredient.EMPTY)
+                    continue;
+
+                ItemStack stack = AspectHelperCM.getIngredientStack(ingredient);
+                AspectList aspects = AspectHelperCM.getStackAspects(stack);
+                if (!aspects.aspects.isEmpty()) {
+                    if (stack.getItem().hasContainerItem(stack)) {
+                        aspects.remove(AspectHelperCM.getStackAspects(stack.getItem().getContainerItem(stack)));
+                    }
+                    outputAspects.add(aspects);
+                }
+            }
+            return new Tuple<>(output, reduceAspectsFromCraft(outputAspects, outputCount));
+        }
+        return new Tuple<>(ItemStack.EMPTY, new AspectList());
+    }
+
+    /**
+     * Generates a modified aspect list from the passed AspectList value using the same calculation found in
+     * {@link thaumcraft.common.lib.crafting.ThaumcraftCraftingManager#getAspectsFromIngredients(NonNullList, ItemStack, IRecipe, ArrayList)}.
+     * <p>
+     * Aspects modified by this method are reduced by approximately 75%.
+     *
+     * @param aspectList the unmodified aspect list
+     * @param outputCount the number of items created by this recipe
+     * @return a reduced aspect list
+     */
+    public static AspectList reduceAspectsFromCraft(AspectList aspectList, int outputCount) {
+        AspectList aspectsOut = new AspectList();
+        for(Aspect aspect : aspectList.getAspects()) {
+            float amount = aspectList.getAmount(aspect) * 0.75f / outputCount;
+            if(amount < 1.0f && amount > 0.75f) {
+                amount = 1.0f;
+            }
+            if(amount >= 1.0f) {
+                aspectsOut.add(aspect, (int) amount);
+            }
+        }
+        return aspectsOut;
+    }
+
+    /**
+     * Determines whether the ItemStack should generate recipe outputs by comparing the ItemStack ore dictionary
+     * values against cached oreDict values.
+     */
+    private static boolean shouldGenerateRecipeAspects(ItemStack output) {
+        for(int id : OreDictionary.getOreIDs(output)) {
+            if(oreDictCache.containsKey(OreDictionary.getOreName(id))) {
+                return false;
+            }
+        }
+        return true;
+        //return aspects.keySet().stream().anyMatch(stack -> ItemStack.areItemStacksEqual(stack, output));
+    }
+
+    /**
+     * Adds all aspects to any item assigned to the passed ore dictionary value.
+     *
+     * @param aspects the map holding all items and their aspect values
+     * @param oreDict the ore dictionary value
+     * @param aspectList the aspect list to apply to all items
+     * @param overrideValues whether these aspects should override any existing ItemStack aspect values
+     */
+    public static void addAllOreDictItems(Map<ItemStack, AspectList> aspects, String oreDict, AspectList aspectList, boolean overrideValues) {
+        for(ItemStack stack : OreDictionary.getOres(oreDict, false)) {
+            if(!stack.isEmpty()) {
+                if(overrideValues || AspectHelperCM.getStackAspects(stack).aspects.isEmpty()) {
+                    aspects.put(stack.copy(), aspectList);
+                }
+            }
+        }
+        oreDictCache.put(oreDict, aspectList);
+    }
+
+    /**
+     * Adds all aspects to any item assigned to the passed ore dictionary value. This method will override any
+     * previously existing aspect values assigned to items matching the ore dictionary value.
+     *
+     * @param aspects the map holding all items and their aspect values
+     * @param oreDict the ore dictionary value
+     * @param aspectList the aspect list to apply to all items
+     */
+    public static void addAllOreDictItems(Map<ItemStack, AspectList> aspects, String oreDict, AspectList aspectList) {
+        addAllOreDictItems(aspects, oreDict, aspectList, true);
+    }
+
+    /**
+     * Attempts to retrieve the cached oreDict aspects. If no oreDict value has been cached, returns the Thaumcraft
+     * registered aspect values.
+     *
+     * @param oreDict the ore dictionary value to query
+     * @return an aspect list associated with the passed oreDict value
+     */
+    public static AspectList getOreDictAspects(String oreDict) {
+        if(oreDictCache.containsKey(oreDict)) {
+            return oreDictCache.get(oreDict);
+        }
+        return AspectHelperCM.getDefaultingOreDictAspects(oreDict);
+    }
+
+    /**
+     * Scans the OreDictionary to generate aspects for common ore dictionary types such as ingots, gems, dusts,
+     * nuggets, and blocks
+     *
+     * @param aspects the map holding all items and their aspect values
+     */
+    public static void doFancyOreDictAspectStuff(Map<ItemStack, AspectList> aspects) {
+        //Ingots and gems inherit their aspects from their respective ore blocks
+        for(String oreDict : OreDictionary.getOreNames()) {
+            if (oreDict.startsWith("ingot")) {
+                handleIngotOrGemOreDict(aspects, oreDict, "ingot");
+            } else if (oreDict.startsWith("gem")) {
+                handleIngotOrGemOreDict(aspects, oreDict, "gem");
+            }
+        }
+        //Everything else inherits from the ingot aspects
+        for(String oreDict : OreDictionary.getOreNames()) {
+            if (oreDict.startsWith("dust")) {
+                handleDustOreDict(aspects, oreDict);
+            } else if (oreDict.startsWith("nugget")) {
+                handleNuggetOreDict(aspects, oreDict);
+            } else if(oreDict.startsWith("block")) {
+                handleBlockOreDict(aspects, oreDict);
+            }
+        }
+    }
+
+    /**
+     * Generates item aspects for items with the 'ingot' or 'gem' ore dictionary value. The aspects will
+     * auto-generate as values equal to the ore block aspects with Terra removed.
+     *
+     * @param aspects the map holding all items and their aspect values
+     * @param oreDict the ingot or gem ore dictionary value
+     * @param type The oreDict type. This value is generally 'ingot' or 'gem'
+     */
+    private static void handleIngotOrGemOreDict(Map<ItemStack, AspectList> aspects, String oreDict, String type) {
+        String oreOreDict = oreDict.replaceFirst("^" + type, "ore");
+        if(!OreDictionary.getOres(oreOreDict, false).isEmpty()) {
+            AspectList oreAspects = getOreDictAspects(oreOreDict);
+            if(!oreAspects.aspects.isEmpty()) {
+                //Ingot aspects are equal to ore aspects with earth aspect removed
+                AspectList ingotAspects = new AspectList().add(oreAspects).remove(Aspect.EARTH);
+                addAllOreDictItems(aspects, oreDict, ingotAspects);
+                oreDictCache.put(oreOreDict, oreAspects);   //Adding ore oredict to cache
+                oreDictCache.put(oreDict, ingotAspects);    //Adding ingot/gem oredict to cache
+            }
+        }
+    }
+
+    /**
+     * Generates item aspects for the passed dust ore dictionary value. The aspects will be equal to the
+     * 'ingot' or 'gem' variant aspects with one Perditio aspect added.
+     *
+     * @param aspects the map holding all items and their aspect values
+     * @param dustOreDict the dust ore dictionary value
+     */
+    private static void handleDustOreDict(Map<ItemStack, AspectList> aspects, String dustOreDict) {
+        String matchedOreDict = getAssociatedIngotOrGem(dustOreDict, "dust");
+        if(!matchedOreDict.isEmpty()) {
+            AspectList matchedAspects = getOreDictAspects(matchedOreDict);
+            if (!matchedAspects.aspects.isEmpty()) {
+                //Dust aspects are equal to Ingot aspects + 1 entropy
+                AspectList dustAspects = new AspectList().add(matchedAspects).add(Aspect.ENTROPY, 1);
+                addAllOreDictItems(aspects, dustOreDict, dustAspects);
+                oreDictCache.put(dustOreDict, dustAspects);
+            }
+        }
+    }
+
+    /**
+     * Generates item aspects for the passed nugget ore dictionary value. The aspects will be equal to
+     * one aspect from each aspect registered to the 'ingot' or 'dust' item aspects.
+     *
+     * @param aspects the map holding all items and their aspect values
+     * @param nuggetOreDict the nugget ore dictionary value
+     */
+    private static void handleNuggetOreDict(Map<ItemStack, AspectList> aspects, String nuggetOreDict) {
+        String matchedOreDict = getAssociatedIngotOrGem(nuggetOreDict, "nugget");
+        if(!matchedOreDict.isEmpty()) {
+            AspectList matchedAspects = getOreDictAspects(matchedOreDict);
+            if(!matchedAspects.aspects.isEmpty()) {
+                AspectList nuggetAspects = new AspectList();
+                //Nugget aspects are equal to one of every ingot aspect
+                matchedAspects.aspects.keySet().forEach(aspect -> nuggetAspects.add(aspect, 1));
+                addAllOreDictItems(aspects, nuggetOreDict, nuggetAspects);
+                oreDictCache.put(nuggetOreDict, nuggetAspects);
+            }
+        }
+    }
+
+    /**
+     * Gets the estimated aspect value for metal and gem ore blocks. (9 item storage block)
+     *
+     * @param aspects the map holding all items and their aspect values
+     * @param blockOreDict the block ore dictionary value
+     */
+    private static void handleBlockOreDict(Map<ItemStack, AspectList> aspects, String blockOreDict) {
+        String matchedOreDict = getAssociatedIngotOrGem(blockOreDict, "block");
+        if(!matchedOreDict.isEmpty()) {
+            AspectList matchedAspects = getOreDictAspects(matchedOreDict);
+            if(!matchedAspects.aspects.isEmpty()) {
+                AspectList blockAspects = new AspectList();
+                //Block aspects are equal to 75% of 9 ingots
+                matchedAspects.aspects.forEach((aspect, amount) -> blockAspects.add(aspect, amount * 9));
+                addAllOreDictItems(aspects, blockOreDict, reduceAspectsFromCraft(matchedAspects, 1));
+                oreDictCache.put(blockOreDict, blockAspects);
+            }
+        }
+    }
+
+    /**
+     * Gets the associated ingot or gem ore dictionary value by substituting the passed oreDict type.
+     * <p>
+     * An oreDict value of 'oreMaterial' with a type of 'ore' will return 'ingotMaterial', 'gemMaterial',
+     * or an empty string.
+     *
+     * @param oreDict the ore dictionary value
+     * @param type the ore dictionary type
+     * @return The matching ore dictionary value. If no ore dictionary value is found, returns an empty string.
+     */
+    private static String getAssociatedIngotOrGem(String oreDict, String type) {
+        String associatedOreDict = oreDict.replaceFirst("^" + type, "ingot");
+        if(OreDictionary.getOres(associatedOreDict, false).isEmpty()) {
+            associatedOreDict = oreDict.replaceFirst("^" + type, "gem");
+            if(OreDictionary.getOres(associatedOreDict, false).isEmpty()) {
+                return "";
+            }
+        }
+        return associatedOreDict;
+    }
+}

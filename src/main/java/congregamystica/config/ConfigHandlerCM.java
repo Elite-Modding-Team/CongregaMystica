@@ -7,9 +7,6 @@ import net.minecraftforge.common.config.Config;
 //TODO: Remove comment before release
 // @Mod(modid = CongregaMystica.MOD_ID)
 public class ConfigHandlerCM {
-    @Config.RequiresMcRestart
-    @Config.Name("Aspects")
-    public static AspectsCategory aspects = new AspectsCategory();
     @Config.Name("Golem Materials")
     public static GolemCategory golems = new GolemCategory();
     @Config.Name("Native Clusters")
@@ -22,33 +19,6 @@ public class ConfigHandlerCM {
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
     @Config.Name("The One Probe")
     public static TheOneProbeCategory the_one_probe = new TheOneProbeCategory();
-
-    public static class AspectsCategory {
-        @Config.Name("General Ore Dict Aspects")
-        @Config.Comment("Register general ore dictionary aspects for common oreDict values.")
-        public boolean generalOreDict = true;
-
-        @Config.Name("Fancy Ore Dict Aspects")
-        @Config.Comment
-                ({
-                        "Enables the fancy dynamic ore dictionary generation for ingots, gems, nuggets, and dust. Disable",
-                        "this feature if you are experiencing long load times caused by this mod."
-                })
-        public boolean fancyDynamicOreDict = true;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Mod Aspects")
-        public ModAspectsCategory modAspects = new ModAspectsCategory();
-
-        public static class ModAspectsCategory {
-            @Config.Name("Applied Energistics 2")
-            public boolean appliedEnergistics = true;
-            @Config.Name("Blood Magic")
-            public boolean bloodMagic = true;
-            @Config.Name("Pam's Harvestcraft")
-            public boolean harvestcraft = true;
-        }
-    }
 
     public static class ClustersCategory {
         @Config.RequiresMcRestart

@@ -16,12 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectEventProxy;
-import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.ItemsTC;
-
-import java.util.Map;
 
 public class BloodOrbCM implements IAddition, IProxy {
     public BloodOrb ORB_ELDRITCH = new BloodOrb(

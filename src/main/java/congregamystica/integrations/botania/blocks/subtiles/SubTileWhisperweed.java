@@ -1,7 +1,5 @@
 package congregamystica.integrations.botania.blocks.subtiles;
 
-import java.util.List;
-
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
@@ -29,6 +27,8 @@ import vazkii.botania.api.subtile.SubTileFunctional;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lexicon.BasicLexiconEntry;
 import vazkii.botania.common.lexicon.page.PageText;
+
+import java.util.List;
 
 // TODO: Need to see if this is balanced properly
 public class SubTileWhisperweed extends SubTileFunctional implements IAddition, IProxy {

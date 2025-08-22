@@ -1,7 +1,5 @@
 package congregamystica.integrations.botania.blocks;
 
-import org.jetbrains.annotations.NotNull;
-
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,6 +8,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import vazkii.botania.api.subtile.SubTileEntity;

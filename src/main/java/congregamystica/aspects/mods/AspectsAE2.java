@@ -2,16 +2,13 @@ package congregamystica.aspects.mods;
 
 import appeng.api.definitions.IBlockDefinition;
 import appeng.api.definitions.IItemDefinition;
-import appeng.api.util.AEColor;
 import appeng.core.Api;
 import appeng.core.api.definitions.ApiBlocks;
 import appeng.core.api.definitions.ApiItems;
 import appeng.core.api.definitions.ApiMaterials;
 import appeng.core.api.definitions.ApiParts;
 import congregamystica.api.IAspectProvider;
-import congregamystica.utils.helpers.AspectHelperCM;
 import net.minecraft.item.ItemStack;
-import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 

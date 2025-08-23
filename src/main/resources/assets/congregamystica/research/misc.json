@@ -11,7 +11,9 @@
         "~FIRSTSTEPS"
       ],
       "siblings": [
-        "~FIRSTSTEPS"
+        "~FIRSTSTEPS",
+        "CM_EXPANDED_GOLEMANCY",
+        "CM_EXPANDED_STUDIES"
       ],
       "meta": [
         "ROUND",
@@ -41,7 +43,7 @@
       "meta": [],
       "location": [
         2,
-        2
+        1
       ],
       "stages": [
         {
@@ -61,6 +63,54 @@
           "recipes": [
             "congregamystica:mimic_fork"
           ]
+        }
+      ]
+    },
+    {
+      "key": "CM_EXPANDED_GOLEMANCY",
+      "name": "congregamystica.research.expanded_golemancy.title",
+      "icons": [
+        "congregamystica:textures/items/immersiveengineering/upgrade_refining.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CONGREGA_MYSTICA_BASE"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND"
+      ],
+      "location": [
+        -2,
+        2
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.expanded_golemancy.stage.1"
+        }
+      ]
+    },
+    {
+      "key": "CM_EXPANDED_STUDIES",
+      "name": "congregamystica.research.expanded_studies.title",
+      "icons": [
+        "congregamystica:textures/items/immersiveengineering/upgrade_refining.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CONGREGA_MYSTICA_BASE"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND"
+      ],
+      "location": [
+        -2,
+        -2
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.expanded_studies.stage.1"
         }
       ]
     }

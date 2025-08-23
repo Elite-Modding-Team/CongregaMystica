@@ -26,6 +26,43 @@
           "text": "congregamystica.research.congrega_mystica_base.stage.1"
         }
       ]
+    },
+    {
+      "key": "CM_MIMIC_FORK",
+      "name": "congregamystica.research.mimic_fork.title",
+      "icons": [
+        "congregamystica:mimic_fork"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CONGREGA_MYSTICA_BASE"
+      ],
+      "siblings": [],
+      "meta": [],
+      "location": [
+        2,
+        2
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.mimic_fork.stage.1",
+          "required_knowledge": [
+            "OBSERVATION;ARTIFICE;1"
+          ],
+          "required_craft": [
+            "minecraft:noteblock"
+          ],
+          "required_research": [
+            "!sensus"
+          ]
+        },
+        {
+          "text": "congregamystica.research.mimic_fork.stage.2",
+          "recipes": [
+            "congregamystica:mimic_fork"
+          ]
+        }
+      ]
     }
   ]
 }

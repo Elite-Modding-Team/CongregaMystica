@@ -113,6 +113,31 @@
           "text": "congregamystica.research.expanded_studies.stage.1"
         }
       ]
+    },
+    {
+      "key": "CM_METAL_PURIFICATION_EXPANDED",
+      "name": "congregamystica.research.metal_purification_expanded.title",
+      "icons": [
+        "congregamystica:textures/items/cluster_astral_starmetal.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CONGREGA_MYSTICA_BASE",
+        "METALPURIFICATION"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND"
+      ],
+      "location": [
+        2,
+        -1
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.metal_purification_expanded.stage.1"
+        }
+      ]
     }
   ]
 }

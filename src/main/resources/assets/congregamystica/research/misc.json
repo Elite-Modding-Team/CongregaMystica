@@ -11,9 +11,7 @@
         "~FIRSTSTEPS"
       ],
       "siblings": [
-        "~FIRSTSTEPS",
-        "CM_EXPANDED_GOLEMANCY",
-        "CM_EXPANDED_STUDIES"
+        "~FIRSTSTEPS"
       ],
       "meta": [
         "ROUND",
@@ -78,7 +76,8 @@
       ],
       "siblings": [],
       "meta": [
-        "ROUND"
+        "ROUND",
+        "REVERSE"
       ],
       "location": [
         -2,
@@ -102,7 +101,8 @@
       ],
       "siblings": [],
       "meta": [
-        "ROUND"
+        "ROUND",
+        "REVERSE"
       ],
       "location": [
         -2,

@@ -4,7 +4,7 @@ import congregamystica.utils.helpers.ModHelper;
 
 import javax.annotation.Nullable;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "SameParameterValue"})
 public enum ModIds {
     applied_energistics(ConstIds.applied_energistics),
     blood_magic(ConstIds.blood_magic),

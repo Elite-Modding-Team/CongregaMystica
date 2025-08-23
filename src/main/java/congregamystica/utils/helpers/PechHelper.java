@@ -18,6 +18,7 @@ import thaumcraft.common.entities.monster.EntityPech;
 import javax.annotation.Nullable;
 import java.util.*;
 
+@SuppressWarnings("rawtypes")
 public class PechHelper {
     private static final Map<EnumPechType, List<ItemStack>> fallbackTrades = ImmutableMap.copyOf(new HashMap<EnumPechType, List<ItemStack>>() {{
         put(EnumPechType.MINER, Lists.newArrayList(
@@ -68,7 +69,7 @@ public class PechHelper {
         try {
             ArrayList<List> trades = getPechTrades(pechType);
             if(trades != null) {
-                getPechTrades(pechType).removeIf(list -> ingredient.apply((ItemStack) list.get(1)));
+                trades.removeIf(list -> ingredient.apply((ItemStack) list.get(1)));
             }
         } catch (Exception e) {
             LogHelper.error("Failed to remove pech trade. Thaumcraft is terrible and I hate it.");

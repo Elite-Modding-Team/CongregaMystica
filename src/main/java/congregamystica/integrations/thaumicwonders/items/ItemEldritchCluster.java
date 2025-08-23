@@ -3,7 +3,7 @@ package congregamystica.integrations.thaumicwonders.items;
 import com.verdantartifice.thaumicwonders.common.crafting.catalyzationchamber.CatalyzationChamberRecipeRegistry;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.congregamystica.util.ClusterData;
-import congregamystica.utils.helpers.ClusterHelper;
+import congregamystica.utils.helpers.AspectHelperCM;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.text.translation.I18n;
@@ -65,12 +65,12 @@ public class ItemEldritchCluster extends ItemNativeCluster {
 
     @Override
     public void registerResearchLocation() {
-        //TODO
+        //TODO: Add research
     }
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        aspectMap.put(this.getDefaultInstance(), ClusterHelper.getEldritchClusterAspects(this.clusterData));
+        aspectMap.put(this.getDefaultInstance(), AspectHelperCM.getEldritchClusterAspects(this.clusterData));
     }
 
     @Override

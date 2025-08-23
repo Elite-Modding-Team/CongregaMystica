@@ -43,6 +43,7 @@ public class IntegrationsAE2 implements IAddition {
 
     @Override
     public boolean isEnabled() {
+        //Always enabled as this is required for AE2 clusters to generate correctly
         return true;
     }
 }

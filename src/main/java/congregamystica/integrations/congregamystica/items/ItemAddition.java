@@ -2,6 +2,7 @@ package congregamystica.integrations.congregamystica.items;
 
 import congregamystica.api.item.AbstractItemAddition;
 
+@SuppressWarnings("unused")
 public class ItemAddition extends AbstractItemAddition {
     private final boolean isEnabled;
 

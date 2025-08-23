@@ -35,7 +35,7 @@ public class GolemMaterialSteel extends GolemMaterial implements IAddition, IPro
 
     @Override
     public void registerResearchLocation() {
-        //Register associated research here
+        //TODO: Add research
     }
 
     @Override

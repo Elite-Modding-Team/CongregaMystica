@@ -41,7 +41,7 @@ public interface IAddition {
     /**
      * A helper method for registering ore dictionary values. This fires right after the item registry event completes.
      */
-    default void registerOreDicts() {};
+    default void registerOreDicts() {}
 
     /**
      * Returns true if this item is enabled. Used for additions with configurable Enable/Disable or if they

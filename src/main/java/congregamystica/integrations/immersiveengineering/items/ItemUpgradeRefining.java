@@ -125,7 +125,7 @@ public class ItemUpgradeRefining extends AbstractItemAddition implements IUpgrad
 
     @Override
     public void registerResearchLocation() {
-        //TODO
+        //TODO: Add research
     }
 
     @Override

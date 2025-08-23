@@ -42,21 +42,22 @@ public class ItemMimicFork extends AbstractItemAddition {
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //Register any recipes associated with the item here
+        //TODO: Add recipe
     }
 
     @Override
     public void registerResearchLocation() {
-        //Register any associated research here
+        //TODO: Add research
     }
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
+        //TODO: Aspects may not be needed depending on the crafting recipe
     }
 
     @Override
     public boolean isEnabled() {
+        //Mimic fork is always enabled
         return true;
     }
 

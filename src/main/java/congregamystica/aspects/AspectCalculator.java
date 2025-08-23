@@ -44,7 +44,7 @@ public class AspectCalculator {
                 if(ingredient == null || ingredient == Ingredient.EMPTY)
                     continue;
 
-                ItemStack stack = AspectHelperCM.getIngredientStack(ingredient);
+                ItemStack stack = getIngredientStack(ingredient);
                 AspectList aspects = AspectHelperCM.getStackAspects(stack);
                 if (!aspects.aspects.isEmpty()) {
                     if (stack.getItem().hasContainerItem(stack)) {
@@ -56,6 +56,22 @@ public class AspectCalculator {
             return new Tuple<>(output, reduceAspectsFromCraft(outputAspects, outputCount));
         }
         return new Tuple<>(ItemStack.EMPTY, new AspectList());
+    }
+
+    /**
+     * Gets the first ItemStack from a list of ingredients that has registered aspect values.
+     *
+     * @param ingredient the ingredient to query
+     * @return The first ItemStack with registerd aspect values or an empty ItemStack
+     */
+    public static ItemStack getIngredientStack(Ingredient ingredient) {
+        for(ItemStack stack : ingredient.getMatchingStacks()) {
+            AspectList aspectList = AspectHelperCM.getStackAspects(stack);
+            if(!aspectList.aspects.isEmpty()) {
+                return stack;
+            }
+        }
+        return ItemStack.EMPTY;
     }
 
     /**

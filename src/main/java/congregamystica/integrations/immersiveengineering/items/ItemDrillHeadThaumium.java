@@ -21,7 +21,7 @@ public class ItemDrillHeadThaumium extends AbstractDrillHead {
 
     @Override
     public void registerResearchLocation() {
-        //TODO
+        //TODO: Add research
     }
 
     @Override

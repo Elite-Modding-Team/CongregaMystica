@@ -5,7 +5,6 @@ import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.integrations.botania.BotaniaCM;
 import congregamystica.utils.libs.ModIds;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -41,7 +40,6 @@ import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.IPlayerWarp;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.ResearchCategory;
-import thaumcraft.client.fx.FXDispatcher;
 import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.fx.PacketFXPollute;
@@ -61,9 +59,9 @@ import vazkii.botania.common.lexicon.page.PageText;
 import java.awt.*;
 import java.util.Map;
 
-// TODO: Need to see if this is balanced properly
 public class SubTileWhisperweed extends SubTileFunctional implements IAddition, IProxy {
     private static final int MANA_COST = 600;
+    //TODO: Increase PROG_REQ so it is more than just 1 brain per use.
     private static final int PROG_REQ = 1;
     private static final int RANGE = 2;
     public static LexiconEntry WHISPERWEED_ENTRY;
@@ -84,7 +82,7 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
         } else {
             if (this.redstoneSignal <= 0 && this.progress < PROG_REQ && this.mana >= MANA_COST) {
                 //Consuming Mana to eat Zombie Brains
-                if (this.ticksExisted % 300 == 0) {
+                if (this.ticksExisted % 180 == 0) {
                     for (EntityItem entityItem : this.supertile.getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(this.getPos()).grow(RANGE))) {
                         if (entityItem.getItem().getItem() == ItemsTC.brain && entityItem.isEntityAlive() && entityItem.getItem().getCount() > 0) {
                             this.progress++;
@@ -240,6 +238,7 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
 
     @Override
     public void postInit() {
+        //TODO: Write botania research
         SubTileWhisperweed.WHISPERWEED_ENTRY = new BasicLexiconEntry(BotaniaCM.WHISPERWEED, BotaniaAPI.categoryFunctionalFlowers);
         SubTileWhisperweed.WHISPERWEED_ENTRY.setIcon(ItemBlockSpecialFlower.ofType(BotaniaCM.WHISPERWEED));
         SubTileWhisperweed.WHISPERWEED_ENTRY.setLexiconPages(
@@ -255,17 +254,17 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-
+        //TODO: Add recipe
     }
 
     @Override
     public void registerResearchLocation() {
-
+        //TODO: Add research
     }
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
+        //TODO: Flower aspects (check out Botania to see how this works)
     }
 
     @Override

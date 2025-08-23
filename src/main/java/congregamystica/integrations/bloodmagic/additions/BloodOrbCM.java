@@ -55,12 +55,11 @@ public class BloodOrbCM implements IAddition, IProxy {
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Register any associated research here
+        //TODO: Add research (does not need recipe page)
     }
 
     @Override
     public boolean isEnabled() {
-        //TODO: Maybe require Tier 6 altar enabled.
         return ConfigHandlerCM.blood_magic.eldritchOrb.enable;
     }
 

@@ -5,11 +5,16 @@ import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.integrations.botania.BotaniaCM;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.AspectEventProxy;
+import thaumcraft.api.aspects.AspectList;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.lexicon.LexiconEntry;
@@ -18,6 +23,8 @@ import vazkii.botania.api.subtile.SubTileFunctional;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lexicon.BasicLexiconEntry;
 import vazkii.botania.common.lexicon.page.PageText;
+
+import java.util.Map;
 
 // TODO: Should clean up nearby flux goo around it
 public class SubTileTainthistle extends SubTileFunctional implements IAddition, IProxy {
@@ -76,6 +83,7 @@ public class SubTileTainthistle extends SubTileFunctional implements IAddition, 
 
     @Override
     public void postInit() {
+        //TODO: Write botania research
         SubTileTainthistle.TAINTHISTLE_ENTRY = new BasicLexiconEntry(BotaniaCM.TAINTHISTLE, BotaniaAPI.categoryFunctionalFlowers);
         SubTileTainthistle.TAINTHISTLE_ENTRY.setIcon(ItemBlockSpecialFlower.ofType(BotaniaCM.TAINTHISTLE));
         SubTileTainthistle.TAINTHISTLE_ENTRY.setLexiconPages(
@@ -87,6 +95,21 @@ public class SubTileTainthistle extends SubTileFunctional implements IAddition, 
     @Override
     public void registerModel(ModelRegistryEvent event) {
         BotaniaAPIClient.registerSubtileModel(SubTileTainthistle.class, new ModelResourceLocation(new ResourceLocation(CongregaMystica.MOD_ID, BotaniaCM.TAINTHISTLE), "normal"));
+    }
+
+    @Override
+    public void registerRecipe(IForgeRegistry<IRecipe> registry) {
+        //TODO: Add recipe
+    }
+
+    @Override
+    public void registerResearchLocation() {
+        //TODO: Add research
+    }
+
+    @Override
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
+        //TODO: Add aspects
     }
 
     @Override

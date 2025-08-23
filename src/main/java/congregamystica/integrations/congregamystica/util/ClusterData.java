@@ -27,7 +27,7 @@ public class ClusterData {
         int extraFeed = 0;
         while(matcher.find()) {
             if(matcher.start() != 0) {
-                sBuilder = sBuilder.insert(matcher.start() + extraFeed, " ");
+                sBuilder.insert(matcher.start() + extraFeed, " ");
                 extraFeed++;
             }
         }

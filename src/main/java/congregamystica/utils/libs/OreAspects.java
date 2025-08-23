@@ -66,7 +66,6 @@ public class OreAspects {
     }
 
     public static void initOreAspects() {
-        //TODO: Double check these values.
         addOreAspect("oreAluminum", new AspectList().add(Aspect.METAL, 10).add(Aspect.EARTH, 5).add(Aspect.AIR, 5));
         addOreAspect("oreAmethyst", new AspectList().add(Aspect.CRYSTAL, 10).add(Aspect.EARTH, 5).add(Aspect.MAGIC, 5));
         addOreAspect("oreAstralStarmetal", new AspectList().add(Aspect.METAL, 10).add(Aspect.EARTH, 5).add(Aspect.LIGHT, 5).add(Aspect.DARKNESS, 5));

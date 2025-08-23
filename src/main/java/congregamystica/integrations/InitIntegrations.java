@@ -21,6 +21,7 @@ public class InitIntegrations {
     private static void initModAdditions() {
         //The built-in additions should register first
         MOD_ADDITIONS.add(new CongregaMysticaCM());
+        //Mod additions register next
         if(ModIds.applied_energistics.isLoaded) {
             MOD_ADDITIONS.add(new AppliedEnergisticsCM());
         }

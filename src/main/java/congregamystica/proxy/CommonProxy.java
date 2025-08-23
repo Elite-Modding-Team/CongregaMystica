@@ -23,7 +23,7 @@ public class CommonProxy {
     }
 
     private void registerResearch() {
-        //Set up research categories here. Make sure to do it before the IAddition research is fired.
+        //TODO: Set up research categories here. Make sure to do it before the IAddition research is fired.
 
         RegistrarCM.getAdditions().forEach(IAddition::registerResearchLocation);
     }

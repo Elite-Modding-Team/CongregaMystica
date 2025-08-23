@@ -35,7 +35,7 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
 
     @Override
     public void registerResearchLocation() {
-        //Register associated research here
+        //TODO: Add research
     }
 
     @Override

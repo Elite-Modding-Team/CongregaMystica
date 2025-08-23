@@ -10,7 +10,6 @@ import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemMaterial;
 import thaumcraft.api.items.ItemsTC;
 
-//Because this feature is not a block or item, it should extend the IProxy so it can be registered correctly.
 public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition, IProxy {
 	
     public GolemMaterialLivingmetal() {
@@ -29,18 +28,22 @@ public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition
     }
 
     @Override
+    public void preInit() {
+        //TODO: Register material property. Remember to use GolemHelper#registerGolemTrait()
+    }
+
+    @Override
     public void init() {
     	register(this);
     }
 
     @Override
     public void registerResearchLocation() {
-        //Register associated research here
+        //TODO: Add research
     }
 
     @Override
     public boolean isEnabled() {
-        //Configuration or OreDict toggles here
         return ConfigHandlerCM.golems.livingmetal.enable;
     }
 }

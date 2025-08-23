@@ -93,7 +93,7 @@ public class ItemBloodScribingTools extends AbstractItemAddition implements IScr
 
     @Override
     public void registerResearchLocation() {
-        //Register any associated research here
+        //TODO: Add research
     }
 
     @Override

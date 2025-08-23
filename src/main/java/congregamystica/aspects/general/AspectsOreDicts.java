@@ -15,6 +15,8 @@ public class AspectsOreDicts implements IAspectProvider {
 
     @Override
     public void getAspects(Map<ItemStack, AspectList> aspects) {
+        //TODO: When running this be sure to get the OreDict values from the OreAspects class used for Cluster generation
+
         OreDictionary.registerOre("gemCoal", new ItemStack(Items.COAL, 1, 0));
         OreDictionary.registerOre("gemCharcoal", new ItemStack(Items.COAL, 1, 1));
         /*

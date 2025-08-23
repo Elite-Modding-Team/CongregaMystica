@@ -3,7 +3,7 @@ package congregamystica.integrations.congregamystica.items;
 import congregamystica.api.item.AbstractItemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
-import congregamystica.utils.helpers.ClusterHelper;
+import congregamystica.utils.helpers.AspectHelperCM;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.text.translation.I18n;
@@ -104,12 +104,12 @@ public class ItemNativeCluster extends AbstractItemAddition {
 
     @Override
     public void registerResearchLocation() {
-        //TODO
+        //TODO: Research Location
     }
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        aspectMap.put(this.getDefaultInstance(), ClusterHelper.getNativeClusterAspects(this.clusterData));
+        aspectMap.put(this.getDefaultInstance(), AspectHelperCM.getNativeClusterAspects(this.clusterData));
     }
 
     @Override

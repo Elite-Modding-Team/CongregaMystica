@@ -33,15 +33,13 @@ import java.util.List;
 import java.util.Map;
 
 public class ItemMimicFork extends AbstractItemAddition {
-    public ItemMimicFork() {
-        super("mimic_fork");
+    public ItemMimicFork(String unlocName) {
+        super(unlocName);
         this.setMaxStackSize(1);
     }
 
-    @Override
-    public void onCreated(@NotNull ItemStack stack, @NotNull World world, @NotNull EntityPlayer player) {
-        super.onCreated(stack, world, player);
-        this.initNoteTags(stack);
+    public ItemMimicFork() {
+        this("mimic_fork");
     }
 
     @Override
@@ -84,7 +82,33 @@ public class ItemMimicFork extends AbstractItemAddition {
         return EnumActionResult.PASS;
     }
 
-    private int getToneFromState(IBlockState state) {
+    @Override
+    public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, EntityPlayer player, @NotNull EnumHand hand) {
+        if(!player.isSneaking()) {
+            ItemStack heldStack = player.getHeldItem(hand);
+            int note = getNote(heldStack);
+            int tone = getTone(heldStack);
+            if(this.playSoundAt(world, player.getPosition(), note, tone)) {
+                player.swingArm(hand);
+                return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
+            }
+        }
+        return super.onItemRightClick(world, player, hand);
+    }
+
+    public boolean playSoundAt(World world, BlockPos pos, int note, int tone) {
+        NoteBlockEvent.Play event = new NoteBlockEvent.Play(world, pos, null, note, tone);
+        if (!MinecraftForge.EVENT_BUS.post(event)) {
+            pos = pos.up();
+            float pitch = (float) Math.pow(2.0D, (note - 12) / 12.0D);
+            world.playSound(null, pos, getInstrumentSound(event.getInstrument()), SoundCategory.PLAYERS, 3.0F, pitch);
+            world.spawnParticle(EnumParticleTypes.NOTE, pos.getX() + 0.5D, pos.getY() + 0.2D, pos.getZ() + 0.5D, (double) note / 24.0D, 0.0D, 0.0D);
+            return true;
+        }
+        return false;
+    }
+
+    public int getToneFromState(IBlockState state) {
         Material material = state.getMaterial();
         int i = 0;
 
@@ -114,58 +138,11 @@ public class ItemMimicFork extends AbstractItemAddition {
         return i;
     }
 
-    @Override
-    public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World world, EntityPlayer player, @NotNull EnumHand hand) {
-        if(!player.isSneaking()) {
-            ItemStack heldStack = player.getHeldItem(hand);
-            int note = getNote(heldStack);
-            int tone = getTone(heldStack);
-            NoteBlockEvent.Play event = new NoteBlockEvent.Play(world, player.getPosition(), null, note, tone);
-            if (!MinecraftForge.EVENT_BUS.post(event)) {
-                float pitch = (float) Math.pow(2.0D, (note - 12) / 12.0D);
-                world.playSound(null, player.getPosition().up(1), getInstrumentSound(event.getInstrument()), SoundCategory.PLAYERS, 3.0F, pitch);
-                world.spawnParticle(EnumParticleTypes.NOTE, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, (double) note / 24.0D, 0.0D, 0.0D);
-                player.swingArm(hand);
-                return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
-            }
-        }
-        return super.onItemRightClick(world, player, hand);
-    }
-
-    private void initNoteTags(ItemStack stack) {
-        this.setNote(stack, (byte) 0);
-        this.setTone(stack, 0);
-    }
-
-    @SuppressWarnings("ConstantConditions")
-    private void setNote(ItemStack stack, byte note) {
-        if(!stack.hasTagCompound()) {
-            stack.setTagCompound(new NBTTagCompound());
-        }
-        stack.getTagCompound().setByte("note", note);
-    }
-
-    private byte getNote(ItemStack stack) {
-        return stack.hasTagCompound() && stack.getTagCompound() != null ? stack.getTagCompound().getByte("note") : 0;
-    }
-
-    @SuppressWarnings("ConstantConditions")
-    private void setTone(ItemStack stack, int tone) {
-        if(!stack.hasTagCompound()) {
-            stack.setTagCompound(new NBTTagCompound());
-        }
-        stack.getTagCompound().setInteger("tone", tone);
-    }
-
-    private int getTone(ItemStack stack) {
-        return stack.hasTagCompound() && stack.getTagCompound() != null ? stack.getTagCompound().getByte("tone") : 0;
-    }
-
-    private String getInstrumentNameFromInt(int toneIn) {
+    public String getInstrumentNameFromInt(int toneIn) {
         return Instrument.values()[toneIn].name().toLowerCase();
     }
 
-    private SoundEvent getInstrumentSound(Instrument instrumentIn) {
+    public SoundEvent getInstrumentSound(Instrument instrumentIn) {
         switch (instrumentIn) {
             case BELL:
                 return SoundEvents.BLOCK_NOTE_BELL;
@@ -188,6 +165,30 @@ public class ItemMimicFork extends AbstractItemAddition {
             default:
                 return SoundEvents.BLOCK_NOTE_BASS;
         }
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public void setNote(ItemStack stack, byte note) {
+        if(!stack.hasTagCompound()) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        stack.getTagCompound().setByte("note", note);
+    }
+
+    public byte getNote(ItemStack stack) {
+        return stack.hasTagCompound() && stack.getTagCompound() != null ? stack.getTagCompound().getByte("note") : 0;
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public void setTone(ItemStack stack, int tone) {
+        if(!stack.hasTagCompound()) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        stack.getTagCompound().setInteger("tone", tone);
+    }
+
+    public int getTone(ItemStack stack) {
+        return stack.hasTagCompound() && stack.getTagCompound() != null ? stack.getTagCompound().getByte("tone") : 0;
     }
 
     //##########################################################

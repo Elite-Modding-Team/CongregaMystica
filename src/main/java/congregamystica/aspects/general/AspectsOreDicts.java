@@ -1,7 +1,6 @@
 package congregamystica.aspects.general;
 
 import congregamystica.api.IAspectProvider;
-import congregamystica.aspects.AspectCalculator;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -69,10 +68,6 @@ public class AspectsOreDicts implements IAspectProvider {
         //Late register oredict aspects. These are last resort for generating item aspects.
         registerLateAspectOreDictTypes(registry);
          */
-
-
-        //Fancy OreDict calculation fires last as it needs the previous ore dictionary values to work.
-        AspectCalculator.doFancyOreDictAspectStuff(aspects);
     }
 
     private void registerLateAspectOreDictTypes(AspectEventProxy registry) {

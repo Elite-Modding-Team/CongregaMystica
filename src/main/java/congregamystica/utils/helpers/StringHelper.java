@@ -7,6 +7,8 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.DimensionType;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.aspects.AspectList;
 
@@ -30,7 +32,23 @@ public class StringHelper {
         return new TextComponentTranslation(getTranslationKey(unloc, type, params));
     }
 
-    public String getCraftTweakerIItemStackScript(ItemStack stack, AspectList aspectList) {
+    public static String getDimensionName(int dimensionId) {
+        if (!DimensionManager.isDimensionRegistered(dimensionId)) {
+            return Integer.toString(dimensionId);
+        }
+        DimensionType type = DimensionManager.getProviderType(dimensionId);
+        if (type == null) {
+            return Integer.toString(dimensionId);
+        }
+        String name = type.getName();
+        int[] dims = DimensionManager.getDimensions(type);
+        if (dims != null && dims.length > 1) {
+            name += " " + dimensionId;
+        }
+        return name;
+    }
+
+    public static String getCraftTweakerIItemStackScript(ItemStack stack, AspectList aspectList) {
         String stackStr = "<" + getSharedItemString(stack) + ">";
         StringBuilder builder = new StringBuilder(stackStr);
         String withNBT = "";
@@ -47,7 +65,7 @@ public class StringHelper {
         return builder.toString();
     }
 
-    public String getGroovyScriptItemStackScript(ItemStack stack, AspectList aspectList) {
+    public static String getGroovyScriptItemStackScript(ItemStack stack, AspectList aspectList) {
         String stackStr = InfoParserItem.instance.text(stack, false, false);
         StringBuilder builder = new StringBuilder("mods.thaumcraft.AspectHelper.aspectBuilder()");
         builder.append(".object(").append(stackStr).append(")");
@@ -56,7 +74,7 @@ public class StringHelper {
         return builder.toString();
     }
 
-    public String getSharedItemString(ItemStack stack) {
+    private static String getSharedItemString(ItemStack stack) {
         StringBuilder builder = new StringBuilder(stack.getItem().getRegistryName().toString());
         if(stack.getMetadata() != 0) {
             builder.append(":").append(stack.getMetadata() == OreDictionary.WILDCARD_VALUE ? "*" : stack.getMetadata());

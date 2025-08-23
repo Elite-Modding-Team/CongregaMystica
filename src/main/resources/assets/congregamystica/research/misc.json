@@ -1,0 +1,31 @@
+{
+  "entries": [
+    {
+      "key": "CONGREGA_MYSTICA_BASE",
+      "name": "congregamystica.research.congrega_mystica_base.title",
+      "icons": [
+        "congregamystica:textures/items/immersiveengineering/upgrade_refining.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "~FIRSTSTEPS"
+      ],
+      "siblings": [
+        "~FIRSTSTEPS"
+      ],
+      "meta": [
+        "ROUND",
+        "HIDDEN"
+      ],
+      "location": [
+        0,
+        0
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.congrega_mystica_base.stage.1"
+        }
+      ]
+    }
+  ]
+}

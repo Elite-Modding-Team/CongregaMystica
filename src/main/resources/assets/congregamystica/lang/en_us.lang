@@ -20,20 +20,6 @@ item.congregamystica:eldritch_cluster_quartz_certus.name=Eldritch Certus Quartz 
 item.congregamystica:mimic_fork.name=Mimic Fork
 item.congregamystica:upgrade_refining.name=Native Cluster Extraction Module
 
-mimic_fork.instrument=Instrument: %s
-mimic_fork.note=Note: %s
-
-mimic_fork.instrument.piano=Piano
-mimic_fork.instrument.bassdrum=Bass Drum
-mimic_fork.instrument.snare=Snare
-mimic_fork.instrument.clicks=Clicks
-mimic_fork.instrument.bassguitar=Bass Guitar
-mimic_fork.instrument.flute=Flute
-mimic_fork.instrument.bell=Bell
-mimic_fork.instrument.guitar=Guitar
-mimic_fork.instrument.chime=Chime
-mimic_fork.instrument.xylophone=Xylophone
-
 # Golems
 golem.material.cm_biomass=Biomass
 golem.material.text.cm_biomass=This golem is infected with biomass.
@@ -48,6 +34,18 @@ golem.material.cm_treated_wood=Treated Wood
 golem.material.text.cm_treated_wood=This golem is crafted from treated wood. It is well lubricated, allowing it to perform complicated tasks with ease.
 
 # Tooltips
+mimic_fork.instrument=Instrument: %s
+mimic_fork.instrument.piano=Piano
+mimic_fork.instrument.bassdrum=Bass Drum
+mimic_fork.instrument.snare=Snare
+mimic_fork.instrument.clicks=Clicks
+mimic_fork.instrument.bassguitar=Bass Guitar
+mimic_fork.instrument.flute=Flute
+mimic_fork.instrument.bell=Bell
+mimic_fork.instrument.guitar=Guitar
+mimic_fork.instrument.chime=Chime
+mimic_fork.instrument.xylophone=Xylophone
+mimic_fork.note=Note: %s
 tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract native clusters from mined ores, stacks up to %d
 
 # Research

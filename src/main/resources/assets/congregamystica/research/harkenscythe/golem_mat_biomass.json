@@ -1,15 +1,15 @@
 {
   "entries": [
     {
-      "key": "CM_GOLEM_MAT_TREATED_WOOD",
-      "name": "congregamystica.research.golem_mat_treated_wood.title",
+      "key": "CM_GOLEM_MAT_BIOMASS",
+      "name": "congregamystica.research.golem_mat_biomass.title",
       "icons": [
-        "immersiveengineering:treated_wood"
+        "harkenscythe:biomass"
       ],
       "category": "CONGREGA_MYSTICA",
       "parents": [
         "CM_EXPANDED_GOLEMANCY",
-        "MATSTUDWOOD",
+        "MATSTUDIRON",
         "MINDCLOCKWORK"
       ],
       "siblings": [],
@@ -18,14 +18,14 @@
         "HIDDEN"
       ],
       "location": [
-        -4,
-        1
+        -5,
+        3
       ],
       "stages": [
         {
-          "text": "congregamystica.research.golem_mat_treated_wood.stage.1",
+          "text": "congregamystica.research.golem_mat_biomass.stage.1",
           "required_research": [
-            "f_CM_TREATED_WOOD"
+            "f_CM_BIOMASS"
           ]
         }
       ]

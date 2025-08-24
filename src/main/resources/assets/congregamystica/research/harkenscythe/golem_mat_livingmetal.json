@@ -1,15 +1,15 @@
 {
   "entries": [
     {
-      "key": "CM_GOLEM_MAT_TREATED_WOOD",
-      "name": "congregamystica.research.golem_mat_treated_wood.title",
+      "key": "CM_GOLEM_MAT_LIVINGMETAL",
+      "name": "congregamystica.research.golem_mat_livingmetal.title",
       "icons": [
-        "immersiveengineering:treated_wood"
+        "harkenscythe:livingmetal_ingot"
       ],
       "category": "CONGREGA_MYSTICA",
       "parents": [
         "CM_EXPANDED_GOLEMANCY",
-        "MATSTUDWOOD",
+        "MATSTUDIRON",
         "MINDCLOCKWORK"
       ],
       "siblings": [],
@@ -18,14 +18,14 @@
         "HIDDEN"
       ],
       "location": [
-        -4,
+        -6,
         1
       ],
       "stages": [
         {
-          "text": "congregamystica.research.golem_mat_treated_wood.stage.1",
+          "text": "congregamystica.research.golem_mat_livingmetal.stage.1",
           "required_research": [
-            "f_CM_TREATED_WOOD"
+            "f_CM_LIVINGMETAL"
           ]
         }
       ]

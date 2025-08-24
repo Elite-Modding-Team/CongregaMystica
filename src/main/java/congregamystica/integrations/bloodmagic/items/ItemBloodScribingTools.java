@@ -8,6 +8,7 @@ import WayofTime.bloodmagic.core.data.SoulTicket;
 import WayofTime.bloodmagic.iface.IBindable;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
 import WayofTime.bloodmagic.util.helper.TextHelper;
+import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.client.util.ITooltipFlag;
@@ -15,11 +16,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
+
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
@@ -93,7 +97,8 @@ public class ItemBloodScribingTools extends AbstractItemAddition implements IScr
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/bloodmagic/blood_scribing_tools"));
     }
 
     @Override

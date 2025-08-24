@@ -1,0 +1,30 @@
+{
+  "entries": [
+    {
+      "key": "CM_BLOOD_SCRIBING_TOOLS",
+      "name": "congregamystica.research.blood_scribing_tools.title",
+      "icons": [
+        "congregamystica:blood_scribing_tools"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CM_EXPANDED_STUDIES",
+        "THEORYRESEARCH"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "HIDDEN"
+      ],
+      "location": [
+        -5,
+        -3
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.blood_scribing_tools.stage.1"
+        }
+      ]
+    }
+  ]
+}

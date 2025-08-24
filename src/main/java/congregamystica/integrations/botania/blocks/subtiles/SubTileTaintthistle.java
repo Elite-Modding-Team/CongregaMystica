@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
@@ -168,7 +169,8 @@ public class SubTileTaintthistle extends SubTileFunctional implements IAddition,
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/botania/taintthistle"));
     }
 
     @Override

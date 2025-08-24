@@ -55,8 +55,7 @@ tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract
 tc.research_category.CONGREGA_MYSTICA=Congrega Mystica
 
 congregamystica.research.blood_scribing_tools.title=Bloody Scrivener's Tools
-congregamystica.research.blood_scribing_tools.stage.1=Refilling the inkwell of my scribing tools can be frustrating sometimes. I should look towards more ways to refill it, even through more uncanny ways if I have to...
-congregamystica.research.blood_scribing_tools.stage.2=By enhancing my scribing tools with a much more sinister type of magic, I've created a set of scribing tools that fills themselves from lifeforce instead of ink. The Bloody Scrivener's Tools can draw from LP instead of ink when writing, but may need contact with human warmth to recharge if they run out.<BR>Right-clicking the tool will bind it to my LP network. It will take 25 LP per point of damage taken.
+congregamystica.research.blood_scribing_tools.stage.1=By enhancing my scribing tools with a much more sinister type of magic, I've created a set of scribing tools that fills themselves from lifeforce instead of ink. The Bloody Scrivener's Tools can draw from LP instead of ink when writing, but may need contact with human warmth to recharge if they run out.<BR>Right-clicking the tool will bind it to my LP network. It will take 100 LP per point of damage taken.
 
 congregamystica.research.congrega_mystica_base.title=Congrega Mystica
 congregamystica.research.congrega_mystica_base.stage.1=Over the course of my research I've come to realize that I've only begun to scratch the surface of what is possible.<BR>I've turned my attention to augmenting other professions with Thaumaturgy with the hope of discovering some unforeseen breakthrough.
@@ -66,6 +65,9 @@ congregamystica.research.drill_head_thaumium.stage.1=[WIP]
 
 congregamystica.research.drill_head_void.title=Void Drill Head
 congregamystica.research.drill_head_void.stage.1=[WIP]
+
+congregamystica.research.eldritch_blood_orb.title=Eldritch Blood Orb
+congregamystica.research.eldritch_blood_orb.stage.1=[WIP]
 
 congregamystica.research.expanded_golemancy.title=Expanded Golemancy
 congregamystica.research.expanded_golemancy.stage.1=[WIP]
@@ -85,16 +87,22 @@ congregamystica.research.golem_mat_steel.stage.1=Steel is quite durable, more so
 congregamystica.research.golem_mat_treated_wood.title=Material Studies: Treated Wood
 congregamystica.research.golem_mat_treated_wood.stage.1=Treated Wood is of higher quality than normal wood. Due to its oil-laden nature however, it is not as light.
 
+congregamystica.research.metal_purification_expanded.title=Metal Purification: Expanded
+congregamystica.research.metal_purification_expanded.stage.1=The variety of native clusters has been greatly expanded. These clusters will produce twice the normal amount of ingots like the other ones I'm already aware of.<BR>I can also produce these clusters alchemically if I so choose. 
+
 congregamystica.research.mimic_fork.title=Mimic Fork
 congregamystica.research.mimic_fork.stage.1=Note Blocks are a device I've been thinking of a lot lately. They are simple things that respond to touch or Redstone to emit one single pure note... But of what utility are they really?<BR>Any usage requires a Note Block to be setup in a specific location and manually configured to the desired note.<BR>There must be a better way...
 congregamystica.research.mimic_fork.stage.2=I've found my answer with the Mimic Fork!<BR>It has a few functions, It can store musical notes to evoke them at a later point. It also allows you to set an Arcane Ear or Note Block's Note setting by right-clicking the Mimic Fork on either device. You are also able to set the Instrument and Note type of a given Note Block or Arcane Ear by instead sneaking and right-clicking on the device.
+
+congregamystica.research.taintthistle.title=Taintthistle
+congregamystica.research.taintthistle.stage.1=[WIP]
 
 congregamystica.research.upgrade_refining.title=Drill Upgrade: Refining
 congregamystica.research.upgrade_refining.stage.1=[WIP]
 congregamystica.research.upgrade_refining.stage.2=[WIP]
 
-congregamystica.research.metal_purification_expanded.title=Metal Purification: Expanded
-congregamystica.research.metal_purification_expanded.stage.1=The variety of native clusters has been greatly expanded. These clusters will produce twice the normal amount of ingots like the other ones I'm already aware of.<BR>I can also produce these clusters alchemically if I so choose. 
+congregamystica.research.whisperweed.title=Whisperweed
+congregamystica.research.whisperweed.stage.1=[WIP]
 
 research.f_CM_BIOMASS.text=Examine the biomass colony...
 research.f_CM_LIVINGMETAL.text=Examine livingmetal

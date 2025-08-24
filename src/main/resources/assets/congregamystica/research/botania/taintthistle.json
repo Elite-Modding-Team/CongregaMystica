@@ -1,0 +1,30 @@
+{
+  "entries": [
+    {
+      "key": "CM_TAINTTHISTLE",
+      "name": "congregamystica.research.taintthistle.title",
+      "icons": [
+        "congregamystica:textures/blocks/botania/taintthistle.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CM_EXPANDED_STUDIES",
+        "FLUX"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "HIDDEN"
+      ],
+      "location": [
+        -4,
+        -1
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.taintthistle.stage.1"
+        }
+      ]
+    }
+  ]
+}

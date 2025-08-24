@@ -1,0 +1,30 @@
+{
+  "entries": [
+    {
+      "key": "CM_ELDRITCH_BLOOD_ORB",
+      "name": "congregamystica.research.eldritch_blood_orb.title",
+      "icons": [
+        "congregamystica:textures/gui/eldritch_blood_orb.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CM_EXPANDED_STUDIES",
+        "PRIMPEARL"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "HIDDEN"
+      ],
+      "location": [
+        -6,
+        -4
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.eldritch_blood_orb.stage.1"
+        }
+      ]
+    }
+  ]
+}

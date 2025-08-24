@@ -102,6 +102,7 @@ public class ItemNativeCluster extends AbstractItemAddition {
         }
     }
 
+    //TODO: Fix cluster research loading for every cluster
     @Override
     public void registerResearchLocation() {
         //TODO: Research Location

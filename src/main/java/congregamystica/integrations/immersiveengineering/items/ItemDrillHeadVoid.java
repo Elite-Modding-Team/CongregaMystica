@@ -13,9 +13,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import thaumcraft.api.ThaumcraftApi;
-
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.api.ThaumcraftApi;
 
 public class ItemDrillHeadVoid extends AbstractDrillHead {
     public static final DrillStats VOID_HEAD_STATS = new DrillStats(

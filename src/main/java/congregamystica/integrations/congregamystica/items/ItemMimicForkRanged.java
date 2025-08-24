@@ -1,12 +1,16 @@
 package congregamystica.integrations.congregamystica.items;
 
+import congregamystica.registry.ModItemsCM;
 import congregamystica.utils.helpers.PlayerHelper;
 import congregamystica.utils.helpers.StringHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -21,8 +25,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.commons.lang3.text.WordUtils;
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.ThaumcraftApiHelper;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.InfusionRecipe;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -150,16 +158,27 @@ public class ItemMimicForkRanged extends ItemMimicFork {
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //TODO: Add recipe
+        //TODO: Research string
+        ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
+                "",
+                this.getDefaultInstance(),
+                3,
+                new AspectList().add(Aspect.AIR, 50).add(Aspect.SENSES, 50).add(Aspect.ELDRITCH, 20),
+                Ingredient.fromItem(ModItemsCM.MIMIC_FORK),
+                Ingredient.fromStacks(ThaumcraftApiHelper.makeCrystal(Aspect.AIR)),
+                Ingredient.fromStacks(new ItemStack(Blocks.NOTEBLOCK)),
+                Ingredient.fromStacks(ThaumcraftApiHelper.makeCrystal(Aspect.AIR)),
+                Ingredient.fromItem(Items.ENDER_PEARL)
+        ));
+    }
+
+    @Override
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
+        //Don't register aspects so the ranged fork correctly inherits recipe aspects
     }
 
     @Override
     public void registerResearchLocation() {
         //TODO: Add research
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        //TODO: Aspects may not be needed depending on the crafting recipe
     }
 }

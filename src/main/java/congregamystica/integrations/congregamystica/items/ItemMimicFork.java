@@ -1,5 +1,6 @@
 package congregamystica.integrations.congregamystica.items;
 
+import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemAddition;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -22,10 +23,14 @@ import net.minecraftforge.event.world.NoteBlockEvent;
 import net.minecraftforge.event.world.NoteBlockEvent.Instrument;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.items.ItemsTC;
 import thaumcraft.common.tiles.devices.TileArcaneEar;
 
 import javax.annotation.Nullable;
@@ -196,17 +201,30 @@ public class ItemMimicFork extends AbstractItemAddition {
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //TODO: Add recipe
+        ThaumcraftApi.addFakeCraftingRecipe(new ResourceLocation(CongregaMystica.MOD_ID, "mimic_fork_fake"), new ShapedOreRecipe(
+                new ResourceLocation(""),
+                this.getDefaultInstance(),
+                "I I",
+                "IMI",
+                " S ",
+                'I', "ingotIron",
+                'M', new ItemStack(ItemsTC.mechanismSimple),
+                'S', "stickWood"));
     }
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        //TODO: Add research (Mimic Fork research recipe is "congregamystica:mimic_fork_fake")
     }
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        //TODO: Aspects may not be needed depending on the crafting recipe
+        AspectList aspectList = new AspectList()
+                .add(Aspect.METAL, 15)
+                .add(Aspect.SENSES, 10)
+                .add(Aspect.AIR, 10)
+                .add(Aspect.TOOL, 8);
+        aspectMap.put(this.getDefaultInstance(), aspectList);
     }
 
     @Override

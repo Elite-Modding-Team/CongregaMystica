@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "congregamystica:mimic_fork"
+  },
+  "pattern": [
+    "I I",
+    "IMI",
+    " S "
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotIron"
+    },
+    "M": {
+      "item": "thaumcraft:mechanism_simple"
+    },
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "stickWood"
+    }
+  }
+}

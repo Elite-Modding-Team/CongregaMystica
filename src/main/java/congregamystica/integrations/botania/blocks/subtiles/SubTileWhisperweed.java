@@ -3,6 +3,7 @@ package congregamystica.integrations.botania.blocks.subtiles;
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
+import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.botania.BotaniaCM;
 import congregamystica.utils.libs.ModIds;
 import net.minecraft.block.state.IBlockState;
@@ -60,9 +61,9 @@ import java.awt.*;
 import java.util.Map;
 
 public class SubTileWhisperweed extends SubTileFunctional implements IAddition, IProxy {
-    private static final int MANA_COST = 600;
+    private static final int MANA_COST = ConfigHandlerCM.botania.whisperweed.manaCost;
     //TODO: Increase PROG_REQ so it is more than just 1 brain per use.
-    private static final int PROG_REQ = 1;
+    private static final int PROG_REQ = ConfigHandlerCM.botania.whisperweed.progressReq;
     private static final int RANGE = 2;
     public static LexiconEntry WHISPERWEED_ENTRY;
 
@@ -270,6 +271,6 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
     @Override
     public boolean isEnabled() {
         //TODO: Add config disable
-        return ModIds.thaumcraft_fix.isLoaded;
+        return ModIds.thaumcraft_fix.isLoaded && ConfigHandlerCM.botania.whisperweed.enable;
     }
 }

@@ -5,7 +5,7 @@
       {
         "model": "botania:shapes/cross_tinted",
         "textures": {
-          "cross": "congregamystica:blocks/botania/tainthistle"
+          "cross": "congregamystica:blocks/botania/taintthistle"
         }
       }
     ],
@@ -14,7 +14,7 @@
         "model": "builtin/generated",
         "transform": "forge:default-item",
         "textures": {
-          "layer0": "congregamystica:blocks/botania/tainthistle"
+          "layer0": "congregamystica:blocks/botania/taintthistle"
         }
       }
     ]

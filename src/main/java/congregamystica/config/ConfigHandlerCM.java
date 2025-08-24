@@ -15,6 +15,8 @@ public class ConfigHandlerCM {
 
     @Config.Name("Blood Magic")
     public static BloodMagicCategory blood_magic = new BloodMagicCategory();
+    @Config.Name("Botania")
+    public static BotaniaCategory botania = new BotaniaCategory();
     @Config.Name("Immersive Engineering")
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
     @Config.Name("The One Probe")
@@ -139,6 +141,54 @@ public class ConfigHandlerCM {
             @Config.Name("Eldritch Orb Fill Rate")
             @Config.Comment("The speed the Eldritch Orb can drain LP from the Blood Altar. A drain rate of 50 is equal to the Archmage Blood Orb.")
             public int drainRate = 100;
+        }
+    }
+
+    public static class BotaniaCategory {
+        @Config.Name("Taintthistle")
+        public TaintthistleCategory taintthistle = new TaintthistleCategory();
+        @Config.Name("Whisperweed")
+        public WhisperweedCategory whisperweed = new WhisperweedCategory();
+
+        public static class TaintthistleCategory {
+            @Config.RequiresMcRestart
+            @Config.Name("Enable Taintthistle")
+            @Config.Comment("Enables the Taintthistle, a functional flower that uses mana to destroy nearby taint blocks.")
+            public boolean enable = true;
+
+            @Config.RequiresMcRestart
+            @Config.RangeInt(min = 0, max = 100000)
+            @Config.Name("Mana cost")
+            @Config.Comment("The amount of mana consumed for every taint block the Taintthistle destroys.")
+            public int manaCost = 400;
+
+            @Config.RangeInt(min = 1, max = 1000)
+            @Config.Name("Taint Blocks Destroyed")
+            @Config.Comment("The maximum number of taint blocks destroyed every operation of the flower.")
+            public int taintLimit = 3;
+        }
+
+        public static class WhisperweedCategory {
+            @Config.RequiresMcRestart
+            @Config.Name("Enable Whsiperweed")
+            @Config.Comment("")
+            public boolean enable = true;
+
+            @Config.RequiresMcRestart
+            @Config.RangeInt(min = 1, max = 100000)
+            @Config.Name("Mana Cost")
+            @Config.Comment
+                    ({
+                            "The amount of mana consumed every time the Whispwerweed consumes a Zombie Brain. Consuming",
+                            "operations occur approximately every 15 seconds."
+                    })
+            public int manaCost = 600;
+
+            @Config.RequiresMcRestart
+            @Config.RangeInt(min = 1, max = 1000)
+            @Config.Name("Brains Required")
+            @Config.Comment("The number of Zombie Brains required before the Whisperweed can grant research knowledge.")
+            public int progressReq = 20;
         }
     }
 

@@ -89,12 +89,17 @@ congregamystica.research.metal_purification_expanded.stage.1=The variety of nati
 research.f_CM_TREATED_WOOD.text=Examine treated wood
 
 # Botania
+# -- TAINTTHISTLE
 botania.entry.taintthistle=Taintthistle
 botania.tagline.taintthistle=Eradicates tainted materials
 botania.page.taintthistle0=[WIP]
+
+# -- WHISPERWEED
 botania.entry.whisperweed=Whisperweed
 botania.tagline.whisperweed=Knowledge from brains
-botania.page.whisperweed0=The &1Whisperweed&0 is a unique flower with a very particular appetite. It will consume any nearby Zombie Brains and will store a small amount of the previous owner's knowledge.<br>Once the flower has absorbed enough knowledge, fledgling thaumaturges can interact with the flower to gain some of that knowledge. Be warned, as sometimes this knowledge can come at the price of a small amount of &1Warp&0.             is an unpleasant plant that whispers secrets into the ears of anyone who'll listen. There doesn't seem to be much point to the plant, since the secrets aren't even relevant to Botany. Bringing one to a Thaumaturge seems to be the only relevance it has.<br>&oMore secrets than Wan Shi Tong&r
+botania.page.whisperweed0=The &1Whisperweed&0 is a unique flower with a very particular appetite.<br>It consumes any nearby &1Zombie Brains&0 stores a small amount of the previous owner's knowledge within the flower. If there is insufficient mana, the brain will be consumed, but no knowledge will be gained.<br>Once enough knowledge has been stored, fledgling
+botania.page.whisperweed1=thaumaturges can interact with the flower to gain some of that knowledge. Be warned, as sometimes this knowledge will cause the player to gain a small amount of &1Warp&0.<br>You can see the current amount of knowledge stored within the flower by hovering over the &1Whisperweed&0 while holding a &1Wand of the Forest&0.
+botania.page.whisperweed2=&oFloral Wan Shi Tong&r
 
 # GroovyScript
 groovyscript.wiki.congregamystica.pech_trades.title=Thaumcraft Pech Trades

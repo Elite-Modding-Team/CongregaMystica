@@ -3,6 +3,7 @@ package congregamystica.integrations.botania.blocks.subtiles;
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
+import congregamystica.aspects.AspectCalculator;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.botania.BotaniaCM;
 import congregamystica.utils.libs.ModIds;
@@ -18,6 +19,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -27,6 +29,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -48,25 +51,34 @@ import thecodex6824.thaumcraftfix.api.research.ResearchCategoryTheorycraftFilter
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.lexicon.LexiconEntry;
+import vazkii.botania.api.recipe.RecipePetals;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
 import vazkii.botania.client.core.handler.HUDHandler;
 import vazkii.botania.client.core.helper.RenderHelper;
+import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.crafting.ModPetalRecipes;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lexicon.BasicLexiconEntry;
+import vazkii.botania.common.lexicon.page.PagePetalRecipe;
 import vazkii.botania.common.lexicon.page.PageText;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class SubTileWhisperweed extends SubTileFunctional implements IAddition, IProxy {
     private static final int MANA_COST = ConfigHandlerCM.botania.whisperweed.manaCost;
-    //TODO: Increase PROG_REQ so it is more than just 1 brain per use.
     private static final int PROG_REQ = ConfigHandlerCM.botania.whisperweed.progressReq;
     private static final int RANGE = 2;
+    private static final int COOLDOWN_REQ = 180;
     public static LexiconEntry WHISPERWEED_ENTRY;
+    public static RecipePetals WHISPERWEED_RECIPE;
 
+    public int cooldown = 0;
     public int progress = 0;
 
     @Override
@@ -78,32 +90,44 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
     public void onUpdate() {
         super.onUpdate();
         boolean did = false;
-        if(this.supertile.getWorld().isRemote) {
-            //whisper to nearby players
-        } else {
-            if (this.redstoneSignal <= 0 && this.progress < PROG_REQ && this.mana >= MANA_COST) {
+        if(!this.supertile.getWorld().isRemote && this.redstoneSignal <= 0 && this.progress < PROG_REQ) {
+            int slowdown = this.getSlowdownFactor();
+            if(this.cooldown <= 0) {
                 //Consuming Mana to eat Zombie Brains
-                if (this.ticksExisted % 180 == 0) {
-                    for (EntityItem entityItem : this.supertile.getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(this.getPos()).grow(RANGE))) {
-                        if (entityItem.getItem().getItem() == ItemsTC.brain && entityItem.isEntityAlive() && entityItem.getItem().getCount() > 0) {
-                            this.progress++;
+                for (EntityItem entityItem : this.supertile.getWorld().getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(this.getPos()).grow(RANGE))) {
+                    if(this.isEntityItemValid(entityItem, slowdown)) {
+                        if(this.mana >= MANA_COST) {
                             this.mana -= MANA_COST;
-                            ItemStack stack = entityItem.getItem();
-                            this.supertile.getWorld().playSound(null, this.getPos(), SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 0.5F, 1.0F);
-                            Vec3d offset = this.getWorld().getBlockState(this.getPos()).getOffset(this.getWorld(), this.getPos()).add(0.4, 0.6, 0.4);
-                            ((WorldServer)this.supertile.getWorld()).spawnParticle(EnumParticleTypes.ITEM_CRACK,
-                                    (double)this.supertile.getPos().getX() + offset.x,
-                                    (double)this.supertile.getPos().getY() + offset.y,
-                                    (double)this.supertile.getPos().getZ() + offset.z,
-                                    10, 0.1, 0.1, 0.1, 0.03, Item.getIdFromItem(ItemsTC.brain));
-                            stack.shrink(1);
-                            did = true;
-                            break;
+                            this.progress++;
                         }
+                        this.cooldown = COOLDOWN_REQ;
+                        ItemStack stack = entityItem.getItem();
+                        this.supertile.getWorld().playSound(null, this.getPos(), SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 0.5F, 1.0F);
+                        Vec3d offset = this.getWorld().getBlockState(this.getPos()).getOffset(this.getWorld(), this.getPos()).add(0.4, 0.6, 0.4);
+                        ((WorldServer)this.supertile.getWorld()).spawnParticle(EnumParticleTypes.ITEM_CRACK,
+                                (double)this.supertile.getPos().getX() + offset.x,
+                                (double)this.supertile.getPos().getY() + offset.y,
+                                (double)this.supertile.getPos().getZ() + offset.z,
+                                10, 0.1, 0.1, 0.1, 0.03, Item.getIdFromItem(ItemsTC.brain));
+                        stack.shrink(1);
+                        did = true;
+                        break;
                     }
                 }
+            } else {
+                this.cooldown--;
+                did = true;
             }
         }
+        //5% chance every 5 seconds to whisper 1 nearby player if research is full
+        if(this.progress >= PROG_REQ && this.ticksExisted % 100 == 0 && this.supertile.getWorld().rand.nextInt(20) == 0) {
+            List<EntityPlayer> players = this.supertile.getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.getPos()).grow(8));
+            if(!players.isEmpty()) {
+                EntityPlayer player = players.get(this.supertile.getWorld().rand.nextInt(players.size()));
+                this.supertile.getWorld().playSound(null, player.getPosition(), SoundsTC.whispers, SoundCategory.BLOCKS, 0.3f, 0.7f);
+            }
+        }
+
         if(did) {
             this.supertile.getWorld().updateComparatorOutputLevel(this.getPos(), this.supertile.getBlockType());
             this.sync();
@@ -114,18 +138,19 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
     public void readFromPacketNBT(NBTTagCompound cmp) {
         super.readFromPacketNBT(cmp);
         this.progress = cmp.getInteger("progress");
+        this.cooldown = cmp.getInteger("cooldown");
     }
 
     @Override
     public void writeToPacketNBT(NBTTagCompound cmp) {
         super.writeToPacketNBT(cmp);
         cmp.setInteger("progress", this.progress);
+        cmp.setInteger("cooldown", this.cooldown);
     }
 
     @Override
     public void renderHUD(Minecraft mc, ScaledResolution res) {
         super.renderHUD(mc, res);
-        //TODO: Adjust progress bar color and item here
         int color = Aspect.MIND.getColor();
         this.drawComplexProgressHUD(color, res, new ItemStack(ItemsTC.thaumonomicon));
     }
@@ -147,10 +172,9 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
                     PacketHandler.INSTANCE.sendToAllAround(new PacketFXPollute(pos, 2f), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 12.0));
                 }
             }
-            //TODO: Adjust sound effect volume and pitch
-            world.playSound(player, pos, SoundsTC.whispers, SoundCategory.BLOCKS, 0.6f, 1.0f);
+            world.playSound(player, pos, SoundsTC.whispers, SoundCategory.BLOCKS, 0.6f, 0.8f);
 
-            //TODO: Randomize and increase the research given.
+            //TODO: Give 1 full research category
             ThaumcraftApi.internalMethods.addKnowledge(player, IPlayerKnowledge.EnumKnowledgeType.THEORY,
                     categories[player.getRNG().nextInt(categories.length)],
                     MathHelper.getInt(player.getRNG(), theoryProgress / 12, theoryProgress / 6));
@@ -186,6 +210,13 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
     @Override
     public RadiusDescriptor getRadius() {
         return new RadiusDescriptor.Circle(this.toBlockPos(), RANGE);
+    }
+
+    public boolean isEntityItemValid(EntityItem entityItem, int slowdown) {
+        return entityItem.getItem().getItem() == ItemsTC.brain
+                && entityItem.age >= 60 + slowdown
+                && (entityItem.age < 105 || entityItem.age >= 110)
+                && !entityItem.isDead && !entityItem.getItem().isEmpty();
     }
 
     public void renderProgressBar(int x, int y, int color, float alpha) {
@@ -243,19 +274,34 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
         SubTileWhisperweed.WHISPERWEED_ENTRY = new BasicLexiconEntry(BotaniaCM.WHISPERWEED, BotaniaAPI.categoryFunctionalFlowers);
         SubTileWhisperweed.WHISPERWEED_ENTRY.setIcon(ItemBlockSpecialFlower.ofType(BotaniaCM.WHISPERWEED));
         SubTileWhisperweed.WHISPERWEED_ENTRY.setLexiconPages(
-                new PageText("0")
+                new PageText("0"),
+                new PageText("1"),
+                new PagePetalRecipe<>("2", WHISPERWEED_RECIPE)
         );
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void registerModel(ModelRegistryEvent event) {
-        BotaniaAPIClient.registerSubtileModel(SubTileWhisperweed.class, new ModelResourceLocation(new ResourceLocation(CongregaMystica.MOD_ID, BotaniaCM.WHISPERWEED), "normal"));
+        ModelResourceLocation loc = new ModelResourceLocation(new ResourceLocation(CongregaMystica.MOD_ID, BotaniaCM.WHISPERWEED), "normal");
+        BotaniaAPIClient.registerSubtileModel(SubTileWhisperweed.class, loc);
     }
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //TODO: Add recipe
+        WHISPERWEED_RECIPE = new RecipePetals(ItemBlockSpecialFlower.ofType(BotaniaCM.WHISPERWEED),
+                new ItemStack(ItemsTC.curio, 1, 6),
+                new ItemStack(ItemsTC.curio, 1, 4),
+                ModPetalRecipes.green,
+                ModPetalRecipes.green,
+                ModPetalRecipes.purple,
+                ModPetalRecipes.purple,
+                ModPetalRecipes.magenta,
+                ModPetalRecipes.magenta,
+                new ItemStack(ModItems.rune, 1, 10),
+                "redstoneRoot"
+        );
+        BotaniaAPI.petalRecipes.add(WHISPERWEED_RECIPE);
     }
 
     @Override
@@ -265,12 +311,14 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        //TODO: Flower aspects (check out Botania to see how this works)
+        List<Ingredient> ingredients = WHISPERWEED_RECIPE.getInputs().stream().map(CraftingHelper::getIngredient).filter(Objects::nonNull).collect(Collectors.toList());
+        AspectList aspectList = AspectCalculator.generateAspectsFromIngredients(1, ingredients.toArray(new Ingredient[0]));
+        aspectMap.put(ItemBlockSpecialFlower.ofType(BotaniaCM.WHISPERWEED), aspectList);
+        aspectMap.put(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), BotaniaCM.WHISPERWEED), new AspectList().add(aspectList).add(Aspect.FLIGHT, 5).add(Aspect.LIGHT, 5));
     }
 
     @Override
     public boolean isEnabled() {
-        //TODO: Add config disable
         return ModIds.thaumcraft_fix.isLoaded && ConfigHandlerCM.botania.whisperweed.enable;
     }
 }

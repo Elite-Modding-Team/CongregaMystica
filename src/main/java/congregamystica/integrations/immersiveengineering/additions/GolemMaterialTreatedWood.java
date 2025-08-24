@@ -6,6 +6,7 @@ import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemMaterial;
 import thaumcraft.api.items.ItemsTC;
@@ -35,7 +36,8 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+        		"research/immersiveengineering/golem_mat_treated_wood"));
     }
 
     @Override

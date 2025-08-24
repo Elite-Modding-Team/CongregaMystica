@@ -88,11 +88,11 @@ congregamystica.research.metal_purification_expanded.stage.1=The variety of nati
 
 # Botania
 botania.entry.taintthistle=Taintthistle
-botania.tagline.taintthistle=Flux cleaner
+botania.tagline.taintthistle=Eradicates tainted materials
 botania.page.taintthistle0=[WIP]
 botania.entry.whisperweed=Whisperweed
-botania.tagline.whisperweed=Whispers arcane secrets
-botania.page.whisperweed0=The &1Whisperweed&0 is an unpleasant plant that whispers secrets into the ears of anyone who'll listen. There doesn't seem to be much point to the plant, since the secrets aren't even relevant to Botany. Bringing one to a Thaumaturge seems to be the only relevance it has.<br>&oMore secrets than Wan Shi Tong&r
+botania.tagline.whisperweed=Knowledge from brains
+botania.page.whisperweed0=The &1Whisperweed&0 is a unique flower with a very particular appetite. It will consume any nearby Zombie Brains and will store a small amount of the previous owner's knowledge.<br>Once the flower has absorbed enough knowledge, fledgling thaumaturges can interact with the flower to gain some of that knowledge. Be warned, as sometimes this knowledge can come at the price of a small amount of &1Warp&0.             is an unpleasant plant that whispers secrets into the ears of anyone who'll listen. There doesn't seem to be much point to the plant, since the secrets aren't even relevant to Botany. Bringing one to a Thaumaturge seems to be the only relevance it has.<br>&oMore secrets than Wan Shi Tong&r
 
 # GroovyScript
 groovyscript.wiki.congregamystica.pech_trades.title=Thaumcraft Pech Trades

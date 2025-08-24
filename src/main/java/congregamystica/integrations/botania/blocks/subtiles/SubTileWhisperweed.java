@@ -300,7 +300,8 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/botania/whisperweed"));
     }
 
     @Override

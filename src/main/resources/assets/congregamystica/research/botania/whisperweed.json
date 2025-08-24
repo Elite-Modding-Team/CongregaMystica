@@ -1,0 +1,30 @@
+{
+  "entries": [
+    {
+      "key": "CM_WHISPERWEED",
+      "name": "congregamystica.research.whisperweed.title",
+      "icons": [
+        "congregamystica:textures/blocks/botania/whisperweed.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CM_EXPANDED_STUDIES",
+        "WARP"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "HIDDEN"
+      ],
+      "location": [
+        -6,
+        -1
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.whisperweed.stage.1"
+        }
+      ]
+    }
+  ]
+}

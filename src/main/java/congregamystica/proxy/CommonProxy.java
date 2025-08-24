@@ -4,6 +4,7 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.integrations.InitIntegrations;
+import congregamystica.network.PacketHandlerCM;
 import congregamystica.registry.RegistrarCM;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.Thaumcraft;
@@ -13,6 +14,7 @@ import thaumcraft.api.research.ResearchCategories;
 
 public class CommonProxy {
     public void preInit() {
+        PacketHandlerCM.preInit();
         InitIntegrations.getModAdditions().forEach(IProxy::preInit);
         RegistrarCM.getProxyAdditions().forEach(IProxy::preInit);
     }

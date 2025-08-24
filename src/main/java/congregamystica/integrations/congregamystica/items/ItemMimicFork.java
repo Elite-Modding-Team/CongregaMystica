@@ -2,6 +2,8 @@ package congregamystica.integrations.congregamystica.items;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemAddition;
+import congregamystica.network.PacketHandlerCM;
+import congregamystica.network.packets.PacketEnumParticle;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -21,6 +23,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.NoteBlockEvent;
 import net.minecraftforge.event.world.NoteBlockEvent.Instrument;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -107,7 +110,34 @@ public class ItemMimicFork extends AbstractItemAddition {
             pos = pos.up();
             float pitch = (float) Math.pow(2.0D, (note - 12) / 12.0D);
             world.playSound(null, pos, getInstrumentSound(event.getInstrument()), SoundCategory.PLAYERS, 3.0F, pitch);
-            world.spawnParticle(EnumParticleTypes.NOTE, pos.getX() + 0.5D, pos.getY() + 0.2D, pos.getZ() + 0.5D, (double) note / 24.0D, 0.0D, 0.0D);
+            if(world.isRemote) {
+                world.spawnParticle(EnumParticleTypes.NOTE,
+                        pos.getX() + 0.5D,
+                        pos.getY() + 0.2D,
+                        pos.getZ() + 0.5D,
+                        (double) note / 24.0D,
+                        0.0D,
+                        0.0D);
+            } else {
+                //TODO: Figure out why this fires twice
+                PacketHandlerCM.INSTANCE.sendToAllAround(
+                        new PacketEnumParticle(
+                                EnumParticleTypes.NOTE,
+                                pos.getX() + 0.5D,
+                                pos.getY() + 0.2D,
+                                pos.getZ() + 0.5D,
+                                (double) note / 24.0D,
+                                0.0D,
+                                0.0D
+                        ),
+                        new NetworkRegistry.TargetPoint(
+                                world.provider.getDimension(),
+                                pos.getX() + 0.5D,
+                                pos.getY() + 0.2D,
+                                pos.getZ() + 0.5D,
+                                32
+                        ));
+            }
             return true;
         }
         return false;

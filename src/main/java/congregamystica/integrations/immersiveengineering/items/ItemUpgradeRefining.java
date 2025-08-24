@@ -4,6 +4,7 @@ import blusunrize.immersiveengineering.ImmersiveEngineering;
 import blusunrize.immersiveengineering.api.tool.IUpgrade;
 import blusunrize.immersiveengineering.common.items.ItemDrill;
 import blusunrize.immersiveengineering.common.util.ItemNBTHelper;
+import congregamystica.CongregaMystica;
 import congregamystica.api.IProxy;
 import congregamystica.api.item.AbstractItemAddition;
 import congregamystica.config.ConfigHandlerCM;
@@ -15,6 +16,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -111,21 +113,22 @@ public class ItemUpgradeRefining extends AbstractItemAddition implements IUpgrad
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
         ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
-                "CM_REFINING_UPGRADE",
+                "CM_UPGRADE_REFINING",
                 new ItemStack(this),
                 2,
                 new AspectList().add(Aspect.ORDER, 80).add(Aspect.EXCHANGE, 60),
                 new ItemStack(ItemsTC.mechanismSimple),
-                new ItemStack(ItemsTC.nuggets, 1, 10),
+                new IngredientNBTTC(new ItemStack(Items.ENCHANTED_BOOK)),
                 new ItemStack(ItemsTC.salisMundus),
                 new ItemStack(ItemsTC.nuggets, 1, 10),
-                new IngredientNBTTC(new ItemStack(Items.ENCHANTED_BOOK))
+                new ItemStack(ItemsTC.nuggets, 1, 10)
         ));
     }
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/immersiveengineering/upgrade_refining"));
     }
 
     @Override

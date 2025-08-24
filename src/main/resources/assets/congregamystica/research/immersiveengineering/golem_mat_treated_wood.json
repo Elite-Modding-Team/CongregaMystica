@@ -23,7 +23,10 @@
       ],
       "stages": [
         {
-          "text": "congregamystica.research.golem_mat_treated_wood.stage.1"
+          "text": "congregamystica.research.golem_mat_treated_wood.stage.1",
+          "required_research": [
+            "f_CM_TREATED_WOOD"
+          ]
         }
       ]
     }

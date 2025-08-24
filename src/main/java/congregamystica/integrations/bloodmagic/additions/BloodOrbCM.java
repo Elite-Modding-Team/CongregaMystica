@@ -16,6 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.items.ItemsTC;
 
 public class BloodOrbCM implements IAddition, IProxy {
@@ -55,7 +56,8 @@ public class BloodOrbCM implements IAddition, IProxy {
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research (does not need recipe page)
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/bloodmagic/eldritch_blood_orb"));
     }
 
     @Override

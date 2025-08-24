@@ -1,0 +1,34 @@
+{
+  "entries": [
+    {
+      "key": "CM_GOLEM_MAT_STEEL",
+      "name": "congregamystica.research.golem_mat_steel.title",
+      "icons": [
+        "congregamystica:textures/gui/mat_steel.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CM_EXPANDED_GOLEMANCY",
+        "MATSTUDIRON",
+        "MINDCLOCKWORK"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "HIDDEN"
+      ],
+      "location": [
+        -4,
+        3
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.golem_mat_steel.stage.1",
+          "required_research": [
+            "f_CM_STEEL"
+          ]
+        }
+      ]
+    }
+  ]
+}

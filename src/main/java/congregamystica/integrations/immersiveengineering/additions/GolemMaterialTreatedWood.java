@@ -39,11 +39,12 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
         register(this);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void registerResearchLocation() {
         ItemStack stack = ConfigHandlerCM.golems.treated_wood.getMaterialStack();
         Block block = Block.getBlockFromItem(stack.getItem());
-        if(block != Blocks.AIR) {
+        if (block != Blocks.AIR) {
             ScanningManager.addScannableThing(new ScanBlockState("f_CM_TREATED_WOOD", block.getStateFromMeta(stack.getMetadata()), false));
         }
         ScanningManager.addScannableThing(new ScanItem("f_CM_TREATED_WOOD", stack));

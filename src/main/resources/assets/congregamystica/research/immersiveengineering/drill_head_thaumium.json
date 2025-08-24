@@ -1,0 +1,33 @@
+{
+  "entries": [
+    {
+      "key": "CM_DRILL_HEAD_THAUMIUM",
+      "name": "congregamystica.research.drill_head_thaumium.title",
+      "icons": [
+        "congregamystica:drill_head_thaumium"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CM_EXPANDED_STUDIES",
+        "METALLURGY@3"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "HIDDEN"
+      ],
+      "location": [
+        -3,
+        -4
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.drill_head_thaumium.stage.1",
+          "recipes": [
+            "congregamystica:drill_head_thaumium"
+          ]
+        }
+      ]
+    }
+  ]
+}

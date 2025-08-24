@@ -13,7 +13,7 @@ item.congregamystica:cluster_astral_starmetal.name=Native Starmetal Cluster
 item.congregamystica:cluster_charged_quartz_certus.name=Native Charged Certus Quartz Cluster
 item.congregamystica:cluster_quartz_certus.name=Native Certus Quartz Cluster
 item.congregamystica:drill_head_thaumium.name=Thaumium Drill Head
-item.congregamystica:drill_head_void.name=Void Metal Drill Head
+item.congregamystica:drill_head_void.name=Void Drill Head
 item.congregamystica:eldritch_cluster_astral_starmetal.name=Eldritch Starmetal Cluster
 item.congregamystica:eldritch_cluster_charged_quartz_certus.name=Eldritch Charged Certus Quartz Cluster
 item.congregamystica:eldritch_cluster_quartz_certus.name=Eldritch Certus Quartz Cluster
@@ -60,6 +60,12 @@ congregamystica.research.blood_scribing_tools.stage.2=By enhancing my scribing t
 
 congregamystica.research.congrega_mystica_base.title=Congrega Mystica
 congregamystica.research.congrega_mystica_base.stage.1=Over the course of my research I've come to realize that I've only begun to scratch the surface of what is possible.<BR>I've turned my attention to augmenting other professions with Thaumaturgy with the hope of discovering some unforeseen breakthrough.
+
+congregamystica.research.drill_head_thaumium.title=Thaumium Drill Head
+congregamystica.research.drill_head_thaumium.stage.1=[WIP]
+
+congregamystica.research.drill_head_void.title=Void Drill Head
+congregamystica.research.drill_head_void.stage.1=[WIP]
 
 congregamystica.research.expanded_golemancy.title=Expanded Golemancy
 congregamystica.research.expanded_golemancy.stage.1=[WIP]

@@ -3,6 +3,8 @@ package congregamystica.integrations.immersiveengineering.items;
 import congregamystica.CongregaMystica;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.immersiveengineering.util.DrillStats;
+import net.minecraft.util.ResourceLocation;
+import thaumcraft.api.ThaumcraftApi;
 
 public class ItemDrillHeadThaumium extends AbstractDrillHead {
     public static final DrillStats THAUMIUM_HEAD_STATS = new DrillStats(
@@ -21,7 +23,8 @@ public class ItemDrillHeadThaumium extends AbstractDrillHead {
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/immersiveengineering/drill_head_thaumium"));
     }
 
     @Override

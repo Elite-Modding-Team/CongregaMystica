@@ -20,6 +20,8 @@ import thaumcraft.api.items.ItemsTC;
 import java.util.Map;
 
 public class ItemEldritchCluster extends ItemNativeCluster {
+    public static boolean hasResearchLoaded = false;
+
     public ItemEldritchCluster(ClusterData clusterData) {
         super(clusterData.eldritchId, clusterData);
     }

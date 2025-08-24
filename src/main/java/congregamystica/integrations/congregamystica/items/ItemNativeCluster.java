@@ -23,6 +23,8 @@ import thaumcraft.common.lib.utils.Utils;
 import java.util.Map;
 
 public class ItemNativeCluster extends AbstractItemAddition {
+    private static boolean hasResearchLoaded = false;
+
     protected ClusterData clusterData;
 
     public ItemNativeCluster(String unlocName, ClusterData clusterData) {

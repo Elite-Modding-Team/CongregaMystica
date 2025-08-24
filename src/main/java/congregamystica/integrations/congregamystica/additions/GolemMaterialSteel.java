@@ -22,7 +22,7 @@ public class GolemMaterialSteel extends GolemMaterial implements IAddition, IPro
     public GolemMaterialSteel() {
         super(
                 "CM_STEEL",
-                new String[]{"MATSTUDIRON"},
+                new String[]{"CM_GOLEM_MAT_STEEL"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/mat_steel.png"),
                 4934475,
                 16,

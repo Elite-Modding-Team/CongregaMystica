@@ -8,10 +8,13 @@ import congregamystica.integrations.immersiveengineering.util.DrillStats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import thaumcraft.api.ThaumcraftApi;
+
 import org.jetbrains.annotations.NotNull;
 
 public class ItemDrillHeadVoid extends AbstractDrillHead {
@@ -62,7 +65,8 @@ public class ItemDrillHeadVoid extends AbstractDrillHead {
 
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/immersiveengineering/drill_head_void"));
     }
 
     @Override

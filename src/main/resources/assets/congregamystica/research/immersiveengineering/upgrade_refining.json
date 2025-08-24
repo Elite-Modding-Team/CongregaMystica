@@ -1,0 +1,39 @@
+{
+  "entries": [
+    {
+      "key": "CM_UPGRADE_REFINING",
+      "name": "congregamystica.research.upgrade_refining.title",
+      "icons": [
+        "congregamystica:upgrade_refining"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CM_EXPANDED_STUDIES",
+        "INFUSIONENCHANTMENT"
+      ],
+      "siblings": [],
+      "meta": [
+        "HIDDEN"
+      ],
+      "location": [
+        -4,
+        -5
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.upgrade_refining.stage.1",
+          "required_knowledge": [
+            "THEORY;ARTIFICE;1",
+            "THEORY;INFUSION;1"
+          ]
+        },
+        {
+          "text": "congregamystica.research.upgrade_refining.stage.2",
+          "recipes": [
+            "congregamystica:upgrade_refining"
+          ]
+        }
+      ]
+    }
+  ]
+}

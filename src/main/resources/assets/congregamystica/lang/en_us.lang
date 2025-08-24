@@ -86,6 +86,8 @@ congregamystica.research.mimic_fork.stage.2=I've found my answer with the Mimic 
 congregamystica.research.metal_purification_expanded.title=Metal Purification: Expanded
 congregamystica.research.metal_purification_expanded.stage.1=The variety of native clusters has been greatly expanded. These clusters will produce twice the normal amount of ingots like the other ones I'm already aware of.<BR>I can also produce these clusters alchemically if I so choose. 
 
+research.f_CM_TREATED_WOOD.text=Examine treated wood
+
 # Botania
 botania.entry.taintthistle=Taintthistle
 botania.tagline.taintthistle=Eradicates tainted materials

@@ -4,21 +4,31 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
+import mod.emt.harkenscythe.event.HSEventLivingDeath;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.golems.EnumGolemTrait;
+import thaumcraft.api.golems.IGolemProperties;
 import thaumcraft.api.golems.parts.GolemMaterial;
 import thaumcraft.api.items.ItemsTC;
 import thaumcraft.api.research.ScanBlockState;
 import thaumcraft.api.research.ScanItem;
 import thaumcraft.api.research.ScanningManager;
+import thaumcraft.common.golems.EntityThaumcraftGolem;
 
 public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition, IProxy {
 	
     public GolemMaterialLivingmetal() {
+        //TODO: Increase golem damage/armor as these are combat-oriented
         super(
                 "CM_LIVINGMETAL",
                 new String[] {"CM_GOLEM_MAT_LIVINGMETAL"},
@@ -33,13 +43,42 @@ public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition
         );
     }
 
+    @SubscribeEvent
+    public void onEntityDeath(LivingDeathEvent event) {
+        World world = event.getEntityLiving().world;
+        EntityLivingBase deadEntity = event.getEntityLiving();
+        Entity source = event.getSource().getTrueSource();
+        if(source instanceof EntityThaumcraftGolem && this.isLivingMetalGolem((EntityThaumcraftGolem) source)) {
+            EntityThaumcraftGolem golem = (EntityThaumcraftGolem) event.getSource().getTrueSource();
+            //Livingmetal golem full heals on kill
+            if(!world.isRemote && !golem.isDead) {
+                golem.heal(golem.getMaxHealth());
+            }
+
+            //TODO: RNG check for successful soul reap
+            //Livingmetal golem spawns Soul Essence on kill
+            HSEventLivingDeath.spawnSoul(deadEntity.world, deadEntity);
+        }
+    }
+
+    public boolean isLivingMetalGolem(EntityThaumcraftGolem golem) {
+        IGolemProperties properties = golem.getProperties();
+        //TODO: Add livingmetal trait check
+        return properties.getMaterial().key.equals(this.key);// || properties.getTraits().contains();
+    }
+
+    //##########################################################
+    // IItemAddition
+
     @Override
     public void preInit() {
-        //TODO: Register material property. Remember to use GolemHelper#registerGolemTrait()
+        //Golem registry is retarded so you can't use the pre-init
     }
 
     @Override
     public void init() {
+        //TODO: Register material property. Remember to use GolemHelper#registerGolemTrait()
+        MinecraftForge.EVENT_BUS.register(this);
     	register(this);
     }
 

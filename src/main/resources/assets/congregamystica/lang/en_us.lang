@@ -95,7 +95,8 @@ research.f_CM_TREATED_WOOD.text=Examine treated wood
 # -- TAINTTHISTLE
 botania.entry.taintthistle=Taintthistle
 botania.tagline.taintthistle=Eradicates tainted materials
-botania.page.taintthistle0=[WIP]
+botania.page.taintthistle0=A friend to the less scrupulous thaumaturge, the &1Taintthistle&0 is able to clean up following any accidental flux anomalies.<br>When supplied with mana, the &1Taintthistle&0 will search for and destroy any nearby tainted blocks or flux goo.
+botania.page.taintthistle1=&oEldritch ShamWoW&r
 
 # -- WHISPERWEED
 botania.entry.whisperweed=Whisperweed
@@ -105,6 +106,7 @@ botania.page.whisperweed1=thaumaturges can interact with the flower to gain some
 botania.page.whisperweed2=&oFloral Wan Shi Tong&r
 
 # GroovyScript
+# -- PECH TRADES
 groovyscript.wiki.congregamystica.pech_trades.title=Thaumcraft Pech Trades
 groovyscript.wiki.congregamystica.pech_trades.description=Pech Trades are a trading mechanic added by Thaumcraft. Pech trades involve giving a Pech an item and randomly generating a selection of loot based on the value of the item traded. Due to a limitation in Thaumcraft, Pechs must have at least one registered trade for each trade level (1 - 5). Congrega Mystica automatically re-populates any missing trades with scrap items.
 groovyscript.wiki.congregamystica.pech_trades.addTrade=Adds a Pech Trade in the format `pechType`, `tradeLevel`, `stack`. Parameter `pechType` can be 'MINER', 'MAGE', 'ARCHER', or 'COMMON'. Parameter `tradeLevel` must be a value between 1 and 5

@@ -71,19 +71,14 @@ public class AspectCalculator {
     }
 
     /**
-     * Gets the first ItemStack from a list of ingredients that has registered aspect values.
+     * Generates aspects for an output based on the passed ingredients. This method replicates calculations used in
+     * {@link thaumcraft.common.lib.crafting.ThaumcraftCraftingManager#getAspectsFromIngredients(NonNullList, ItemStack, IRecipe, ArrayList)}.
      *
-     * @param ingredient the ingredient to query
-     * @return The first ItemStack with registerd aspect values or an empty ItemStack
+     * @param ingredients the recipe ingredients used in the creation of the item
+     * @return An AspectList containing the calculated aspect values
      */
-    public static ItemStack getIngredientStack(Ingredient ingredient) {
-        for(ItemStack stack : ingredient.getMatchingStacks()) {
-            AspectList aspectList = AspectHelperCM.getStackAspects(stack);
-            if(!aspectList.aspects.isEmpty()) {
-                return stack;
-            }
-        }
-        return ItemStack.EMPTY;
+    public static AspectList generateAspectsFromIngredients(Ingredient... ingredients) {
+        return generateAspectsFromIngredients(1, ingredients);
     }
 
     /**
@@ -108,6 +103,22 @@ public class AspectCalculator {
             }
         }
         return aspectsOut;
+    }
+
+    /**
+     * Gets the first ItemStack from a list of ingredients that has registered aspect values.
+     *
+     * @param ingredient the ingredient to query
+     * @return The first ItemStack with registerd aspect values or an empty ItemStack
+     */
+    public static ItemStack getIngredientStack(Ingredient ingredient) {
+        for(ItemStack stack : ingredient.getMatchingStacks()) {
+            AspectList aspectList = AspectHelperCM.getStackAspects(stack);
+            if(!aspectList.aspects.isEmpty()) {
+                return stack;
+            }
+        }
+        return ItemStack.EMPTY;
     }
 
     /**

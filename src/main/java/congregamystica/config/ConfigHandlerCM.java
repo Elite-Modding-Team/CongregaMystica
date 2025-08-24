@@ -55,6 +55,7 @@ public class ConfigHandlerCM {
         @Config.Name("Additional Cluster Types")
         @Config.Comment
                 ({
+                        //TODO: Redo this with better explanation.
                         "Additional Native Clusters that will be registered. If Thaumic Wonders Unofficial is installed",
                         "Eldritch Cluster variants will also be registered.",
                         "Format:",
@@ -160,7 +161,7 @@ public class ConfigHandlerCM {
             @Config.RangeInt(min = 0, max = 100000)
             @Config.Name("Mana cost")
             @Config.Comment("The amount of mana consumed for every taint block the Taintthistle destroys.")
-            public int manaCost = 400;
+            public int manaCost = 800;
 
             @Config.RangeInt(min = 1, max = 1000)
             @Config.Name("Taint Blocks Destroyed")
@@ -182,7 +183,7 @@ public class ConfigHandlerCM {
                             "The amount of mana consumed every time the Whispwerweed consumes a Zombie Brain. Consuming",
                             "operations occur approximately every 15 seconds."
                     })
-            public int manaCost = 600;
+            public int manaCost = 300;
 
             @Config.RequiresMcRestart
             @Config.RangeInt(min = 1, max = 1000)

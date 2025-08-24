@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -17,19 +18,26 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.common.blocks.world.taint.ITaintBlock;
+import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.fx.PacketFXBlockArc;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.BotaniaAPIClient;
 import vazkii.botania.api.lexicon.LexiconEntry;
+import vazkii.botania.api.recipe.RecipePetals;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileFunctional;
+import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.crafting.ModPetalRecipes;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 import vazkii.botania.common.lexicon.BasicLexiconEntry;
+import vazkii.botania.common.lexicon.page.PagePetalRecipe;
 import vazkii.botania.common.lexicon.page.PageText;
 
 import java.util.ArrayList;
@@ -37,11 +45,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-// TODO: Should clean up nearby flux goo around it
 public class SubTileTaintthistle extends SubTileFunctional implements IAddition, IProxy {
     private static final int MANA_COST = ConfigHandlerCM.botania.taintthistle.manaCost;
     private static final int RANGE = 8;
     public static LexiconEntry TAINTTHISTLE_ENTRY;
+    public static RecipePetals TAINTTHISTLE_RECIPE;
 
     @Override
     public boolean acceptsRedstone() {
@@ -70,6 +78,7 @@ public class SubTileTaintthistle extends SubTileFunctional implements IAddition,
             }
         }
         if(did) {
+            this.supertile.getWorld().playSound(null, this.getPos(), SoundsTC.zap, SoundCategory.BLOCKS, 1.0f, 1.0f);
             this.sync();
         }
     }
@@ -95,12 +104,7 @@ public class SubTileTaintthistle extends SubTileFunctional implements IAddition,
     }
 
     private boolean isTaintedBlock(IBlockState state) {
-        if(state.getBlock() == BlocksTC.fluxGoo) {
-            return true;
-        } else if(state.getBlock() instanceof ITaintBlock) {
-            return true;
-        }
-        return false;
+        return state.getBlock() == BlocksTC.fluxGoo || state.getBlock() instanceof ITaintBlock;
     }
 
     @Override
@@ -134,11 +138,11 @@ public class SubTileTaintthistle extends SubTileFunctional implements IAddition,
 
     @Override
     public void postInit() {
-        //TODO: Write botania research
         SubTileTaintthistle.TAINTTHISTLE_ENTRY = new BasicLexiconEntry(BotaniaCM.TAINTTHISTLE, BotaniaAPI.categoryFunctionalFlowers);
         SubTileTaintthistle.TAINTTHISTLE_ENTRY.setIcon(ItemBlockSpecialFlower.ofType(BotaniaCM.TAINTTHISTLE));
         SubTileTaintthistle.TAINTTHISTLE_ENTRY.setLexiconPages(
-                new PageText("0")
+                new PageText("0"),
+                new PagePetalRecipe<>("1", TAINTTHISTLE_RECIPE)
         );
     }
 
@@ -150,7 +154,16 @@ public class SubTileTaintthistle extends SubTileFunctional implements IAddition,
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //TODO: Add recipe
+        TAINTTHISTLE_RECIPE = new RecipePetals(ItemBlockSpecialFlower.ofType(BotaniaCM.TAINTTHISTLE),
+                ModPetalRecipes.purple,
+                ModPetalRecipes.purple,
+                ModPetalRecipes.magenta,
+                ModPetalRecipes.magenta,
+                new ItemStack(ModItems.rune, 1, 10),
+                new ItemStack(ModItems.rune, 1, 12),
+                "redstoneRoot"
+        );
+        BotaniaAPI.petalRecipes.add(TAINTTHISTLE_RECIPE);
     }
 
     @Override
@@ -160,12 +173,19 @@ public class SubTileTaintthistle extends SubTileFunctional implements IAddition,
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        //TODO: Add aspects
+        AspectList flowerAspects = new AspectList()
+                .add(Aspect.PLANT, 15)
+                .add(Aspect.SENSES, 15)
+                .add(Aspect.VOID, 5)
+                .add(Aspect.ORDER, 5)
+                .add(Aspect.MAGIC, 5);
+        aspectMap.put(ItemBlockSpecialFlower.ofType(BotaniaCM.TAINTTHISTLE), flowerAspects);
+        AspectList floatingAspects =  new AspectList().add(flowerAspects).add(Aspect.FLIGHT, 5).add(Aspect.LIGHT, 5);
+        aspectMap.put(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), BotaniaCM.TAINTTHISTLE), floatingAspects);
     }
 
     @Override
     public boolean isEnabled() {
-        //TODO: Add config disable
         return ConfigHandlerCM.botania.taintthistle.enable;
     }
 }

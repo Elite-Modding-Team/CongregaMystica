@@ -3,7 +3,6 @@ package congregamystica.integrations.botania.blocks.subtiles;
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
-import congregamystica.aspects.AspectCalculator;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.botania.BotaniaCM;
 import congregamystica.utils.libs.ModIds;
@@ -19,7 +18,6 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -29,7 +27,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -67,8 +64,6 @@ import vazkii.botania.common.lexicon.page.PageText;
 import java.awt.*;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class SubTileWhisperweed extends SubTileFunctional implements IAddition, IProxy {
     private static final int MANA_COST = ConfigHandlerCM.botania.whisperweed.manaCost;
@@ -124,7 +119,7 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
             List<EntityPlayer> players = this.supertile.getWorld().getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(this.getPos()).grow(8));
             if(!players.isEmpty()) {
                 EntityPlayer player = players.get(this.supertile.getWorld().rand.nextInt(players.size()));
-                this.supertile.getWorld().playSound(null, player.getPosition(), SoundsTC.whispers, SoundCategory.BLOCKS, 0.3f, 0.7f);
+                this.supertile.getWorld().playSound(null, player.getPosition(), SoundsTC.chant, SoundCategory.BLOCKS, 0.3f, 0.7f);
             }
         }
 
@@ -270,7 +265,6 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
 
     @Override
     public void postInit() {
-        //TODO: Write botania research
         SubTileWhisperweed.WHISPERWEED_ENTRY = new BasicLexiconEntry(BotaniaCM.WHISPERWEED, BotaniaAPI.categoryFunctionalFlowers);
         SubTileWhisperweed.WHISPERWEED_ENTRY.setIcon(ItemBlockSpecialFlower.ofType(BotaniaCM.WHISPERWEED));
         SubTileWhisperweed.WHISPERWEED_ENTRY.setLexiconPages(
@@ -311,10 +305,15 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        List<Ingredient> ingredients = WHISPERWEED_RECIPE.getInputs().stream().map(CraftingHelper::getIngredient).filter(Objects::nonNull).collect(Collectors.toList());
-        AspectList aspectList = AspectCalculator.generateAspectsFromIngredients(1, ingredients.toArray(new Ingredient[0]));
-        aspectMap.put(ItemBlockSpecialFlower.ofType(BotaniaCM.WHISPERWEED), aspectList);
-        aspectMap.put(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), BotaniaCM.WHISPERWEED), new AspectList().add(aspectList).add(Aspect.FLIGHT, 5).add(Aspect.LIGHT, 5));
+        AspectList flowerAspects = new AspectList()
+                .add(Aspect.PLANT, 15)
+                .add(Aspect.SENSES, 15)
+                .add(Aspect.MIND, 5)
+                .add(Aspect.ELDRITCH, 5)
+                .add(Aspect.MAGIC, 5);
+        aspectMap.put(ItemBlockSpecialFlower.ofType(BotaniaCM.WHISPERWEED), flowerAspects);
+        AspectList floatingAspects = new AspectList().add(flowerAspects).add(Aspect.FLIGHT, 5).add(Aspect.LIGHT, 5);
+        aspectMap.put(ItemBlockSpecialFlower.ofType(new ItemStack(ModBlocks.floatingSpecialFlower), BotaniaCM.WHISPERWEED), floatingAspects);
     }
 
     @Override

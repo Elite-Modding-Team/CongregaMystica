@@ -4,12 +4,15 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemMaterial;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.api.research.ScanBlockState;
 import thaumcraft.api.research.ScanItem;
 import thaumcraft.api.research.ScanningManager;
 
@@ -33,17 +36,17 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
 
     @Override
     public void init() {
-        ScanningManager.addScannableThing(new ScanItem(
-                        "f_CM_TREATED_WOOD",
-                        ConfigHandlerCM.golems.treated_wood.getMaterialStack()
-                )
-        );
-
         register(this);
     }
 
     @Override
     public void registerResearchLocation() {
+        ItemStack stack = ConfigHandlerCM.golems.treated_wood.getMaterialStack();
+        Block block = Block.getBlockFromItem(stack.getItem());
+        if(block != Blocks.AIR) {
+            ScanningManager.addScannableThing(new ScanBlockState("f_CM_TREATED_WOOD", block.getStateFromMeta(stack.getMetadata()), false));
+        }
+        ScanningManager.addScannableThing(new ScanItem("f_CM_TREATED_WOOD", stack));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
                 "research/immersiveengineering/golem_mat_treated_wood"));
     }

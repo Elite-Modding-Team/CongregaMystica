@@ -36,20 +36,24 @@ public class GolemMaterialSteel extends GolemMaterial implements IAddition, IPro
 
     @Override
     public void init() {
-        register(this);
+        ItemStack stack = ConfigHandlerCM.golems.steel.getMaterialStack();
+        if(!stack.isEmpty()) {
+            register(this);
+        }
     }
 
     @SuppressWarnings("deprecation")
     @Override
     public void registerResearchLocation() {
         ItemStack stack = ConfigHandlerCM.golems.steel.getMaterialStack();
-        Block block = Block.getBlockFromItem(stack.getItem());
-        if (block != Blocks.AIR) {
-            ScanningManager.addScannableThing(new ScanBlockState("f_CM_STEEL", block.getStateFromMeta(stack.getMetadata()), false));
+        if(!stack.isEmpty()) {
+            Block block = Block.getBlockFromItem(stack.getItem());
+            if (block != Blocks.AIR) {
+                ScanningManager.addScannableThing(new ScanBlockState("f_CM_STEEL", block.getStateFromMeta(stack.getMetadata()), false));
+            }
+            ScanningManager.addScannableThing(new ScanItem("f_CM_STEEL", stack));
+            ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/golem_mat_steel"));
         }
-        ScanningManager.addScannableThing(new ScanItem("f_CM_STEEL", stack));
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
-                "research/golem_mat_steel"));
     }
 
     @Override

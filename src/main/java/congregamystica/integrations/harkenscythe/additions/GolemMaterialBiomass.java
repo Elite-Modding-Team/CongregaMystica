@@ -29,15 +29,14 @@ import thaumcraft.common.golems.EntityThaumcraftGolem;
 public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IProxy {
 	
     public GolemMaterialBiomass() {
-        //TODO: Increase golem damage/armor as these are combat-oriented
         super(
                 "CM_BIOMASS",
                 new String[] {"CM_GOLEM_MAT_BIOMASS"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/harkenscythe/mat_biomass.png"),
                 8588557,
-                16,
-                6,
-                3,
+                20,
+                8,
+                5,
                 ConfigHandlerCM.golems.biomass.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
                 new EnumGolemTrait[] {}
@@ -65,7 +64,7 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
             if(!world.isRemote && entityLiving.ticksExisted % 100 == 0) {
                 if(entityLiving.getHealth() >= entityLiving.getMaxHealth()) {
                     entityLiving.heal(1.0f);
-                } else if(entityLiving.getAbsorptionAmount() < entityLiving.getMaxHealth()){
+                } else if(entityLiving.getAbsorptionAmount() < entityLiving.getMaxHealth() / 2.0f){
                     entityLiving.setAbsorptionAmount(entityLiving.getAbsorptionAmount() + 1.0f);
                 }
             }

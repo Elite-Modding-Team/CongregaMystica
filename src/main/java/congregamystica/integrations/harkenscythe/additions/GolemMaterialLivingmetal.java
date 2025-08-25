@@ -28,15 +28,14 @@ import thaumcraft.common.golems.EntityThaumcraftGolem;
 public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition, IProxy {
 	
     public GolemMaterialLivingmetal() {
-        //TODO: Increase golem damage/armor as these are combat-oriented
         super(
                 "CM_LIVINGMETAL",
                 new String[] {"CM_GOLEM_MAT_LIVINGMETAL"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/harkenscythe/mat_livingmetal.png"),
                 46030,
-                16,
-                6,
-                3,
+                20,
+                8,
+                5,
                 ConfigHandlerCM.golems.livingmetal.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
                 new EnumGolemTrait[] {}

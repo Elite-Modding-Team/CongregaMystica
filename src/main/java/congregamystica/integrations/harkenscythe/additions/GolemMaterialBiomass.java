@@ -4,9 +4,7 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
-import mod.emt.harkenscythe.event.HSEventLivingHurt;
 import net.minecraft.block.Block;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -14,7 +12,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.golems.EnumGolemTrait;
@@ -42,17 +39,18 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
         );
     }
 
+    /*
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
         EntityLivingBase hurt = event.getEntityLiving();
         Entity source = event.getSource().getTrueSource();
         if(source instanceof EntityThaumcraftGolem && this.isBiomassGolem((EntityThaumcraftGolem) source)) {
 
-            //TODO: RNG check for successful blood reap
             //Biomass golem spawns blood on hit
             HSEventLivingHurt.spawnBlood(hurt.world, hurt);
         }
     }
+     */
 
     @SubscribeEvent
     public void onLivingUpdate(LivingEvent.LivingUpdateEvent event) {

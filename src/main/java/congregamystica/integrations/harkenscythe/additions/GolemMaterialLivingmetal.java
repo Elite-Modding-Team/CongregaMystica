@@ -4,7 +4,6 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
-import mod.emt.harkenscythe.event.HSEventLivingDeath;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -52,10 +51,8 @@ public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition
             if(!world.isRemote && !golem.isDead) {
                 golem.heal(golem.getMaxHealth());
             }
-
-            //TODO: RNG check for successful soul reap
             //Livingmetal golem spawns Soul Essence on kill
-            HSEventLivingDeath.spawnSoul(deadEntity.world, deadEntity);
+            //HSEventLivingDeath.spawnSoul(deadEntity.world, deadEntity);
         }
     }
 

@@ -26,7 +26,6 @@ import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.golems.EntityThaumcraftGolem;
 
 public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition, IProxy {
-	
     public GolemMaterialLivingmetal() {
         super(
                 "CM_LIVINGMETAL",
@@ -62,8 +61,7 @@ public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition
 
     public boolean isLivingMetalGolem(EntityThaumcraftGolem golem) {
         IGolemProperties properties = golem.getProperties();
-        //TODO: Add livingmetal trait check
-        return properties.getMaterial().key.equals(this.key);// || properties.getTraits().contains();
+        return properties.getMaterial().key.equals(this.key);
     }
 
     //##########################################################
@@ -76,7 +74,6 @@ public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition
 
     @Override
     public void init() {
-        //TODO: Register material property. Remember to use GolemHelper#registerGolemTrait()
         MinecraftForge.EVENT_BUS.register(this);
     	register(this);
     }

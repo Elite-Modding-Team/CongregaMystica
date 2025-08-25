@@ -27,7 +27,6 @@ import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.golems.EntityThaumcraftGolem;
 
 public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IProxy {
-	
     public GolemMaterialBiomass() {
         super(
                 "CM_BIOMASS",
@@ -49,7 +48,7 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
         Entity source = event.getSource().getTrueSource();
         if(source instanceof EntityThaumcraftGolem && this.isBiomassGolem((EntityThaumcraftGolem) source)) {
 
-            //TODO: RNG check for successful soul reap
+            //TODO: RNG check for successful blood reap
             //Biomass golem spawns blood on hit
             HSEventLivingHurt.spawnBlood(hurt.world, hurt);
         }
@@ -73,8 +72,7 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
 
     public boolean isBiomassGolem(EntityThaumcraftGolem golem) {
         IGolemProperties properties = golem.getProperties();
-        //TODO: Add biomass trait check
-        return properties.getMaterial().key.equals(this.key);// || properties.getTraits().contains();
+        return properties.getMaterial().key.equals(this.key);
     }
 
     //##########################################################
@@ -87,7 +85,6 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
 
     @Override
     public void init() {
-        //TODO: Register material property. Remember to use GolemHelper#registerGolemTrait()
         MinecraftForge.EVENT_BUS.register(this);
     	register(this);
     }

@@ -23,13 +23,34 @@ public class GolemMaterialCategory {
             })
     public String materialItem = "";
 
+    @Config.RequiresMcRestart
+    @Config.RangeInt(min = 0, max = 100)
+    @Config.Name("Material Armor")
+    @Config.Comment("The base golem material armor value.")
+    public int statArmor;
+
+    @Config.RequiresMcRestart
+    @Config.RangeInt(min = 0, max = 100)
+    @Config.Name("Material Damage")
+    @Config.Comment("The base golem material damage value.")
+    public int statDamage;
+
+    @Config.RequiresMcRestart
+    @Config.RangeInt(min = 0, max = 100)
+    @Config.Name("Material Health")
+    @Config.Comment("The base golem material health value. Actual golem health will be this value plus 10.")
+    public int statHealth;
+
     @Config.Ignore
     public String fallbackOreDict;
 
     @Config.Ignore
     private ItemStack stackCache = ItemStack.EMPTY;
 
-    public GolemMaterialCategory(String fallbackOreDict) {
+    public GolemMaterialCategory(int health, int armor, int damage, String fallbackOreDict) {
+        this.statArmor = armor;
+        this.statDamage = damage;
+        this.statHealth = health;
         this.fallbackOreDict = fallbackOreDict;
     }
 

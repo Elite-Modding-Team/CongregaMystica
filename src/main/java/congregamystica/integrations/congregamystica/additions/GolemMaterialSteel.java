@@ -25,9 +25,9 @@ public class GolemMaterialSteel extends GolemMaterial implements IAddition, IPro
                 new String[]{"CM_GOLEM_MAT_STEEL"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/mat_steel.png"),
                 4934475,
-                20,
-                14,
-                6,
+                ConfigHandlerCM.golems.steel.statHealth,
+                ConfigHandlerCM.golems.steel.statArmor,
+                ConfigHandlerCM.golems.steel.statDamage,
                 ConfigHandlerCM.golems.steel.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
                 new EnumGolemTrait[]{EnumGolemTrait.HEAVY, EnumGolemTrait.CLUMSY, EnumGolemTrait.BLASTPROOF, EnumGolemTrait.FIREPROOF}

@@ -30,9 +30,9 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
                 new String[] {"CM_GOLEM_MAT_BIOMASS"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/harkenscythe/mat_biomass.png"),
                 8588557,
-                20,
-                8,
-                5,
+                ConfigHandlerCM.golems.biomass.statHealth,
+                ConfigHandlerCM.golems.biomass.statArmor,
+                ConfigHandlerCM.golems.biomass.statDamage,
                 ConfigHandlerCM.golems.biomass.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
                 new EnumGolemTrait[] {}

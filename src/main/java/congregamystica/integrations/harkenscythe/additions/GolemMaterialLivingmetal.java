@@ -31,9 +31,9 @@ public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition
                 new String[] {"CM_GOLEM_MAT_LIVINGMETAL"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/harkenscythe/mat_livingmetal.png"),
                 46030,
-                20,
-                8,
-                5,
+                ConfigHandlerCM.golems.livingmetal.statHealth,
+                ConfigHandlerCM.golems.livingmetal.statArmor,
+                ConfigHandlerCM.golems.livingmetal.statDamage,
                 ConfigHandlerCM.golems.livingmetal.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
                 new EnumGolemTrait[] {}

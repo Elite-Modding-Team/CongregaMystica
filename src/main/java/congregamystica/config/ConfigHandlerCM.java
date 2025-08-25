@@ -22,90 +22,6 @@ public class ConfigHandlerCM {
     @Config.Name("The One Probe")
     public static TheOneProbeCategory the_one_probe = new TheOneProbeCategory();
 
-    public static class ClustersCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Register Gem Ore Refining")
-        @Config.Comment
-                ({
-                        "Enables Crucible gem ore refining, registering the Crucible recipe that refines gem ores into clusters.",
-                        "A value of false will mirror the behavior of Native Quartz Clusters."
-                })
-        public boolean registerGemCrucibleRefining = false;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Register Smelting Bonus")
-        @Config.Comment("Registers infernal smelting metal nugget bonuses when smelting ores associated with new native clusters.")
-        public boolean registerSmeltingBonuses = true;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Register Pech Trades")
-        @Config.Comment("Native Clusters added by this mod will be included on the Pech Forager trade table.")
-        public boolean registerPechTrades = true;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Special Gem Harvest")
-        @Config.Comment
-                ({
-                        "Registered cluster types with an output type of 'gem' have a chance be converted into Native Clusters when",
-                        "harvested by tools with refining. A value of true will mirror the behavior of Native Quartz Clusters."
-                })
-        public boolean specialGemHarvest = true;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Additional Cluster Types")
-        @Config.Comment
-                ({
-                        //TODO: Redo this with better explanation.
-                        "Additional Native Clusters that will be registered. If Thaumic Wonders Unofficial is installed",
-                        "Eldritch Cluster variants will also be registered.",
-                        "Format:",
-                        "  oreblock;outputtype;colorcode",
-                        "  oreblock;outputtype",
-                        "",
-                        "  oreblock - The ore block oredictionary value. This value is case sensitive.",
-                        "  outputtype - The output oredict type (ingotIron = ingot, gemDiamond = gem, et cetera)",
-                        "  colorcode - (optional) The hexidecimal RBG color color code used for dynamic generation.",
-                        "",
-                        "If the color code value is excluded from a cluster, a non-dynamic cluster will be registered, requiring",
-                        "manual creation of a model and texture file.",
-                        "",
-                        "Due to the dynamic nature of these clusters, occasionally the cluster display name will be incorrect.",
-                        "You can override the default name by adding the cluster's translation key to a language file."
-                })
-        public String[] additionalClusters = new String[] {
-                //Vanilla Ores
-                "oreDiamond;gem",
-                "oreEmerald;gem",
-                //Thaumcraft Ores
-                "oreAmber;gem",
-                //General Ores
-                "oreAluminum;ingot;0xefeff1",
-                "oreNickel;ingot;0x9ea59e",
-                "oreUranium;ingot;0x57744b",
-                "orePlatinum;ingot;0xc6d5f2",
-                "oreIridium;ingot;0xbdbed1",
-                //"oreTitanium;ingot;0x3a4e70",
-                //Applied Energistics 2
-                "oreQuartzCertus;gem",
-                "oreChargedQuartzCertus;gem",
-                //Astral Sorcery Ores
-                "oreAstralStarmetal;ingot",
-                //Mekanism
-                "oreOsmium;ingot;0xb5cacc",
-                //Mystical World
-                "oreAmethyst;gem",
-                //Project Red
-                "orePeridot;gem",
-                "oreRuby;gem",
-                "oreSapphire;gem",
-                //Thermal Foundation Ores
-                "oreMithril;ingot;0x5cd6ff", //aka Mana Infused
-                //Tinkers Construct Ores
-                "oreCobalt;ingot;0x2e7ce6",
-                "oreArdite;ingot;0xe5b740",
-        };
-    }
-
     public static class BloodMagicCategory {
         @Config.Name("Bloody Scrivener's Tools")
         public BloodScribingToolsCategory bloodyScribingTools = new BloodScribingToolsCategory();
@@ -193,11 +109,98 @@ public class ConfigHandlerCM {
         }
     }
 
+    public static class ClustersCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Register Gem Ore Refining")
+        @Config.Comment
+                ({
+                        "Enables Crucible gem ore refining, registering the Crucible recipe that refines gem ores into clusters.",
+                        "A value of false will mirror the behavior of Native Quartz Clusters."
+                })
+        public boolean registerGemCrucibleRefining = false;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Register Smelting Bonus")
+        @Config.Comment("Registers infernal smelting metal nugget bonuses when smelting ores associated with new native clusters.")
+        public boolean registerSmeltingBonuses = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Register Pech Trades")
+        @Config.Comment("Native Clusters added by this mod will be included on the Pech Forager trade table.")
+        public boolean registerPechTrades = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Special Gem Harvest")
+        @Config.Comment
+                ({
+                        "Registered cluster types with an output type of 'gem' have a chance be converted into Native Clusters when",
+                        "harvested by tools with refining. A value of true will mirror the behavior of Native Quartz Clusters."
+                })
+        public boolean specialGemHarvest = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Additional Cluster Types")
+        @Config.Comment
+                ({
+                        "Additional Native Clusters that will be registered. If Thaumic Wonders Unofficial is installed",
+                        "Eldritch Cluster variants will also be registered.",
+                        "Format:",
+                        "  oreblock;outputtype;colorcode",
+                        "  oreblock;outputtype",
+                        "",
+                        "  oreblock - The ore block oredictionary value. This value is case sensitive.",
+                        "  outputtype - The output oredict type (ingotIron = ingot, gemDiamond = gem, et cetera)",
+                        "  colorcode - (optional) The hexidecimal RBG color color code used for dynamic generation.",
+                        "",
+                        "If the color code value is excluded from a cluster, a non-dynamic cluster will be registered, requiring",
+                        "manual creation of a model and texture file.",
+                        "",
+                        "Due to the dynamic nature of these clusters, occasionally the cluster display name will be incorrect.",
+                        "You can override the default name by adding the cluster's translation key to a language file."
+                })
+        public String[] additionalClusters = new String[] {
+                //Vanilla Ores
+                "oreDiamond;gem",
+                "oreEmerald;gem",
+                //Thaumcraft Ores
+                "oreAmber;gem",
+                //General Ores
+                "oreAluminum;ingot;0xefeff1",
+                "oreNickel;ingot;0x9ea59e",
+                "oreUranium;ingot;0x57744b",
+                "orePlatinum;ingot;0xc6d5f2",
+                "oreIridium;ingot;0xbdbed1",
+                //"oreTitanium;ingot;0x3a4e70",
+                //Applied Energistics 2
+                "oreQuartzCertus;gem",
+                "oreChargedQuartzCertus;gem",
+                //Astral Sorcery Ores
+                "oreAstralStarmetal;ingot",
+                //Mekanism
+                "oreOsmium;ingot;0xb5cacc",
+                //Mystical World
+                "oreAmethyst;gem",
+                //Project Red
+                "orePeridot;gem",
+                "oreRuby;gem",
+                "oreSapphire;gem",
+                //Thermal Foundation Ores
+                "oreMithril;ingot;0x5cd6ff", //aka Mana Infused
+                //Tinkers Construct Ores
+                "oreCobalt;ingot;0x2e7ce6",
+                "oreArdite;ingot;0xe5b740",
+                };
+    }
+
     public static class GolemCategory {
-        public GolemMaterialCategory biomass = new GolemMaterialCategory("ingotBiomass");
-        public GolemMaterialCategory livingmetal = new GolemMaterialCategory("ingotLivingmetal");
-        public GolemMaterialCategory steel = new GolemMaterialCategory("ingotSteel");
-        public GolemMaterialCategory treated_wood = new GolemMaterialCategory("plankTreatedWood");
+        @Config.Name("Harken Scythe Biomass")
+        public GolemMaterialCategory biomass = new GolemMaterialCategory(20, 8, 5, "ingotBiomass");
+        @Config.Name("Harken Scythe Livingmetal")
+        public GolemMaterialCategory livingmetal = new GolemMaterialCategory(20, 8, 5, "ingotLivingmetal");
+        @Config.Name("Steel")
+        public GolemMaterialCategory steel = new GolemMaterialCategory( 20, 14, 6,"ingotSteel");
+        @Config.Name("Immersive Engineering Treated Wood")
+        public GolemMaterialCategory treatedWood = new GolemMaterialCategory(6, 2, 1,"plankTreatedWood");
     }
 
     public static class ImmersiveEngineeringCategory {

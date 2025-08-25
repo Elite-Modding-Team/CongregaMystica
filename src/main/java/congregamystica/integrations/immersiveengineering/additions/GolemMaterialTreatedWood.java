@@ -25,10 +25,10 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
                 new String[]{"CM_GOLEM_MAT_TREATED_WOOD"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/immersiveengineering/mat_treated_wood.png"),
                 6566425,
-                6,
-                2,
-                1,
-                ConfigHandlerCM.golems.treated_wood.getMaterialStack(),
+                ConfigHandlerCM.golems.treatedWood.statHealth,
+                ConfigHandlerCM.golems.treatedWood.statArmor,
+                ConfigHandlerCM.golems.treatedWood.statDamage,
+                ConfigHandlerCM.golems.treatedWood.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
                 new EnumGolemTrait[]{EnumGolemTrait.DEFT}
         );
@@ -42,7 +42,7 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
     @SuppressWarnings("deprecation")
     @Override
     public void registerResearchLocation() {
-        ItemStack stack = ConfigHandlerCM.golems.treated_wood.getMaterialStack();
+        ItemStack stack = ConfigHandlerCM.golems.treatedWood.getMaterialStack();
         Block block = Block.getBlockFromItem(stack.getItem());
         if (block != Blocks.AIR) {
             ScanningManager.addScannableThing(new ScanBlockState("f_CM_TREATED_WOOD", block.getStateFromMeta(stack.getMetadata()), false));
@@ -55,6 +55,6 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
     @Override
     public boolean isEnabled() {
         //Configuration or OreDict toggles here
-        return ConfigHandlerCM.golems.treated_wood.enable;
+        return ConfigHandlerCM.golems.treatedWood.enable;
     }
 }

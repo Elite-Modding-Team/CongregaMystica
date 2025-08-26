@@ -141,7 +141,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
             }
 
             float visCost = ((ItemFocus) focusStack.getItem()).getVisCost(focusStack) * this.getConsumptionModifier(heldStack, player, false);
-            float altVisCost = visCost * MathHelper.clamp(this.getAltResourceModifier(worldIn, player, heldStack), 0.1f, 1.0f);
+            float altVisCost = visCost * Math.min(this.getAltResourceModifier(worldIn, player, heldStack), 1.0f);
             visCost -= altVisCost;
             int activationTime = ((ItemFocus) focusStack.getItem()).getActivationTime(focusStack);
 

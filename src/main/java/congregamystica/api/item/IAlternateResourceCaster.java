@@ -17,7 +17,7 @@ public interface IAlternateResourceCaster extends ICaster {
      * @param world the world object
      * @param player the player casting the spell
      * @param casterStack the caster gauntlet ItemStack
-     * @return A value between 0.1 and 1.0.
+     * @return Must return a value less than 1.0. A value less than 0 will increase the gauntlet Vis casting cost.
      */
     float getAltResourceModifier(World world, EntityPlayer player, ItemStack casterStack);
 
@@ -25,7 +25,7 @@ public interface IAlternateResourceCaster extends ICaster {
      * The base modifier that will reduce the amount of Vis consumed for each cast by this gauntlet. For a player-sensitive
      * version, use {@link IAlternateResourceCaster#getAltResourceModifier(World, EntityPlayer, ItemStack)}.
      *
-     * @return A value between 0.1 and 1.0.
+     * @return Must return a value less than 1.0. A value less than 0 will increase the gauntlet Vis casting cost.
      */
     float getAltResourceBaseModifier();
 
@@ -35,7 +35,7 @@ public interface IAlternateResourceCaster extends ICaster {
      * @param world the world object
      * @param player the player casting the spell
      * @param casterStack the caster gauntlet ItemStack
-     * @param alternateResourceVis the amount of vis that will be converted into the alternate resource
+     * @param alternateResourceVis the amount of vis that will be converted into the alternate resource. This value can be less than 0.
      * @param simulate whether this resource consumption should be simulated
      * @return true if the consuming action was a success, false otherwise
      */

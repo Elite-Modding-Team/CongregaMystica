@@ -1,8 +1,7 @@
-package congregamystica.integrations.immersiveengineering.additions;
+package congregamystica.integrations.immersiveengineering.golems;
 
 import congregamystica.CongregaMystica;
-import congregamystica.api.IAddition;
-import congregamystica.api.IProxy;
+import congregamystica.api.golem.IGolemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -16,12 +15,16 @@ import thaumcraft.api.research.ScanBlockState;
 import thaumcraft.api.research.ScanItem;
 import thaumcraft.api.research.ScanningManager;
 
-//Because this feature is not a block or item, it should extend the IProxy so it can be registered correctly.
-public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition, IProxy {
+public class GolemMaterialTreatedWood implements IGolemAddition {
+    @Override
+    public String getGolemMaterialKey() {
+        return "CM_TREATED_WOOD";
+    }
 
-    public GolemMaterialTreatedWood() {
-        super(
-                "CM_TREATED_WOOD",
+    @Override
+    public void registerGolemMaterial() {
+        GolemMaterial.register(new GolemMaterial(
+                this.getGolemMaterialKey(),
                 new String[]{"CM_GOLEM_MAT_TREATED_WOOD"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/immersiveengineering/mat_treated_wood.png"),
                 6566425,
@@ -31,12 +34,7 @@ public class GolemMaterialTreatedWood extends GolemMaterial implements IAddition
                 ConfigHandlerCM.golems.treatedWood.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
                 new EnumGolemTrait[]{EnumGolemTrait.DEFT}
-        );
-    }
-
-    @Override
-    public void init() {
-        register(this);
+        ));
     }
 
     @SuppressWarnings("deprecation")

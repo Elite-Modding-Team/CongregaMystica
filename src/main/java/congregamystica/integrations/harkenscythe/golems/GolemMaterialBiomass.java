@@ -1,8 +1,8 @@
-package congregamystica.integrations.harkenscythe.additions;
+package congregamystica.integrations.harkenscythe.golems;
 
 import congregamystica.CongregaMystica;
-import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
+import congregamystica.api.golem.IGolemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,22 +23,7 @@ import thaumcraft.api.research.ScanItem;
 import thaumcraft.api.research.ScanningManager;
 import thaumcraft.common.golems.EntityThaumcraftGolem;
 
-public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IProxy {
-    public GolemMaterialBiomass() {
-        super(
-                "CM_BIOMASS",
-                new String[] {"CM_GOLEM_MAT_BIOMASS"},
-                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/harkenscythe/mat_biomass.png"),
-                8588557,
-                ConfigHandlerCM.golems.biomass.statHealth,
-                ConfigHandlerCM.golems.biomass.statArmor,
-                ConfigHandlerCM.golems.biomass.statDamage,
-                ConfigHandlerCM.golems.biomass.getMaterialStack(),
-                new ItemStack(ItemsTC.mechanismSimple),
-                new EnumGolemTrait[] {EnumGolemTrait.BLASTPROOF, EnumGolemTrait.FIREPROOF, EnumGolemTrait.LIGHT}
-        );
-    }
-
+public class GolemMaterialBiomass implements IGolemAddition, IProxy {
     /*
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
@@ -70,21 +55,36 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
 
     public boolean isBiomassGolem(EntityThaumcraftGolem golem) {
         IGolemProperties properties = golem.getProperties();
-        return properties.getMaterial().key.equals(this.key);
+        return properties.getMaterial().key.equals(this.getGolemMaterialKey());
     }
 
     //##########################################################
-    // IItemAddition
+    // IGolemAddition
 
     @Override
     public void preInit() {
-        //Golem registry is retarded so you can't use the pre-init
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
-    public void init() {
-        MinecraftForge.EVENT_BUS.register(this);
-    	register(this);
+    public String getGolemMaterialKey() {
+        return "CM_BIOMASS";
+    }
+
+    @Override
+    public void registerGolemMaterial() {
+        GolemMaterial.register(new GolemMaterial(
+                this.getGolemMaterialKey(),
+                new String[] {"CM_GOLEM_MAT_BIOMASS"},
+                new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/harkenscythe/mat_biomass.png"),
+                8588557,
+                ConfigHandlerCM.golems.biomass.statHealth,
+                ConfigHandlerCM.golems.biomass.statArmor,
+                ConfigHandlerCM.golems.biomass.statDamage,
+                ConfigHandlerCM.golems.biomass.getMaterialStack(),
+                new ItemStack(ItemsTC.mechanismSimple),
+                new EnumGolemTrait[] {EnumGolemTrait.BLASTPROOF, EnumGolemTrait.FIREPROOF, EnumGolemTrait.LIGHT}
+        ));
     }
 
     @SuppressWarnings("deprecation")

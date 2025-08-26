@@ -1,8 +1,7 @@
-package congregamystica.integrations.congregamystica.additions;
+package congregamystica.integrations.congregamystica.golems;
 
 import congregamystica.CongregaMystica;
-import congregamystica.api.IAddition;
-import congregamystica.api.IProxy;
+import congregamystica.api.golem.IGolemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -16,12 +15,16 @@ import thaumcraft.api.research.ScanBlockState;
 import thaumcraft.api.research.ScanItem;
 import thaumcraft.api.research.ScanningManager;
 
-//Because this feature is not a block or item, it should extend the IProxy so it can be registered correctly.
-public class GolemMaterialSteel extends GolemMaterial implements IAddition, IProxy {
+public class GolemMaterialSteel implements IGolemAddition {
+    @Override
+    public String getGolemMaterialKey() {
+        return "CM_STEEL";
+    }
 
-    public GolemMaterialSteel() {
-        super(
-                "CM_STEEL",
+    @Override
+    public void registerGolemMaterial() {
+        GolemMaterial.register(new GolemMaterial(
+                this.getGolemMaterialKey(),
                 new String[]{"CM_GOLEM_MAT_STEEL"},
                 new ResourceLocation(CongregaMystica.MOD_ID, "textures/entity/golem/mat_steel.png"),
                 4934475,
@@ -31,15 +34,7 @@ public class GolemMaterialSteel extends GolemMaterial implements IAddition, IPro
                 ConfigHandlerCM.golems.steel.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
                 new EnumGolemTrait[]{EnumGolemTrait.HEAVY, EnumGolemTrait.CLUMSY, EnumGolemTrait.BLASTPROOF, EnumGolemTrait.FIREPROOF}
-        );
-    }
-
-    @Override
-    public void init() {
-        ItemStack stack = ConfigHandlerCM.golems.steel.getMaterialStack();
-        if(!stack.isEmpty()) {
-            register(this);
-        }
+        ));
     }
 
     @SuppressWarnings("deprecation")

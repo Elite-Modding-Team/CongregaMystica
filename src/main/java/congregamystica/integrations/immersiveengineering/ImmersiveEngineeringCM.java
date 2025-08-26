@@ -1,7 +1,7 @@
 package congregamystica.integrations.immersiveengineering;
 
 import congregamystica.api.IProxy;
-import congregamystica.integrations.immersiveengineering.additions.GolemMaterialTreatedWood;
+import congregamystica.integrations.immersiveengineering.golems.GolemMaterialTreatedWood;
 import congregamystica.integrations.immersiveengineering.items.ItemDrillHeadThaumium;
 import congregamystica.integrations.immersiveengineering.items.ItemDrillHeadVoid;
 import congregamystica.integrations.immersiveengineering.items.ItemUpgradeRefining;

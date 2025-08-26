@@ -2,8 +2,8 @@ package congregamystica.integrations.congregamystica;
 
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
-import congregamystica.integrations.congregamystica.additions.GolemMaterialSteel;
 import congregamystica.integrations.congregamystica.additions.IntegrationsCM;
+import congregamystica.integrations.congregamystica.golems.GolemMaterialSteel;
 import congregamystica.integrations.congregamystica.items.ItemMimicFork;
 import congregamystica.integrations.congregamystica.items.ItemMimicForkRanged;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;

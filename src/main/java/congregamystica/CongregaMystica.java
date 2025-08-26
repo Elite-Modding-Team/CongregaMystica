@@ -62,11 +62,22 @@ public class CongregaMystica {
 
 
     //TODO:
-    // General:
-    // A system to easily make more gauntlets. Having it depend on Thaumic Augmentation might be the better way in order to utilize augments
-    // Blood Magic:
-    // Bound Scribing Tools - Automatically gives the player research at specific points, probably indestructible?
-    // Harken Scythe:
-    // Biomass Gauntlet - Uses blood essence instead of vis, should also do other things to differentiate it more from the livingmetal one
-    // Livingmetal Gauntlet - Uses soul essence instead of vis, should also do other things to differentiate it more from the biomass one
+    // Gauntlets (General List of Mods)
+    //  Blood Magic
+    //      Sentient Gauntlet - uses Demon Will
+    //      Bound Gauntlet - uses LP
+    //  Botania
+    //      Elementium Gauntlet - uses mana
+    //  EB Wizardry
+    //      Mana Gauntlet - uses mana
+    //  Embers
+    //      Clockwork Gauntlet - uses ember
+    //  Harken Scythe
+    //      Livingmetal Gauntlet - uses soul essence
+    //      Biomass Gauntlet - uses blood essence
+    //  Nature's Aura
+    //      Aura Caster - uses aura
+    //  Technology
+    //      RF Caster - uses redstone flux
+    // Rustic Thaumaturgy - https://www.curseforge.com/minecraft/mc-mods/rustic-thaumaturgy
 }

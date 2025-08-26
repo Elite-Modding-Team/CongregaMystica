@@ -4,6 +4,7 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.api.block.IBlockAddition;
+import congregamystica.api.golem.IGolemAddition;
 import congregamystica.api.item.IColoredItem;
 import congregamystica.api.item.IItemAddition;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
@@ -132,6 +133,11 @@ public class RegistrarCM {
     public static List<IBlockAddition> getBlockAdditions() {
         return getAdditions().stream().filter(addition -> addition instanceof IBlockAddition)
                 .map(addition -> (IBlockAddition) addition).collect(Collectors.toList());
+    }
+
+    public static List<IGolemAddition> getGolemAdditions() {
+        return getAdditions().stream().filter(addition -> addition instanceof IGolemAddition)
+                .map(addition -> (IGolemAddition) addition).collect(Collectors.toList());
     }
 
     public static List<IItemAddition> getItemAdditions() {

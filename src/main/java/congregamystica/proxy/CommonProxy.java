@@ -3,6 +3,7 @@ package congregamystica.proxy;
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
+import congregamystica.api.golem.IGolemAddition;
 import congregamystica.integrations.InitIntegrations;
 import congregamystica.network.PacketHandlerCM;
 import congregamystica.registry.RegistrarCM;
@@ -27,6 +28,7 @@ public class CommonProxy {
 
     public void postInit() {
         InitIntegrations.getModAdditions().forEach(IProxy::postInit);
+        RegistrarCM.getGolemAdditions().forEach(IGolemAddition::registerGolemMaterial);
         RegistrarCM.getProxyAdditions().forEach(IProxy::postInit);
     }
 

@@ -9,6 +9,7 @@ tile.botania:flower.whisperweed.reference=Indirect Cannibalism
 # Items
 item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb
 item.congregamystica:blood_scribing_tools.name=Bloody Scrivener's Tools
+item.congregamystica:bound_caster.name=Bound Caster's Gauntlet
 item.congregamystica:cluster_astral_starmetal.name=Native Starmetal Cluster
 item.congregamystica:cluster_charged_quartz_certus.name=Native Charged Certus Quartz Cluster
 item.congregamystica:cluster_quartz_certus.name=Native Certus Quartz Cluster

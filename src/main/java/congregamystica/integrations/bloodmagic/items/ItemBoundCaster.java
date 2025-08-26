@@ -7,9 +7,11 @@ import congregamystica.api.item.AbstractItemCasterCM;
 import congregamystica.utils.libs.ModIds;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IRarity;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -43,6 +45,11 @@ public class ItemBoundCaster extends AbstractItemCasterCM {
 
     @Override
     public void addAltResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
+    }
+    
+    @Override
+    public @NotNull IRarity getForgeRarity(@NotNull ItemStack stack) {
+        return EnumRarity.RARE;
     }
 
     //##########################################################

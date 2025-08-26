@@ -106,8 +106,9 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                 }
                 items.add(stack);
             }
+        } else {
+            super.getSubItems(tab, items);
         }
-        super.getSubItems(tab, items);
     }
 
     @Override

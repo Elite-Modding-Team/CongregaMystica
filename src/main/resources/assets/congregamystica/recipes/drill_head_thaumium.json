@@ -17,5 +17,11 @@
       "type": "forge:ore_dict",
       "ore": "blockThaumium"
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "congregamystica:drill_head_thaumium"
+    }
+  ]
 }

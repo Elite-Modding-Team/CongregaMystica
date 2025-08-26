@@ -3,6 +3,7 @@ package congregamystica.integrations.bloodmagic.items;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,9 +18,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 
-public class ItemBloodCaster extends AbstractItemCasterCM {
-    public ItemBloodCaster() {
-        super("caster_blood");
+public class ItemBoundCaster extends AbstractItemCasterCM {
+    public ItemBoundCaster() {
+        super("bound_caster");
     }
 
     @Override
@@ -28,14 +29,12 @@ public class ItemBloodCaster extends AbstractItemCasterCM {
     }
 
     @Override
-    public boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack,
-                                      float alternateResourceVis, boolean simulate) {
+    public boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float alternateResourceVis, boolean simulate) {
         return true;
     }
 
     @Override
-    public void addAlternateResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn,
-                                            @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
+    public void addAlternateResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
     }
 
     //##########################################################
@@ -43,19 +42,28 @@ public class ItemBloodCaster extends AbstractItemCasterCM {
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
+
     }
 
     @Override
     public void registerResearchLocation() {
+
     }
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
+
+    }
+
+    @Override
+    public void registerModel(ModelRegistryEvent event) {
+        //TODO: Figure out why the model isn't registering.
+        super.registerModel(event);
     }
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerCM.blood_magic.bloodyScribingTools.enable;
+        return true;
     }
 
 }

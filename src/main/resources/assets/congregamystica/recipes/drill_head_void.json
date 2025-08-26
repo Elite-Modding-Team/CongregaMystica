@@ -17,5 +17,11 @@
       "type": "forge:ore_dict",
       "ore": "blockVoid"
     }
-  }
+  },
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "congregamystica:drill_head_void"
+    }
+  ]
 }

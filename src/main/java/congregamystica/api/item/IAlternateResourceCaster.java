@@ -1,0 +1,50 @@
+package congregamystica.api.item;
+
+import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import thaumcraft.api.casters.ICaster;
+
+import java.util.List;
+
+public interface IAlternateResourceCaster extends ICaster {
+    /**
+     * The modifier that will reduce the amount of Vis consumed for each cast by this gauntlet.
+     *
+     * @param world the world object
+     * @param player the player casting the spell
+     * @param casterStack the caster gauntlet ItemStack
+     * @return A value between 0.1 and 1.0.
+     */
+    default float getAltResourceModifier(World world, EntityPlayer player, ItemStack casterStack) {
+        return this.getAltResourceBaseModifier();
+    }
+
+    /**
+     * The base modifier that will reduce the amount of Vis consumed for each cast by this gauntlet. For a player-sensitive
+     * version, use {@link IAlternateResourceCaster#getAltResourceModifier(World, EntityPlayer, ItemStack)}.
+     *
+     * @return A value between 0.1 and 1.0.
+     */
+    float getAltResourceBaseModifier();
+
+    /**
+     * Consumes the alternate resource during a casting action.
+     *
+     * @param world the world object
+     * @param player the player casting the spell
+     * @param casterStack the caster gauntlet ItemStack
+     * @param alternateResourceVis the amount of vis that will be converted into the alternate resource
+     * @param simulate whether this resource consumption should be simulated
+     * @return true if the consuming action was a success, false otherwise
+     */
+    boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float alternateResourceVis, boolean simulate);
+
+    /**
+     * Adds custom alternate resource information. This information is added to the tooltip before the spell focus information.
+     */
+    void addAlternateResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn);
+}

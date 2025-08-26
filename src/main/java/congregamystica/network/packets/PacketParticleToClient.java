@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketEnumParticle implements IMessage {
+public class PacketParticleToClient implements IMessage {
     public EnumParticleTypes particle;
     public double xPos;
     public double yPos;
@@ -16,7 +16,7 @@ public class PacketEnumParticle implements IMessage {
     public double ySpeed;
     public double zSpeed;
 
-    public PacketEnumParticle(EnumParticleTypes particle, double xPos, double yPos, double zPos, double xSpeed, double ySpeed, double zSpeed) {
+    public PacketParticleToClient(EnumParticleTypes particle, double xPos, double yPos, double zPos, double xSpeed, double ySpeed, double zSpeed) {
         this.particle = particle;
         this.xPos = xPos;
         this.yPos = yPos;
@@ -26,7 +26,7 @@ public class PacketEnumParticle implements IMessage {
         this.zSpeed = zSpeed;
     }
 
-    public PacketEnumParticle() {
+    public PacketParticleToClient() {
         this(EnumParticleTypes.getParticleFromId(0),0,0,0,0,0,0);
     }
 
@@ -52,9 +52,9 @@ public class PacketEnumParticle implements IMessage {
         buf.writeDouble(this.zSpeed);
     }
 
-    public static class Handler implements IMessageHandler<PacketEnumParticle, IMessage> {
+    public static class Handler implements IMessageHandler<PacketParticleToClient, IMessage> {
         @Override
-        public IMessage onMessage(PacketEnumParticle message, MessageContext ctx) {
+        public IMessage onMessage(PacketParticleToClient message, MessageContext ctx) {
             FMLClientHandler.instance().getClient().effectRenderer.spawnEffectParticle(
                     message.particle.getParticleID(),
                     message.xPos, message.yPos, message.zPos,

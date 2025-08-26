@@ -14,6 +14,7 @@ public enum ModIds {
     harvestcraft(ConstIds.harvestcraft),
     immersive_engineering(ConstIds.immersive_engineering),
     thaumcraft_fix(ConstIds.thaumcraft_fix),
+    thaumic_augmentation(ConstIds.thaumic_augmentation),
     thaumic_wonders(ConstIds.thaumic_wonders, ConstVersions.thaumic_wonders, true, false),
     the_one_probe(ConstIds.the_one_probe)
     ;
@@ -53,6 +54,7 @@ public enum ModIds {
         public static final String immersive_engineering = "immersiveengineering";
         public static final String thaumcraft = "thaumcraft";
         public static final String thaumcraft_fix = "thaumcraftfix";
+        public static final String thaumic_augmentation = "thaumicaugmentation";
         public static final String thaumic_wonders = "thaumicwonders";
         public static final String the_one_probe = "theoneprobe";
     }

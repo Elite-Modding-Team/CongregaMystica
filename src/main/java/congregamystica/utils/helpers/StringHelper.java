@@ -28,6 +28,10 @@ public class StringHelper {
         return I18n.format(getTranslationKey(unloc, type, params));
     }
 
+    public static String getTranslatedString(String translationKey, Object... params) {
+        return I18n.format(translationKey, params);
+    }
+
     public static ITextComponent getTranslatedComponent(String unloc, String type, String... params) {
         return new TextComponentTranslation(getTranslationKey(unloc, type, params));
     }

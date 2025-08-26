@@ -1,7 +1,8 @@
 package congregamystica.network;
 
 import congregamystica.CongregaMystica;
-import congregamystica.network.packets.PacketEnumParticle;
+import congregamystica.network.packets.PacketAuraToClient;
+import congregamystica.network.packets.PacketParticleToClient;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -11,7 +12,8 @@ public class PacketHandlerCM {
 
     public static void preInit() {
         int id = 0;
-        INSTANCE.registerMessage(PacketEnumParticle.Handler.class, PacketEnumParticle.class, id++, Side.CLIENT);
+        INSTANCE.registerMessage(PacketParticleToClient.Handler.class, PacketParticleToClient.class, id++, Side.CLIENT);
+        INSTANCE.registerMessage(PacketAuraToClient.Handler.class, PacketAuraToClient.class, id++, Side.CLIENT);
     }
 
     static {

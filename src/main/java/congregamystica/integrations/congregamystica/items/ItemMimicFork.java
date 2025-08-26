@@ -3,7 +3,7 @@ package congregamystica.integrations.congregamystica.items;
 import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemAddition;
 import congregamystica.network.PacketHandlerCM;
-import congregamystica.network.packets.PacketEnumParticle;
+import congregamystica.network.packets.PacketParticleToClient;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -121,7 +121,7 @@ public class ItemMimicFork extends AbstractItemAddition {
             } else {
                 //TODO: Figure out why this fires twice
                 PacketHandlerCM.INSTANCE.sendToAllAround(
-                        new PacketEnumParticle(
+                        new PacketParticleToClient(
                                 EnumParticleTypes.NOTE,
                                 pos.getX() + 0.5D,
                                 pos.getY() + 0.2D,

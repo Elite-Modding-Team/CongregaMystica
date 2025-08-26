@@ -35,7 +35,7 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
                 ConfigHandlerCM.golems.biomass.statDamage,
                 ConfigHandlerCM.golems.biomass.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
-                new EnumGolemTrait[] {}
+                new EnumGolemTrait[] {EnumGolemTrait.BLASTPROOF, EnumGolemTrait.FIREPROOF, EnumGolemTrait.LIGHT}
         );
     }
 
@@ -60,7 +60,7 @@ public class GolemMaterialBiomass extends GolemMaterial implements IAddition, IP
             //Every 5 seconds the golem heals itself or gains half a heart of absorption
             if(!world.isRemote && entityLiving.ticksExisted % 100 == 0) {
                 if(entityLiving.getHealth() >= entityLiving.getMaxHealth()) {
-                    entityLiving.heal(1.0f);
+                    entityLiving.heal(2.0f);
                 } else if(entityLiving.getAbsorptionAmount() < entityLiving.getMaxHealth() / 2.0f){
                     entityLiving.setAbsorptionAmount(entityLiving.getAbsorptionAmount() + 1.0f);
                 }

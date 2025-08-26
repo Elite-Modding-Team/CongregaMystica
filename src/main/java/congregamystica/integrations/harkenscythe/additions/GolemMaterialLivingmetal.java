@@ -36,7 +36,7 @@ public class GolemMaterialLivingmetal extends GolemMaterial implements IAddition
                 ConfigHandlerCM.golems.livingmetal.statDamage,
                 ConfigHandlerCM.golems.livingmetal.getMaterialStack(),
                 new ItemStack(ItemsTC.mechanismSimple),
-                new EnumGolemTrait[] {}
+                new EnumGolemTrait[] {EnumGolemTrait.BLASTPROOF, EnumGolemTrait.FIREPROOF, EnumGolemTrait.HEAVY}
         );
     }
 

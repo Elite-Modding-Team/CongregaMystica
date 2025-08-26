@@ -13,6 +13,7 @@ public enum ModIds {
     harken_scythe(ConstIds.harken_scythe),
     harvestcraft(ConstIds.harvestcraft),
     immersive_engineering(ConstIds.immersive_engineering),
+    rustic(ConstIds.rustic),
     thaumcraft_fix(ConstIds.thaumcraft_fix),
     thaumic_augmentation(ConstIds.thaumic_augmentation),
     thaumic_wonders(ConstIds.thaumic_wonders, ConstVersions.thaumic_wonders, true, false),
@@ -52,6 +53,7 @@ public enum ModIds {
         public static final String harken_scythe = "harkenscythe";
         public static final String harvestcraft = "harvestcraft";
         public static final String immersive_engineering = "immersiveengineering";
+        public static final String rustic = "rustic";
         public static final String thaumcraft = "thaumcraft";
         public static final String thaumcraft_fix = "thaumcraftfix";
         public static final String thaumic_augmentation = "thaumicaugmentation";
@@ -60,6 +62,7 @@ public enum ModIds {
     }
 
     public static class ConstVersions {
+        public static final String rustic_new = "1.6.0";
         public static final String thaumic_wonders = "2.0.0";
     }
 }

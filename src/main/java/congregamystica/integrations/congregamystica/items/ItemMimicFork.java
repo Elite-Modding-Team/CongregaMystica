@@ -2,6 +2,7 @@ package congregamystica.integrations.congregamystica.items;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemAddition;
+import congregamystica.api.util.EnumSortType;
 import congregamystica.network.PacketHandlerCM;
 import congregamystica.network.packets.PacketParticleToClient;
 import net.minecraft.block.Block;
@@ -255,6 +256,11 @@ public class ItemMimicFork extends AbstractItemAddition {
                 .add(Aspect.AIR, 10)
                 .add(Aspect.TOOL, 8);
         aspectMap.put(this.getDefaultInstance(), aspectList);
+    }
+
+    @Override
+    public EnumSortType getRegistryOrderType() {
+        return EnumSortType.CONGREGA_MYSTICA;
     }
 
     @Override

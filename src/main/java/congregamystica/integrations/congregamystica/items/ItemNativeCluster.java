@@ -1,6 +1,7 @@
 package congregamystica.integrations.congregamystica.items;
 
 import congregamystica.api.item.AbstractItemAddition;
+import congregamystica.api.util.EnumSortType;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.utils.helpers.AspectHelperCM;
@@ -118,6 +119,11 @@ public class ItemNativeCluster extends AbstractItemAddition {
     @Override
     public void registerOreDicts() {
         OreDictionary.registerOre(this.clusterData.clusterOreDict, this);
+    }
+
+    @Override
+    public EnumSortType getRegistryOrderType() {
+        return EnumSortType.NATIVE_CLUSTER;
     }
 
     @Override

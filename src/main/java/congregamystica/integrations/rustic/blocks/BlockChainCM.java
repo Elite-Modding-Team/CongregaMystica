@@ -12,9 +12,9 @@ import thaumcraft.api.aspects.AspectList;
 
 import java.util.Map;
 
-public class BlockChainBrass extends BlockChain implements IBlockAddition {
-    public BlockChainBrass() {
-        super(Material.IRON, "chain_brass", false);
+public class BlockChainCM extends BlockChain implements IBlockAddition {
+    public BlockChainCM(String unlocName) {
+        super(Material.IRON, unlocName, false);
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(CongregaMystica.tabCM);
     }
@@ -39,6 +39,7 @@ public class BlockChainBrass extends BlockChain implements IBlockAddition {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        //TODO: Config option
+        return true;
     }
 }

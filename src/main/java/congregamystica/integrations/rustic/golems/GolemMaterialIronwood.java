@@ -5,6 +5,8 @@ import congregamystica.api.golem.IGolemAddition;
 import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.oredict.OreDictionary;
+import rustic.common.blocks.ModBlocks;
 import thaumcraft.api.golems.EnumGolemTrait;
 import thaumcraft.api.golems.parts.GolemMaterial;
 import thaumcraft.api.items.ItemsTC;
@@ -13,6 +15,12 @@ public class GolemMaterialIronwood implements IGolemAddition {
     @Override
     public String getGolemMaterialKey() {
         return "CM_IRONWOOD";
+    }
+
+    @Override
+    public void registerOreDicts() {
+        //Ironwood needs a custom oreDict value registered.
+        OreDictionary.registerOre("plankIronwood", new ItemStack(ModBlocks.LOG, 1, 0));
     }
 
     @Override

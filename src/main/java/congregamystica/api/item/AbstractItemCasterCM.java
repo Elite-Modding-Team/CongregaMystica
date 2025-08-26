@@ -1,6 +1,7 @@
 package congregamystica.api.item;
 
 import congregamystica.CongregaMystica;
+import congregamystica.api.util.EnumSortType;
 import congregamystica.network.PacketHandlerCM;
 import congregamystica.network.packets.PacketAuraToClient;
 import congregamystica.utils.helpers.LogHelper;
@@ -523,6 +524,11 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
 
     @Override
     public abstract void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap);
+
+    @Override
+    public EnumSortType getRegistryOrderType() {
+        return EnumSortType.CASTER_GAUNTLET;
+    }
 
     static {
         Method cooldown = null;

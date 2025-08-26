@@ -196,7 +196,7 @@ public class ConfigHandlerCM {
         @Config.Name("Harken Scythe Biomass")
         public GolemMaterialCategory biomass = new GolemMaterialCategory(20, 8, 5, "ingotBiomass");
         @Config.Name("Rustic Ironwood")
-        public GolemMaterialCategory ironWood = new GolemMaterialCategory(6, 2, 1, "");
+        public GolemMaterialCategory ironWood = new GolemMaterialCategory(6, 2, 1, "plankIronwood");
         @Config.Name("Harken Scythe Livingmetal")
         public GolemMaterialCategory livingmetal = new GolemMaterialCategory(20, 8, 5, "ingotLivingmetal");
         @Config.Name("Steel")

@@ -12,11 +12,20 @@ import java.util.List;
 @SuppressWarnings("unused")
 @GameRegistry.ObjectHolder(CongregaMystica.MOD_ID)
 public class ModItemsCM {
+    //Congrega Mystica
+    public static final Item MIMIC_FORK = null;
+    public static final Item MIMIC_FORK_RANGED = null;
+
+    //Blood Magic
     public static final Item BLOOD_SCRIBING_TOOLS = null;
+
+    //Immersive Engineering
     public static final Item DRILL_HEAD_THAUMIUM = null;
     public static final Item DRILL_HEAD_VOID = null;
-    public static final Item MIMIC_FORK = null;
     public static final Item UPGRADE_REFINING = null;
+
+    //Rustic
+
 
     private static final List<ItemNativeCluster> NATIVE_CLUSTERS = new ArrayList<>();
     private static final List<ItemEldritchCluster> ELDRITCH_CLUSTERS = new ArrayList<>();

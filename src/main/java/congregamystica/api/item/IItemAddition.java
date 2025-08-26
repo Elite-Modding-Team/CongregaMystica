@@ -1,13 +1,15 @@
 package congregamystica.api.item;
 
 import congregamystica.api.IAddition;
+import congregamystica.api.util.EnumSortType;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.jetbrains.annotations.NotNull;
 
-public interface IItemAddition extends IAddition {
+public interface IItemAddition extends IAddition, Comparable<IItemAddition> {
     /**
      * Registers an item from within the item or block class. This must be called to register the item.
      */
@@ -23,5 +25,14 @@ public interface IItemAddition extends IAddition {
             ModelResourceLocation loc = new ModelResourceLocation(((Item) this).getRegistryName(), "inventory");
             ModelLoader.setCustomModelResourceLocation((Item) this, 0, loc);
         }
+    }
+
+    default EnumSortType getRegistryOrderType() {
+        return EnumSortType.ITEMS;
+    }
+
+    @Override
+    default int compareTo(@NotNull IItemAddition otherAddition) {
+        return this.getRegistryOrderType().compareTo(otherAddition.getRegistryOrderType());
     }
 }

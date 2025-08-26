@@ -6,15 +6,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
-import rustic.common.blocks.BlockChandelier;
+import rustic.common.blocks.BlockCandle;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.Map;
 
-public class BlockChandelierBrass extends BlockChandelier implements IBlockAddition {
-    public BlockChandelierBrass() {
-        super(Material.IRON, "chandelier_brass", false);
+public class BlockCandleCM extends BlockCandle implements IBlockAddition {
+    public BlockCandleCM(String unlocName) {
+        super(Material.IRON, unlocName, false);
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(CongregaMystica.tabCM);
     }
@@ -39,6 +39,7 @@ public class BlockChandelierBrass extends BlockChandelier implements IBlockAddit
 
     @Override
     public boolean isEnabled() {
-        return false;
+        //TODO: Config option
+        return true;
     }
 }

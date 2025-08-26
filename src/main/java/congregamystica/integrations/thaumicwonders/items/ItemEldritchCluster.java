@@ -1,6 +1,7 @@
 package congregamystica.integrations.thaumicwonders.items;
 
 import com.verdantartifice.thaumicwonders.common.crafting.catalyzationchamber.CatalyzationChamberRecipeRegistry;
+import congregamystica.api.util.EnumSortType;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.utils.helpers.AspectHelperCM;
@@ -79,5 +80,10 @@ public class ItemEldritchCluster extends ItemNativeCluster {
     @Override
     public void registerOreDicts() {
         OreDictionary.registerOre(this.clusterData.eldritchOreDict, this);
+    }
+
+    @Override
+    public EnumSortType getRegistryOrderType() {
+        return EnumSortType.ELDRITCH_CLUSTER;
     }
 }

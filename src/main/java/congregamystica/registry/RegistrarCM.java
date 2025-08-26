@@ -7,8 +7,6 @@ import congregamystica.api.block.IBlockAddition;
 import congregamystica.api.golem.IGolemAddition;
 import congregamystica.api.item.IColoredItem;
 import congregamystica.api.item.IItemAddition;
-import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
-import congregamystica.integrations.thaumicwonders.items.ItemEldritchCluster;
 import congregamystica.utils.helpers.LogHelper;
 import congregamystica.utils.libs.OreAspects;
 import net.minecraft.block.Block;
@@ -54,6 +52,7 @@ public class RegistrarCM {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
+        /*
         //Sorting items so clusters are first.
         //It's not efficient, but IDGAF. It works and it only runs once.
         List<IItemAddition> itemAdditions = new LinkedList<>();
@@ -71,6 +70,10 @@ public class RegistrarCM {
                 itemAdditions.add(addition);
             }
         }
+        itemAdditions.forEach(item -> item.registerItem(registry));
+         */
+        List<IItemAddition> itemAdditions = new ArrayList<>(getItemAdditions());
+        Collections.sort(itemAdditions);
         itemAdditions.forEach(item -> item.registerItem(registry));
         getAdditions().forEach(IAddition::registerOreDicts);
     }

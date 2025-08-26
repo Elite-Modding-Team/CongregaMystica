@@ -277,7 +277,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
             //Color info
         }
 
-        this.addAlternateResourceTooltip(stack, worldIn, tooltip, flagIn);
+        this.addAltResourceTooltip(stack, worldIn, tooltip, flagIn);
         if(this.hasFocusStack(stack)) {
             ItemStack focusStack = this.getFocusStack(stack);
             ItemFocus focus = (ItemFocus) focusStack.getItem();

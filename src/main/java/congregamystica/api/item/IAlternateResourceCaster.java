@@ -19,9 +19,7 @@ public interface IAlternateResourceCaster extends ICaster {
      * @param casterStack the caster gauntlet ItemStack
      * @return A value between 0.1 and 1.0.
      */
-    default float getAltResourceModifier(World world, EntityPlayer player, ItemStack casterStack) {
-        return this.getAltResourceBaseModifier();
-    }
+    float getAltResourceModifier(World world, EntityPlayer player, ItemStack casterStack);
 
     /**
      * The base modifier that will reduce the amount of Vis consumed for each cast by this gauntlet. For a player-sensitive
@@ -46,5 +44,5 @@ public interface IAlternateResourceCaster extends ICaster {
     /**
      * Adds custom alternate resource information. This information is added to the tooltip before the spell focus information.
      */
-    void addAlternateResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn);
+    void addAltResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn);
 }

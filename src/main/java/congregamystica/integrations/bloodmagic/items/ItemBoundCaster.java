@@ -1,15 +1,27 @@
 package congregamystica.integrations.bloodmagic.items;
 
 import WayofTime.bloodmagic.alchemyArray.AlchemyArrayEffectBinding;
+import WayofTime.bloodmagic.core.data.Binding;
+import WayofTime.bloodmagic.core.data.SoulNetwork;
+import WayofTime.bloodmagic.core.data.SoulTicket;
 import WayofTime.bloodmagic.core.registry.AlchemyArrayRecipeRegistry;
+import WayofTime.bloodmagic.iface.IBindable;
 import WayofTime.bloodmagic.item.types.ComponentTypes;
+import WayofTime.bloodmagic.util.helper.NetworkHelper;
 import congregamystica.api.item.AbstractItemCasterCM;
+import congregamystica.config.ConfigHandlerCM;
+import congregamystica.utils.helpers.StringHelper;
 import congregamystica.utils.libs.ModIds;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IRarity;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -18,12 +30,13 @@ import org.jetbrains.annotations.Nullable;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.common.items.casters.ItemFocus;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
 import java.util.List;
 import java.util.Map;
 
-public class ItemBoundCaster extends AbstractItemCasterCM {
+public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
     public ItemBoundCaster() {
         super("bound_caster");
     }
@@ -35,21 +48,43 @@ public class ItemBoundCaster extends AbstractItemCasterCM {
 
     @Override
     public float getAltResourceBaseModifier() {
-        return 0;
+        return (float) ConfigHandlerCM.casters.bound.consumptionModifier;
     }
 
     @Override
     public boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float baseVisCost, float alternateResourceVis, boolean simulate) {
-        return true;
+        if(alternateResourceVis <= 0)
+            return true;
+
+        Binding binding = this.getBinding(casterStack);
+        if(binding != null) {
+            SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
+            EntityPlayer boundPlayer = network.getPlayer();
+            int lpCost = (int) Math.ceil(alternateResourceVis * ConfigHandlerCM.casters.bound.conversionRate);
+            if(simulate) {
+                return lpCost <= network.getCurrentEssence();
+            } else {
+                return network.syphonAndDamage(boundPlayer, SoulTicket.item(casterStack, world, player, lpCost)).isSuccess();
+            }
+        }
+        return false;
     }
 
     @Override
     public void addAltResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
+        //LP Cost: %d LP per cast
+        if(this.hasFocusStack(stack)) {
+            ItemStack focusStack = this.getFocusStack(stack);
+            ItemFocus focus = (ItemFocus) focusStack.getItem();
+            float altVisCost = focus.getVisCost(focusStack) * this.getAltResourceBaseModifier();
+            int lpCost = (int) Math.ceil(altVisCost * ConfigHandlerCM.casters.bound.conversionRate);
+            tooltip.add(I18n.format(StringHelper.getTranslationKey("bound_caster", "tooltip", "cost"), lpCost));
+        }
     }
 
     @Override
     public int getChunkDrainRange(EntityPlayer player, ItemStack stack) {
-        return 0;
+        return ConfigHandlerCM.casters.bound.visDrainRadius;
     }
 
     @Override
@@ -57,21 +92,22 @@ public class ItemBoundCaster extends AbstractItemCasterCM {
         return EnumRarity.RARE;
     }
 
+    @Override
+    public @NotNull ActionResult<ItemStack> onItemRightClick(@NotNull World worldIn, @NotNull EntityPlayer player, @NotNull EnumHand hand) {
+        //Need to apply the binding for LP usage
+        ItemStack heldStack = player.getHeldItem(hand);
+        Binding binding = this.getBinding(heldStack);
+        if(binding == null) {
+            return new ActionResult<>(EnumActionResult.PASS, heldStack);
+        }
+        return super.onItemRightClick(worldIn, player, hand);
+    }
+
     //##########################################################
     // IItemAddition
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-
-    }
-
-    @Override
-    public void registerResearchLocation() {
-
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
         ItemStack casterStack;
         if(ModIds.thaumic_augmentation.isLoaded) {
             casterStack = new ItemStack(TAItems.GAUNTLET, 1, 0);
@@ -87,8 +123,18 @@ public class ItemBoundCaster extends AbstractItemCasterCM {
     }
 
     @Override
+    public void registerResearchLocation() {
+
+    }
+
+    @Override
+    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
+
+    }
+
+    @Override
     public boolean isEnabled() {
-        return true;
+        return ConfigHandlerCM.casters.bound.enable;
     }
 
 }

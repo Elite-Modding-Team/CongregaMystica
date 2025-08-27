@@ -58,6 +58,7 @@ mimic_fork.instrument.guitar=Guitar
 mimic_fork.instrument.chime=Chime
 mimic_fork.instrument.xylophone=Xylophone
 mimic_fork.note=Note: %s
+tooltip.congregamystica:bound_caster.cost=§cLP Cost:§r %d LP per cast
 tooltip.congregamystica:mimic_fork.dimension=Dimension: %s
 tooltip.congregamystica:mimic_fork.position=Pos: x=%d, y=%d, z=%d
 tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract native clusters from mined ores, stacks up to %d

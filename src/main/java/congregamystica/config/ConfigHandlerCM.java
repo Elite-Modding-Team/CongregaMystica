@@ -1,5 +1,6 @@
 package congregamystica.config;
 
+import congregamystica.config.generics.CasterTypeCategory;
 import congregamystica.config.generics.DrillHeadCategory;
 import congregamystica.config.generics.GolemMaterialCategory;
 import net.minecraftforge.common.config.Config;
@@ -7,10 +8,12 @@ import net.minecraftforge.common.config.Config;
 //TODO: Remove comment before release
 // @Mod(modid = CongregaMystica.MOD_ID)
 public class ConfigHandlerCM {
-    @Config.Name("Golem Materials")
-    public static GolemCategory golems = new GolemCategory();
     @Config.Name("Native Clusters")
     public static ClustersCategory clusters = new ClustersCategory();
+    @Config.Name("Caster Gauntlets")
+    public static CasterCategory casters = new CasterCategory();
+    @Config.Name("Golem Materials")
+    public static GolemCategory golems = new GolemCategory();
 
 
     @Config.Name("Blood Magic")
@@ -109,6 +112,12 @@ public class ConfigHandlerCM {
             @Config.Comment("The number of Zombie Brains required before the Whisperweed can grant research knowledge.")
             public int progressReq = 20;
         }
+    }
+
+    public static class CasterCategory {
+        @Config.Name("Bound Caster's Gauntlet")
+        @Config.Comment("Configuration options for the Blood Magic LP-powered casting gauntlet.")
+        public CasterTypeCategory bound = new CasterTypeCategory(400);
     }
 
     public static class ClustersCategory {

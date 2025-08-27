@@ -275,7 +275,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
         if(this.hasFocusStack(stack)) {
             ItemStack focusStack = this.getFocusStack(stack);
             ItemFocus focus = (ItemFocus) focusStack.getItem();
-            float visCost = focus.getVisCost(focusStack);
+            float visCost = focus.getVisCost(focusStack) * (1f - this.getAltResourceBaseModifier());
             if(visCost > 0) {
                 tooltip.add(TextFormatting.AQUA + StringHelper.getTranslatedString("tc.vis.cost") + " " +
                         TextFormatting.RESET + VIS_FORMATTER.format(visCost) + " " +

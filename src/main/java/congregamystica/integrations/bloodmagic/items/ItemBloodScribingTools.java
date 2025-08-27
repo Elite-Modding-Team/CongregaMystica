@@ -59,7 +59,7 @@ public class ItemBloodScribingTools extends AbstractItemAddition implements IScr
 
             if (binding != null) {
                 SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
-                if (network.syphonAndDamage(network.getCachedPlayer(), SoulTicket.item(stack, world, holder, ConfigHandlerCM.blood_magic.bloodyScribingTools.lpCost)).isSuccess()) {
+                if (network.syphonAndDamage(network.getPlayer(), SoulTicket.item(stack, world, holder, ConfigHandlerCM.blood_magic.bloodyScribingTools.lpCost)).isSuccess()) {
                     stack.setItemDamage(stack.getItemDamage() - 1);
                 }
             }
@@ -71,7 +71,7 @@ public class ItemBloodScribingTools extends AbstractItemAddition implements IScr
         Binding binding = getBinding(stack);
         if (binding != null) {
             SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
-            if (!network.syphonAndDamage(network.getCachedPlayer(), SoulTicket.item(stack, ConfigHandlerCM.blood_magic.bloodyScribingTools.lpCost * damage)).isSuccess()) {
+            if (!network.syphonAndDamage(network.getPlayer(), SoulTicket.item(stack, ConfigHandlerCM.blood_magic.bloodyScribingTools.lpCost * damage)).isSuccess()) {
                 super.setDamage(stack, damage);
             }
         } else {

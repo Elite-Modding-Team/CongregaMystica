@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I",
+    "N",
+    "I"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBrass"
+    },
+    "N": {
+      "type": "forge:ore_dict",
+      "ore": "nitor"
+    }
+  },
+  "result": {
+    "item": "congregamystica:lantern_brass",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "congregamystica:lantern_brass"
+    }
+  ]
+}

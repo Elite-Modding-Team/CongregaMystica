@@ -1,0 +1,10 @@
+{
+  "parent": "rustic:block/lantern_down",
+  "textures": {
+    "top": "congregamystica:blocks/rustic/lantern_top_brass",
+    "side": "congregamystica:blocks/rustic/lantern_side_brass",
+    "2": "minecraft:blocks/glass",
+    "3": "minecraft:blocks/torch_on",
+    "particle": "congregamystica:blocks/rustic/lantern_side_brass"
+  }
+}

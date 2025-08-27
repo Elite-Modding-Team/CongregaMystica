@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "R"
+  ],
+  "key": {
+    "C": {
+      "item": "congregamystica:candle_brass"
+    },
+    "R": {
+      "type": "forge:ore_dict",
+      "ore": "dustRedstone"
+    }
+  },
+  "result": {
+    "item": "congregamystica:candle_lever_brass"
+  },
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "congregamystica:candle_lever_brass"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "W",
+    "I"
+  ],
+  "key": {
+    "S": {
+      "type": "forge:ore_dict",
+      "ore": "string"
+    },
+    "W": {
+      "type": "forge:ore_dict",
+      "ore": "wax"
+    },
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBrass"
+    }
+  },
+  "result": {
+    "item": "congregamystica:candle_brass",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "congregamystica:candle_brass"
+    }
+  ]
+}

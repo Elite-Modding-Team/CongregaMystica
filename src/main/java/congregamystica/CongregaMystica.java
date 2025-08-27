@@ -28,7 +28,8 @@ public class CongregaMystica {
             ";after:" + ModIds.ConstIds.botania +
             ";after:" + ModIds.ConstIds.harvestcraft +
             ";after:" + ModIds.ConstIds.harken_scythe +
-            ";after:" + ModIds.ConstIds.immersive_engineering;
+            ";after:" + ModIds.ConstIds.immersive_engineering +
+            ";after:" + ModIds.ConstIds.rustic;
 
     public static final String CLIENT_PROXY = "congregamystica.proxy.ClientProxy";
     public static final String COMMON_PROXY = "congregamystica.proxy.CommonProxy";

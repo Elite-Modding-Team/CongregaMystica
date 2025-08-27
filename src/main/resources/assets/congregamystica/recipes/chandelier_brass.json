@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "C C",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "type": "forge:ore_dict",
+      "ore": "ingotBrass"
+    },
+    "C": {
+      "item": "congregamystica:chain_brass"
+    }
+  },
+  "result": {
+    "item": "congregamystica:chandelier_brass",
+    "count": 2
+  },
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "congregamystica:chandelier_brass"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north":	{ "model": "congregamystica:lantern_wall_brass" },
+    "facing=east":	{ "model": "congregamystica:lantern_wall_brass", "y": 90 },
+    "facing=south":	{ "model": "congregamystica:lantern_wall_brass", "y": 180 },
+    "facing=west":	{ "model": "congregamystica:lantern_wall_brass", "y": 270 },
+    "facing=up":	{ "model": "congregamystica:lantern_up_brass" },
+    "facing=down":	{ "model": "congregamystica:lantern_down_brass" }
+  }
+}

@@ -39,7 +39,7 @@ public interface IAlternateResourceCaster extends ICaster {
      * @param simulate whether this resource consumption should be simulated
      * @return true if the consuming action was a success, false otherwise
      */
-    boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float alternateResourceVis, boolean simulate);
+    boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float baseVisCost, float alternateResourceVis, boolean simulate);
 
     /**
      * Adds custom alternate resource information. This information is added to the tooltip before the spell focus information.

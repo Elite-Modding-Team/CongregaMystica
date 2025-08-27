@@ -141,19 +141,19 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                 }
             }
 
-            float visCost = ((ItemFocus) focusStack.getItem()).getVisCost(focusStack) * this.getConsumptionModifier(heldStack, player, false);
-            float altVisCost = visCost * Math.min(this.getAltResourceModifier(worldIn, player, heldStack), 1.0f);
-            visCost -= altVisCost;
+            float baseVisCost = ((ItemFocus) focusStack.getItem()).getVisCost(focusStack) * this.getConsumptionModifier(heldStack, player, false);
+            float altVisCost = baseVisCost * Math.min(this.getAltResourceModifier(worldIn, player, heldStack), 1.0f);
+            float adjustedVisCost = baseVisCost - altVisCost;
             int activationTime = ((ItemFocus) focusStack.getItem()).getActivationTime(focusStack);
 
-            boolean consumeVis = this.consumeVis(heldStack, player, visCost, false, true);
-            boolean consumeAlt = this.consumeAltResource(worldIn, player, heldStack, altVisCost, true);
+            boolean consumeVis = this.consumeVis(heldStack, player, adjustedVisCost, false, true);
+            boolean consumeAlt = this.consumeAltResource(worldIn, player, heldStack, baseVisCost, altVisCost, true);
             if(consumeVis && consumeAlt) {
                 boolean isSuccess;
                 if(ModIds.thaumic_augmentation.isLoaded) {
-                    isSuccess = this.castFocusSpellTA(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
+                    isSuccess = this.castFocusSpellTA(worldIn, player, heldStack, focusPackage, activationTime, baseVisCost, altVisCost);
                 } else {
-                    isSuccess = this.castFocusSpell(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
+                    isSuccess = this.castFocusSpell(worldIn, player, heldStack, focusPackage, activationTime, baseVisCost, altVisCost);
                 }
 
                 if(isSuccess) {
@@ -169,7 +169,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     }
 
     protected boolean castFocusSpell(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack casterStack, @NotNull FocusPackage focusPackage, int activationTime, float visCost, float alternateResourceVis) {
-        this.consumeAltResource(world, player, casterStack, alternateResourceVis, false);
+        this.consumeAltResource(world, player, casterStack, visCost + alternateResourceVis, alternateResourceVis, false);
         if(!world.isRemote) {
             this.consumeVis(casterStack, player, visCost, false, false);
             FocusEngine.castFocusPackage(player, focusPackage);
@@ -182,7 +182,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
         CastEvent.Pre preEvent = new CastEvent.Pre(player, casterStack, new FocusWrapper(focusPackage, activationTime, visCost));
         MinecraftForge.EVENT_BUS.post(preEvent);
         if(!preEvent.isCanceled()) {
-            this.consumeAltResource(world, player, casterStack, alternateResourceVis, false);
+            this.consumeAltResource(world, player, casterStack, visCost + alternateResourceVis, alternateResourceVis, false);
             if(world.isRemote) {
                 CasterManager.setCooldown(player, preEvent.getFocus().getCooldown());
             } else if(this.consumeVis(casterStack, player, preEvent.getFocus().getVisCost(), false, false)) {

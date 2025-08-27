@@ -39,7 +39,7 @@ public class ItemBoundCaster extends AbstractItemCasterCM {
     }
 
     @Override
-    public boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float alternateResourceVis, boolean simulate) {
+    public boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float baseVisCost, float alternateResourceVis, boolean simulate) {
         return true;
     }
 

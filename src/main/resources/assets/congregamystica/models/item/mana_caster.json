@@ -1,0 +1,13 @@
+{
+  "parent": "item/generated",
+  "overrides": [
+    {
+      "predicate": {"congregamystica:focus": 0},
+      "model": "congregamystica:item/mana_caster_model"
+    },
+    {
+      "predicate": {"congregamystica:focus": 1},
+      "model": "congregamystica:item/mana_caster_focus_model"
+    }
+  ]
+}

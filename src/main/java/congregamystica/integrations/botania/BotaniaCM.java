@@ -4,6 +4,7 @@ import congregamystica.api.IProxy;
 import congregamystica.integrations.botania.blocks.BlockSpecialFlowerCM;
 import congregamystica.integrations.botania.blocks.subtiles.SubTileTaintthistle;
 import congregamystica.integrations.botania.blocks.subtiles.SubTileWhisperweed;
+import congregamystica.integrations.botania.items.ItemManaCaster;
 import congregamystica.registry.RegistrarCM;
 
 public class BotaniaCM implements IProxy {
@@ -17,5 +18,7 @@ public class BotaniaCM implements IProxy {
     public void preInit() {
         RegistrarCM.addAdditionToRegister(taintthistle = new BlockSpecialFlowerCM<>(new SubTileTaintthistle(), TAINTTHISTLE));
         RegistrarCM.addAdditionToRegister(whisperweed = new BlockSpecialFlowerCM<>(new SubTileWhisperweed(), WHISPERWEED));
+        
+        RegistrarCM.addAdditionToRegister(new ItemManaCaster());
     }
 }

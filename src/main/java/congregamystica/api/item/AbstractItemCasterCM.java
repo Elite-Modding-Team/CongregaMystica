@@ -70,17 +70,10 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     protected static final Method CASTER_IS_ON_COOLDOWN;
     protected static final float EPSILON = 1.0E-5F;
 
-    protected final int chunkDrainRange;
-
-    public AbstractItemCasterCM(String unlocName, int chunkDrainRange) {
+    public AbstractItemCasterCM(String unlocName) {
         super(unlocName);
         this.setMaxStackSize(1);
         this.addPropertyOverride(new ResourceLocation(CongregaMystica.MOD_ID, "focus"), (stack, worldIn, entityIn) -> this.hasFocusStack(stack) ? 1.0f : 0);
-        this.chunkDrainRange = chunkDrainRange;
-    }
-
-    public AbstractItemCasterCM(String unlocName) {
-        this(unlocName, 0);
     }
 
     @Override
@@ -403,10 +396,6 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                 AuraHandler.drainVis(world, chunkPos, chunkDrain, false);
             }
         }
-    }
-
-    public int getChunkDrainRange(EntityPlayer player, ItemStack casterStack) {
-        return this.chunkDrainRange;
     }
 
     @Nullable

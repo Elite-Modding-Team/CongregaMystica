@@ -45,4 +45,14 @@ public interface IAlternateResourceCaster extends ICaster {
      * Adds custom alternate resource information. This information is added to the tooltip before the spell focus information.
      */
     void addAltResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn);
+
+    /**
+     * Gets the radius this gauntlet can drain Vis from when casting a spell. The number of chunks drained is
+     * equal to ((range * 2) + 1)^2. 0 = 1 chunk, 1 = 9 chunks, 2 = 25 chunks...
+     *
+     * @param player the player casting the spell
+     * @param stack the caster gauntlet ItemStack
+     * @return The vis chunk drain radius
+     */
+    int getChunkDrainRange(EntityPlayer player, ItemStack stack);
 }

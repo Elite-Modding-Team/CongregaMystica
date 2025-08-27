@@ -46,7 +46,12 @@ public class ItemBoundCaster extends AbstractItemCasterCM {
     @Override
     public void addAltResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
     }
-    
+
+    @Override
+    public int getChunkDrainRange(EntityPlayer player, ItemStack stack) {
+        return 0;
+    }
+
     @Override
     public @NotNull IRarity getForgeRarity(@NotNull ItemStack stack) {
         return EnumRarity.RARE;

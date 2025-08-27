@@ -383,7 +383,8 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     }
 
     protected void drainAuraPool(World world, BlockPos pos, int chunkRange, float visDrain) {
-        float chunkDrain = visDrain / (float) chunkRange;
+        int chunks = (int) Math.pow((chunkRange * 2.0) + 1.0, 2.0);
+        float chunkDrain = visDrain / (float) chunks;
         Map<Float, BlockPos> drainPositions = new TreeMap<>();
         for(int x = -chunkRange; x <= chunkRange; x++) {
             for(int z = -chunkRange; z <= chunkRange; z++) {
@@ -397,7 +398,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
             BlockPos chunkPos = entry.getValue();
             if (chunkDrain > chunkVis) {
                 AuraHandler.drainVis(world, chunkPos, chunkVis, false);
-                chunkDrain = (visDrain - chunkVis) / --chunkRange;
+                chunkDrain = (visDrain - chunkVis) / --chunks;
             } else {
                 AuraHandler.drainVis(world, chunkPos, chunkDrain, false);
             }

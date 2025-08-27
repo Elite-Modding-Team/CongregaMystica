@@ -1,6 +1,6 @@
 {
   "parent": "thaumcraft:item/caster_gauntlet",
   "textures": {
-    "skin": "congregamystica:models/bloodmagic/bound_caster_inactive"
+    "skin": "congregamystica:models/bloodmagic/caster_bound_inactive"
   }
 }

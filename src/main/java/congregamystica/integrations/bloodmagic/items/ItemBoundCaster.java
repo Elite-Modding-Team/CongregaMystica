@@ -21,7 +21,6 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IRarity;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -38,7 +37,7 @@ import java.util.Map;
 
 public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
     public ItemBoundCaster() {
-        super("bound_caster");
+        super("caster_bound");
     }
 
     @Override
@@ -61,10 +60,11 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
             SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
             EntityPlayer boundPlayer = network.getPlayer();
             int lpCost = (int) Math.ceil(alternateResourceVis * ConfigHandlerCM.casters.bound.conversionRate);
-            if(simulate) {
-                return lpCost <= network.getCurrentEssence();
-            } else {
-                return network.syphonAndDamage(boundPlayer, SoulTicket.item(casterStack, world, player, lpCost)).isSuccess();
+            if(lpCost <= network.getCurrentEssence()) {
+                if (!simulate && !world.isRemote) {
+                    network.syphonAndDamage(boundPlayer, SoulTicket.item(casterStack, world, player, lpCost));
+                }
+                return true;
             }
         }
         return false;
@@ -78,12 +78,12 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
             ItemFocus focus = (ItemFocus) focusStack.getItem();
             float altVisCost = focus.getVisCost(focusStack) * this.getAltResourceBaseModifier();
             int lpCost = (int) Math.ceil(altVisCost * ConfigHandlerCM.casters.bound.conversionRate);
-            tooltip.add(I18n.format(StringHelper.getTranslationKey("bound_caster", "tooltip", "cost"), lpCost));
+            tooltip.add(I18n.format(StringHelper.getTranslationKey("caster_bound", "tooltip", "cost"), lpCost));
         }
     }
 
     @Override
-    public int getChunkDrainRange(EntityPlayer player, ItemStack stack) {
+    public int getChunkDrainRadius(EntityPlayer player, ItemStack stack) {
         return ConfigHandlerCM.casters.bound.visDrainRadius;
     }
 

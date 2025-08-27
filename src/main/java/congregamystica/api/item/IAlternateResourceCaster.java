@@ -54,5 +54,5 @@ public interface IAlternateResourceCaster extends ICaster {
      * @param stack the caster gauntlet ItemStack
      * @return The vis chunk drain radius
      */
-    int getChunkDrainRange(EntityPlayer player, ItemStack stack);
+    int getChunkDrainRadius(EntityPlayer player, ItemStack stack);
 }

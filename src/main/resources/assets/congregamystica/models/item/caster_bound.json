@@ -3,11 +3,11 @@
   "overrides": [
     {
       "predicate": {"congregamystica:focus": 0},
-      "model": "congregamystica:item/mana_caster_model"
+      "model": "congregamystica:item/caster_bound_model"
     },
     {
       "predicate": {"congregamystica:focus": 1},
-      "model": "congregamystica:item/mana_caster_focus_model"
+      "model": "congregamystica:item/caster_bound_focus_model"
     }
   ]
 }

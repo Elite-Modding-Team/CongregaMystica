@@ -66,9 +66,6 @@ public class CongregaMystica {
     // Gauntlets (General List of Mods)
     //  Blood Magic
     //      Sentient Gauntlet - uses Demon Will
-    //      Bound Gauntlet - uses LP
-    //  Botania
-    //      Elementium Gauntlet - uses mana
     //  EB Wizardry
     //      Mana Gauntlet - uses mana
     //  Embers

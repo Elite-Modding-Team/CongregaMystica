@@ -1,6 +1,6 @@
 {
   "parent": "thaumcraft:item/caster_gauntlet_focus",
   "textures": {
-    "skin": "congregamystica:models/botania/mana_caster"
+    "skin": "congregamystica:models/botania/caster_elementium"
   }
 }

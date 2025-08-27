@@ -116,8 +116,12 @@ public class ConfigHandlerCM {
 
     public static class CasterCategory {
         @Config.Name("Bound Caster's Gauntlet")
-        @Config.Comment("Configuration options for the Blood Magic LP-powered casting gauntlet.")
+        @Config.Comment("Configuration options for the Blood Magic LP-augmented casting gauntlet.")
         public CasterTypeCategory bound = new CasterTypeCategory(400);
+
+        @Config.Name("Elementium Caster's Gauntlet")
+        @Config.Comment("Configuration options for the Botania Mana-augmented casting gauntlet")
+        public CasterTypeCategory elementium = new CasterTypeCategory(400);
     }
 
     public static class ClustersCategory {

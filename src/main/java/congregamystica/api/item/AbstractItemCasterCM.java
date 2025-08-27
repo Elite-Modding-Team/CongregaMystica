@@ -354,7 +354,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     @Override
     public boolean consumeVis(ItemStack casterStack, EntityPlayer player, float visDrain, boolean crafting, boolean simulate) {
         //Do not call getConsumptionModifier() here. It is already called and calculated prior to this method being fired.
-        int drainRange = this.getChunkDrainRange(player, casterStack);
+        int drainRange = this.getChunkDrainRadius(player, casterStack);
         float aura = this.getAuraPool(player.world, player.getPosition(), drainRange);
         if(aura >= visDrain) {
             if(!simulate) {

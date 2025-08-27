@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north":	{ "model": "congregamystica:chair_silverwood" },
+    "facing=east":	{ "model": "congregamystica:chair_silverwood", "y": 90},
+    "facing=south":	{ "model": "congregamystica:chair_silverwood", "y": 180 },
+    "facing=west":	{ "model": "congregamystica:chair_silverwood", "y": 270 }
+  }
+}

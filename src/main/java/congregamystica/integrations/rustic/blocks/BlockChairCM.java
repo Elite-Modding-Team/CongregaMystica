@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import rustic.common.blocks.BlockChair;
 import thaumcraft.api.aspects.AspectEventProxy;
@@ -41,17 +40,12 @@ public class BlockChairCM extends BlockChair implements IBlockAddition {
 
     @Override
     public void registerBlock(IForgeRegistry<Block> registry) {
-        //Do not register blocks, models or items for chairs or tables
+        //Do not register blocks or items for chairs or tables
     }
 
     @Override
     public void registerItem(IForgeRegistry<Item> registry) {
-        //Do not register blocks, models or items for chairs or tables
-    }
-
-    @Override
-    public void registerModel(ModelRegistryEvent event) {
-        //Do not register blocks, models or items for chairs or tables
+        //Do not register blocks or items for chairs or tables
     }
 
     @Override

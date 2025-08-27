@@ -62,7 +62,7 @@ public enum ModIds {
     }
 
     public static class ConstVersions {
-        public static final String rustic_new = "1.6.0";
+        public static final String rustic_new = "1.2.0";
         public static final String thaumic_wonders = "2.0.0";
     }
 }

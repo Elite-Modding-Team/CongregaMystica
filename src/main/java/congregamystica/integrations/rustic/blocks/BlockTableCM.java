@@ -1,11 +1,11 @@
 package congregamystica.integrations.rustic.blocks;
 
+import congregamystica.CongregaMystica;
 import congregamystica.api.block.IBlockAddition;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import rustic.common.blocks.BlockTable;
 import thaumcraft.api.aspects.AspectEventProxy;
@@ -16,6 +16,8 @@ import java.util.Map;
 public class BlockTableCM extends BlockTable implements IBlockAddition {
     public BlockTableCM(String type) {
         super(type);
+        this.setTranslationKey(this.getRegistryName().toString());
+        this.setCreativeTab(CongregaMystica.tabCM);
     }
 
     //##########################################################
@@ -38,17 +40,12 @@ public class BlockTableCM extends BlockTable implements IBlockAddition {
 
     @Override
     public void registerBlock(IForgeRegistry<Block> registry) {
-        //Do not register blocks, models or items for chairs or tables
+        //Do not register blocks or items for chairs or tables
     }
 
     @Override
     public void registerItem(IForgeRegistry<Item> registry) {
-        //Do not register blocks, models or items for chairs or tables
-    }
-
-    @Override
-    public void registerModel(ModelRegistryEvent event) {
-        //Do not register blocks, models or items for chairs or tables
+        //Do not register blocks or items for chairs or tables
     }
 
     @Override

@@ -1,0 +1,7 @@
+{
+  "parent": "rustic:block/chain",
+  "textures": {
+    "chain": "congregamystica:blocks/rustic/chain_brass",
+    "particle": "congregamystica:blocks/rustic/chain_brass"
+  }
+}

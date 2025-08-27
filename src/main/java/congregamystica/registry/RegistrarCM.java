@@ -52,26 +52,6 @@ public class RegistrarCM {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         IForgeRegistry<Item> registry = event.getRegistry();
-        /*
-        //Sorting items so clusters are first.
-        //It's not efficient, but IDGAF. It works and it only runs once.
-        List<IItemAddition> itemAdditions = new LinkedList<>();
-        int clusterIndex = 0;
-        int eldritchIndex = 0;
-        for(IItemAddition addition : getItemAdditions()) {
-            if(addition instanceof ItemNativeCluster) {
-                itemAdditions.add(clusterIndex, addition);
-                clusterIndex++;
-                eldritchIndex++;
-            } else if(addition instanceof ItemEldritchCluster) {
-                itemAdditions.add(eldritchIndex, addition);
-                eldritchIndex++;
-            } else {
-                itemAdditions.add(addition);
-            }
-        }
-        itemAdditions.forEach(item -> item.registerItem(registry));
-         */
         List<IItemAddition> itemAdditions = new ArrayList<>(getItemAdditions());
         Collections.sort(itemAdditions);
         itemAdditions.forEach(item -> item.registerItem(registry));

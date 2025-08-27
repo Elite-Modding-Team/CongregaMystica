@@ -1,0 +1,6 @@
+{
+  "parent": "rustic:block/table_oak_inventory",
+  "textures": {
+    "0": "thaumcraft:blocks/plank_greatwood"
+  }
+}

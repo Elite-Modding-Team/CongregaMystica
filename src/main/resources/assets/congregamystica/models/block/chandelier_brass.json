@@ -1,0 +1,8 @@
+{
+  "parent": "rustic:block/chandelier",
+  "textures": {
+    "chandelier": "congregamystica:blocks/rustic/chandelier_brass",
+    "chain": "congregamystica:blocks/rustic/chain_brass",
+    "particle": "congregamystica:blocks/rustic/chandelier_brass"
+  }
+}

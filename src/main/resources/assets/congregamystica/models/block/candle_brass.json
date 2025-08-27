@@ -1,0 +1,7 @@
+{
+  "parent": "rustic:block/candle",
+  "textures": {
+    "candle": "congregamystica:blocks/rustic/candle_brass",
+    "particle": "congregamystica:blocks/rustic/candle_brass"
+  }
+}

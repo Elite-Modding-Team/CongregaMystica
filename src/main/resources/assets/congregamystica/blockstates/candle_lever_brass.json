@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "facing=north,powered=false":	{ "model": "congregamystica:candle_wall_brass" },
+    "facing=east,powered=false":	{ "model": "congregamystica:candle_wall_brass", "y": 90},
+    "facing=south,powered=false":	{ "model": "congregamystica:candle_wall_brass", "y": 180 },
+    "facing=west,powered=false":	{ "model": "congregamystica:candle_wall_brass", "y": 270 },
+    "facing=up,powered=false":		{ "model": "congregamystica:candle_brass" },
+    "facing=north,powered=true":	{ "model": "congregamystica:candle_wall_pulled_brass" },
+    "facing=east,powered=true":		{ "model": "congregamystica:candle_wall_pulled_brass", "y": 90},
+    "facing=south,powered=true":	{ "model": "congregamystica:candle_wall_pulled_brass", "y": 180 },
+    "facing=west,powered=true":		{ "model": "congregamystica:candle_wall_pulled_brass", "y": 270 },
+    "facing=up,powered=true":		{ "model": "congregamystica:candle_pulled_brass" }
+  }
+}

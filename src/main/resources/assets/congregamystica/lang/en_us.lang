@@ -5,6 +5,15 @@ tile.botania:flower.taintthistle.name=Taintthistle
 tile.botania:flower.taintthistle.reference=Mr. Clean
 tile.botania:flower.whisperweed.name=Whisperweed
 tile.botania:flower.whisperweed.reference=Indirect Cannibalism
+tile.congregamystica:candle_brass.name=Brass Candle
+tile.congregamystica:candle_double_brass.name=Brass Candelabra
+tile.congregamystica:candle_lever_brass.name=Brass Candle Lever
+tile.congregamystica:chain_brass.name=Brass Chain
+tile.congregamystica:chair_greatwood.name=Greatwood Chair
+tile.congregamystica:chair_silverwood.name=Silverwood Chair
+tile.congregamystica:chandelier_brass.name=Brass Chandelier Ring
+tile.congregamystica:table_greatwood.name=Greatwood Table
+tile.congregamystica:table_silverwood.name=Silverwood Table
 
 # Items
 item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb

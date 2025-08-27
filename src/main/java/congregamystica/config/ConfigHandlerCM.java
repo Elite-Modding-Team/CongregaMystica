@@ -19,6 +19,8 @@ public class ConfigHandlerCM {
     public static BotaniaCategory botania = new BotaniaCategory();
     @Config.Name("Immersive Engineering")
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
+    @Config.Name("Rustic")
+    public static RusticCategory rustic = new RusticCategory();
     @Config.Name("The One Probe")
     public static TheOneProbeCategory the_one_probe = new TheOneProbeCategory();
 
@@ -228,6 +230,18 @@ public class ConfigHandlerCM {
             @Config.Comment("The maximum number of refining upgrades that can be stacked in a drill at once. Each upgrade increases the chance of a native cluster drop by 10%.")
             public int maxUpgrades = 4;
         }
+    }
+
+    public static class RusticCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Enable Brass Features")
+        @Config.Comment("Enables brass features such as candles, chandeliers and chains.")
+        public boolean enableBrassFeatures = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Enable Furniture")
+        @Config.Comment("Enables chairs and tables that use Thaumcraft's greatwood and silverwood materials.")
+        public boolean enableFurniture = true;
     }
 
     public static class TheOneProbeCategory {

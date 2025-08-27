@@ -2,6 +2,7 @@ package congregamystica.integrations.rustic.blocks;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.block.IBlockAddition;
+import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -39,7 +40,6 @@ public class BlockCandleLeverCM extends BlockCandleLever implements IBlockAdditi
 
     @Override
     public boolean isEnabled() {
-        //TODO: Config option
-        return true;
+        return ConfigHandlerCM.rustic.enableBrassFeatures;
     }
 }

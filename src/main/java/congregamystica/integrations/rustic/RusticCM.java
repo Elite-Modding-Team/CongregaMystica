@@ -1,6 +1,7 @@
 package congregamystica.integrations.rustic;
 
 import congregamystica.api.IProxy;
+import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.rustic.blocks.*;
 import congregamystica.integrations.rustic.golems.GolemMaterialIronwood;
 import congregamystica.registry.RegistrarCM;
@@ -34,13 +35,12 @@ public class RusticCM implements IProxy {
         RegistrarCM.addAdditionToRegister(new BlockCandleLeverCM("candle_lever_brass"));
         RegistrarCM.addAdditionToRegister(new BlockChandelierCM("chandelier_brass"));
         RegistrarCM.addAdditionToRegister(new BlockLanternCM("lantern_brass"));
-        //Chairs
-        if(true) {//TODO: Config to disable chairs
+        //Tables and chairs needs special enable/disable handling
+        if(ConfigHandlerCM.rustic.enableFurniture) {
+            //Chairs
             RegistrarCM.addAdditionToRegister(new BlockChairCM("greatwood"));
             RegistrarCM.addAdditionToRegister(new BlockChairCM("silverwood"));
-        }
-        //Tables
-        if(true) {//TODO: Config to disable tables
+            //Tables
             RegistrarCM.addAdditionToRegister(new BlockTableCM("greatwood"));
             RegistrarCM.addAdditionToRegister(new BlockTableCM("silverwood"));
         }

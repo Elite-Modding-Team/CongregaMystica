@@ -37,6 +37,9 @@ item.congregamystica:upgrade_refining.name=Native Cluster Extraction Module
 golem.material.cm_biomass=Biomass
 golem.material.text.cm_biomass=This golem is infected with biomass. It will slowly heal and gain a shield over time.
 
+golem.material.cm_ironwood=Ironwood
+golem.material.text.cm_ironwood=This golem is crafted from ironwood. It is light and agile, sturdier than greatwood, but less so than iron. It is resistant to explosions.
+
 golem.material.cm_livingmetal=Livingmetal
 golem.material.text.cm_livingmetal=This golem is crafted from livingmetal. It will fully regen its heath after a kill.
 
@@ -92,6 +95,9 @@ congregamystica.research.expanded_studies.stage.1=[WIP]
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
 congregamystica.research.golem_mat_biomass.stage.1=[WIP]
 
+congregamystica.research.golem_mat_ironwood.title=Material Studies: Ironwood
+congregamystica.research.golem_mat_ironwood.stage.1=Ironwood is heavier than greatwood, but not as heavy as iron. It is rather resistant to explosions.
+
 congregamystica.research.golem_mat_livingmetal.title=Material Studies: Livingmetal
 congregamystica.research.golem_mat_livingmetal.stage.1=[WIP]
 
@@ -119,6 +125,7 @@ congregamystica.research.whisperweed.title=Whisperweed
 congregamystica.research.whisperweed.stage.1=[WIP]
 
 research.f_CM_BIOMASS.text=Examine the biomass colony...
+research.f_CM_IRONWOOD.text=Examine ironwood
 research.f_CM_LIVINGMETAL.text=Examine livingmetal
 research.f_CM_STEEL.text=Examine steel
 research.f_CM_TREATED_WOOD.text=Examine treated wood

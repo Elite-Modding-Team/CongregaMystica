@@ -1,0 +1,34 @@
+{
+  "entries": [
+    {
+      "key": "CM_GOLEM_MAT_IRONWOOD",
+      "name": "congregamystica.research.golem_mat_ironwood.title",
+      "icons": [
+        "rustic:planks;1"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CM_EXPANDED_GOLEMANCY",
+        "MATSTUDWOOD",
+        "MINDCLOCKWORK"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND",
+        "HIDDEN"
+      ],
+      "location": [
+        -7,
+        3
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.golem_mat_ironwood.stage.1",
+          "required_research": [
+            "f_CM_IRONWOOD"
+          ]
+        }
+      ]
+    }
+  ]
+}

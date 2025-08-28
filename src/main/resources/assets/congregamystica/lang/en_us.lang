@@ -71,8 +71,11 @@ tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract
 # Research
 tc.research_category.CONGREGA_MYSTICA=Congrega Mystica
 
+congregamystica.research.blood_magic.title=Blood Magic
+congregamystica.research.blood_magic.stage.1=Blood Magic provides its own ways of alchemy and imbuing. I can now combine my own studies of Thaumaturgy alongside my own studies of Blood Magic. 
+
 congregamystica.research.blood_scribing_tools.title=Bloody Scrivener's Tools
-congregamystica.research.blood_scribing_tools.stage.1=By enhancing my scribing tools with a much more sinister type of magic, I've created a set of scribing tools that fills themselves from lifeforce instead of ink. The Bloody Scrivener's Tools can draw from LP instead of ink when writing, but may need contact with human warmth to recharge if they run out.<BR>Right-clicking the tool will bind it to my LP network. It will take 100 LP per point of damage taken.
+congregamystica.research.blood_scribing_tools.stage.1=I've created a set of scribing tools that fills themselves from lifeforce instead of ink. The Bloody Scrivener's Tools can draw from LP instead of ink when writing, but may need contact with human warmth to recharge if they run out.<BR>Right-clicking the tool will bind it to my LP network. It will take 100 LP per point of damage taken.
 
 congregamystica.research.congrega_mystica_base.title=Congrega Mystica
 congregamystica.research.congrega_mystica_base.stage.1=Over the course of my research I've come to realize that I've only begun to scratch the surface of what is possible.<BR>I've turned my attention to augmenting other professions with Thaumaturgy with the hope of discovering some unforeseen breakthrough.

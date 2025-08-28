@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "key": "CM_BLOOD_MAGIC",
+      "name": "congregamystica.research.blood_magic.title",
+      "icons": [
+        "bloodmagic:sanguine_book"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": [
+        "CONGREGA_MYSTICA_BASE"
+      ],
+      "siblings": [],
+      "meta": [
+        "ROUND"
+      ],
+      "location": [
+        0,
+        -3
+      ],
+      "stages": [
+        {
+          "text": "congregamystica.research.blood_magic.stage.1"
+        }
+      ]
+    }
+  ]
+}

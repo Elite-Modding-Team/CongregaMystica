@@ -8,7 +8,7 @@
       ],
       "category": "CONGREGA_MYSTICA",
       "parents": [
-        "CM_EXPANDED_STUDIES",
+        "CM_BLOOD_MAGIC",
         "THEORYRESEARCH"
       ],
       "siblings": [],
@@ -17,8 +17,8 @@
         "HIDDEN"
       ],
       "location": [
-        -5,
-        -3
+        -1,
+        -4
       ],
       "stages": [
         {

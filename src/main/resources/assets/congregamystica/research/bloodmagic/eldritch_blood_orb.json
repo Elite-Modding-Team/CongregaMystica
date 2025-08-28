@@ -8,7 +8,7 @@
       ],
       "category": "CONGREGA_MYSTICA",
       "parents": [
-        "CM_EXPANDED_STUDIES",
+        "CM_BLOOD_MAGIC",
         "PRIMPEARL"
       ],
       "siblings": [],
@@ -17,8 +17,8 @@
         "HIDDEN"
       ],
       "location": [
-        -6,
-        -4
+        0,
+        -5
       ],
       "stages": [
         {

@@ -1,13 +1,13 @@
 package congregamystica.integrations.botania;
 
-import congregamystica.api.IProxy;
+import congregamystica.api.IModModule;
 import congregamystica.integrations.botania.blocks.BlockSpecialFlowerCM;
 import congregamystica.integrations.botania.blocks.subtiles.SubTileTaintthistle;
 import congregamystica.integrations.botania.blocks.subtiles.SubTileWhisperweed;
 import congregamystica.integrations.botania.items.ItemManaCaster;
 import congregamystica.registry.RegistrarCM;
 
-public class BotaniaCM implements IProxy {
+public class BotaniaCM implements IModModule {
     public static final String TAINTTHISTLE = "taintthistle";
     public static final String WHISPERWEED = "whisperweed";
 

@@ -18,6 +18,10 @@ public class ModItemsCM {
 
     //Blood Magic
     public static final Item BLOOD_SCRIBING_TOOLS = null;
+    public static final Item CASTER_BOUND = null;
+
+    //Botania
+    public static final Item CASTER_ELEMENTIUM = null;
 
     //Immersive Engineering
     public static final Item DRILL_HEAD_THAUMIUM = null;

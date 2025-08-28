@@ -2,6 +2,7 @@ package congregamystica.proxy;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.IAddition;
+import congregamystica.api.IModModule;
 import congregamystica.api.IProxy;
 import congregamystica.api.golem.IGolemAddition;
 import congregamystica.integrations.InitIntegrations;
@@ -16,18 +17,18 @@ import thaumcraft.api.research.ResearchCategories;
 public class CommonProxy {
     public void preInit() {
         PacketHandlerCM.preInit();
-        InitIntegrations.getModAdditions().forEach(IProxy::preInit);
+        InitIntegrations.getModModules().forEach(IModModule::preInit);
         RegistrarCM.getProxyAdditions().forEach(IProxy::preInit);
     }
 
     public void init() {
-        InitIntegrations.getModAdditions().forEach(IProxy::init);
+        InitIntegrations.getModModules().forEach(IModModule::init);
         RegistrarCM.getProxyAdditions().forEach(IProxy::init);
         registerResearch();
     }
 
     public void postInit() {
-        InitIntegrations.getModAdditions().forEach(IProxy::postInit);
+        InitIntegrations.getModModules().forEach(IModModule::postInit);
         RegistrarCM.getGolemAdditions().forEach(IGolemAddition::registerGolemMaterial);
         RegistrarCM.getProxyAdditions().forEach(IProxy::postInit);
     }
@@ -38,9 +39,9 @@ public class CommonProxy {
     			new ResourceLocation(CongregaMystica.MOD_ID, "textures/items/cluster_amber.png"),
     			new ResourceLocation(CongregaMystica.MOD_ID, "textures/gui/research_background.jpg"),
                 new ResourceLocation(Thaumcraft.MODID, "textures/gui/gui_research_back_over.png"));
-
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/misc"));
-        
+
+        InitIntegrations.getModModules().forEach(IModModule::registerResearchNode);
         RegistrarCM.getAdditions().forEach(IAddition::registerResearchLocation);
     }
 

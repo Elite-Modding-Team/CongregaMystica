@@ -1,6 +1,6 @@
 package congregamystica.integrations.congregamystica;
 
-import congregamystica.api.IProxy;
+import congregamystica.api.IModModule;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.additions.IntegrationsCM;
 import congregamystica.integrations.congregamystica.golems.GolemMaterialSteel;
@@ -23,7 +23,7 @@ import net.minecraft.potion.PotionUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CongregaMysticaCM implements IProxy {
+public class CongregaMysticaCM implements IModModule {
     @Override
     public void preInit() {
         RegistrarCM.addAdditionToRegister(new IntegrationsCM());

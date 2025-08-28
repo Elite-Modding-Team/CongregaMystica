@@ -17,6 +17,8 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -40,6 +42,17 @@ public class RegistrarCM {
     public static void addAdditionToRegister(IAddition addition) {
         if (addition != null && addition.isEnabled()) {
             ADDITIONS.add(addition);
+        }
+    }
+
+    public static void registerFluid(Fluid fluid, boolean addBucket) {
+        if(!(fluid instanceof IAddition) || ((IAddition) fluid).isEnabled()) {
+            if(!FluidRegistry.registerFluid(fluid)) {
+                fluid = FluidRegistry.getFluid(fluid.getName());
+            }
+            if(addBucket) {
+                FluidRegistry.addBucketForFluid(fluid);
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 package congregamystica.integrations.theoneprobe;
 
-import congregamystica.api.IProxy;
+import congregamystica.api.IModModule;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.theoneprobe.providers.TOPBrainJar;
 import congregamystica.integrations.theoneprobe.providers.TOPVisBattery;
@@ -9,7 +9,7 @@ import congregamystica.integrations.theoneprobe.providers.TOPVoidSiphon;
 import congregamystica.utils.libs.ModIds;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 
-public class TheOneProbeCM implements IProxy {
+public class TheOneProbeCM implements IModModule {
     @Override
     public void preInit() {
         if(ConfigHandlerCM.the_one_probe.brainJar) {

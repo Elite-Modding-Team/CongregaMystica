@@ -1,13 +1,13 @@
 package congregamystica.integrations.immersiveengineering;
 
-import congregamystica.api.IProxy;
+import congregamystica.api.IModModule;
 import congregamystica.integrations.immersiveengineering.golems.GolemMaterialTreatedWood;
 import congregamystica.integrations.immersiveengineering.items.ItemDrillHeadThaumium;
 import congregamystica.integrations.immersiveengineering.items.ItemDrillHeadVoid;
 import congregamystica.integrations.immersiveengineering.items.ItemUpgradeRefining;
 import congregamystica.registry.RegistrarCM;
 
-public class ImmersiveEngineeringCM implements IProxy {
+public class ImmersiveEngineeringCM implements IModModule {
 
     @Override
     public void preInit() {

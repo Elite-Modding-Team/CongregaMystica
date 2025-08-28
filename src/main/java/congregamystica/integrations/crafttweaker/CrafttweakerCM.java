@@ -1,12 +1,12 @@
 package congregamystica.integrations.crafttweaker;
 
-import congregamystica.api.IProxy;
+import congregamystica.api.IModModule;
 import congregamystica.utils.helpers.PechHelper;
 import crafttweaker.mc1120.events.ScriptRunEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class CrafttweakerCM implements IProxy {
+public class CrafttweakerCM implements IModModule {
     @Override
     public void preInit() {
         MinecraftForge.EVENT_BUS.register(this);

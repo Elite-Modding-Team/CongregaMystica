@@ -1,6 +1,6 @@
 package congregamystica.integrations.thaumicwonders;
 
-import congregamystica.api.IProxy;
+import congregamystica.api.IModModule;
 import congregamystica.integrations.congregamystica.items.ItemNativeClusterDynamic;
 import congregamystica.integrations.thaumicwonders.additions.IntegrationsTW;
 import congregamystica.integrations.thaumicwonders.items.ItemEldritchCluster;
@@ -8,7 +8,7 @@ import congregamystica.integrations.thaumicwonders.items.ItemEldritchClusterDyna
 import congregamystica.registry.ModItemsCM;
 import congregamystica.registry.RegistrarCM;
 
-public class ThaumicWondersCM implements IProxy {
+public class ThaumicWondersCM implements IModModule {
     @Override
     public void preInit() {
         RegistrarCM.addAdditionToRegister(new IntegrationsTW());

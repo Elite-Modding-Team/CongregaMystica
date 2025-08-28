@@ -1,6 +1,6 @@
 package congregamystica.integrations;
 
-import congregamystica.api.IProxy;
+import congregamystica.api.IModModule;
 import congregamystica.integrations.appliedenergistics2.AppliedEnergisticsCM;
 import congregamystica.integrations.bloodmagic.BloodMagicCM;
 import congregamystica.integrations.botania.BotaniaCM;
@@ -17,48 +17,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InitIntegrations {
-    private static List<IProxy> MOD_ADDITIONS;
+    private static List<IModModule> MOD_MODULES;
 
-    private static void initModAdditions() {
+    private static void initModModules() {
         //The built-in additions should register first
-        MOD_ADDITIONS.add(new CongregaMysticaCM());
+        MOD_MODULES.add(new CongregaMysticaCM());
         //Mod additions register next
         if(ModIds.applied_energistics.isLoaded) {
-            MOD_ADDITIONS.add(new AppliedEnergisticsCM());
+            MOD_MODULES.add(new AppliedEnergisticsCM());
         }
         if(ModIds.blood_magic.isLoaded) {
-            MOD_ADDITIONS.add(new BloodMagicCM());
+            MOD_MODULES.add(new BloodMagicCM());
         }
         if(ModIds.botania.isLoaded) {
-            MOD_ADDITIONS.add(new BotaniaCM());
+            MOD_MODULES.add(new BotaniaCM());
         }
         if(ModIds.crafttweaker.isLoaded) {
-            MOD_ADDITIONS.add(new CrafttweakerCM());
+            MOD_MODULES.add(new CrafttweakerCM());
         }
         if(ModIds.harken_scythe.isLoaded) {
-            MOD_ADDITIONS.add(new HarkenScytheCM());
+            MOD_MODULES.add(new HarkenScytheCM());
         }
         if(ModIds.immersive_engineering.isLoaded) {
-            MOD_ADDITIONS.add(new ImmersiveEngineeringCM());
+            MOD_MODULES.add(new ImmersiveEngineeringCM());
         }
          //TODO: If rustic isn't finished before the first release, make sure this doesn't load.
         if(ModIds.rustic.isLoaded) {
-            MOD_ADDITIONS.add(new RusticCM());
+            MOD_MODULES.add(new RusticCM());
         }
         if(ModIds.thaumic_wonders.isLoaded) {
-            MOD_ADDITIONS.add(new ThaumicWondersCM());
+            MOD_MODULES.add(new ThaumicWondersCM());
         }
         if(ModIds.the_one_probe.isLoaded) {
-            MOD_ADDITIONS.add(new TheOneProbeCM());
+            MOD_MODULES.add(new TheOneProbeCM());
         }
 
     }
 
-    public static List<IProxy> getModAdditions() {
-        if (MOD_ADDITIONS == null) {
-            MOD_ADDITIONS = new ArrayList<>();
-            initModAdditions();
+    public static List<IModModule> getModModules() {
+        if (MOD_MODULES == null) {
+            MOD_MODULES = new ArrayList<>();
+            initModModules();
         }
-        return MOD_ADDITIONS;
+        return MOD_MODULES;
     }
 }

@@ -1,11 +1,11 @@
 package congregamystica.integrations.harkenscythe;
 
-import congregamystica.api.IProxy;
+import congregamystica.api.IModModule;
 import congregamystica.integrations.harkenscythe.golems.GolemMaterialBiomass;
 import congregamystica.integrations.harkenscythe.golems.GolemMaterialLivingmetal;
 import congregamystica.registry.RegistrarCM;
 
-public class HarkenScytheCM implements IProxy {
+public class HarkenScytheCM implements IModModule {
 
     @Override
     public void preInit() {

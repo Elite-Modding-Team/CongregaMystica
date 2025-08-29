@@ -7,19 +7,10 @@
         "congregamystica:textures/blocks/botania/whisperweed.png"
       ],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CM_EXPANDED_STUDIES",
-        "WARP"
-      ],
+      "parents": ["CM_BOTANIA", "WARP"],
       "siblings": [],
-      "meta": [
-        "ROUND",
-        "HIDDEN"
-      ],
-      "location": [
-        -6,
-        -1
-      ],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-3, -2],
       "stages": [
         {
           "text": "congregamystica.research.whisperweed.stage.1"

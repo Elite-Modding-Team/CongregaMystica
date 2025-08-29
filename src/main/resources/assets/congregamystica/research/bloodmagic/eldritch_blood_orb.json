@@ -3,23 +3,12 @@
     {
       "key": "CM_ELDRITCH_BLOOD_ORB",
       "name": "congregamystica.research.eldritch_blood_orb.title",
-      "icons": [
-        "congregamystica:textures/gui/eldritch_blood_orb.png"
-      ],
+      "icons": ["bloodmagic:blood_orb;1;0;{orb: \"congregamystica:eldritch\"}"],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CM_BLOOD_MAGIC",
-        "PRIMPEARL"
-      ],
+      "parents": ["CM_BLOOD_MAGIC", "PRIMPEARL"],
       "siblings": [],
-      "meta": [
-        "ROUND",
-        "HIDDEN"
-      ],
-      "location": [
-        0,
-        -5
-      ],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-1, 2],
       "stages": [
         {
           "text": "congregamystica.research.eldritch_blood_orb.stage.1"

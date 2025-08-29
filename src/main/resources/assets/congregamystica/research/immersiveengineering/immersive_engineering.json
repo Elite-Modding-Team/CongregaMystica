@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "key": "CM_IMMERSIVE_ENGINEERING",
+      "name": "congregamystica.research.immersiveengineering.title",
+      "icons": ["immersiveengineering:tool;1;0"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CONGREGA_MYSTICA_BASE"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [3, 1],
+      "stages": [
+        {
+          "text": "congregamystica.research.immersiveengineering.stage.1"
+        }
+      ]
+    }
+  ]
+}

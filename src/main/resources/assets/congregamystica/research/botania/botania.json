@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "key": "CM_BOTANIA",
+      "name": "congregamystica.research.botania.title",
+      "icons": ["botania:twigwand;1;0;{color1: 0, color2: 0}"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CONGREGA_MYSTICA_BASE"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [-2, -1],
+      "stages": [
+        {
+          "text": "congregamystica.research.botania.stage.1"
+        }
+      ]
+    }
+  ]
+}

@@ -3,23 +3,12 @@
     {
       "key": "CM_DRILL_HEAD_VOID",
       "name": "congregamystica.research.drill_head_void.title",
-      "icons": [
-        "congregamystica:drill_head_void"
-      ],
+      "icons": ["congregamystica:drill_head_void"],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CM_DRILL_HEAD_THAUMIUM",
-        "BASEELDRITCH"
-      ],
+      "parents": ["CM_IMMERSIVE_ENGINEERING", "CM_DRILL_HEAD_THAUMIUM", "~BASEELDRITCH"],
       "siblings": [],
-      "meta": [
-        "ROUND",
-        "HIDDEN"
-      ],
-      "location": [
-        -3,
-        -5
-      ],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [3, 3],
       "stages": [
         {
           "text": "congregamystica.research.drill_head_void.stage.1",

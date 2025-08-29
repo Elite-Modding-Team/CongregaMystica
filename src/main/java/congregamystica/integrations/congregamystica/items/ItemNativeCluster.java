@@ -24,8 +24,6 @@ import thaumcraft.common.lib.utils.Utils;
 import java.util.Map;
 
 public class ItemNativeCluster extends AbstractItemAddition {
-    private static boolean hasResearchLoaded = false;
-
     protected ClusterData clusterData;
 
     public ItemNativeCluster(String unlocName, ClusterData clusterData) {
@@ -103,12 +101,6 @@ public class ItemNativeCluster extends AbstractItemAddition {
                 ThaumcraftApi.addSmeltingBonus(this.clusterData.clusterOreDict, new ItemStack(ItemsTC.nuggets, 1, 10), 0.02f);
             }
         }
-    }
-
-    //TODO: Fix cluster research loading for every cluster
-    @Override
-    public void registerResearchLocation() {
-        //TODO: Research Location
     }
 
     @Override

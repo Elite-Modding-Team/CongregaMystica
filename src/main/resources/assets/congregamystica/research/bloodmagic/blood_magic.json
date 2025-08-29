@@ -3,21 +3,12 @@
     {
       "key": "CM_BLOOD_MAGIC",
       "name": "congregamystica.research.blood_magic.title",
-      "icons": [
-        "bloodmagic:sanguine_book"
-      ],
+      "icons": ["bloodmagic:blood_orb;1;0;{orb: \"bloodmagic:weak\"}"],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CONGREGA_MYSTICA_BASE"
-      ],
+      "parents": ["CONGREGA_MYSTICA_BASE"],
       "siblings": [],
-      "meta": [
-        "ROUND"
-      ],
-      "location": [
-        0,
-        -3
-      ],
+      "meta": ["ROUND"],
+      "location": [-2, 1],
       "stages": [
         {
           "text": "congregamystica.research.blood_magic.stage.1"

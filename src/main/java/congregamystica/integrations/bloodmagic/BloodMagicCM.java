@@ -12,10 +12,13 @@ import thaumcraft.api.ThaumcraftApi;
 public class BloodMagicCM implements IModModule {
     @Override
     public void preInit() {
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/bloodmagic/blood_magic"));
-
         RegistrarCM.addAdditionToRegister(new ItemBoundCaster());
         RegistrarCM.addAdditionToRegister(new BloodOrbCM());
         RegistrarCM.addAdditionToRegister(new ItemBloodScribingTools());
+    }
+
+    @Override
+    public void registerResearchNode() {
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/bloodmagic/blood_magic"));
     }
 }

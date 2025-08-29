@@ -1,0 +1,20 @@
+{
+  "entries": [
+    {
+      "key": "CM_GOLEM_MAT_LIVINGMETAL",
+      "name": "congregamystica.research.golem_mat_livingmetal.title",
+      "icons": ["harkenscythe:livingmetal_ingot"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["~CM_EXPANDED_GOLEMANCY", "~MATSTUDIRON", "~MINDCLOCKWORK"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-2, -5],
+      "stages": [
+        {
+          "text": "congregamystica.research.golem_mat_livingmetal.stage.1",
+          "required_research": ["f_CM_LIVINGMETAL"]
+        }
+      ]
+    }
+  ]
+}

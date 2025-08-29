@@ -47,7 +47,7 @@ public class GolemMaterialTreatedWood implements IGolemAddition {
         }
         ScanningManager.addScannableThing(new ScanItem("f_CM_TREATED_WOOD", stack));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
-                "research/immersiveengineering/golem_mat_treated_wood"));
+                "research/golems/golem_mat_treated_wood"));
     }
 
     @Override

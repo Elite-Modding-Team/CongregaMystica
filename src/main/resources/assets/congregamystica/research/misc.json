@@ -7,20 +7,10 @@
         "congregamystica:textures/items/immersiveengineering/upgrade_refining.png"
       ],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "~FIRSTSTEPS"
-      ],
-      "siblings": [
-        "~FIRSTSTEPS"
-      ],
-      "meta": [
-        "ROUND",
-        "HIDDEN"
-      ],
-      "location": [
-        0,
-        0
-      ],
+      "parents": ["~FIRSTSTEPS"],
+      "siblings": ["~FIRSTSTEPS"],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [0, 0],
       "stages": [
         {
           "text": "congregamystica.research.congrega_mystica_base.stage.1"
@@ -30,87 +20,44 @@
     {
       "key": "CM_MIMIC_FORK",
       "name": "congregamystica.research.mimic_fork.title",
-      "icons": [
-        "congregamystica:mimic_fork"
-      ],
+      "icons": ["congregamystica:mimic_fork"],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CONGREGA_MYSTICA_BASE"
-      ],
+      "parents": ["CONGREGA_MYSTICA_BASE"],
       "siblings": [],
       "meta": [],
-      "location": [
-        2,
-        1
-      ],
+      "location": [1, -1],
       "stages": [
         {
           "text": "congregamystica.research.mimic_fork.stage.1",
-          "required_knowledge": [
-            "OBSERVATION;ARTIFICE;1"
-          ],
-          "required_craft": [
-            "minecraft:noteblock"
-          ],
-          "required_research": [
-            "!sensus"
-          ]
+          "required_knowledge": ["OBSERVATION;ARTIFICE;1"],
+          "required_craft": ["minecraft:noteblock"],
+          "required_research": ["!sensus"]
         },
         {
           "text": "congregamystica.research.mimic_fork.stage.2",
-          "recipes": [
-            "congregamystica:mimic_fork"
-          ]
+          "recipes": ["congregamystica:mimic_fork"]
         }
       ]
     },
     {
-      "key": "CM_EXPANDED_GOLEMANCY",
-      "name": "congregamystica.research.expanded_golemancy.title",
-      "icons": [
-        "congregamystica:textures/items/immersiveengineering/upgrade_refining.png"
-      ],
+      "key": "CM_MIMIC_FORK_RANGED",
+      "name": "congregamystica.research.mimic_fork_ranged.title",
+      "icons": ["congregamystica:mimic_fork_ranged"],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CONGREGA_MYSTICA_BASE"
-      ],
+      "parents": ["CM_MIMIC_FORK"],
       "siblings": [],
-      "meta": [
-        "ROUND",
-        "REVERSE"
-      ],
-      "location": [
-        -2,
-        2
-      ],
+      "meta": [],
+      "location": [1, -3],
       "stages": [
         {
-          "text": "congregamystica.research.expanded_golemancy.stage.1"
-        }
-      ]
-    },
-    {
-      "key": "CM_EXPANDED_STUDIES",
-      "name": "congregamystica.research.expanded_studies.title",
-      "icons": [
-        "congregamystica:textures/items/immersiveengineering/upgrade_refining.png"
-      ],
-      "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CONGREGA_MYSTICA_BASE"
-      ],
-      "siblings": [],
-      "meta": [
-        "ROUND",
-        "REVERSE"
-      ],
-      "location": [
-        -2,
-        -2
-      ],
-      "stages": [
+          "text": "congregamystica.research.mimic_fork_ranged.stage.1",
+          "required_knowledge": ["OBSERVATION;ARTIFICE;1"],
+          "required_craft": ["minecraft:noteblock"],
+          "required_research": ["!sensus"]
+        },
         {
-          "text": "congregamystica.research.expanded_studies.stage.1"
+          "text": "congregamystica.research.mimic_fork_ranged.stage.2",
+          "recipes": ["congregamystica:mimic_fork_ranged"]
         }
       ]
     },
@@ -118,24 +65,48 @@
       "key": "CM_METAL_PURIFICATION_EXPANDED",
       "name": "congregamystica.research.metal_purification_expanded.title",
       "icons": [
+        "thaumcraft:textures/items/cluster_copper.png",
+        "thaumcraft:textures/items/cluster_tin.png",
+        "thaumcraft:textures/items/cluster_silver.png",
+        "thaumcraft:textures/items/cluster_lead.png",
+        "congregamystica:textures/items/cluster_diamond.png",
+        "congregamystica:textures/items/cluster_emerald.png",
         "congregamystica:textures/items/cluster_astral_starmetal.png"
       ],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CONGREGA_MYSTICA_BASE",
-        "METALPURIFICATION"
-      ],
+      "parents": ["CONGREGA_MYSTICA_BASE", "METALPURIFICATION"],
       "siblings": [],
-      "meta": [
-        "ROUND"
-      ],
-      "location": [
-        2,
-        -1
-      ],
+      "meta": ["ROUND"],
+      "location": [1, 1],
       "stages": [
         {
-          "text": "congregamystica.research.metal_purification_expanded.stage.1"
+          "text": "congregamystica.research.metal_purification_expanded.stage.1",
+          "recipes": [
+            "congregamystica:cluster_aluminum",
+            "congregamystica:cluster_nickel",
+            "congregamystica:cluster_uranium",
+            "congregamystica:cluster_platinum",
+            "congregamystica:cluster_iridium",
+            "congregamystica:cluster_osmium",
+            "congregamystica:cluster_mithril",
+            "congregamystica:cluster_ardite",
+            "congregamystica:cluster_cobalt"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "CM_EXPANDED_GOLEMANCY",
+      "name": "congregamystica.research.expanded_golemancy.title",
+      "icons": [],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CONGREGA_MYSTICA_BASE"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [0, -4],
+      "stages": [
+        {
+          "text": "congregamystica.research.expanded_golemancy.stage.1"
         }
       ]
     }

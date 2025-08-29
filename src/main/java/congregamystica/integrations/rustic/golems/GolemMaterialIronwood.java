@@ -56,7 +56,7 @@ public class GolemMaterialIronwood implements IGolemAddition {
         }
         ScanningManager.addScannableThing(new ScanItem("f_CM_IRONWOOD", stack));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
-                "research/rustic/golem_mat_ironwood"));
+                "research/golems/golem_mat_ironwood"));
     }
 
     @Override

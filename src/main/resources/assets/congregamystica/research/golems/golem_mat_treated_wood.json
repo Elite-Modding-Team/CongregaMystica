@@ -1,0 +1,20 @@
+{
+  "entries": [
+    {
+      "key": "CM_GOLEM_MAT_TREATED_WOOD",
+      "name": "congregamystica.research.golem_mat_treated_wood.title",
+      "icons": ["immersiveengineering:treated_wood"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["~CM_EXPANDED_GOLEMANCY", "~MATSTUDWOOD", "~MINDCLOCKWORK"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-1, -6],
+      "stages": [
+        {
+          "text": "congregamystica.research.golem_mat_treated_wood.stage.1",
+          "required_research": ["f_CM_TREATED_WOOD"]
+        }
+      ]
+    }
+  ]
+}

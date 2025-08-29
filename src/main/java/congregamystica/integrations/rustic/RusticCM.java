@@ -20,6 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import rustic.common.blocks.fluids.FluidBooze;
 import rustic.common.blocks.fluids.FluidDrinkable;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.common.lib.potions.PotionSunScorned;
 import thaumcraft.common.lib.potions.PotionThaumarhia;
 import thaumcraft.common.lib.potions.PotionWarpWard;
@@ -86,6 +87,11 @@ public class RusticCM implements IModModule {
         //  Cindermote Seeds - Cindermote herb seeds
         //  Shimmerpetal Bulb - Shimmerpetal herb seeds
         //  Viscap Spores - Viscap herb seeds
+    }
+
+    @Override
+    public void registerResearchNode() {
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/rustic/rustic"));
     }
 
     private void initFluids() {

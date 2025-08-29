@@ -1,0 +1,27 @@
+{
+  "entries": [
+    {
+      "key": "CM_METAL_CORRUPTION_EXPANDED",
+      "name": "congregamystica.research.metal_corruption_expanded.title",
+      "icons": [
+        "thaumicwonders:textures/items/eldritch_cluster_copper.png",
+        "thaumicwonders:textures/items/eldritch_cluster_tin.png",
+        "thaumicwonders:textures/items/eldritch_cluster_silver.png",
+        "thaumicwonders:textures/items/eldritch_cluster_lead.png",
+        "congregamystica:textures/items/eldritch_cluster_diamond.png",
+        "congregamystica:textures/items/eldritch_cluster_emerald.png",
+        "congregamystica:textures/items/eldritch_cluster_astral_starmetal.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_METAL_PURIFICATION_EXPANDED", "~TWOND_ALIENIST_STONE"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [1, 3],
+      "stages": [
+        {
+          "text": "congregamystica.research.metal_corruption_expanded.stage.1"
+        }
+      ]
+    }
+  ]
+}

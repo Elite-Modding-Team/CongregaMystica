@@ -1,12 +1,14 @@
 package congregamystica.integrations.thaumicwonders.items;
 
 import com.verdantartifice.thaumicwonders.common.crafting.catalyzationchamber.CatalyzationChamberRecipeRegistry;
+import congregamystica.CongregaMystica;
 import congregamystica.api.util.EnumSortType;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.utils.helpers.AspectHelperCM;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
@@ -66,10 +68,12 @@ public class ItemEldritchCluster extends ItemNativeCluster {
         }
     }
 
-    //TODO: Fix cluster research loading for every cluster
     @Override
     public void registerResearchLocation() {
-        //TODO: Add research
+        if(!hasResearchLoaded) {
+            ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/thaumicwonders/expanded_eldritch_clusters"));
+            hasResearchLoaded = true;
+        }
     }
 
     @Override

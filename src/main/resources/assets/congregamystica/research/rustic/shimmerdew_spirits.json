@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "key": "CM_SHIMMERDEW_SPIRITS",
+      "name": "congregamystica.research.shimmerdew_spirits.title",
+      "icons": ["rustic:brewing_barrel"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_RUSTIC"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [3, -1],
+      "stages": [
+        {
+          "text": "congregamystica.research.shimmerdew_spirits.stage.1"
+        }
+      ]
+    }
+  ]
+}

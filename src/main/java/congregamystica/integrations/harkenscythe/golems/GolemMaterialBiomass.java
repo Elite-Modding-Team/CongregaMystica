@@ -97,7 +97,7 @@ public class GolemMaterialBiomass implements IGolemAddition, IProxy {
         }
         ScanningManager.addScannableThing(new ScanItem("f_CM_BIOMASS", stack));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
-                "research/harkenscythe/golem_mat_biomass"));
+                "research/golems/golem_mat_biomass"));
     }
 
     @Override

@@ -8,6 +8,7 @@ import WayofTime.bloodmagic.core.registry.AlchemyArrayRecipeRegistry;
 import WayofTime.bloodmagic.iface.IBindable;
 import WayofTime.bloodmagic.item.types.ComponentTypes;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
+import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemCasterCM;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.utils.helpers.StringHelper;
@@ -21,11 +22,13 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IRarity;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.ItemsTC;
@@ -124,7 +127,8 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
 
     @Override
     public void registerResearchLocation() {
-
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/bloodmagic/caster_bound"));
     }
 
     @Override

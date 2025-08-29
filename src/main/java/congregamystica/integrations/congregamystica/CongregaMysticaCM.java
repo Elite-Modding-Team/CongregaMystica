@@ -26,6 +26,7 @@ import java.util.regex.Pattern;
 public class CongregaMysticaCM implements IModModule {
     @Override
     public void preInit() {
+        RegistrarCM.addAdditionToRegister(new GolemMaterialSteel());
         RegistrarCM.addAdditionToRegister(new IntegrationsCM());
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         RegistrarCM.addAdditionToRegister(new ItemMimicForkRanged());
@@ -35,8 +36,6 @@ public class CongregaMysticaCM implements IModModule {
     
     @Override
     public void init() {
-        RegistrarCM.addAdditionToRegister(new GolemMaterialSteel());
-
         //Pech trade fixes
         PechHelper.removePechTrade(EnumPechType.MAGE, Ingredient.fromStacks(new ItemStack(Items.POTIONITEM, 1, 8193)));
         PechHelper.removePechTrade(EnumPechType.MAGE, Ingredient.fromStacks(new ItemStack(Items.POTIONITEM, 1, 8261)));

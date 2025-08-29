@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "key": "CM_CASTER_BOUND",
+      "name": "congregamystica.research.caster_bound.title",
+      "icons": ["congregamystica:caster_bound"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_BLOOD_MAGIC", "~BASEAUROMANCY", "~BASEINFUSION"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-2, 3],
+      "stages": [
+        {
+          "text": "congregamystica.research.caster_bound.stage.1"
+        }
+      ]
+    }
+  ]
+}

@@ -7,19 +7,10 @@
         "congregamystica:textures/blocks/botania/taintthistle.png"
       ],
       "category": "CONGREGA_MYSTICA",
-      "parents": [
-        "CM_EXPANDED_STUDIES",
-        "FLUX"
-      ],
+      "parents": ["CM_BOTANIA", "FLUX"],
       "siblings": [],
-      "meta": [
-        "ROUND",
-        "HIDDEN"
-      ],
-      "location": [
-        -4,
-        -1
-      ],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-1, -2],
       "stages": [
         {
           "text": "congregamystica.research.taintthistle.stage.1"

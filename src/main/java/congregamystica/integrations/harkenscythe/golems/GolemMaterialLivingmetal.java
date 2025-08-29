@@ -85,7 +85,7 @@ public class GolemMaterialLivingmetal implements IGolemAddition, IProxy {
         }
         ScanningManager.addScannableThing(new ScanItem("f_CM_LIVINGMETAL", stack));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
-                "research/harkenscythe/golem_mat_livingmetal"));
+                "research/golems/golem_mat_livingmetal"));
     }
 
     @Override

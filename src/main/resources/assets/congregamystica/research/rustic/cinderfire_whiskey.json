@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "key": "CM_CINDERFIRE_WHISKEY",
+      "name": "congregamystica.research.cinderfire_whiskey.title",
+      "icons": ["rustic:brewing_barrel"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_RUSTIC"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [3, -1],
+      "stages": [
+        {
+          "text": "congregamystica.research.cinderfire_whiskey.stage.1"
+        }
+      ]
+    }
+  ]
+}

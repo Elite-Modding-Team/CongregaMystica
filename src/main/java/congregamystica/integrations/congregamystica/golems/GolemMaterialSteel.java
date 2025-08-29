@@ -47,7 +47,7 @@ public class GolemMaterialSteel implements IGolemAddition {
                 ScanningManager.addScannableThing(new ScanBlockState("f_CM_STEEL", block.getStateFromMeta(stack.getMetadata()), false));
             }
             ScanningManager.addScannableThing(new ScanItem("f_CM_STEEL", stack));
-            ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/golem_mat_steel"));
+            ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/golems/golem_mat_steel"));
         }
     }
 

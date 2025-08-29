@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "key": "CM_VISCOUS_BREW",
+      "name": "congregamystica.research.viscous_brew.title",
+      "icons": ["rustic:brewing_barrel"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_RUSTIC"],
+      "siblings": [],
+      "meta": ["ROUND"],
+      "location": [3, -1],
+      "stages": [
+        {
+          "text": "congregamystica.research.viscous_brew.stage.1"
+        }
+      ]
+    }
+  ]
+}

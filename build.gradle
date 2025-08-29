@@ -133,6 +133,7 @@ dependencies {
     modMap.put(["curse.maven:astral-sorcery-241721:3044416"], project.use_astralsorcery)
     modMap.put(["curse.maven:blood-magic-224791:2822288", "curse.maven:guide-api-228832:2645992"], project.use_bloodmagic)
     modMap.put(["curse.maven:botania-225643:3330934"], project.use_botania)
+    modMap.put(["curse.maven:embers-rekindled-300777:3695248"], project.use_embers)
     modMap.put(["curse.maven:harken-scythe-resharpened-1163747:6842654"], project.use_harkenscythe)
     modMap.put(["curse.maven:immersive-engineering-231951:2974106"], project.use_immersiveengineering)
     modMap.put(["curse.maven:natures-aura-306626:2882138", "curse.maven:patchouli-306770:3162874"], project.use_naturesaura)

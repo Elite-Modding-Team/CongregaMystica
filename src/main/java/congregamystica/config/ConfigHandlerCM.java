@@ -125,6 +125,12 @@ public class ConfigHandlerCM {
         @Config.Comment("Configuration options for the Blood Magic LP-augmented casting gauntlet.")
         public CasterTypeCategory boundCaster = new CasterTypeCategory(400);
 
+        //TODO: Remove ignore if gauntlet is implemented
+        @Config.Ignore
+        @Config.Name("Clockwork Caster's Gauntlet")
+        @Config.Comment("Configuration options for the Embers Ember-augmented casting gauntlet.")
+        public CasterTypeCategory clockworkCaster = new CasterTypeCategory(1.0);
+
         @Config.Name("Elementium Caster's Gauntlet")
         @Config.Comment("Configuration options for the Botania Mana-augmented casting gauntlet")
         public CasterTypeCategory elementiumCaster = new CasterTypeCategory(400);

@@ -64,8 +64,6 @@ public class CongregaMystica {
 
     //TODO:
     // Gauntlets (General List of Mods)
-    //  Blood Magic
-    //      Sentient Gauntlet - uses Demon Will
     //  EB Wizardry
     //      Mana Gauntlet - uses mana
     //  Embers
@@ -73,8 +71,6 @@ public class CongregaMystica {
     //  Harken Scythe
     //      Livingmetal Gauntlet - uses soul essence
     //      Biomass Gauntlet - uses blood essence
-    //  Nature's Aura
-    //      Aura Caster - uses aura
     //  Technology
     //      RF Caster - uses redstone flux
     // Rustic Thaumaturgy - https://www.curseforge.com/minecraft/mc-mods/rustic-thaumaturgy

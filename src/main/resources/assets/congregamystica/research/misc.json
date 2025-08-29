@@ -103,7 +103,7 @@
       "parents": ["CONGREGA_MYSTICA_BASE"],
       "siblings": [],
       "meta": ["ROUND"],
-      "location": [0, -4],
+      "location": [-4, 0],
       "stages": [
         {
           "text": "congregamystica.research.expanded_golemancy.stage.1"

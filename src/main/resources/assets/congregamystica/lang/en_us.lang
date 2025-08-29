@@ -71,29 +71,49 @@ tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract
 # Research
 tc.research_category.CONGREGA_MYSTICA=Congrega Mystica
 
-congregamystica.research.blood_magic.title=Blood Magic
+congregamystica.research.congrega_mystica_base.title=Congrega Mystica
+congregamystica.research.congrega_mystica_base.stage.1=Over the course of my research I've come to realize that I've only begun to scratch the surface of what is possible.<BR>I've turned my attention to augmenting other professions with Thaumaturgy with the hope of discovering some unforeseen breakthrough.
+
+congregamystica.research.metal_purification_expanded.title=Expanded Studies: Metal Purification
+congregamystica.research.metal_purification_expanded.stage.1=The variety of native clusters has been greatly expanded. These clusters will produce twice the normal amount of ingots like the other ones I'm already aware of.<BR>I can also produce these clusters alchemically if I so choose.
+
+congregamystica.research.mimic_fork.title=Mimic Fork
+congregamystica.research.mimic_fork.stage.1=Note Blocks are a device I've been thinking of a lot lately. They are simple things that respond to touch or Redstone to emit one single pure note... But of what utility are they really?<BR>Any usage requires a Note Block to be setup in a specific location and manually configured to the desired note.<BR>There must be a better way...
+congregamystica.research.mimic_fork.stage.2=I've found my answer with the Mimic Fork!<BR>It has a few functions, It can store musical notes to evoke them at a later point. It also allows you to set an Arcane Ear or Note Block's Note setting by right-clicking the Mimic Fork on either device. You are also able to set the Instrument and Note type of a given Note Block or Arcane Ear by instead sneaking and right-clicking on the device.
+
+congregamystica.research.mimic_fork_ranged.title=Ethereal Mimic Fork
+congregamystica.research.mimic_fork_ranged.stage.1=[WIP]
+congregamystica.research.mimic_fork_ranged.stage.2=[WIP]
+
+# -- EXPANDED STUDIES: BLOOD MAGIC
+congregamystica.research.blood_magic.title=Expanded Studies: Blood Alchemy
 congregamystica.research.blood_magic.stage.1=Blood Magic provides its own ways of alchemy and imbuing. I can now combine my own studies of Thaumaturgy alongside my own studies of Blood Magic. 
 
 congregamystica.research.blood_scribing_tools.title=Bloody Scrivener's Tools
 congregamystica.research.blood_scribing_tools.stage.1=I've created a set of scribing tools that fills themselves from lifeforce instead of ink. The Bloody Scrivener's Tools can draw from LP instead of ink when writing, but may need contact with human warmth to recharge if they run out.<BR>Right-clicking the tool will bind it to my LP network. It will take 100 LP per point of damage taken.
 
-congregamystica.research.congrega_mystica_base.title=Congrega Mystica
-congregamystica.research.congrega_mystica_base.stage.1=Over the course of my research I've come to realize that I've only begun to scratch the surface of what is possible.<BR>I've turned my attention to augmenting other professions with Thaumaturgy with the hope of discovering some unforeseen breakthrough.
-
-congregamystica.research.drill_head_thaumium.title=Thaumium Drill Head
-congregamystica.research.drill_head_thaumium.stage.1=[WIP]
-
-congregamystica.research.drill_head_void.title=Void Drill Head
-congregamystica.research.drill_head_void.stage.1=[WIP]
+congregamystica.research.caster_bound.title=Bound Caster's Gauntlet
+congregamystica.research.caster_bound.stage.1=[WIP]
 
 congregamystica.research.eldritch_blood_orb.title=Eldritch Blood Orb
 congregamystica.research.eldritch_blood_orb.stage.1=[WIP]
 
-congregamystica.research.expanded_golemancy.title=Expanded Golemancy
-congregamystica.research.expanded_golemancy.stage.1=[WIP]
+# -- EXPANDED STUDIES: BOTANIA
+congregamystica.research.botania.title=Expanded Studies: Botany
+congregamystica.research.botania.stage.1=[WIP]
 
-congregamystica.research.expanded_studies.title=Expanded Studies
-congregamystica.research.expanded_studies.stage.1=[WIP]
+congregamystica.research.caster_elementium.title=Elementium Caster's Gauntlet
+congregamystica.research.caster_elementium.stage.1=[WIP]
+
+congregamystica.research.taintthistle.title=Taintthistle
+congregamystica.research.taintthistle.stage.1=[WIP]
+
+congregamystica.research.whisperweed.title=Whisperweed
+congregamystica.research.whisperweed.stage.1=[WIP]
+
+# -- EXPANDED STUDIES: GOLEMANCY
+congregamystica.research.expanded_golemancy.title=Expanded Studies: Golemancy
+congregamystica.research.expanded_golemancy.stage.1=[WIP]
 
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
 congregamystica.research.golem_mat_biomass.stage.1=[WIP]
@@ -110,23 +130,28 @@ congregamystica.research.golem_mat_steel.stage.1=Steel is quite durable, more so
 congregamystica.research.golem_mat_treated_wood.title=Material Studies: Treated Wood
 congregamystica.research.golem_mat_treated_wood.stage.1=Treated Wood is of higher quality than normal wood. Due to its oil-laden nature however, it is not as light.
 
-congregamystica.research.metal_purification_expanded.title=Metal Purification: Expanded
-congregamystica.research.metal_purification_expanded.stage.1=The variety of native clusters has been greatly expanded. These clusters will produce twice the normal amount of ingots like the other ones I'm already aware of.<BR>I can also produce these clusters alchemically if I so choose. 
+# -- EXPANDED STUDIES: IMMERSIVE ENGINEERING
+congregamystica.research.immersiveengineering.title=Expanded Studies: Engineering
+congregamystica.research.immersiveengineering.stage.1=[WIP]
 
-congregamystica.research.mimic_fork.title=Mimic Fork
-congregamystica.research.mimic_fork.stage.1=Note Blocks are a device I've been thinking of a lot lately. They are simple things that respond to touch or Redstone to emit one single pure note... But of what utility are they really?<BR>Any usage requires a Note Block to be setup in a specific location and manually configured to the desired note.<BR>There must be a better way...
-congregamystica.research.mimic_fork.stage.2=I've found my answer with the Mimic Fork!<BR>It has a few functions, It can store musical notes to evoke them at a later point. It also allows you to set an Arcane Ear or Note Block's Note setting by right-clicking the Mimic Fork on either device. You are also able to set the Instrument and Note type of a given Note Block or Arcane Ear by instead sneaking and right-clicking on the device.
+congregamystica.research.drill_head_thaumium.title=Thaumium Drill Head
+congregamystica.research.drill_head_thaumium.stage.1=[WIP]
 
-congregamystica.research.taintthistle.title=Taintthistle
-congregamystica.research.taintthistle.stage.1=[WIP]
+congregamystica.research.drill_head_void.title=Void Drill Head
+congregamystica.research.drill_head_void.stage.1=[WIP]
 
 congregamystica.research.upgrade_refining.title=Drill Upgrade: Refining
 congregamystica.research.upgrade_refining.stage.1=[WIP]
 congregamystica.research.upgrade_refining.stage.2=[WIP]
 
-congregamystica.research.whisperweed.title=Whisperweed
-congregamystica.research.whisperweed.stage.1=[WIP]
+# -- EXPANDED STUDIES: RUSTIC
+congregamystica.research.rustic.title=Expanded Studies: Herbology
 
+# -- EXPANDED STUDIES: THAUMIC WONDERS
+congregamystica.research.metal_corruption_expanded.title=Expanded Studies: Metal Corruption
+
+
+# Research Misc
 research.f_CM_BIOMASS.text=Examine the biomass colony...
 research.f_CM_IRONWOOD.text=Examine ironwood
 research.f_CM_LIVINGMETAL.text=Examine livingmetal

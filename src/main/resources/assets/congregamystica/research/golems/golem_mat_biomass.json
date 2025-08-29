@@ -8,7 +8,7 @@
       "parents": ["~CM_EXPANDED_GOLEMANCY", "~MATSTUDIRON", "~MINDCLOCKWORK"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-3, -6],
+      "location": [-8, -2],
       "stages": [
         {
           "text": "congregamystica.research.golem_mat_biomass.stage.1",

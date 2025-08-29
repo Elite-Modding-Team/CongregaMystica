@@ -8,7 +8,7 @@
       "parents": ["~CM_EXPANDED_GOLEMANCY", "~MATSTUDWOOD", "~MINDCLOCKWORK"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-1, -6],
+      "location": [-6, -2],
       "stages": [
         {
           "text": "congregamystica.research.golem_mat_treated_wood.stage.1",

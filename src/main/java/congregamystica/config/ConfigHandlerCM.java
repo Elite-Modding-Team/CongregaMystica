@@ -115,13 +115,19 @@ public class ConfigHandlerCM {
     }
 
     public static class CasterCategory {
+        //TODO: Remove ignore if gauntlet is implemented
+        @Config.Ignore
+        @Config.Name("Botanist's Caster's Gauntlet")
+        @Config.Comment("Configuration options for the Nature's Aura aura-augmented casting gauntlet.")
+        public CasterTypeCategory botanistsCaster = new CasterTypeCategory(2000);
+
         @Config.Name("Bound Caster's Gauntlet")
         @Config.Comment("Configuration options for the Blood Magic LP-augmented casting gauntlet.")
-        public CasterTypeCategory bound = new CasterTypeCategory(400);
+        public CasterTypeCategory boundCaster = new CasterTypeCategory(400);
 
         @Config.Name("Elementium Caster's Gauntlet")
         @Config.Comment("Configuration options for the Botania Mana-augmented casting gauntlet")
-        public CasterTypeCategory elementium = new CasterTypeCategory(400);
+        public CasterTypeCategory elementiumCaster = new CasterTypeCategory(400);
     }
 
     public static class ClustersCategory {

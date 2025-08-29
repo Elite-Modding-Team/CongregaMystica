@@ -14,7 +14,6 @@ import congregamystica.config.ConfigHandlerCM;
 import congregamystica.utils.helpers.StringHelper;
 import congregamystica.utils.libs.ModIds;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -27,15 +26,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IRarity;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.items.ItemsTC;
-import thaumcraft.common.items.casters.ItemFocus;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
-import java.util.List;
 import java.util.Map;
 
 public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
@@ -44,25 +40,25 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
     }
 
     @Override
-    public float getAltResourceModifier(World world, EntityPlayer player, ItemStack casterStack) {
-        return this.getAltResourceBaseModifier();
-    }
-
-    @Override
     public float getAltResourceBaseModifier() {
-        return (float) ConfigHandlerCM.casters.bound.consumptionModifier;
+        return (float) ConfigHandlerCM.casters.boundCaster.consumptionModifier;
     }
 
     @Override
-    public boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float baseVisCost, float alternateResourceVis, boolean simulate) {
-        if(alternateResourceVis <= 0)
+    public double getAltResourceConversionRate() {
+        return ConfigHandlerCM.casters.boundCaster.conversionRate;
+    }
+
+    @Override
+    public boolean consumeAltResource(World world, EntityPlayer player, ItemStack casterStack, float altVisCost, boolean simulate) {
+        if(altVisCost <= 0)
             return true;
 
         Binding binding = this.getBinding(casterStack);
         if(binding != null) {
             SoulNetwork network = NetworkHelper.getSoulNetwork(binding);
             EntityPlayer boundPlayer = network.getPlayer();
-            int lpCost = (int) Math.ceil(alternateResourceVis * ConfigHandlerCM.casters.bound.conversionRate);
+            int lpCost = (int) Math.ceil(altVisCost * this.getAltResourceConversionRate());
             if(lpCost <= network.getCurrentEssence()) {
                 if (!simulate && !world.isRemote) {
                     network.syphonAndDamage(boundPlayer, SoulTicket.item(casterStack, world, player, lpCost));
@@ -74,20 +70,14 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
     }
 
     @Override
-    public void addAltResourceTooltip(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        //LP Cost: %d LP per cast
-        if(this.hasFocusStack(stack)) {
-            ItemStack focusStack = this.getFocusStack(stack);
-            ItemFocus focus = (ItemFocus) focusStack.getItem();
-            float altVisCost = focus.getVisCost(focusStack) * this.getAltResourceBaseModifier();
-            int lpCost = (int) Math.ceil(altVisCost * ConfigHandlerCM.casters.bound.conversionRate);
-            tooltip.add(I18n.format(StringHelper.getTranslationKey("caster_bound", "tooltip", "cost"), lpCost));
-        }
+    public String getAltResourceInfoTooltip(float altVisCost) {
+        int lpCost = (int) Math.ceil(altVisCost * this.getAltResourceConversionRate());
+        return I18n.format(StringHelper.getTranslationKey("caster_bound", "tooltip", "cost"), lpCost);
     }
 
     @Override
     public int getChunkDrainRadius(EntityPlayer player, ItemStack stack) {
-        return ConfigHandlerCM.casters.bound.visDrainRadius;
+        return ConfigHandlerCM.casters.boundCaster.visDrainRadius;
     }
 
     @Override
@@ -138,7 +128,7 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerCM.casters.bound.enable;
+        return ConfigHandlerCM.casters.boundCaster.enable;
     }
 
 }

@@ -17,7 +17,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
@@ -78,6 +77,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
 
     @Override
     public @Nullable ICapabilityProvider initCapabilities(@NotNull ItemStack stack, @Nullable NBTTagCompound nbt) {
+        //TODO: I'm not sure I like this. Need to see if it interferes with other caps.
         if(ModIds.thaumic_augmentation.isLoaded) {
             SimpleCapabilityProvider<IAugmentableItem> provider = new SimpleCapabilityProvider<>(new AugmentableItem(3), CapabilityAugmentableItem.AUGMENTABLE_ITEM);
             if (nbt != null && nbt.hasKey("Parent", 10)) {
@@ -123,46 +123,47 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
         ItemStack heldStack = player.getHeldItem(hand);
         if(this.hasFocusStack(heldStack) && !this.isCasterOnCooldown(player)) {
             ItemStack focusStack = this.getFocusStack(heldStack);
-            FocusPackage focusPackage = ItemFocus.getPackage(focusStack);
-
-            //Resetting Focus block picker
-            if(player.isSneaking()) {
-                for(IFocusElement element : focusPackage.nodes) {
-                    if(element instanceof IFocusBlockPicker) {
-                        return new ActionResult<>(EnumActionResult.PASS, heldStack);
+            FocusPackage focusPackage = this.getFocusPackage(focusStack);
+            if(!focusStack.isEmpty() && focusPackage != null) {
+                //Resetting Focus block picker
+                if (player.isSneaking()) {
+                    for (IFocusElement element : focusPackage.nodes) {
+                        if (element instanceof IFocusBlockPicker) {
+                            return new ActionResult<>(EnumActionResult.PASS, heldStack);
+                        }
                     }
                 }
-            }
 
-            float baseVisCost = ((ItemFocus) focusStack.getItem()).getVisCost(focusStack) * this.getConsumptionModifier(heldStack, player, false);
-            float altVisCost = baseVisCost * Math.min(this.getAltResourceModifier(worldIn, player, heldStack), 1.0f);
-            float adjustedVisCost = baseVisCost - altVisCost;
-            int activationTime = ((ItemFocus) focusStack.getItem()).getActivationTime(focusStack);
+                float visCost = ((ItemFocus) focusStack.getItem()).getVisCost(focusStack) * this.getConsumptionModifier(heldStack, player, false);
+                float altVisCost = visCost * Math.min(this.getAltResourceModifier(worldIn, player, heldStack), 1.0f);
+                visCost -= altVisCost;
+                int activationTime = ((ItemFocus) focusStack.getItem()).getActivationTime(focusStack);
 
-            boolean consumeVis = this.consumeVis(heldStack, player, adjustedVisCost, false, true);
-            boolean consumeAlt = this.consumeAltResource(worldIn, player, heldStack, baseVisCost, altVisCost, true);
-            if(consumeVis && consumeAlt) {
-                boolean isSuccess;
-                if(ModIds.thaumic_augmentation.isLoaded) {
-                    isSuccess = this.castFocusSpellTA(worldIn, player, heldStack, focusPackage, activationTime, baseVisCost, altVisCost);
-                } else {
-                    isSuccess = this.castFocusSpell(worldIn, player, heldStack, focusPackage, activationTime, baseVisCost, altVisCost);
-                }
-
-                if(isSuccess) {
-                    if(!worldIn.isRemote) {
-                        player.swingArm(hand);
+                boolean consumeVis = this.consumeVis(heldStack, player, visCost, false, true);
+                boolean consumeAlt = this.consumeAltResource(worldIn, player, heldStack, altVisCost, true);
+                if (consumeVis && consumeAlt) {
+                    boolean isSuccess;
+                    if (ModIds.thaumic_augmentation.isLoaded) {
+                        isSuccess = this.castFocusSpellTA(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
+                    } else {
+                        isSuccess = this.castFocusSpell(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
                     }
-                    return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
+
+                    if (isSuccess) {
+                        if (!worldIn.isRemote) {
+                            player.swingArm(hand);
+                        }
+                        return new ActionResult<>(EnumActionResult.SUCCESS, heldStack);
+                    }
                 }
+                return new ActionResult<>(EnumActionResult.FAIL, heldStack);
             }
-            return new ActionResult<>(EnumActionResult.FAIL, heldStack);
         }
         return super.onItemRightClick(worldIn, player, hand);
     }
 
-    protected boolean castFocusSpell(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack casterStack, @NotNull FocusPackage focusPackage, int activationTime, float visCost, float alternateResourceVis) {
-        this.consumeAltResource(world, player, casterStack, visCost + alternateResourceVis, alternateResourceVis, false);
+    protected boolean castFocusSpell(World world, EntityPlayer player, ItemStack casterStack, FocusPackage focusPackage, int activationTime, float visCost, float alternateResourceVis) {
+        this.consumeAltResource(world, player, casterStack, alternateResourceVis, false);
         if(!world.isRemote) {
             this.consumeVis(casterStack, player, visCost, false, false);
             FocusEngine.castFocusPackage(player, focusPackage);
@@ -171,11 +172,11 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     }
 
     @Optional.Method(modid = ModIds.ConstIds.thaumic_augmentation)
-    protected boolean castFocusSpellTA(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack casterStack, @NotNull FocusPackage focusPackage, int activationTime, float visCost, float alternateResourceVis) {
+    protected boolean castFocusSpellTA(World world, EntityPlayer player, ItemStack casterStack, FocusPackage focusPackage, int activationTime, float visCost, float alternateResourceVis) {
         CastEvent.Pre preEvent = new CastEvent.Pre(player, casterStack, new FocusWrapper(focusPackage, activationTime, visCost));
         MinecraftForge.EVENT_BUS.post(preEvent);
         if(!preEvent.isCanceled()) {
-            this.consumeAltResource(world, player, casterStack, visCost + alternateResourceVis, alternateResourceVis, false);
+            this.consumeAltResource(world, player, casterStack, alternateResourceVis, false);
             if(world.isRemote) {
                 CasterManager.setCooldown(player, preEvent.getFocus().getCooldown());
             } else if(this.consumeVis(casterStack, player, preEvent.getFocus().getVisCost(), false, false)) {
@@ -204,8 +205,6 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
         IBlockState state = world.getBlockState(pos);
         if(state.getBlock() instanceof IInteractWithCaster && ((IInteractWithCaster) state.getBlock()).onCasterRightClick(world, heldStack, player, pos, side, hand)) {
             return EnumActionResult.SUCCESS;
-        } else if(false) {
-            //Dye gauntlet
         } else {
             TileEntity tile = world.getTileEntity(pos);
             if(tile instanceof IInteractWithCaster && ((IInteractWithCaster) tile).onCasterRightClick(world, heldStack, player, pos, side, hand)) {
@@ -214,7 +213,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                 return CasterTriggerRegistry.performTrigger(world, heldStack, player, pos, side, state) ? EnumActionResult.SUCCESS : EnumActionResult.PASS;
             } else if(this.hasFocusStack(heldStack)) {
                 ItemStack focusStack = this.getFocusStack(heldStack);
-                FocusPackage focusPackage = ItemFocus.getPackage(focusStack);
+                FocusPackage focusPackage = this.getFocusPackage(focusStack);
                 if(focusPackage != null) {
                     for(IFocusElement element : focusPackage.nodes) {
                         if(element instanceof IFocusBlockPicker && player.isSneaking() && tile != null) {
@@ -267,15 +266,15 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
-        if(false) {
-            //Color info
-        }
-
-        this.addAltResourceTooltip(stack, worldIn, tooltip, flagIn);
         if(this.hasFocusStack(stack)) {
             ItemStack focusStack = this.getFocusStack(stack);
             ItemFocus focus = (ItemFocus) focusStack.getItem();
-            float visCost = focus.getVisCost(focusStack) * (1f - this.getAltResourceBaseModifier());
+            float visCost = focus.getVisCost(focusStack);
+            float altCost = visCost * this.getAltResourceBaseModifier();
+            visCost -= altCost;
+            if(altCost > 0) {
+                tooltip.add(this.getAltResourceInfoTooltip(altCost));
+            }
             if(visCost > 0) {
                 tooltip.add(TextFormatting.AQUA + StringHelper.getTranslatedString("tc.vis.cost") + " " +
                         TextFormatting.RESET + VIS_FORMATTER.format(visCost) + " " +
@@ -400,18 +399,36 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
 
     @Nullable
     @Override
-    public Item getFocus(ItemStack stack) {
-        ItemStack focusStack = this.getFocusStack(stack);
-        return !focusStack.isEmpty() ? focusStack.getItem() : null;
+    public ItemFocus getFocus(ItemStack casterStack) {
+        ItemStack focusStack = this.getFocusStack(casterStack);
+        return !focusStack.isEmpty() && focusStack.getItem() instanceof ItemFocus ? (ItemFocus) focusStack.getItem() : null;
     }
 
     @SuppressWarnings("ConstantConditions")
     @Override
-    public ItemStack getFocusStack(ItemStack stack) {
-        if(stack.hasTagCompound() && stack.getTagCompound().hasKey(TAG_FOCUS)) {
-            return new ItemStack(stack.getTagCompound().getCompoundTag(TAG_FOCUS));
+    public ItemStack getFocusStack(ItemStack casterStack) {
+        if(casterStack.hasTagCompound() && casterStack.getTagCompound().hasKey(TAG_FOCUS)) {
+            return new ItemStack(casterStack.getTagCompound().getCompoundTag(TAG_FOCUS));
         }
         return ItemStack.EMPTY;
+    }
+
+    /**
+     * Returns the FocusPackage of the ItemFocus. The ItemStack passed to this method can either be
+     * the caster ItemStack or the focus ItemStack.
+     *
+     * @param stack the caster or focus ItemStack instance
+     * @return the focus package associated with the passed ItemStack
+     */
+    @Nullable
+    public FocusPackage getFocusPackage(ItemStack stack) {
+        if(!stack.isEmpty()) {
+            if (!(stack.getItem() instanceof ItemFocus)) {
+                stack = this.getFocusStack(stack);
+            }
+            return ItemFocus.getPackage(stack);
+        }
+        return null;
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -434,16 +451,14 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
         ItemStack ret = ItemStack.EMPTY;
         if(stack != null && !stack.isEmpty()) {
             ItemStack focusStack = this.getFocusStack(stack);
-            if(!focusStack.isEmpty()) {
-                FocusPackage focusPackage = ItemFocus.getPackage(focusStack);
-                if(focusPackage != null) {
-                    for(IFocusElement element : focusPackage.nodes) {
-                        if(element instanceof IFocusBlockPicker) {
-                            try {
-                                return new ItemStack(focusStack.getTagCompound().getCompoundTag(TAG_BLOCK));
-                            } catch (Exception e) {
-                                return ItemStack.EMPTY;
-                            }
+            FocusPackage focusPackage = this.getFocusPackage(focusStack);
+            if (!focusStack.isEmpty() && focusPackage != null) {
+                for (IFocusElement element : focusPackage.nodes) {
+                    if (element instanceof IFocusBlockPicker) {
+                        try {
+                            return new ItemStack(focusStack.getTagCompound().getCompoundTag(TAG_BLOCK));
+                        } catch (Exception e) {
+                            return ItemStack.EMPTY;
                         }
                     }
                 }
@@ -458,7 +473,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     @Override
     public RayTraceResult getArchitectMOP(ItemStack stack, World world, EntityLivingBase user) {
         if(this.hasFocusStack(stack)) {
-            FocusPackage focusPackage = ItemFocus.getPackage(this.getFocusStack(stack));
+            FocusPackage focusPackage = this.getFocusPackage(stack);
             if(focusPackage != null && FocusEngine.doesPackageContainElement(focusPackage, "thaumcraft.PLAN")) {
                 return ((IArchitect)FocusEngine.getElement("thaumcraft.PLAN")).getArchitectMOP(stack, world, user);
             }
@@ -474,13 +489,11 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     @Override
     public ArrayList<BlockPos> getArchitectBlocks(ItemStack stack, World world, BlockPos pos, EnumFacing facing, EntityPlayer player) {
         ItemStack focusStack = this.getFocusStack(stack);
-        if(!focusStack.isEmpty()) {
-            FocusPackage focusPackage = ItemFocus.getPackage(focusStack);
-            if(focusPackage != null) {
-                for(IFocusElement element : focusPackage.nodes) {
-                    if(element instanceof IArchitect) {
-                        return ((IArchitect) element).getArchitectBlocks(stack, world, pos, facing, player);
-                    }
+        FocusPackage focusPackage = this.getFocusPackage(focusStack);
+        if (!focusStack.isEmpty() && focusPackage != null) {
+            for (IFocusElement element : focusPackage.nodes) {
+                if (element instanceof IArchitect) {
+                    return ((IArchitect) element).getArchitectBlocks(stack, world, pos, facing, player);
                 }
             }
         }
@@ -490,13 +503,11 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
     @Override
     public boolean showAxis(ItemStack stack, World world, EntityPlayer player, EnumFacing facing, EnumAxis axis) {
         ItemStack focusStack = this.getFocusStack(stack);
-        if(!focusStack.isEmpty()) {
-            FocusPackage focusPackage = ItemFocus.getPackage(focusStack);
-            if(focusPackage != null) {
-                for(IFocusElement element : focusPackage.nodes) {
-                    if(element instanceof IArchitect) {
-                        return ((IArchitect) element).showAxis(stack, world, player, facing, axis);
-                    }
+        FocusPackage focusPackage = this.getFocusPackage(focusStack);
+        if (!focusStack.isEmpty() && focusPackage != null) {
+            for (IFocusElement element : focusPackage.nodes) {
+                if (element instanceof IArchitect) {
+                    return ((IArchitect) element).showAxis(stack, world, player, facing, axis);
                 }
             }
         }

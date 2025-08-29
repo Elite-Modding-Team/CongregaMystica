@@ -135,6 +135,7 @@ dependencies {
     modMap.put(["curse.maven:botania-225643:3330934"], project.use_botania)
     modMap.put(["curse.maven:harken-scythe-resharpened-1163747:6842654"], project.use_harkenscythe)
     modMap.put(["curse.maven:immersive-engineering-231951:2974106"], project.use_immersiveengineering)
+    modMap.put(["curse.maven:natures-aura-306626:2882138", "curse.maven:patchouli-306770:3162874"], project.use_naturesaura)
     modMap.put(["curse.maven:rustic-256141:6031613"], project.use_rustic)
     modMap.put(["curse.maven:thaumic-augmentation-319441:6047659"], project.use_thaumicaugmentation)
     modMap.put(["curse.maven:thaumic-wonders-unofficial-1307741:6894375"], project.use_thaumicwonders)

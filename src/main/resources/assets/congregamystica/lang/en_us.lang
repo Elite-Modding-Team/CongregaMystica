@@ -149,17 +149,17 @@ congregamystica.research.golem_mat_treated_wood.stage.1=Treated Wood is of highe
 
 # -- EXPANDED STUDIES: IMMERSIVE ENGINEERING
 congregamystica.research.immersiveengineering.title=Expanded Studies: Engineering
-congregamystica.research.immersiveengineering.stage.1=[WIP]
+congregamystica.research.immersiveengineering.stage.1=Engineering is pretty self-explanatory. I can now combine my own knowledge of Thaumaturgy with my own knowledge of powered machinery.
 
 congregamystica.research.drill_head_thaumium.title=Thaumium Drill Head
-congregamystica.research.drill_head_thaumium.stage.1=[WIP]
+congregamystica.research.drill_head_thaumium.stage.1=The Thaumium Drill Head digs by 3x3x1 and is weaker than steel, but makes up for it with increased mining speed.
 
 congregamystica.research.drill_head_void.title=Void Drill Head
-congregamystica.research.drill_head_void.stage.1=[WIP]
+congregamystica.research.drill_head_void.stage.1=The Void Drill Head digs by 5x5x1 and is slower than other drill heads due to its heavy weight.<BR>It has the ability to repair itself automatically when damaged, making it an extremely powerful choice for my Mining Drill.
 
 congregamystica.research.upgrade_refining.title=Drill Upgrade: Refining
-congregamystica.research.upgrade_refining.stage.1=[WIP]
-congregamystica.research.upgrade_refining.stage.2=[WIP]
+congregamystica.research.upgrade_refining.stage.1=Infusion enchantments have proven to be quite useful for my own pickaxes. The same however cannot be said for Mining Drills due to infusion enchantments not being compatible.<BR>Perhaps there is another way?
+congregamystica.research.upgrade_refining.stage.2=I was able to construct a Native Cluster Extraction Module upgrade for my Mining Drill. It acts exactly like the Refining infusion enchantment, with each upgrade stacked (upwards to four) affecting the chance for native clusters to be dropped from ores. 
 
 # -- EXPANDED STUDIES: RUSTIC
 congregamystica.research.rustic.title=Expanded Studies: Herbology

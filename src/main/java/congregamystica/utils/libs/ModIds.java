@@ -10,9 +10,11 @@ public enum ModIds {
     blood_magic(ConstIds.blood_magic),
     botania(ConstIds.botania),
     crafttweaker(ConstIds.crafttweaker),
+    embers(ConstIds.embers),
     harken_scythe(ConstIds.harken_scythe),
     harvestcraft(ConstIds.harvestcraft),
     immersive_engineering(ConstIds.immersive_engineering),
+    natures_aura(ConstIds.natures_aura),
     rustic(ConstIds.rustic),
     thaumcraft_fix(ConstIds.thaumcraft_fix),
     thaumic_augmentation(ConstIds.thaumic_augmentation),
@@ -50,9 +52,11 @@ public enum ModIds {
         public static final String blood_magic = "bloodmagic";
         public static final String botania = "botania";
         public static final String crafttweaker = "crafttweaker";
+        public static final String embers = "embers";
         public static final String harken_scythe = "harkenscythe";
         public static final String harvestcraft = "harvestcraft";
         public static final String immersive_engineering = "immersiveengineering";
+        public static final String natures_aura = "naturesaura";
         public static final String rustic = "rustic";
         public static final String thaumcraft = "thaumcraft";
         public static final String thaumcraft_fix = "thaumcraftfix";

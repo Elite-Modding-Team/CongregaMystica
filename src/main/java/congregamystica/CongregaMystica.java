@@ -66,8 +66,6 @@ public class CongregaMystica {
     // Gauntlets (General List of Mods)
     //  EB Wizardry
     //      Mana Gauntlet - uses mana
-    //  Embers
-    //      Clockwork Gauntlet - uses ember
     //  Harken Scythe
     //      Livingmetal Gauntlet - uses soul essence
     //      Biomass Gauntlet - uses blood essence

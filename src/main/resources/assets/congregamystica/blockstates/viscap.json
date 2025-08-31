@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "defaults": {"model": "cross"},
+  "variants": {
+    "age": {
+      "0": {"textures": {"cross": "congregamystica:blocks/rustic/viscap_stage0"}},
+      "1": {"textures": {"cross": "congregamystica:blocks/rustic/viscap_stage1"}},
+      "2": {"textures": {"cross": "congregamystica:blocks/rustic/viscap_stage2"}},
+      "3": {"textures": {"cross": "congregamystica:blocks/rustic/viscap_stage3"}}
+    },
+    "inventory": {
+      "model": "builtin/generated",
+      "transform": "forge:default-item",
+      "textures": {"layer0": "congregamystica:blocks/rustic/viscap_stage2"}
+    }
+  }
+}

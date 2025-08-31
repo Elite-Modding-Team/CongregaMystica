@@ -3,12 +3,12 @@
     {
       "key": "CM_CINDERFIRE_WHISKEY",
       "name": "congregamystica.research.cinderfire_whiskey.title",
-      "icons": ["rustic:brewing_barrel"],
+      "icons": ["rustic:fluid_bottle;1;0;{Fluid:{FluidName:\"cinderfirewhiskey\",Amount:1000,Tag:{Quality:0.75}}}"],
       "category": "CONGREGA_MYSTICA",
       "parents": ["CM_RUSTIC"],
       "siblings": [],
-      "meta": ["ROUND"],
-      "location": [3, -1],
+      "meta": [],
+      "location": [2, -2],
       "stages": [
         {
           "text": "congregamystica.research.cinderfire_whiskey.stage.1"

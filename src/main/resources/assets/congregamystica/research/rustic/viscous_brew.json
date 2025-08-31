@@ -3,12 +3,12 @@
     {
       "key": "CM_VISCOUS_BREW",
       "name": "congregamystica.research.viscous_brew.title",
-      "icons": ["rustic:brewing_barrel"],
+      "icons": ["rustic:fluid_bottle;1;0;{Fluid:{FluidName:\"viscousbrew\",Amount:1000,Tag:{Quality:0.75}}}"],
       "category": "CONGREGA_MYSTICA",
       "parents": ["CM_RUSTIC"],
       "siblings": [],
-      "meta": ["ROUND"],
-      "location": [3, -1],
+      "meta": [],
+      "location": [4, -2],
       "stages": [
         {
           "text": "congregamystica.research.viscous_brew.stage.1"

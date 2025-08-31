@@ -1,4 +1,4 @@
-package congregamystica.integrations.rustic.blocks;
+package congregamystica.integrations.rustic.blocks.furniture;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.block.IBlockAddition;

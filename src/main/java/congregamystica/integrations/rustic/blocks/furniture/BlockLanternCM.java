@@ -1,4 +1,4 @@
-package congregamystica.integrations.rustic.blocks;
+package congregamystica.integrations.rustic.blocks.furniture;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.block.IBlockAddition;
@@ -7,14 +7,14 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
-import rustic.common.blocks.BlockCandle;
+import rustic.common.blocks.BlockLantern;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 
 import java.util.Map;
 
-public class BlockCandleCM extends BlockCandle implements IBlockAddition {
-    public BlockCandleCM(String unlocName) {
+public class BlockLanternCM extends BlockLantern implements IBlockAddition {
+    public BlockLanternCM(String unlocName) {
         super(Material.IRON, unlocName, false);
         this.setTranslationKey(this.getRegistryName().toString());
         this.setCreativeTab(CongregaMystica.tabCM);

@@ -4,7 +4,9 @@ package congregamystica.api.util;
  * An enum interface used to sort CM items for creative tab/JEI order.
  */
 public enum EnumSortType {
-    /** Blocks will always appear first. */
+    /** Fluid blocks register as the first bocks. */
+    FLUIDS,
+    /** Blocks will always appear after fluids. */
     BLOCKS,
     /** Native clusters will always appear first on the list following any blocks. */
     NATIVE_CLUSTER,
@@ -15,5 +17,5 @@ public enum EnumSortType {
     /** Caster Gaunlets will be grouped together following the mod specific items. */
     CASTER_GAUNTLET,
     /** All other items will be sorted in the order they were registered. */
-    ITEMS
+    ITEMS,
 }

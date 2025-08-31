@@ -3,12 +3,12 @@
     {
       "key": "CM_SHIMMERDEW_SPIRITS",
       "name": "congregamystica.research.shimmerdew_spirits.title",
-      "icons": ["rustic:brewing_barrel"],
+      "icons": ["rustic:fluid_bottle;1;0;{Fluid:{FluidName:\"shimmerdewspirits\",Amount:1000,Tag:{Quality:0.75}}}"],
       "category": "CONGREGA_MYSTICA",
       "parents": ["CM_RUSTIC"],
       "siblings": [],
-      "meta": ["ROUND"],
-      "location": [3, -1],
+      "meta": [],
+      "location": [3, -3],
       "stages": [
         {
           "text": "congregamystica.research.shimmerdew_spirits.stage.1"

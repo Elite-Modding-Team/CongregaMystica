@@ -12,9 +12,26 @@ tile.congregamystica:chain_brass.name=Brass Chain
 tile.congregamystica:chair_greatwood.name=Greatwood Chair
 tile.congregamystica:chair_silverwood.name=Silverwood Chair
 tile.congregamystica:chandelier_brass.name=Brass Chandelier Ring
+tile.congregamystica:cindermote.name=Cindermote
 tile.congregamystica:lantern_brass.name=Brass Lantern
+tile.congregamystica:shimmerdew_bulb.name=Shimmerpetal Bulb
 tile.congregamystica:table_greatwood.name=Greatwood Table
 tile.congregamystica:table_silverwood.name=Silverwood Table
+tile.congregamystica:viscap.name=Viscap
+
+# Fluids
+fluid.cinderfirewhiskey=Cinderfire Whiskey
+fluid.cinderfirewort=Cinderfire Wort
+fluid.shimmerdewspirits=Shimmerdew Spirits
+fluid.shimmerdewwort=Shimmerdew Wort
+fluid.viscousbrew=Viscous Brew
+fluid.viscouswort=Viscous Wort
+tile.congregamystica:cinderfire_wort.name=Cinderfire Wort
+tile.congregamystica:cinderfire_whiskey.name=Cinderfire Whiskey
+tile.congregamystica:shimmerdew_wort.name=Shimmerdew Wort
+tile.congregamystica:shimmerdew_spirits.name=Shimmerdew Spirits
+tile.congregamystica:viscous_wort.name=Viscous Wort
+tile.congregamystica:viscous_brew.name=Viscous Brew
 
 # Items
 item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb

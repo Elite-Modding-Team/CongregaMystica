@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "forge:fluid",
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "cinderfirewort": [
+      {"custom": { "fluid": "cinderfirewort" }}
+    ],
+    "shimmerdewwort": [
+      {"custom": { "fluid": "shimmerdewwort" }}
+    ],
+    "viscouswort": [
+      {"custom": { "fluid": "viscouswort" }}
+    ],
+    "cinderfirewhiskey": [
+      {"custom": { "fluid": "cinderfirewhiskey" }}
+    ],
+    "shimmerdewspirits": [
+      {"custom": { "fluid": "shimmerdewspirits" }}
+    ],
+    "viscousbrew": [
+      {"custom": { "fluid": "viscousbrew" }}
+    ]
+  }
+}

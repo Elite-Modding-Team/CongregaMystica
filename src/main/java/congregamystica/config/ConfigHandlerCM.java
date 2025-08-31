@@ -267,6 +267,22 @@ public class ConfigHandlerCM {
         @Config.Name("Enable Furniture")
         @Config.Comment("Enables chairs and tables that use Thaumcraft's greatwood and silverwood materials.")
         public boolean enableFurniture = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Enable Cinderfire Whiskey")
+        @Config.Comment("")
+        public boolean enableCinderfireWhiskey = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Enable Shimmerdew Sprits")
+        @Config.Comment("")
+        public boolean enableShimmerdewSpirits = true;
+
+        @Config.RequiresMcRestart
+        @Config.Name("Enable Viscous Brew")
+        @Config.Comment("")
+        public boolean enableViscousBrew = true;
+
     }
 
     public static class TheOneProbeCategory {

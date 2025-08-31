@@ -3,7 +3,12 @@ package congregamystica.integrations.rustic;
 import congregamystica.CongregaMystica;
 import congregamystica.api.IModModule;
 import congregamystica.config.ConfigHandlerCM;
-import congregamystica.integrations.rustic.blocks.*;
+import congregamystica.integrations.rustic.additions.AdditionCinderfireWhsikey;
+import congregamystica.integrations.rustic.additions.AdditionFurniture;
+import congregamystica.integrations.rustic.additions.AdditionShimmerdewSpirits;
+import congregamystica.integrations.rustic.additions.AdditionViscousBrew;
+import congregamystica.integrations.rustic.blocks.fluids.BlockFluidRusticCM;
+import congregamystica.integrations.rustic.blocks.furniture.*;
 import congregamystica.integrations.rustic.golems.GolemMaterialIronwood;
 import congregamystica.registry.RegistrarCM;
 import congregamystica.utils.helpers.ModHelper;
@@ -39,18 +44,18 @@ public class RusticCM implements IModModule {
     public void preInit() {
         this.initFluids();
 
+        //Golem Materials
         RegistrarCM.addAdditionToRegister(new GolemMaterialIronwood());
-        /*
-            Registry Order:
-                - Chain
-                - Candle
-                - Double Candle (Candelabra)
-                - Lever Candle
-                - Chandelier
-                - Chairs
-                - Tables
-         */
 
+        //Herbs and Brews
+        RegistrarCM.addAdditionToRegister(new AdditionCinderfireWhsikey());
+        RegistrarCM.addAdditionToRegister(new AdditionShimmerdewSpirits());
+        RegistrarCM.addAdditionToRegister(new AdditionViscousBrew());
+
+        //Tables and Chairs
+        RegistrarCM.addAdditionToRegister(new AdditionFurniture());
+
+        //Candles and Decorations
         RegistrarCM.addAdditionToRegister(new BlockChainCM("chain_brass"));
         RegistrarCM.addAdditionToRegister(new BlockCandleCM("candle_brass"));
         //Candelabra - Rustic 1.2.0+
@@ -61,25 +66,9 @@ public class RusticCM implements IModModule {
         RegistrarCM.addAdditionToRegister(new BlockCandleLeverCM("candle_lever_brass"));
         RegistrarCM.addAdditionToRegister(new BlockChandelierCM("chandelier_brass"));
         RegistrarCM.addAdditionToRegister(new BlockLanternCM("lantern_brass"));
-        //Tables and chairs needs special enable/disable handling
-        if(ConfigHandlerCM.rustic.enableFurniture) {
-            //Chairs
-            RegistrarCM.addAdditionToRegister(new BlockChairCM("greatwood"));
-            RegistrarCM.addAdditionToRegister(new BlockChairCM("silverwood"));
-            //Tables
-            RegistrarCM.addAdditionToRegister(new BlockTableCM("greatwood"));
-            RegistrarCM.addAdditionToRegister(new BlockTableCM("silverwood"));
-        }
-
 
         //TODO: Remaining stuff
         //  Brass frame thing
-        //  Viscous Wort Liquid - crushing tub Vishrooms
-        //  Viscous Brew Liquid - brewed Viscous Wort
-        //  Shimmerdew Wort Liquid - crushing tub Shimmerleaf
-        //  Shimmerdew Spirits Liquid - brewed Shimmerdew Wort
-        //  Cinderfire Wort Liquid - crushed Cinderpearls
-        //  Cinderfire Whiskey Liquid - brewed Cinderfire Wort
         //  Vis Crystal Sconces - See about making them one block with a dynamic appearance
         //  Tiny Pile of Blaze Dust - might remove and keep Cindermotes only for Cinderfire Wort
         //  Shimmerpetal - Shimmerdew Wort crushing tub item
@@ -89,18 +78,16 @@ public class RusticCM implements IModModule {
         //  Viscap Spores - Viscap herb seeds
     }
 
-    @Override
-    public void registerResearchNode() {
-        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/rustic/rustic"));
-    }
-
     private void initFluids() {
-        if(true) {//TODO: Config
+        if(ConfigHandlerCM.rustic.enableCinderfireWhiskey) {//TODO: Config
             CINDERFIRE_WORT = new FluidDrinkable("cinderfirewort",
                     new ResourceLocation(CongregaMystica.MOD_ID, "blocks/rustic/fluids/cinderfirewort_still"),
                     new ResourceLocation(CongregaMystica.MOD_ID, "blocks/rustic/fluids/cinderfirewort_flow")) {
                 @Override
                 public void onDrank(@NotNull World world, @NotNull EntityPlayer player, @NotNull ItemStack itemStack, @NotNull FluidStack fluidStack) {
+                    if(world.rand.nextInt(3) == 0) {
+                        player.setFire(6);
+                    }
                     player.getFoodStats().addStats(1, 0.4f);
                     player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 400, 1));
                 }
@@ -111,6 +98,9 @@ public class RusticCM implements IModModule {
                     new ResourceLocation(CongregaMystica.MOD_ID, "blocks/rustic/fluids/cinderfirewhiskey_flow")) {
                 @Override
                 protected void affectPlayer(World world, EntityPlayer player, float quality) {
+                    if(world.rand.nextInt(3) == 0) {
+                        player.setFire(12);
+                    }
                     if(quality >= 0.5f) {
                         float saturation = 4f * quality;
                         player.getFoodStats().addStats(2, saturation);
@@ -128,11 +118,13 @@ public class RusticCM implements IModModule {
                 }
             }.setInebriationChance(0.5f).setDensity(1034).setViscosity(1500);
 
-            RegistrarCM.registerFluid(CINDERFIRE_WORT, true);
-            RegistrarCM.registerFluid(CINDERFIRE_WHISKEY, false);
+            RegistrarCM.registerFluid(RusticCM.CINDERFIRE_WORT, true);
+            RegistrarCM.registerFluid(RusticCM.CINDERFIRE_WHISKEY, false);
+            RegistrarCM.addAdditionToRegister(new BlockFluidRusticCM("cinderfire_wort", RusticCM.CINDERFIRE_WORT, 4));
+            RegistrarCM.addAdditionToRegister(new BlockFluidRusticCM("cinderfire_whiskey", RusticCM.CINDERFIRE_WHISKEY, 4));
         }
 
-        if(true) {//TODO: Config
+        if(ConfigHandlerCM.rustic.enableShimmerdewSpirits) {//TODO: Config
             SHIMMERDEW_WORT = new FluidDrinkable("shimmerdewwort",
                     new ResourceLocation(CongregaMystica.MOD_ID, "blocks/rustic/fluids/shimmerdewwort_still"),
                     new ResourceLocation(CongregaMystica.MOD_ID, "blocks/rustic/fluids/shimmerdewwort_flow")) {
@@ -161,15 +153,17 @@ public class RusticCM implements IModModule {
 
             RegistrarCM.registerFluid(SHIMMERDEW_WORT, true);
             RegistrarCM.registerFluid(SHIMMERDEW_SPIRITS, false);
+            RegistrarCM.addAdditionToRegister(new BlockFluidRusticCM("shimmerdew_wort", SHIMMERDEW_WORT, 4));
+            RegistrarCM.addAdditionToRegister(new BlockFluidRusticCM("shimmerdew_spirits", SHIMMERDEW_SPIRITS, 4));
         }
 
-        if(true) {//TODO: Config
+        if(ConfigHandlerCM.rustic.enableViscousBrew) {//TODO: Config
             VISCOUS_WORT = new FluidDrinkable("viscouswort",
                     new ResourceLocation(CongregaMystica.MOD_ID, "blocks/rustic/fluids/viscouswort_still"),
                     new ResourceLocation(CongregaMystica.MOD_ID, "blocks/rustic/fluids/viscouswort_flow")) {
                 @Override
                 public void onDrank(@NotNull World world, @NotNull EntityPlayer entityPlayer, @NotNull ItemStack itemStack, @NotNull FluidStack fluidStack) {
-
+                    //TODO
                 }
             }.setDensity(1004).setViscosity(2000);
 
@@ -178,12 +172,20 @@ public class RusticCM implements IModModule {
                     new ResourceLocation(CongregaMystica.MOD_ID, "blocks/rustic/fluids/viscousbrew_flow")) {
                 @Override
                 protected void affectPlayer(World world, EntityPlayer player, float quality) {
-                    //TODO: RNG
+                    //TODO
                 }
             }.setInebriationChance(0.5f).setDensity(1034).setViscosity(1700);
 
             RegistrarCM.registerFluid(VISCOUS_WORT, true);
             RegistrarCM.registerFluid(VISCOUS_BREW, false);
+            RegistrarCM.addAdditionToRegister(new BlockFluidRusticCM("viscous_wort", VISCOUS_WORT, 4));
+            RegistrarCM.addAdditionToRegister(new BlockFluidRusticCM("viscous_brew", VISCOUS_BREW, 4));
         }
+
+    }
+
+    @Override
+    public void registerResearchNode() {
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/rustic/rustic"));
     }
 }

@@ -41,7 +41,7 @@ golem.material.cm_ironwood=Ironwood
 golem.material.text.cm_ironwood=This golem is crafted from ironwood. It is light and agile, sturdier than greatwood, but less so than iron. It is resistant to explosions.
 
 golem.material.cm_livingmetal=Livingmetal
-golem.material.text.cm_livingmetal=This golem is crafted from livingmetal. It will fully regen its heath after a kill.
+golem.material.text.cm_livingmetal=This golem is crafted from livingmetal. It will fully regen its health after a kill.
 
 golem.material.cm_steel=Steel
 golem.material.text.cm_steel=This golem is crafted from steel. It is heavy and clumsy, but sturdier than most materials. It is fireproof and resistant to explosions.
@@ -78,8 +78,8 @@ congregamystica.research.metal_purification_expanded.title=Expanded Studies: Met
 congregamystica.research.metal_purification_expanded.stage.1=The variety of native clusters has been greatly expanded. These clusters will produce twice the normal amount of ingots like the other ones I'm already aware of.<BR>I can also produce these clusters alchemically if I so choose.
 
 congregamystica.research.mimic_fork.title=Mimic Fork
-congregamystica.research.mimic_fork.stage.1=Note Blocks are a device I've been thinking of a lot lately. They are simple things that respond to touch or Redstone to emit one single pure note... But of what utility are they really?<BR>Any usage requires a Note Block to be setup in a specific location and manually configured to the desired note.<BR>There must be a better way...
-congregamystica.research.mimic_fork.stage.2=I've found my answer with the Mimic Fork!<BR>It has a few functions, It can store musical notes to evoke them at a later point. It also allows you to set an Arcane Ear or Note Block's Note setting by right-clicking the Mimic Fork on either device. You are also able to set the Instrument and Note type of a given Note Block or Arcane Ear by instead sneaking and right-clicking on the device.
+congregamystica.research.mimic_fork.stage.1=Note Blocks are a device I've been thinking of a lot lately. They are simple things that respond to touch or redstone to emit one single pure note... but of what utility are they really?<BR>Any usage requires a Note Block to be setup in a specific location and manually be configured to the desired note.<BR>There must be a better way...
+congregamystica.research.mimic_fork.stage.2=I've found my answer with the Mimic Fork!<BR>It has a few functions, it can store musical notes to evoke them at a later point. It also allows you to set an Arcane Ear or Note Block's Note setting by right-clicking the Mimic Fork on either device. You are also able to set the Instrument and Note type of a given Note Block or Arcane Ear by instead sneaking and right-clicking on the device.
 
 congregamystica.research.mimic_fork_ranged.title=Ethereal Mimic Fork
 congregamystica.research.mimic_fork_ranged.stage.1=[WIP]
@@ -90,20 +90,20 @@ congregamystica.research.blood_magic.title=Expanded Studies: Blood Alchemy
 congregamystica.research.blood_magic.stage.1=Blood Magic provides its own ways of alchemy and imbuing. I can now combine my own studies of Thaumaturgy alongside my own studies of Blood Magic. 
 
 congregamystica.research.blood_scribing_tools.title=Bloody Scrivener's Tools
-congregamystica.research.blood_scribing_tools.stage.1=I've created a set of scribing tools that fills themselves from lifeforce instead of ink. The Bloody Scrivener's Tools can draw from LP instead of ink when writing, but may need contact with human warmth to recharge if they run out.<BR>Right-clicking the tool will bind it to my LP network. It will take 100 LP per point of damage taken.
+congregamystica.research.blood_scribing_tools.stage.1=Using ordinary scribing tools on a Tier II Blood Altar, I can create a set of scribing tools that fill themselves from LP instead of ink.<BR>Right-clicking the scribing tools will bind it to my LP network. They will take some LP per use.
 
 congregamystica.research.caster_bound.title=Bound Caster's Gauntlet
-congregamystica.research.caster_bound.stage.1=[WIP]
+congregamystica.research.caster_bound.stage.1=Using a binding reagent on an ordinary casting gauntlet will create the Bound Caster's Gauntlet. Half of the normal Vis cost to cast with this casting gauntlet will require LP instead.<BR>It can also be augmented if the ability to augment casting gauntlets is available.
 
 congregamystica.research.eldritch_blood_orb.title=Eldritch Blood Orb
-congregamystica.research.eldritch_blood_orb.stage.1=[WIP]
+congregamystica.research.eldritch_blood_orb.stage.1=Channeling the energies of a Tier V Blood Altar into a whole Primordial Pearl will yield a blood orb of dark energy.<BR>The Eldritch Blood Orb has a huge storage capacity, allowing me to carry a very large amount of LP within.
 
 # -- EXPANDED STUDIES: BOTANIA
 congregamystica.research.botania.title=Expanded Studies: Botany
-congregamystica.research.botania.stage.1=[WIP]
+congregamystica.research.botania.stage.1=Botany is the study of magical plants and flowers, it also has its own energy source that is commonly referred to as Mana. I can now combine my own studies of Thaumaturgy alongside my own studies of Botany.   
 
 congregamystica.research.caster_elementium.title=Elementium Caster's Gauntlet
-congregamystica.research.caster_elementium.stage.1=[WIP]
+congregamystica.research.caster_elementium.stage.1=The Elementium Caster's Gauntlet is composed of magical elven metal and a mana tablet installed within the core of it. Half of the normal Vis cost to cast with this casting gauntlet will require Mana instead.<BR>It can also be augmented if the ability to augment casting gauntlets is available.
 
 congregamystica.research.taintthistle.title=Taintthistle
 congregamystica.research.taintthistle.stage.1=[WIP]
@@ -116,13 +116,13 @@ congregamystica.research.expanded_golemancy.title=Expanded Studies: Golemancy
 congregamystica.research.expanded_golemancy.stage.1=[WIP]
 
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
-congregamystica.research.golem_mat_biomass.stage.1=[WIP]
+congregamystica.research.golem_mat_biomass.stage.1=Biomass is a very strange material, as if it's alive and sentient... It will slowly regenerate and protect itself when damaged.
 
 congregamystica.research.golem_mat_ironwood.title=Material Studies: Ironwood
 congregamystica.research.golem_mat_ironwood.stage.1=Ironwood is heavier than greatwood, but not as heavy as iron. It is rather resistant to explosions.
 
 congregamystica.research.golem_mat_livingmetal.title=Material Studies: Livingmetal
-congregamystica.research.golem_mat_livingmetal.stage.1=[WIP]
+congregamystica.research.golem_mat_livingmetal.stage.1=Livingmetal has a light humming noise to it. It will fully restore itself after something is slain by it.
 
 congregamystica.research.golem_mat_steel.title=Material Studies: Steel
 congregamystica.research.golem_mat_steel.stage.1=Steel is quite durable, more so than iron. It has a certain rigidity to it, similar to thaumium.

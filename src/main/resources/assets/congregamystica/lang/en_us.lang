@@ -128,14 +128,14 @@ congregamystica.research.caster_elementium.title=Elementium Caster's Gauntlet
 congregamystica.research.caster_elementium.stage.1=The Elementium Caster's Gauntlet is composed of magical elven metal and a mana tablet installed within the core of it. Half of the normal Vis cost to cast with this casting gauntlet will require Mana instead.<BR>It can also be augmented if the ability to augment casting gauntlets is available.
 
 congregamystica.research.taintthistle.title=Taintthistle
-congregamystica.research.taintthistle.stage.1=[WIP]
+congregamystica.research.taintthistle.stage.1=Despite the appearance and name, it is actually a friendly flower. It has a rivalry with nearby tainted blocks or flux goo, and will clean them up for me in exchange for Mana.<BR>I can read this flower's entry on the Lexica Botanica for further information.
 
 congregamystica.research.whisperweed.title=Whisperweed
-congregamystica.research.whisperweed.stage.1=[WIP]
+congregamystica.research.whisperweed.stage.1=This creepy-looking flower is the result of Botany and dark arts. It has an apetite for zombie brains, and will whisper research knowledge to me for providing some brains and Mana to it.<BR>I can read this flower's entry on the Lexica Botanica for further information.
 
 # -- EXPANDED STUDIES: GOLEMANCY
 congregamystica.research.expanded_golemancy.title=Expanded Studies: Golemancy
-congregamystica.research.expanded_golemancy.stage.1=[WIP]
+congregamystica.research.expanded_golemancy.stage.1=By expanding my research into other professions, I can now access new materials and equipment for my own golems.
 
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
 congregamystica.research.golem_mat_biomass.stage.1=Biomass is a very strange material, as if it's alive and sentient... It will slowly regenerate and protect itself when damaged.
@@ -181,7 +181,7 @@ congregamystica.research.viscous_brew.stage.1=Viscous Brew, brewed from wort mad
 
 # -- EXPANDED STUDIES: THAUMIC WONDERS
 congregamystica.research.metal_corruption_expanded.title=Expanded Studies: Metal Corruption
-congregamystica.research.metal_corruption_expanded.stage.1=[WIP]
+congregamystica.research.metal_corruption_expanded.stage.1=The newly discovered native cluster materials are also available in Eldritch form. I can obtain these as normal by using a Catalyst Chamber slotted with an Alienist's Stone. 
 
 # Research Misc
 research.f_CM_BIOMASS.text=Examine the biomass colony...
@@ -194,13 +194,13 @@ research.f_CM_TREATED_WOOD.text=Examine treated wood
 # -- TAINTTHISTLE
 botania.entry.taintthistle=Taintthistle
 botania.tagline.taintthistle=Eradicates tainted materials
-botania.page.taintthistle0=A friend to the less scrupulous thaumaturge, the &1Taintthistle&0 is able to clean up following any accidental flux anomalies.<br>When supplied with mana, the &1Taintthistle&0 will search for and destroy any nearby tainted blocks or flux goo.
+botania.page.taintthistle0=A friend to the less scrupulous thaumaturge, the &1Taintthistle&0 is able to clean up following any accidental flux anomalies.<br>When supplied with &4Mana&0, the &1Taintthistle&0 will search for and destroy any nearby tainted blocks or flux goo.
 botania.page.taintthistle1=&oEldritch ShamWoW&r
 
 # -- WHISPERWEED
 botania.entry.whisperweed=Whisperweed
 botania.tagline.whisperweed=Knowledge from brains
-botania.page.whisperweed0=The &1Whisperweed&0 is a unique flower with a very particular appetite.<br>It consumes any nearby &1Zombie Brains&0 stores a small amount of the previous owner's knowledge within the flower. If there is insufficient mana, the brain will be consumed, but no knowledge will be gained.<br>Once enough knowledge has been stored, fledgling
+botania.page.whisperweed0=The &1Whisperweed&0 is a unique flower with a very particular appetite.<br>It consumes any nearby &1Zombie Brains&0 stores a small amount of the previous owner's knowledge within the flower. If there is insufficient &4Mana&0, the brain will be consumed, but no knowledge will be gained.<br>Once enough knowledge has been stored, fledgling
 botania.page.whisperweed1=thaumaturges can interact with the flower to gain some of that knowledge. Be warned, as sometimes this knowledge will cause the player to gain a small amount of &1Warp&0.<br>You can see the current amount of knowledge stored within the flower by hovering over the &1Whisperweed&0 while holding a &1Wand of the Forest&0.
 botania.page.whisperweed2=&oFloral Wan Shi Tong&r
 

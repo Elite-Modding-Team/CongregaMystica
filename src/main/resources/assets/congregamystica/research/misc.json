@@ -99,7 +99,7 @@
     {
       "key": "CM_EXPANDED_GOLEMANCY",
       "name": "congregamystica.research.expanded_golemancy.title",
-      "icons": [],
+      "icons": ["congregamystica:textures/research/r_golem.png"],
       "category": "CONGREGA_MYSTICA",
       "parents": ["CONGREGA_MYSTICA_BASE"],
       "siblings": [],

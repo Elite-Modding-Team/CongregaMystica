@@ -3,7 +3,7 @@
     {
       "key": "CM_GOLEM_MAT_STEEL",
       "name": "congregamystica.research.golem_mat_steel.title",
-      "icons": ["congregamystica:textures/gui/mat_steel.png"],
+      "icons": ["congregamystica:textures/research/r_mat_steel.png"],
       "category": "CONGREGA_MYSTICA",
       "parents": ["~CM_EXPANDED_GOLEMANCY", "~MATSTUDIRON", "~MINDCLOCKWORK"],
       "siblings": [],

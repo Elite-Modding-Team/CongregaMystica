@@ -20,8 +20,6 @@ public class BlockFluidRusticCM extends BlockFluidRustic implements IBlockAdditi
         this.setQuantaPerBlock(quantaPerBlock);
     }
 
-
-
     @Override
     public void registerBlock(IForgeRegistry<Block> registry) {
 

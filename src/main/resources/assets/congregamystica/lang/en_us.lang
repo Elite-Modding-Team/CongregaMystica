@@ -168,9 +168,20 @@ congregamystica.research.upgrade_refining.stage.2=I was able to construct a Nati
 
 # -- EXPANDED STUDIES: RUSTIC
 congregamystica.research.rustic.title=Expanded Studies: Herbology
+congregamystica.research.rustic.stage.1=[WIP]
+
+congregamystica.research.cinderfire_whiskey.title=Cinderfire Whiskey
+congregamystica.research.cinderfire_whiskey.stage.1=[WIP]
+
+congregamystica.research.shimmerdew_spirits.title=Shimmerdew Spirits
+congregamystica.research.shimmerdew_spirits.stage.1=[WIP]
+
+congregamystica.research.viscous_brew.title=Viscous Brew
+congregamystica.research.viscous_brew.stage.1=[WIP]
 
 # -- EXPANDED STUDIES: THAUMIC WONDERS
 congregamystica.research.metal_corruption_expanded.title=Expanded Studies: Metal Corruption
+congregamystica.research.metal_corruption_expanded.stage.1=[WIP]
 
 
 # Research Misc

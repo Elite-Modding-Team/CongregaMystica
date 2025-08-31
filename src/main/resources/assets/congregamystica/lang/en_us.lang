@@ -167,22 +167,21 @@ congregamystica.research.upgrade_refining.stage.1=Infusion enchantments have pro
 congregamystica.research.upgrade_refining.stage.2=I was able to construct a Native Cluster Extraction Module upgrade for my Mining Drill. It acts exactly like the Refining infusion enchantment, with each upgrade stacked (upwards to four) affecting the chance for native clusters to be dropped from ores. 
 
 # -- EXPANDED STUDIES: RUSTIC
-congregamystica.research.rustic.title=Expanded Studies: Herbology
-congregamystica.research.rustic.stage.1=[WIP]
+congregamystica.research.rustic.title=Expanded Studies: Brewing
+congregamystica.research.rustic.stage.1=I'm already familiar with using the brewing barrel to make helpful brews of various flavors. Now I must see what kind of brews I can make with the mythical plants I have recently discovered.
 
 congregamystica.research.cinderfire_whiskey.title=Cinderfire Whiskey
-congregamystica.research.cinderfire_whiskey.stage.1=[WIP]
+congregamystica.research.cinderfire_whiskey.stage.1=Cinderfire Whiskey, brewed from wort made of Cinderpearl, has a distinct, spicy flavor, and is rather harsh going down. Drinking it seems to warm the body like normal alcohol, but unlike normal alcohol, it also seems to warm the soul!<BR>I should be careful of the quality I drink, since there is no telling what could happen if your soul gets too hot.
 
 congregamystica.research.shimmerdew_spirits.title=Shimmerdew Spirits
-congregamystica.research.shimmerdew_spirits.stage.1=[WIP]
+congregamystica.research.shimmerdew_spirits.stage.1=Shimmerdew Spirits, brewed from wort made of Shimmerleaf, has a smooth, subtle, and almost sweet flavor. The alcohol content, though significant, is barely detectable.<BR>I should take care when brewing it as despite its mind-calming properties, a bad batch could make me very ill. I shudder to think the kind of symptoms a magically-induced digestive infection could bring.
 
 congregamystica.research.viscous_brew.title=Viscous Brew
-congregamystica.research.viscous_brew.stage.1=[WIP]
+congregamystica.research.viscous_brew.stage.1=Viscous Brew, brewed from wort made of Vishroom, has a strong, earthy flavor, and it sure does pack a punch! When I drink it, my mind focuses to an almost painful level, and I find myself moving with a sense of urgency.<BR>The brewing of this alcohol should be treated with care, since imbibing some of poor quality could do a number on my mind.
 
 # -- EXPANDED STUDIES: THAUMIC WONDERS
 congregamystica.research.metal_corruption_expanded.title=Expanded Studies: Metal Corruption
 congregamystica.research.metal_corruption_expanded.stage.1=[WIP]
-
 
 # Research Misc
 research.f_CM_BIOMASS.text=Examine the biomass colony...

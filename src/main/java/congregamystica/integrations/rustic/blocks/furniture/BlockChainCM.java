@@ -24,22 +24,7 @@ public class BlockChainCM extends BlockChain implements IBlockAddition {
     // IBlockAddition
 
     @Override
-    public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-
-    }
-
-    @Override
-    public void registerResearchLocation() {
-
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
-    }
-
-    @Override
     public boolean isEnabled() {
-        return ConfigHandlerCM.rustic.enableBrassFeatures;
+        return true;
     }
 }

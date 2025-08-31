@@ -48,7 +48,6 @@ public class GolemMaterialIronwood implements IGolemAddition {
     @SuppressWarnings("deprecation")
     @Override
     public void registerResearchLocation() {
-    	// TODO: Ironwood planks need a unique ore dictionary
         ItemStack stack = ConfigHandlerCM.golems.ironWood.getMaterialStack();
         Block block = Block.getBlockFromItem(stack.getItem());
         if (block != Blocks.AIR) {

@@ -136,8 +136,9 @@ public class ConfigHandlerCM {
         @Config.Comment("Configuration options for the Botania Mana-augmented casting gauntlet")
         public GenericCasterCategory elementiumCaster = new GenericCasterCategory(400);
 
+        //TODO: Remove ignore if gauntlet is implemented
         @Config.Ignore
-        @Config.Name("Engineer's Caster's Gauntlet")
+        @Config.Name("Energized Caster's Gauntlet")
         @Config.Comment("Configuration options for the Redstone Flux augmented casting gauntlet")
         public FluxCasterCategory fluxCaster = new FluxCasterCategory();
 

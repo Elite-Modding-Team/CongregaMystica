@@ -2,6 +2,7 @@ package congregamystica.integrations.rustic.blocks.furniture;
 
 import congregamystica.CongregaMystica;
 import congregamystica.api.block.IBlockAddition;
+import congregamystica.config.ConfigHandlerCM;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -23,23 +24,7 @@ public class BlockCandleDoubleCM extends BlockCandleDouble implements IBlockAddi
     // IBlockAddition
 
     @Override
-    public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-
-    }
-
-    @Override
-    public void registerResearchLocation() {
-
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
-    }
-
-    @Override
     public boolean isEnabled() {
-        //TODO: Config option
         return true;
     }
 }

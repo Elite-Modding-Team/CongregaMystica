@@ -24,21 +24,6 @@ public class BlockChairCM extends BlockChair implements IBlockAddition {
     // IBlockAddition
 
     @Override
-    public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-
-    }
-
-    @Override
-    public void registerResearchLocation() {
-
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
-    }
-
-    @Override
     public void registerBlock(IForgeRegistry<Block> registry) {
         //Do not register blocks or items for chairs or tables
     }

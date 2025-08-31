@@ -24,22 +24,7 @@ public class BlockCandleLeverCM extends BlockCandleLever implements IBlockAdditi
     // IBlockAddition
 
     @Override
-    public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-
-    }
-
-    @Override
-    public void registerResearchLocation() {
-
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
-    }
-
-    @Override
     public boolean isEnabled() {
-        return ConfigHandlerCM.rustic.enableBrassFeatures;
+        return true;
     }
 }

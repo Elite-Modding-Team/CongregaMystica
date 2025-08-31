@@ -77,7 +77,6 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
 
     @Override
     public @Nullable ICapabilityProvider initCapabilities(@NotNull ItemStack stack, @Nullable NBTTagCompound nbt) {
-        //TODO: I'm not sure I like this. Need to see if it interferes with other caps.
         if(ModIds.thaumic_augmentation.isLoaded) {
             SimpleCapabilityProvider<IAugmentableItem> provider = new SimpleCapabilityProvider<>(new AugmentableItem(3), CapabilityAugmentableItem.AUGMENTABLE_ITEM);
             if (nbt != null && nbt.hasKey("Parent", 10)) {

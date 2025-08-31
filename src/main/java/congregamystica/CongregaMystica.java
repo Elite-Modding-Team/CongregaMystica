@@ -69,7 +69,4 @@ public class CongregaMystica {
     //  Harken Scythe
     //      Livingmetal Gauntlet - uses soul essence
     //      Biomass Gauntlet - uses blood essence
-    //  Technology
-    //      RF Caster - uses redstone flux
-    // Rustic Thaumaturgy - https://www.curseforge.com/minecraft/mc-mods/rustic-thaumaturgy
 }

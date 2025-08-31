@@ -12,6 +12,16 @@
       "stages": [
         {
           "text": "congregamystica.research.cinderfire_whiskey.stage.1"
+        },
+        {
+          "text": "congregamystica.research.cinderfire_whiskey.stage.1",
+          "recipes": ["congregamystica:cindermote"]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "congregamystica.research.cinderfire_whiskey.addenda.1",
+          "required_research": ["CM_CINDERFIRE_WHISKEY@2"]
         }
       ]
     }

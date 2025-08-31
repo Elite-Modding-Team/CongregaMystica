@@ -4,14 +4,8 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.block.IBlockAddition;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
 import rustic.common.blocks.BlockTable;
-import thaumcraft.api.aspects.AspectEventProxy;
-import thaumcraft.api.aspects.AspectList;
-
-import java.util.Map;
 
 public class BlockTableCM extends BlockTable implements IBlockAddition {
     public BlockTableCM(String type) {

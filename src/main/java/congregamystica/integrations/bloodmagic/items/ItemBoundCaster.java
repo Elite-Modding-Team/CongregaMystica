@@ -1,11 +1,12 @@
 package congregamystica.integrations.bloodmagic.items;
 
-import WayofTime.bloodmagic.alchemyArray.AlchemyArrayEffectBinding;
+import WayofTime.bloodmagic.core.RegistrarBloodMagic;
 import WayofTime.bloodmagic.core.data.Binding;
 import WayofTime.bloodmagic.core.data.SoulNetwork;
 import WayofTime.bloodmagic.core.data.SoulTicket;
-import WayofTime.bloodmagic.core.registry.AlchemyArrayRecipeRegistry;
+import WayofTime.bloodmagic.core.recipe.IngredientBloodOrb;
 import WayofTime.bloodmagic.iface.IBindable;
+import WayofTime.bloodmagic.item.ItemSlate;
 import WayofTime.bloodmagic.item.types.ComponentTypes;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
 import congregamystica.CongregaMystica;
@@ -18,6 +19,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -27,8 +29,10 @@ import net.minecraftforge.common.IRarity;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.items.ItemsTC;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
@@ -107,12 +111,19 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
         } else {
             casterStack = new ItemStack(ItemsTC.casterBasic);
         }
-        if(!casterStack.isEmpty()) {
-            AlchemyArrayRecipeRegistry.registerRecipe(
-                    ComponentTypes.REAGENT_BINDING.getStack(),
-                    casterStack,
-                    new AlchemyArrayEffectBinding("boundSword", new ItemStack(this)));
-        }
+        ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
+                "CM_CASTER_BOUND",
+                new ItemStack(this),
+                5,
+                new AspectList().add(Aspect.SOUL, 75).add(Aspect.ALCHEMY, 75).add(Aspect.EXCHANGE, 50),
+                Ingredient.fromStacks(casterStack),
+                Ingredient.fromItem(ItemsTC.fabric),
+                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
+                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
+                new IngredientBloodOrb(RegistrarBloodMagic.ORB_APPRENTICE),
+                Ingredient.fromStacks(ComponentTypes.REAGENT_BINDING.getStack()),
+                Ingredient.fromItem(ItemsTC.salisMundus)
+        ));
     }
 
     @Override
@@ -123,7 +134,7 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
+        // TODO: Add aspects
     }
 
     @Override

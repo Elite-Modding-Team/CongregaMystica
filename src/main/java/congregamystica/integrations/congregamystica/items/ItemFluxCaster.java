@@ -1,5 +1,9 @@
 package congregamystica.integrations.congregamystica.items;
 
+import WayofTime.bloodmagic.core.RegistrarBloodMagic;
+import WayofTime.bloodmagic.core.recipe.IngredientBloodOrb;
+import WayofTime.bloodmagic.item.ItemSlate;
+import WayofTime.bloodmagic.item.types.ComponentTypes;
 import congregamystica.api.item.AbstractItemCasterCM;
 import congregamystica.api.item.AugmentableEnergyStorageItem;
 import congregamystica.api.item.EnergyStorageItemWrapper;
@@ -11,6 +15,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.world.World;
@@ -18,8 +23,13 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.crafting.InfusionRecipe;
+import thaumcraft.api.items.ItemsTC;
+import thecodex6824.thaumicaugmentation.api.TAItems;
 
 import java.util.List;
 import java.util.Map;
@@ -119,12 +129,31 @@ public class ItemFluxCaster extends AbstractItemCasterCM {
 
     @Override
     public void registerResearchLocation() {
-
+        ItemStack casterStack;
+        if(ModIds.thaumic_augmentation.isLoaded) {
+            casterStack = new ItemStack(TAItems.GAUNTLET, 1, 0);
+        } else {
+            casterStack = new ItemStack(ItemsTC.casterBasic);
+        }
+        ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
+                "CM_CASTER_FLUX",
+                new ItemStack(this),
+                5,
+                new AspectList().add(Aspect.ENERGY, 150).add(Aspect.ENTROPY, 50).add(Aspect.EXCHANGE, 50),
+                Ingredient.fromStacks(casterStack),
+                //TODO: Recipe
+                Ingredient.fromItem(ItemsTC.fabric),
+                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
+                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
+                new IngredientBloodOrb(RegistrarBloodMagic.ORB_APPRENTICE),
+                Ingredient.fromStacks(ComponentTypes.REAGENT_BINDING.getStack()),
+                Ingredient.fromItem(ItemsTC.salisMundus)
+        ));
     }
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-
+        // TODO: Add aspects
     }
 
     @Override

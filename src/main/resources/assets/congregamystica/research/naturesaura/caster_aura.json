@@ -1,9 +1,9 @@
 {
   "entries": [
     {
-      "key": "CM_CASTER_ELEMENTIUM",
-      "name": "congregamystica.research.caster_elementium.title",
-      "icons": ["congregamystica:caster_elementium"],
+      "key": "CM_CASTER_AURA",
+      "name": "congregamystica.research.caster_aura.title",
+      "icons": ["congregamystica:caster_aura"],
       "category": "CONGREGA_MYSTICA",
       "parents": ["CM_BOTANIA", "~BASEAUROMANCY", "~BASEINFUSION"],
       "siblings": [],
@@ -11,12 +11,12 @@
       "location": [-2, -3],
       "stages": [
         {
-          "text": "congregamystica.research.caster_elementium.stage.1",
-          "required_knowledge": ["THEORY;INFUSION;1", "THEORY;AUROMANCY;1", "THEORY;ELDRITCH;1"]
+          "text": "congregamystica.research.caster_aura.stage.1",
+          "required_knowledge": ["THEORY;INFUSION;1", "THEORY;AUROMANCY;2"]
         },
         {
-          "text": "congregamystica.research.caster_elementium.stage.2",
-          "recipes": ["congregamystica:caster_elementium"]
+          "text": "congregamystica.research.caster_aura.stage.2",
+          "recipes": ["congregamystica:caster_aura"]
         }
       ],
       "addenda": [

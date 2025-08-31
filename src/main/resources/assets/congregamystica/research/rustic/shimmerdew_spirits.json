@@ -12,6 +12,16 @@
       "stages": [
         {
           "text": "congregamystica.research.shimmerdew_spirits.stage.1"
+        },
+        {
+          "text": "congregamystica.research.shimmerdew_spirits.stage.1",
+          "recipes": ["congregamystica:shimmerdew_bulb"]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "congregamystica.research.shimmerdew_spirits.addenda.1",
+          "required_research": ["CM_SHIMMERDEW_SPIRITS@2"]
         }
       ]
     }

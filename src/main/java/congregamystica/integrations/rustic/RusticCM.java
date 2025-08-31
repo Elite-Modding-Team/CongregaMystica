@@ -5,7 +5,6 @@ import congregamystica.api.IModModule;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.rustic.additions.*;
 import congregamystica.integrations.rustic.blocks.fluids.BlockFluidRusticCM;
-import congregamystica.integrations.rustic.blocks.furniture.*;
 import congregamystica.integrations.rustic.golems.GolemMaterialIronwood;
 import congregamystica.registry.RegistrarCM;
 import congregamystica.utils.helpers.ModHelper;
@@ -31,8 +30,6 @@ import thaumcraft.common.entities.monster.EntityEldritchGuardian;
 import thaumcraft.common.entities.monster.EntityMindSpider;
 import thaumcraft.common.lib.events.WarpEvents;
 import thaumcraft.common.lib.potions.*;
-
-import java.util.List;
 
 public class RusticCM implements IModModule {
     public static boolean isNewRustic = ModHelper.isModLoaded(ModIds.rustic.modId, ModIds.ConstVersions.rustic_new, true, false);
@@ -178,12 +175,12 @@ public class RusticCM implements IModModule {
                             }
                         }
                         //Remove Warp Effects
-                        player.removeActivePotionEffect(PotionVisExhaust.instance);
-                        player.removeActivePotionEffect(PotionThaumarhia.instance);
-                        player.removeActivePotionEffect(PotionUnnaturalHunger.instance);
-                        player.removeActivePotionEffect(PotionBlurredVision.instance);
-                        player.removeActivePotionEffect(PotionSunScorned.instance);
-                        player.removeActivePotionEffect(PotionDeathGaze.instance);
+                        player.removePotionEffect(PotionVisExhaust.instance);
+                        player.removePotionEffect(PotionThaumarhia.instance);
+                        player.removePotionEffect(PotionUnnaturalHunger.instance);
+                        player.removePotionEffect(PotionBlurredVision.instance);
+                        player.removePotionEffect(PotionSunScorned.instance);
+                        player.removePotionEffect(PotionDeathGaze.instance);
                     } else {
                         IPlayerWarp warp = ThaumcraftCapabilities.getWarp(player);
                         int counter = warp.getCounter();

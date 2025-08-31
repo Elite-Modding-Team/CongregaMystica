@@ -4,14 +4,8 @@ import congregamystica.CongregaMystica;
 import congregamystica.api.block.IBlockAddition;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
 import rustic.common.blocks.BlockChair;
-import thaumcraft.api.aspects.AspectEventProxy;
-import thaumcraft.api.aspects.AspectList;
-
-import java.util.Map;
 
 public class BlockChairCM extends BlockChair implements IBlockAddition {
     public BlockChairCM(String type) {

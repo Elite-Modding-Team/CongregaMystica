@@ -12,6 +12,16 @@
       "stages": [
         {
           "text": "congregamystica.research.viscous_brew.stage.1"
+        },
+        {
+          "text": "congregamystica.research.viscous_brew.stage.1",
+          "recipes": ["congregamystica:viscap"]
+        }
+      ],
+      "addenda": [
+        {
+          "text": "congregamystica.research.viscous_brew.addenda.1",
+          "required_research": ["CM_VISCOUS_BREW@2"]
         }
       ]
     }

@@ -8,9 +8,10 @@
         "thaumicwonders:textures/items/eldritch_cluster_tin.png",
         "thaumicwonders:textures/items/eldritch_cluster_silver.png",
         "thaumicwonders:textures/items/eldritch_cluster_lead.png",
-        "congregamystica:textures/items/eldritch_cluster_diamond.png",
-        "congregamystica:textures/items/eldritch_cluster_emerald.png",
-        "congregamystica:textures/items/eldritch_cluster_astral_starmetal.png"
+        "congregamystica:textures/items/thaumicwonders/eldritch_cluster_amber.png",
+        "congregamystica:textures/items/thaumicwonders/eldritch_cluster_diamond.png",
+        "congregamystica:textures/items/thaumicwonders/eldritch_cluster_emerald.png",
+        "congregamystica:textures/items/thaumicwonders/eldritch_cluster_astral_starmetal.png"
       ],
       "category": "CONGREGA_MYSTICA",
       "parents": ["CM_METAL_PURIFICATION_EXPANDED", "~TWOND_ALIENIST_STONE"],

@@ -1,6 +1,7 @@
 package congregamystica.config;
 
-import congregamystica.config.generics.CasterTypeCategory;
+import congregamystica.config.generics.CasterConfigCategory.FluxCasterCategory;
+import congregamystica.config.generics.CasterConfigCategory.GenericCasterCategory;
 import congregamystica.config.generics.DrillHeadCategory;
 import congregamystica.config.generics.GolemMaterialCategory;
 import net.minecraftforge.common.config.Config;
@@ -119,21 +120,27 @@ public class ConfigHandlerCM {
         @Config.Ignore
         @Config.Name("Botanist's Caster's Gauntlet")
         @Config.Comment("Configuration options for the Nature's Aura aura-augmented casting gauntlet.")
-        public CasterTypeCategory botanistsCaster = new CasterTypeCategory(2000);
+        public GenericCasterCategory botanistsCaster = new GenericCasterCategory(2000);
 
         @Config.Name("Bound Caster's Gauntlet")
         @Config.Comment("Configuration options for the Blood Magic LP-augmented casting gauntlet.")
-        public CasterTypeCategory boundCaster = new CasterTypeCategory(400);
+        public GenericCasterCategory boundCaster = new GenericCasterCategory(400);
 
         //TODO: Remove ignore if gauntlet is implemented
         @Config.Ignore
         @Config.Name("Clockwork Caster's Gauntlet")
         @Config.Comment("Configuration options for the Embers Ember-augmented casting gauntlet.")
-        public CasterTypeCategory clockworkCaster = new CasterTypeCategory(1.0);
+        public GenericCasterCategory clockworkCaster = new GenericCasterCategory(1.0);
 
         @Config.Name("Elementium Caster's Gauntlet")
         @Config.Comment("Configuration options for the Botania Mana-augmented casting gauntlet")
-        public CasterTypeCategory elementiumCaster = new CasterTypeCategory(400);
+        public GenericCasterCategory elementiumCaster = new GenericCasterCategory(400);
+
+        @Config.Ignore
+        @Config.Name("Engineer's Caster's Gauntlet")
+        @Config.Comment("Configuration options for the Redstone Flux augmented casting gauntlet")
+        public FluxCasterCategory fluxCaster = new FluxCasterCategory();
+
     }
 
     public static class ClustersCategory {

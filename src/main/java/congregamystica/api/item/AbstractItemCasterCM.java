@@ -135,7 +135,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                 }
 
                 float visCost = ((ItemFocus) focusStack.getItem()).getVisCost(focusStack) * this.getConsumptionModifier(heldStack, player, false);
-                float altVisCost = visCost * Math.min(this.getAltResourceModifier(worldIn, player, heldStack), 1.0f);
+                float altVisCost = (float) (visCost * Math.min(this.getAltResourceModifier(worldIn, player, heldStack), 1.0f));
                 visCost -= altVisCost;
                 int activationTime = ((ItemFocus) focusStack.getItem()).getActivationTime(focusStack);
 
@@ -270,7 +270,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
             ItemStack focusStack = this.getFocusStack(stack);
             ItemFocus focus = (ItemFocus) focusStack.getItem();
             float visCost = focus.getVisCost(focusStack);
-            float altCost = visCost * this.getAltResourceBaseModifier();
+            float altCost = (float) (visCost * this.getAltResourceBaseModifier());
             visCost -= altCost;
             if(altCost > 0) {
                 tooltip.add(this.getAltResourceInfoTooltip(altCost));

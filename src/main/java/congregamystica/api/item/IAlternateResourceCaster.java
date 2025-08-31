@@ -14,7 +14,7 @@ public interface IAlternateResourceCaster extends ICaster {
      * @param casterStack the caster gauntlet ItemStack
      * @return Must return a value less than 1.0. A value less than 0 will increase the gauntlet Vis casting cost.
      */
-    default float getAltResourceModifier(World world, EntityPlayer player, ItemStack casterStack) {
+    default double getAltResourceModifier(World world, EntityPlayer player, ItemStack casterStack) {
         return this.getAltResourceBaseModifier();
     }
 
@@ -24,7 +24,7 @@ public interface IAlternateResourceCaster extends ICaster {
      *
      * @return Must return a value less than 1.0. A value less than 0 will increase the gauntlet Vis casting cost.
      */
-    float getAltResourceBaseModifier();
+    double getAltResourceBaseModifier();
 
     /**
      * Returns the alternate resource conversion rate per point of Vis.

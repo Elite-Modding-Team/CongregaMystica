@@ -40,8 +40,8 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
     }
 
     @Override
-    public float getAltResourceBaseModifier() {
-        return (float) ConfigHandlerCM.casters.boundCaster.consumptionModifier;
+    public double getAltResourceBaseModifier() {
+        return ConfigHandlerCM.casters.boundCaster.consumptionModifier;
     }
 
     @Override

@@ -21,8 +21,8 @@ public class ItemAuraCaster extends AbstractItemCasterCM {
     }
 
     @Override
-    public float getAltResourceBaseModifier() {
-        return (float) ConfigHandlerCM.casters.botanistsCaster.consumptionModifier;
+    public double getAltResourceBaseModifier() {
+        return ConfigHandlerCM.casters.botanistsCaster.consumptionModifier;
     }
 
     @Override

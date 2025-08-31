@@ -21,8 +21,8 @@ public class ItemClockworkCaster extends AbstractItemCasterCM {
     }
 
     @Override
-    public float getAltResourceBaseModifier() {
-        return (float) ConfigHandlerCM.casters.clockworkCaster.consumptionModifier;
+    public double getAltResourceBaseModifier() {
+        return ConfigHandlerCM.casters.clockworkCaster.consumptionModifier;
     }
 
     @Override

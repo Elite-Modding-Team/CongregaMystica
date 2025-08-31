@@ -38,6 +38,7 @@ item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb
 item.congregamystica:blood_scribing_tools.name=Bloody Scrivener's Tools
 item.congregamystica:caster_bound.name=Bound Caster's Gauntlet
 item.congregamystica:caster_elementium.name=Elementium Caster's Gauntlet
+item.congregamystica:caster_flux.name=Energized Caster's Gauntlet
 item.congregamystica:cluster_astral_starmetal.name=Native Starmetal Cluster
 item.congregamystica:cluster_charged_quartz_certus.name=Native Charged Certus Quartz Cluster
 item.congregamystica:cluster_quartz_certus.name=Native Certus Quartz Cluster
@@ -79,11 +80,15 @@ mimic_fork.instrument.guitar=Guitar
 mimic_fork.instrument.chime=Chime
 mimic_fork.instrument.xylophone=Xylophone
 mimic_fork.note=Note: %s
+tooltip.congregamystica:caster_aura.cost=§6Aura Cost:§r %d Aura per cast
 tooltip.congregamystica:caster_bound.cost=§cLP Cost:§r %d LP per cast
+tooltip.congregamystica:caster_clockwork.cost=§eEmber Cost:§r %d Ember per cast
 tooltip.congregamystica:caster_elementium.cost=§9Mana Cost:§r %d Mana per cast
+tooltip.congregamystica:caster_flux.cost=§7RF Cost:§r %d RF per cast
 tooltip.congregamystica:mimic_fork.dimension=Dimension: %s
 tooltip.congregamystica:mimic_fork.position=Pos: x=%d, y=%d, z=%d
 tooltip.congregamystica:refining.info=Gives the Mining Drill a chance to extract native clusters from mined ores, stacks up to %d
+tooltip.congregamystica:rf.info=Energy Stored: %d/%d RF
 
 # Research
 tc.research_category.CONGREGA_MYSTICA=Congrega Mystica

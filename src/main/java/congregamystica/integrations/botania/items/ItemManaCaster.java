@@ -28,8 +28,8 @@ public class ItemManaCaster extends AbstractItemCasterCM implements IManaUsingIt
     }
 
     @Override
-    public float getAltResourceBaseModifier() {
-        return (float) ConfigHandlerCM.casters.elementiumCaster.consumptionModifier;
+    public double getAltResourceBaseModifier() {
+        return ConfigHandlerCM.casters.elementiumCaster.consumptionModifier;
     }
 
     @Override

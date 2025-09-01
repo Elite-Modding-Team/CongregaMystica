@@ -25,7 +25,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.InfusionRecipe;
@@ -33,7 +32,6 @@ import thaumcraft.api.items.ItemsTC;
 import thecodex6824.thaumicaugmentation.api.TAItems;
 
 import java.util.List;
-import java.util.Map;
 
 public class ItemFluxCaster extends AbstractItemCasterCM {
 
@@ -150,11 +148,6 @@ public class ItemFluxCaster extends AbstractItemCasterCM {
     public void registerResearchLocation() {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
                 "research/congregamystica/caster_flux"));
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        // TODO: Add aspects
     }
 
     @Override

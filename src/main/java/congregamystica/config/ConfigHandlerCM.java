@@ -116,8 +116,6 @@ public class ConfigHandlerCM {
     }
 
     public static class CasterCategory {
-        //TODO: Remove ignore if gauntlet is implemented
-        @Config.Ignore
         @Config.Name("Botanist's Caster's Gauntlet")
         @Config.Comment("Configuration options for the Nature's Aura aura-augmented casting gauntlet.")
         public GenericCasterCategory botanistsCaster = new GenericCasterCategory(2000);
@@ -126,8 +124,6 @@ public class ConfigHandlerCM {
         @Config.Comment("Configuration options for the Blood Magic LP-augmented casting gauntlet.")
         public GenericCasterCategory boundCaster = new GenericCasterCategory(400);
 
-        //TODO: Remove ignore if gauntlet is implemented
-        @Config.Ignore
         @Config.Name("Clockwork Caster's Gauntlet")
         @Config.Comment("Configuration options for the Embers Ember-augmented casting gauntlet.")
         public GenericCasterCategory clockworkCaster = new GenericCasterCategory(1.0);
@@ -136,8 +132,6 @@ public class ConfigHandlerCM {
         @Config.Comment("Configuration options for the Botania Mana-augmented casting gauntlet")
         public GenericCasterCategory elementiumCaster = new GenericCasterCategory(400);
 
-        //TODO: Remove ignore if gauntlet is implemented
-        @Config.Ignore
         @Config.Name("Energized Caster's Gauntlet")
         @Config.Comment("Configuration options for the Redstone Flux augmented casting gauntlet")
         public FluxCasterCategory fluxCaster = new FluxCasterCategory();

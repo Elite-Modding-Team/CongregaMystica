@@ -62,13 +62,4 @@ public class CongregaMystica {
         proxy.postInit();
         LogHelper.debug("Finished postInit phase.");
     }
-
-
-    //TODO:
-    // Gauntlets (General List of Mods)
-    //  EB Wizardry
-    //      Mana Gauntlet - uses mana
-    //  Harken Scythe
-    //      Livingmetal Gauntlet - uses soul essence
-    //      Biomass Gauntlet - uses blood essence
 }

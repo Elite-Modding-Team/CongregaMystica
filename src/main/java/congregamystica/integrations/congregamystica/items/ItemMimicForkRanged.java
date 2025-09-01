@@ -28,13 +28,11 @@ import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.ThaumcraftApiHelper;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Map;
 
 public class ItemMimicForkRanged extends ItemMimicFork {
     public ItemMimicForkRanged() {
@@ -169,11 +167,5 @@ public class ItemMimicForkRanged extends ItemMimicFork {
                 Ingredient.fromStacks(ThaumcraftApiHelper.makeCrystal(Aspect.AIR)),
                 Ingredient.fromItem(Items.ENDER_PEARL)
         ));
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        //TODO
-        //Don't register aspects so the ranged fork correctly inherits recipe aspects
     }
 }

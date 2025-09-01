@@ -17,13 +17,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.items.ItemsTC;
 import thecodex6824.thaumicaugmentation.api.TAItems;
-
-import java.util.Map;
 
 public class ItemAuraCaster extends AbstractItemCasterCM {
     public ItemAuraCaster() {
@@ -90,11 +87,6 @@ public class ItemAuraCaster extends AbstractItemCasterCM {
     public void registerResearchLocation() {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
                 "research/naturesaura/caster_aura"));
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        // TODO: Add aspects
     }
 
     @Override

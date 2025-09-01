@@ -18,13 +18,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 import teamroots.embers.util.EmberInventoryUtil;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.items.ItemsTC;
 import thecodex6824.thaumicaugmentation.api.TAItems;
-
-import java.util.Map;
 
 public class ItemClockworkCaster extends AbstractItemCasterCM {
     public ItemClockworkCaster() {
@@ -82,7 +79,7 @@ public class ItemClockworkCaster extends AbstractItemCasterCM {
                 5,
                 new AspectList().add(Aspect.FIRE, 150).add(Aspect.DARKNESS, 75).add(Aspect.EXCHANGE, 50),
                 Ingredient.fromStacks(casterStack),
-                Ingredient.fromItem(ItemsTC.fabric),
+                Ingredient.fromItem(RegistryHelper.getRegisteredItem(new ResourceLocation("embers", "ashen_cloth"))),
                 new OreIngredient("ingotDawnstone"),
                 new OreIngredient("ingotDawnstone"),
                 Ingredient.fromItem(RegistryHelper.getRegisteredItem(new ResourceLocation("embers", "shard_ember"))),
@@ -95,11 +92,6 @@ public class ItemClockworkCaster extends AbstractItemCasterCM {
     public void registerResearchLocation() {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
                 "research/embers/caster_clockwork"));
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        // TODO: Add aspects
     }
 
     @Override

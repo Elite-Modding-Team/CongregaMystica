@@ -30,13 +30,10 @@ import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.items.ItemsTC;
 import thecodex6824.thaumicaugmentation.api.TAItems;
-
-import java.util.Map;
 
 public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
     public ItemBoundCaster() {
@@ -130,11 +127,6 @@ public class ItemBoundCaster extends AbstractItemCasterCM implements IBindable {
     public void registerResearchLocation() {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
                 "research/bloodmagic/caster_bound"));
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        // TODO: Add aspects
     }
 
     @Override

@@ -36,8 +36,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import thaumcraft.api.aspects.AspectEventProxy;
-import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.casters.*;
 import thaumcraft.api.items.IArchitect;
 import thaumcraft.common.items.casters.CasterManager;
@@ -521,9 +519,6 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
 
     @Override
     public abstract void registerResearchLocation();
-
-    @Override
-    public abstract void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap);
 
     @Override
     public EnumSortType getRegistryOrderType() {

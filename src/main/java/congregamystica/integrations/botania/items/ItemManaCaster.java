@@ -19,7 +19,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.items.ItemsTC;
@@ -27,8 +26,6 @@ import thecodex6824.thaumicaugmentation.api.TAItems;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 import vazkii.botania.common.item.ModItems;
-
-import java.util.Map;
 
 public class ItemManaCaster extends AbstractItemCasterCM implements IManaUsingItem {
     public ItemManaCaster() {
@@ -95,7 +92,7 @@ public class ItemManaCaster extends AbstractItemCasterCM implements IManaUsingIt
                 5,
                 new AspectList().add(Aspect.ELDRITCH, 75).add(Aspect.MAGIC, 75).add(Aspect.EXCHANGE, 50),
                 Ingredient.fromStacks(casterStack),
-                Ingredient.fromItem(ItemsTC.fabric),
+                new OreIngredient("clothManaweave"),
                 new OreIngredient("ingotElvenElementium"),
                 new OreIngredient("ingotElvenElementium"),
                 new OreIngredient("elvenDragonstone"),
@@ -108,11 +105,6 @@ public class ItemManaCaster extends AbstractItemCasterCM implements IManaUsingIt
     public void registerResearchLocation() {
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
                 "research/botania/caster_elementium"));
-    }
-
-    @Override
-    public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        // TODO: Add aspects
     }
 
     @Override

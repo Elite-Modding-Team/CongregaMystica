@@ -1,6 +1,6 @@
 {
   "parent": "thaumcraft:item/caster_gauntlet_focus",
   "textures": {
-    "skin": "congregamystica:models/naturesaura/caster_aura_active"
+    "skin": "congregamystica:models/naturesaura/caster_aura"
   }
 }

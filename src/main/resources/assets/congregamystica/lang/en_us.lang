@@ -141,7 +141,7 @@ congregamystica.research.viscous_brew.addenda.1=I have devised a way to infuse a
 
 # -- CASTER: BOTANIST
 congregamystica.research.caster_aura.title=Botanist Caster's Gauntlet
-congregamystica.research.caster_aura.stage.1=While Natural Aura and Vis may share similarities, the two phenomena have very different interactions with living creatures.<BR>Where high levels of Vis results in mutations in both plants and animals, high levels of Natural Aura seem to boost boost both growth and fertility.<BR>Despite these differences, I still believe that I can find some way to link the two.
+congregamystica.research.caster_aura.stage.1=While Natural Aura and Vis may share similarities, the two phenomena have very different interactions with living creatures.<BR>Where high levels of Vis results in mutations in both plants and animals, high levels of Natural Aura seem to boost both growth and fertility.<BR>Despite these differences, I still believe that I can find some way to link the two.
 congregamystica.research.caster_aura.stage.2=Experimentation has shown me how to infuse an Aura Trove into a gauntlet, allowing it to augment its casting ability with Natural Aura.<BR>While unable to store aura in the gauntlet, the trove acts as a conduit that feeds into the spell focus, reducing the amount of Vis required to cast the spell.<BR>While the conversion is far from efficient, it is very effective at reducing my impact on the local aura.
 
 # -- CASTER: BOUND
@@ -151,18 +151,18 @@ congregamystica.research.caster_bound.stage.2=By binding a gauntlet to myself, I
 
 # -- CASTER: CLOCKWORK
 congregamystica.research.caster_clockwork.title=Clockwork Caster's Gauntlet
-congregamystica.research.caster_clockwork.stage.1=The raw power and heat contained in the mantle has been long been utilized by the dwarves that live far below the surface.<BR>Most interestingly are the tools clockwork tools powered by this Ember resource. Perhaps I can find a way to utilize this captured heat...
+congregamystica.research.caster_clockwork.stage.1=The raw power and heat contained in the mantle has long been utilized by the dwarves that live far below the surface.<BR>Most interestingly the clockwork tools powered by this Ember resource. Perhaps I can find a way to utilize this captured heat...
 congregamystica.research.caster_clockwork.stage.2=I have been able to infuse a Mantle Jar into a gauntlet, allow it to augment its casting ability with Ember.<BR>While unable to store ember directly in the gauntlet, the mantle jar acts as a conduit that feeds Ember directly into the spell focus, reducing the amount of Vis required to cast a spell.
 
 # -- CASTER: ELEMENTIUM
 congregamystica.research.caster_elementium.title=Elementium Caster's Gauntlet
-congregamystica.research.caster_elementium.stage.1=While mana does have a much more physical form than many of the substances I normally interact with, it does share some striking similarities to raw essentia.<BR>If I can figure out a link between the two, it may reveal entirely new avenues of research.
-congregamystica.research.caster_elementium.stage.2=Using materials native to Alfeim, I have been able to infuse a Mana Tablet into a gauntlet, allowing it to augment its casting ability with Mana.<BR>While unable to store mana in the gauntlet, the tablet acts as a conduit that feeds mana directly into the spell focus, reducing the amount of Vis required to cast the spell.<BR>While the conversion is far from efficient, it is very effective at reducing my impact on the local aura.
+congregamystica.research.caster_elementium.stage.1=While Mana does have a much more physical form than many of the substances I normally interact with, it does share some striking similarities to raw essentia.<BR>If I can figure out a link between the two, it may reveal entirely new avenues of research.
+congregamystica.research.caster_elementium.stage.2=Using materials native to Alfheim, I have been able to infuse a Mana Tablet into a gauntlet, allowing it to augment its casting ability with Mana.<BR>While unable to store Mana in the gauntlet, the tablet acts as a conduit that feeds Mana directly into the spell focus, reducing the amount of Vis required to cast the spell.<BR>While the conversion is far from efficient, it is very effective at reducing my impact on the local aura.
 
 # -- CASTER: REDSTONE FLUX
 congregamystica.research.caster_flux.title=Energized Caster's Gauntlet
 congregamystica.research.caster_flux.stage.1=My research has shown that it is possible to convert Vis into mundane energy, but I can't help but wonder if the reverse is possible.<BR>While common sense says that it should not be possible, when has that stopped me before?
-congregamystica.research.caster_flux.stage.2=Though wildly inefficient, my studies have shown me how use mundane energy to supercharge small quantities of Vis, making them more potent than they would normally be.<BR>Who could have predicted that the solution was as easy as hooking up a Vis Generator in reverse...
+congregamystica.research.caster_flux.stage.2=Though wildly inefficient, my studies have shown me how to use mundane energy to supercharge small quantities of Vis, making them more potent than they would normally be.<BR>Who could have predicted that the solution was as easy as hooking up a Vis Generator in reverse...
 
 # -- DRILL HEAD THAUMIUM
 congregamystica.research.drill_head_thaumium.title=Thaumium Drill Head
@@ -216,7 +216,7 @@ congregamystica.research.mimic_fork_ranged.stage.2=I consider this experiment a 
 
 # -- TAINTTHISTLE
 congregamystica.research.taintthistle.title=Taintthistle
-congregamystica.research.taintthistle.stage.1=Despite the appearance and name, it is actually a friendly flower. When supplied with mana, it consumes nearby tainted blocks or flux goo, destroying them completely.<BR>For further information, I can consult the Lexica Botanica.
+congregamystica.research.taintthistle.stage.1=Despite the appearance and name, it is actually a friendly flower. When supplied with Mana, it consumes nearby tainted blocks or flux goo, destroying them completely.<BR>For further information, I can consult the Lexica Botanica.
 
 congregamystica.research.upgrade_refining.title=Drill Upgrade: Refining
 congregamystica.research.upgrade_refining.stage.1=Infusion enchantments have proven to be quite useful for my own pickaxes, but the Mining Drill has far from the same precision as the handheld tools.<BR>Perhaps there is a way to give the augers this ability?

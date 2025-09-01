@@ -4,10 +4,7 @@ import congregamystica.api.IModModule;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.additions.IntegrationsCM;
 import congregamystica.integrations.congregamystica.golems.GolemMaterialSteel;
-import congregamystica.integrations.congregamystica.items.ItemMimicFork;
-import congregamystica.integrations.congregamystica.items.ItemMimicForkRanged;
-import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
-import congregamystica.integrations.congregamystica.items.ItemNativeClusterDynamic;
+import congregamystica.integrations.congregamystica.items.*;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.registry.ModItemsCM;
 import congregamystica.registry.RegistrarCM;
@@ -30,6 +27,7 @@ public class CongregaMysticaCM implements IModModule {
         RegistrarCM.addAdditionToRegister(new IntegrationsCM());
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         RegistrarCM.addAdditionToRegister(new ItemMimicForkRanged());
+        RegistrarCM.addAdditionToRegister(new ItemFluxCaster());
         getClustersFromConfig();
         ModItemsCM.getNativeClusters().forEach(RegistrarCM::addAdditionToRegister);
     }

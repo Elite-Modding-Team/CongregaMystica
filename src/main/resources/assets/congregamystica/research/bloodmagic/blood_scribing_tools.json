@@ -8,7 +8,7 @@
       "parents": ["CM_BLOOD_MAGIC", "THEORYRESEARCH"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-3, 2],
+      "location": [-4, 2],
       "stages": [
         {
           "text": "congregamystica.research.blood_scribing_tools.stage.1"

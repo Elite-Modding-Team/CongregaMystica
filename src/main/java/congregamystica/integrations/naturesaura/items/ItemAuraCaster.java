@@ -1,15 +1,12 @@
 package congregamystica.integrations.naturesaura.items;
 
-import WayofTime.bloodmagic.core.RegistrarBloodMagic;
-import WayofTime.bloodmagic.core.recipe.IngredientBloodOrb;
-import WayofTime.bloodmagic.item.ItemSlate;
-import WayofTime.bloodmagic.item.types.ComponentTypes;
 import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemCasterCM;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.utils.helpers.StringHelper;
 import congregamystica.utils.libs.ModIds;
 import de.ellpeck.naturesaura.api.NaturesAuraAPI;
+import de.ellpeck.naturesaura.items.ModItems;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -75,17 +72,16 @@ public class ItemAuraCaster extends AbstractItemCasterCM {
             casterStack = new ItemStack(ItemsTC.casterBasic);
         }
         ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
-                "CM_CASTER_CLOCKWORK",
+                "CM_CASTER_AURA",
                 new ItemStack(this),
                 5,
                 new AspectList().add(Aspect.AURA, 100).add(Aspect.PLANT, 100).add(Aspect.EXCHANGE, 50),
                 Ingredient.fromStacks(casterStack),
-                //TODO: Recipe
                 Ingredient.fromItem(ItemsTC.fabric),
-                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
-                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
-                new IngredientBloodOrb(RegistrarBloodMagic.ORB_APPRENTICE),
-                Ingredient.fromStacks(ComponentTypes.REAGENT_BINDING.getStack()),
+                Ingredient.fromItem(ModItems.INFUSED_IRON),
+                Ingredient.fromItem(ModItems.INFUSED_IRON),
+                Ingredient.fromItem(ModItems.GOLD_LEAF),
+                Ingredient.fromItem(ModItems.AURA_CACHE),
                 Ingredient.fromItem(ItemsTC.salisMundus)
         ));
     }

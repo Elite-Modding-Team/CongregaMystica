@@ -10,7 +10,7 @@
       "parents": ["CM_BOTANIA", "WARP"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-3, -2],
+      "location": [-4, -2],
       "stages": [
         {
           "text": "congregamystica.research.whisperweed.stage.1"

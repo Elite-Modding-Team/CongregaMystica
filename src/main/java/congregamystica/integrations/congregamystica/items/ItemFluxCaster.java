@@ -1,9 +1,6 @@
 package congregamystica.integrations.congregamystica.items;
 
-import WayofTime.bloodmagic.core.RegistrarBloodMagic;
-import WayofTime.bloodmagic.core.recipe.IngredientBloodOrb;
-import WayofTime.bloodmagic.item.ItemSlate;
-import WayofTime.bloodmagic.item.types.ComponentTypes;
+import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemCasterCM;
 import congregamystica.api.item.AugmentableEnergyStorageItem;
 import congregamystica.api.item.EnergyStorageItemWrapper;
@@ -13,13 +10,16 @@ import congregamystica.utils.libs.ModIds;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagInt;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -27,6 +27,7 @@ import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.items.ItemsTC;
 import thecodex6824.thaumicaugmentation.api.TAItems;
@@ -124,11 +125,6 @@ public class ItemFluxCaster extends AbstractItemCasterCM {
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-
-    }
-
-    @Override
-    public void registerResearchLocation() {
         ItemStack casterStack;
         if(ModIds.thaumic_augmentation.isLoaded) {
             casterStack = new ItemStack(TAItems.GAUNTLET, 1, 0);
@@ -141,14 +137,19 @@ public class ItemFluxCaster extends AbstractItemCasterCM {
                 5,
                 new AspectList().add(Aspect.ENERGY, 150).add(Aspect.ENTROPY, 50).add(Aspect.EXCHANGE, 50),
                 Ingredient.fromStacks(casterStack),
-                //TODO: Recipe
                 Ingredient.fromItem(ItemsTC.fabric),
-                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
-                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
-                new IngredientBloodOrb(RegistrarBloodMagic.ORB_APPRENTICE),
-                Ingredient.fromStacks(ComponentTypes.REAGENT_BINDING.getStack()),
+                new OreIngredient("blockRedstone"),
+                new OreIngredient("blockRedstone"),
+                Ingredient.fromItem(ItemsTC.mechanismComplex),
+                Ingredient.fromItem(Item.getItemFromBlock(BlocksTC.visGenerator)),
                 Ingredient.fromItem(ItemsTC.salisMundus)
         ));
+    }
+
+    @Override
+    public void registerResearchLocation() {
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/congregamystica/caster_flux"));
     }
 
     @Override

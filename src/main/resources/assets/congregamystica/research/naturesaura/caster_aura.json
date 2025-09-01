@@ -5,13 +5,14 @@
       "name": "congregamystica.research.caster_aura.title",
       "icons": ["congregamystica:caster_aura"],
       "category": "CONGREGA_MYSTICA",
-      "parents": ["CM_BOTANIA", "~BASEAUROMANCY", "~BASEINFUSION"],
+      "parents": ["CONGREGA_MYSTICA_BASE", "~BASEAUROMANCY", "~BASEINFUSION"],
       "siblings": [],
       "meta": ["HIDDEN"],
-      "location": [-2, -3],
+      "location": [-1, -1],
       "stages": [
         {
           "text": "congregamystica.research.caster_aura.stage.1",
+          "required_item": ["naturesaura:infused_iron;1;0"],
           "required_knowledge": ["THEORY;INFUSION;1", "THEORY;AUROMANCY;2"]
         },
         {

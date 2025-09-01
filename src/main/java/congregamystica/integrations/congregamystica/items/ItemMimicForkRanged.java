@@ -158,9 +158,8 @@ public class ItemMimicForkRanged extends ItemMimicFork {
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //TODO: Research string
         ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
-                "",
+                "CM_MIMIC_FORK_RANGED",
                 this.getDefaultInstance(),
                 3,
                 new AspectList().add(Aspect.AIR, 50).add(Aspect.SENSES, 50).add(Aspect.ELDRITCH, 20),
@@ -175,10 +174,5 @@ public class ItemMimicForkRanged extends ItemMimicFork {
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
         //Don't register aspects so the ranged fork correctly inherits recipe aspects
-    }
-
-    @Override
-    public void registerResearchLocation() {
-        //TODO: Add research
     }
 }

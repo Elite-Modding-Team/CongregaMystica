@@ -169,10 +169,11 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
             }
             world.playSound(player, pos, SoundsTC.whispers, SoundCategory.BLOCKS, 0.6f, 0.8f);
 
-            //TODO: Give 1 full research category
-            ThaumcraftApi.internalMethods.addKnowledge(player, IPlayerKnowledge.EnumKnowledgeType.THEORY,
+            ThaumcraftApi.internalMethods.addKnowledge(
+                    player,
+                    IPlayerKnowledge.EnumKnowledgeType.THEORY,
                     categories[player.getRNG().nextInt(categories.length)],
-                    MathHelper.getInt(player.getRNG(), theoryProgress / 12, theoryProgress / 6));
+                    MathHelper.getInt(player.getRNG(), theoryProgress / 3, theoryProgress / 2));
 
             this.progress -= PROG_REQ;
             this.supertile.getWorld().updateComparatorOutputLevel(this.getPos(), this.supertile.getBlockType());

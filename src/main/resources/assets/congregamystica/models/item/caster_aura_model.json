@@ -1,0 +1,6 @@
+{
+  "parent": "thaumcraft:item/caster_gauntlet",
+  "textures": {
+    "skin": "congregamystica:models/naturesaura/caster_aura_inactive"
+  }
+}

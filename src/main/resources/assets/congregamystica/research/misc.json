@@ -104,7 +104,7 @@
       "parents": ["CONGREGA_MYSTICA_BASE"],
       "siblings": [],
       "meta": ["ROUND"],
-      "location": [-4, 0],
+      "location": [-5, 0],
       "stages": [
         {
           "text": "congregamystica.research.expanded_golemancy.stage.1"

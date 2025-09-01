@@ -5,13 +5,14 @@
       "name": "congregamystica.research.caster_clockwork.title",
       "icons": ["congregamystica:caster_clockwork"],
       "category": "CONGREGA_MYSTICA",
-      "parents": ["CM_BOTANIA", "~BASEAUROMANCY", "~BASEINFUSION"],
+      "parents": ["CONGREGA_MYSTICA_BASE", "~BASEAUROMANCY", "~BASEINFUSION"],
       "siblings": [],
       "meta": ["HIDDEN"],
-      "location": [-2, -3],
+      "location": [-1, 1],
       "stages": [
         {
           "text": "congregamystica.research.caster_clockwork.stage.1",
+          "required_item": ["embers:shard_ember;1;0"],
           "required_knowledge": ["THEORY;INFUSION;1", "THEORY;AUROMANCY;1", "THEORY;ARTIFICE;1"]
         },
         {

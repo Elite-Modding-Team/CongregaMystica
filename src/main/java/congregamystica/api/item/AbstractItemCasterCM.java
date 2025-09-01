@@ -65,7 +65,7 @@ import java.util.TreeMap;
 public abstract class AbstractItemCasterCM extends AbstractItemAddition implements IArchitect, IAlternateResourceCaster {
     public static final String TAG_FOCUS = "storedFocus";
     public static final String TAG_BLOCK = "pickedBlock";
-    protected static final DecimalFormat VIS_FORMATTER = new DecimalFormat("#######.#");
+    protected static final DecimalFormat DECIMAL_FORMATTER = new DecimalFormat("#######.#");
     protected static final Method CASTER_IS_ON_COOLDOWN;
     protected static final float EPSILON = 1.0E-5F;
 
@@ -276,7 +276,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
             }
             if(visCost > 0) {
                 tooltip.add(TextFormatting.AQUA + StringHelper.getTranslatedString("tc.vis.cost") + " " +
-                        TextFormatting.RESET + VIS_FORMATTER.format(visCost) + " " +
+                        TextFormatting.RESET + DECIMAL_FORMATTER.format(visCost) + " " +
                         StringHelper.getTranslatedString("item.Focus.cost1"));
             }
             tooltip.add(TextFormatting.GREEN + focusStack.getDisplayName());

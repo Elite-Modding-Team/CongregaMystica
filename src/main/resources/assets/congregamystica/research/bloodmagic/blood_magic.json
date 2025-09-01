@@ -8,7 +8,7 @@
       "parents": ["CONGREGA_MYSTICA_BASE"],
       "siblings": [],
       "meta": ["ROUND"],
-      "location": [-2, 1],
+      "location": [-3, 1],
       "stages": [
         {
           "text": "congregamystica.research.blood_magic.stage.1"

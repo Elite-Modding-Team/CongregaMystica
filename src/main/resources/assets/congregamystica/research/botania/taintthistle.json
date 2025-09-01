@@ -10,7 +10,7 @@
       "parents": ["CM_BOTANIA", "FLUX"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-1, -2],
+      "location": [-2, -2],
       "stages": [
         {
           "text": "congregamystica.research.taintthistle.stage.1"

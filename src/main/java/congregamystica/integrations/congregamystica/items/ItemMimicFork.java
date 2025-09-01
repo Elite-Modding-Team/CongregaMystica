@@ -244,11 +244,6 @@ public class ItemMimicFork extends AbstractItemAddition {
     }
 
     @Override
-    public void registerResearchLocation() {
-        //TODO: Add research (Mimic Fork research recipe is "congregamystica:mimic_fork_fake")
-    }
-
-    @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
         AspectList aspectList = new AspectList()
                 .add(Aspect.METAL, 15)

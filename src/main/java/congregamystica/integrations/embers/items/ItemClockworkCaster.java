@@ -1,12 +1,9 @@
 package congregamystica.integrations.embers.items;
 
-import WayofTime.bloodmagic.core.RegistrarBloodMagic;
-import WayofTime.bloodmagic.core.recipe.IngredientBloodOrb;
-import WayofTime.bloodmagic.item.ItemSlate;
-import WayofTime.bloodmagic.item.types.ComponentTypes;
 import congregamystica.CongregaMystica;
 import congregamystica.api.item.AbstractItemCasterCM;
 import congregamystica.config.ConfigHandlerCM;
+import congregamystica.utils.helpers.RegistryHelper;
 import congregamystica.utils.helpers.StringHelper;
 import congregamystica.utils.libs.ModIds;
 import net.minecraft.client.resources.I18n;
@@ -16,6 +13,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import teamroots.embers.util.EmberInventoryUtil;
 import thaumcraft.api.ThaumcraftApi;
@@ -46,7 +44,7 @@ public class ItemClockworkCaster extends AbstractItemCasterCM {
     @Override
     public String getAltResourceInfoTooltip(float altVisCost) {
         double emberCost = altVisCost * getAltResourceConversionRate();
-        return I18n.format(StringHelper.getTranslationKey("caster_clockwork", "tooltip", "cost"), emberCost);
+        return I18n.format(StringHelper.getTranslationKey("caster_clockwork", "tooltip", "cost"), DECIMAL_FORMATTER.format(emberCost));
     }
 
     @Override
@@ -84,12 +82,11 @@ public class ItemClockworkCaster extends AbstractItemCasterCM {
                 5,
                 new AspectList().add(Aspect.FIRE, 150).add(Aspect.DARKNESS, 75).add(Aspect.EXCHANGE, 50),
                 Ingredient.fromStacks(casterStack),
-                //TODO: Recipe
                 Ingredient.fromItem(ItemsTC.fabric),
-                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
-                Ingredient.fromStacks(ItemSlate.SlateType.IMBUED.getStack()),
-                new IngredientBloodOrb(RegistrarBloodMagic.ORB_APPRENTICE),
-                Ingredient.fromStacks(ComponentTypes.REAGENT_BINDING.getStack()),
+                new OreIngredient("ingotDawnstone"),
+                new OreIngredient("ingotDawnstone"),
+                Ingredient.fromItem(RegistryHelper.getRegisteredItem(new ResourceLocation("embers", "shard_ember"))),
+                Ingredient.fromItem(RegistryHelper.getRegisteredItem(new ResourceLocation("embers", "ember_jar"))),
                 Ingredient.fromItem(ItemsTC.salisMundus)
         ));
     }

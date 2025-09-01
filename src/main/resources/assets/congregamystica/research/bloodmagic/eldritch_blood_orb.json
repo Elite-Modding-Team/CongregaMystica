@@ -8,7 +8,7 @@
       "parents": ["CM_BLOOD_MAGIC", "PRIMPEARL"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
-      "location": [-1, 2],
+      "location": [-2, 2],
       "stages": [
         {
           "text": "congregamystica.research.eldritch_blood_orb.stage.1"

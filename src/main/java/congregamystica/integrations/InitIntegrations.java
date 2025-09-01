@@ -6,8 +6,10 @@ import congregamystica.integrations.bloodmagic.BloodMagicCM;
 import congregamystica.integrations.botania.BotaniaCM;
 import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.crafttweaker.CrafttweakerCM;
+import congregamystica.integrations.embers.EmbersCM;
 import congregamystica.integrations.harkenscythe.HarkenScytheCM;
 import congregamystica.integrations.immersiveengineering.ImmersiveEngineeringCM;
+import congregamystica.integrations.naturesaura.NaturesAuraCM;
 import congregamystica.integrations.rustic.RusticCM;
 import congregamystica.integrations.thaumicwonders.ThaumicWondersCM;
 import congregamystica.integrations.theoneprobe.TheOneProbeCM;
@@ -35,13 +37,18 @@ public class InitIntegrations {
         if(ModIds.crafttweaker.isLoaded) {
             MOD_MODULES.add(new CrafttweakerCM());
         }
+        if(ModIds.embers.isLoaded) {
+            MOD_MODULES.add(new EmbersCM());
+        }
         if(ModIds.harken_scythe.isLoaded) {
             MOD_MODULES.add(new HarkenScytheCM());
         }
         if(ModIds.immersive_engineering.isLoaded) {
             MOD_MODULES.add(new ImmersiveEngineeringCM());
         }
-         //TODO: If rustic isn't finished before the first release, make sure this doesn't load.
+        if(ModIds.natures_aura.isLoaded) {
+            MOD_MODULES.add(new NaturesAuraCM());
+        }
         if(ModIds.rustic.isLoaded) {
             MOD_MODULES.add(new RusticCM());
         }

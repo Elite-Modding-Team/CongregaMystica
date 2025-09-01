@@ -1,0 +1,6 @@
+{
+  "parent": "thaumcraft:item/caster_gauntlet",
+  "textures": {
+    "skin": "congregamystica:models/congregamystica/caster_flux_inactive"
+  }
+}

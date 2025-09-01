@@ -1,0 +1,6 @@
+{
+  "parent": "thaumcraft:item/caster_gauntlet_focus",
+  "textures": {
+    "skin": "congregamystica:models/embers/caster_clockwork_active"
+  }
+}

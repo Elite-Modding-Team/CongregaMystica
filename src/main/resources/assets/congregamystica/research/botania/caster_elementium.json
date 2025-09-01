@@ -8,10 +8,11 @@
       "parents": ["CM_BOTANIA", "~BASEAUROMANCY", "~BASEINFUSION"],
       "siblings": [],
       "meta": ["HIDDEN"],
-      "location": [-2, -3],
+      "location": [-3, -3],
       "stages": [
         {
           "text": "congregamystica.research.caster_elementium.stage.1",
+          "required_item": ["botania:manaresource;1;7"],
           "required_knowledge": ["THEORY;INFUSION;1", "THEORY;AUROMANCY;1", "THEORY;ELDRITCH;1"]
         },
         {

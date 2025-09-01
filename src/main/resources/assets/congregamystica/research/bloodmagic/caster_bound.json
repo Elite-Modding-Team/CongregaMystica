@@ -8,10 +8,11 @@
       "parents": ["CM_BLOOD_MAGIC", "~BASEAUROMANCY", "~BASEINFUSION"],
       "siblings": [],
       "meta": ["HIDDEN"],
-      "location": [-2, 3],
+      "location": [-3, 3],
       "stages": [
         {
           "text": "congregamystica.research.caster_bound.stage.1",
+          "required_item": ["bloodmagic:component;1;8"],
           "required_knowledge": ["THEORY;INFUSION;1", "THEORY;AUROMANCY;1", "THEORY;ALCHEMY;1"]
         },
         {

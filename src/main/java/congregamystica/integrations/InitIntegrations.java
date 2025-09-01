@@ -5,7 +5,6 @@ import congregamystica.integrations.appliedenergistics2.AppliedEnergisticsCM;
 import congregamystica.integrations.bloodmagic.BloodMagicCM;
 import congregamystica.integrations.botania.BotaniaCM;
 import congregamystica.integrations.congregamystica.CongregaMysticaCM;
-import congregamystica.integrations.crafttweaker.CrafttweakerCM;
 import congregamystica.integrations.embers.EmbersCM;
 import congregamystica.integrations.harkenscythe.HarkenScytheCM;
 import congregamystica.integrations.immersiveengineering.ImmersiveEngineeringCM;
@@ -33,9 +32,6 @@ public class InitIntegrations {
         }
         if(ModIds.botania.isLoaded) {
             MOD_MODULES.add(new BotaniaCM());
-        }
-        if(ModIds.crafttweaker.isLoaded) {
-            MOD_MODULES.add(new CrafttweakerCM());
         }
         if(ModIds.embers.isLoaded) {
             MOD_MODULES.add(new EmbersCM());

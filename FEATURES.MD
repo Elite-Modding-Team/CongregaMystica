@@ -15,7 +15,9 @@ Eldritch Clusters are only added when Thaumic Wonders Unofficial is also install
   - Mithril (Mana Infused in Thermal Foundation)
   - Nickel
   - Platinum
+  - Tungsten
   - Uranium
+  - Zinc
 - Mekanism
   - Osmium
 - Mystical World

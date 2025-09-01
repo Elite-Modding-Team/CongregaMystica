@@ -199,6 +199,8 @@ public class ConfigHandlerCM {
                 "oreUranium;ingot;0x57744b",
                 "orePlatinum;ingot;0xc6d5f2",
                 "oreIridium;ingot;0xbdbed1",
+                "oreTungsten;ingot;0x3d4047",
+                "oreZinc;ingot;0xb0bcaa",
                 //"oreTitanium;ingot;0x3a4e70",
                 //Applied Energistics 2
                 "oreQuartzCertus;gem",

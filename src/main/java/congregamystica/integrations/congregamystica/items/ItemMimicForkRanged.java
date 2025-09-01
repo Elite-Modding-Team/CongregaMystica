@@ -173,6 +173,7 @@ public class ItemMimicForkRanged extends ItemMimicFork {
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
+        //TODO
         //Don't register aspects so the ranged fork correctly inherits recipe aspects
     }
 }

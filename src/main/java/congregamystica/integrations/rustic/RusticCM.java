@@ -181,7 +181,7 @@ public class RusticCM implements IModModule {
                         player.removePotionEffect(PotionBlurredVision.instance);
                         player.removePotionEffect(PotionSunScorned.instance);
                         player.removePotionEffect(PotionDeathGaze.instance);
-                    } else {
+                    } else if (!world.isRemote) {
                         IPlayerWarp warp = ThaumcraftCapabilities.getWarp(player);
                         int counter = warp.getCounter();
                         warp.setCounter(10000);

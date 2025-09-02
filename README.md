@@ -12,6 +12,8 @@ You can see the full list of default supported cluster materials [here](https://
 ### New Caster's Gauntlets
 Congrega Mystica includes several new Casting Gauntlets, allowing players to use resources from other mods to cast spells. By default all new casting gauntlets only reduce the Vis cost of spells by 50%, but these values can be adjusted in the mod configuration.
 
+If [Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-augmentation) is installed, all gauntlets can be augmented with gauntlet augmentations.
+
 - **Bound Caster's Gauntlet (Blood Magic):** Casting Gauntlet that uses LP to reduce spell Vis cost
 - **Botanist Caster's Gauntlet (Nature's Aura):** Casting Gauntlet that uses Aura to reduce spell Vis cost
 - **Clockwork Caster's Gauntlet (Embers):** Casting Gauntlet that uses Ember to reduce spell Vis cost

@@ -88,3 +88,11 @@ Eldritch Clusters are only added when Thaumic Wonders Unofficial is also install
   - Silverwood Table
   - Viscap
   - Viscous Brew
+
+### Misc
+
+- The One Probe
+  - Brain Jar: Displays the amount of experience stored in the Brain Jar
+  - Vis Battery: Displays the amount of Vis stored in the Vis Battery
+  - Vis Generator: Displays the amount of RF stored in the Vis Generator
+  - Void Siphon: Displays the current Void Seed creation progress of the Void Siphon

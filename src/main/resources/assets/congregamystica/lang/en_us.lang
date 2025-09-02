@@ -166,7 +166,15 @@ congregamystica.research.caster_flux.stage.2=Though wildly inefficient, my studi
 
 # -- DRILL HEAD THAUMIUM
 congregamystica.research.drill_head_thaumium.title=Thaumium Drill Head
-congregamystica.research.drill_head_thaumium.stage.1=The Thaumium Drill Head digs in a 3x3x1 and is weaker than steel, but makes up for it with increased mining speed.
+congregamystica.research.drill_head_thaumium.stage.1=The Thaumium Drill Head digs by 3x3x1 and is weaker than steel, but makes up for it with increased mining speed.
+
+# -- DRILL HEAD TIPPED THAUMIUM
+congregamystica.research.drill_head_tipped_thaumium.title=Diamond-Tipped Thaumium Drill Head
+congregamystica.research.drill_head_tipped_thaumium.stage.1=I can upgrade my Thaumium Drill Head with extra thaumium and diamonds. This upgraded drill head digs by 4x4x1 and has other increased stats.
+
+# -- DRILL HEAD TIPPED VOID
+congregamystica.research.drill_head_tipped_void.title=Diamond-Tipped Void Drill Head
+congregamystica.research.drill_head_tipped_void.stage.1=I can upgrade my Void Drill Head with extra void metal and diamonds. This upgraded drill head digs faster and has other increased stats.
 
 # -- DRILL HEAD VOID
 congregamystica.research.drill_head_void.title=Void Drill Head

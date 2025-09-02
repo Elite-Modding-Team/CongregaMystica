@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "key": "CM_DRILL_HEAD_TIPPED_VOID",
+      "name": "congregamystica.research.drill_head_tipped_void.title",
+      "icons": ["congregamystica:drill_head_tipped_void"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_DRILL_HEAD_VOID"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [3, 5],
+      "stages": [
+        {
+          "text": "congregamystica.research.drill_head_tipped_void.stage.1",
+          "recipes": [
+            "congregamystica:drill_head_tipped_void"
+          ]
+        }
+      ]
+    }
+  ]
+}

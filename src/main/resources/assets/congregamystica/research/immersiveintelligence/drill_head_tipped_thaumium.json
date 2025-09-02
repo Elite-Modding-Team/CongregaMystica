@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "key": "CM_DRILL_HEAD_TIPPED_THAUMIUM",
+      "name": "congregamystica.research.drill_head_tipped_thaumium.title",
+      "icons": ["congregamystica:drill_head_tipped_thaumium"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_DRILL_HEAD_THAUMIUM"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [4, 4],
+      "stages": [
+        {
+          "text": "congregamystica.research.drill_head_tipped_thaumium.stage.1",
+          "recipes": [
+            "congregamystica:drill_head_tipped_thaumium"
+          ]
+        }
+      ]
+    }
+  ]
+}

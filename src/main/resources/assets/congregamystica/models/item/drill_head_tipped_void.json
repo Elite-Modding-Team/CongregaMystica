@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "congregamystica:items/immersiveengineering/drill_head_tipped_void"
+  }
+}

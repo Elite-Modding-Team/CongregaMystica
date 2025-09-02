@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "result": {
+    "item": "congregamystica:drill_head_tipped_thaumium"
+  },
+  "pattern": [
+    "BP ",
+    "BHD",
+    "BP "
+  ],
+  "key": {
+    "D": {
+      "type": "forge:ore_dict",
+      "ore": "blockDiamond"
+    },
+    "B": {
+      "type": "forge:ore_dict",
+      "ore": "blockThaumium"
+    },
+    "P": {
+      "type": "forge:ore_dict",
+      "ore": "plateThaumium"
+    },
+    "H": {
+      "item": "congregamystica:drill_head_thaumium"
+    }
+  },
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "congregamystica:drill_head_tipped_thaumium"
+    }
+  ]
+}

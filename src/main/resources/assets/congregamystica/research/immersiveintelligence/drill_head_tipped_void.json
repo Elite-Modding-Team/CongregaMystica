@@ -5,7 +5,7 @@
       "name": "congregamystica.research.drill_head_tipped_void.title",
       "icons": ["congregamystica:drill_head_tipped_void"],
       "category": "CONGREGA_MYSTICA",
-      "parents": ["CM_DRILL_HEAD_VOID"],
+      "parents": ["CM_DRILL_HEAD_VOID", "CM_DRILL_HEAD_TIPPED_THAUMIUM"],
       "siblings": [],
       "meta": ["ROUND", "HIDDEN"],
       "location": [3, 5],

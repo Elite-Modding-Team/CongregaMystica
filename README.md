@@ -3,13 +3,11 @@ The Thaumcraft 6 integration addon.
 
 ## Notable Features
 ### Dynamic Native Cluster
-Congrega Mystica features fully dynamic configuration-based Native Cluster creation. Newly created clusters will automatically be registered with metal purification Crucible recipes, Infernal Furnace smelting bonuses, in-world harvest yields with Refining infusion enchant.
-
-New cluster types are fully dynamic and can be added or removed very easily by editing the Congrega Mystica config.
+Congrega Mystica features fully dynamic configuration-based Native Cluster creation. New cluster types are fully dynamic and can be added or removed very easily by editing the Congrega Mystica config. Newly created clusters will automatically be registered with metal purification Crucible recipes, Infernal Furnace smelting bonuses, in-world harvest yields with Refining infusion enchant. 
 
 If [Thaumic Wonders Unofficial](https://www.curseforge.com/minecraft/mc-mods/thaumic-wonders-unofficial) is installed, new Eldritch Cluster variants and their associated recipes will also be generated.
 
-You can see the full list of supported cluster materials [here](https://github.com/Elite-Modding-Team/CongregaMystica/blob/main/FEATURES.MD)
+You can see the full list of default supported cluster materials [here](https://github.com/Elite-Modding-Team/CongregaMystica/blob/main/FEATURES.MD)
 
 ### New Caster's Gauntlets
 Congrega Mystica includes several new Casting Gauntlets, allowing players to use resources from other mods to cast spells. By default all new casting gauntlets only reduce the Vis cost of spells by 50%, but these values can be adjusted in the mod configuration.

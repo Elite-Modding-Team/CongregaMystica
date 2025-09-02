@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "result": {
-    "item": "congregamystica:drill_head_tipped_thaumium"
+    "item": "congregamystica:drill_head_tipped_void"
   },
   "pattern": [
     "BP ",

@@ -23,6 +23,8 @@ public class ConfigHandlerCM {
     public static BotaniaCategory botania = new BotaniaCategory();
     @Config.Name("Immersive Engineering")
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
+    @Config.Name("Immersive Intelligence")
+    public static ImmersiveIntelligenceCategory immersive_intelligence = new ImmersiveIntelligenceCategory();
     @Config.Name("Rustic")
     public static RusticCategory rustic = new RusticCategory();
     @Config.Name("The One Probe")
@@ -259,6 +261,17 @@ public class ConfigHandlerCM {
             @Config.Comment("The maximum number of refining upgrades that can be stacked in a drill at once. Each upgrade increases the chance of a native cluster drop by 10%.")
             public int maxUpgrades = 4;
         }
+    }
+
+    public static class ImmersiveIntelligenceCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Diamond Tipped Thaumium Drill Head")
+        public DrillHeadCategory tippedThaumiumHead = new DrillHeadCategory(4, 3, 12, 7, 14000);
+
+        @Config.RequiresMcRestart
+        @Config.Name("Diamond Tipped Void Metal Drill Head")
+        public DrillHeadCategory tippedVoidHead = new DrillHeadCategory(5, 3, 10, 8, 12000);
+
     }
 
     public static class RusticCategory {

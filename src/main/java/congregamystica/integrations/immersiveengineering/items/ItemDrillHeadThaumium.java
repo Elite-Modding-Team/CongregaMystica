@@ -18,7 +18,11 @@ public class ItemDrillHeadThaumium extends AbstractDrillHead {
             CongregaMystica.MOD_ID + ":models/immersiveengineering/drill_thaumium");
 
     public ItemDrillHeadThaumium() {
-        super("drill_head_thaumium", THAUMIUM_HEAD_STATS);
+        this("drill_head_thaumium", THAUMIUM_HEAD_STATS);
+    }
+
+    protected ItemDrillHeadThaumium(String unlocName, DrillStats drillStats) {
+        super(unlocName, drillStats);
     }
 
     @Override

@@ -28,7 +28,11 @@ public class ItemDrillHeadVoid extends AbstractDrillHead {
             CongregaMystica.MOD_ID + ":models/immersiveengineering/drill_void");
 
     public ItemDrillHeadVoid() {
-        super("drill_head_void", VOID_HEAD_STATS);
+        this("drill_head_void", VOID_HEAD_STATS);
+    }
+
+    protected ItemDrillHeadVoid(String unlocName, DrillStats drillStats) {
+        super(unlocName, drillStats);
     }
 
     @Override

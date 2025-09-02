@@ -8,6 +8,7 @@ import congregamystica.integrations.congregamystica.CongregaMysticaCM;
 import congregamystica.integrations.embers.EmbersCM;
 import congregamystica.integrations.harkenscythe.HarkenScytheCM;
 import congregamystica.integrations.immersiveengineering.ImmersiveEngineeringCM;
+import congregamystica.integrations.immersiveintelligence.ImmersiveIntelligenceCM;
 import congregamystica.integrations.naturesaura.NaturesAuraCM;
 import congregamystica.integrations.rustic.RusticCM;
 import congregamystica.integrations.thaumicwonders.ThaumicWondersCM;
@@ -41,6 +42,9 @@ public class InitIntegrations {
         }
         if(ModIds.immersive_engineering.isLoaded) {
             MOD_MODULES.add(new ImmersiveEngineeringCM());
+        }
+        if(ModIds.immersive_intelligence.isLoaded) {
+            MOD_MODULES.add(new ImmersiveIntelligenceCM());
         }
         if(ModIds.natures_aura.isLoaded) {
             MOD_MODULES.add(new NaturesAuraCM());

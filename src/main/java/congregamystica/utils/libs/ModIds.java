@@ -14,6 +14,7 @@ public enum ModIds {
     harken_scythe(ConstIds.harken_scythe),
     harvestcraft(ConstIds.harvestcraft),
     immersive_engineering(ConstIds.immersive_engineering),
+    immersive_intelligence(ConstIds.immersive_intelligence),
     natures_aura(ConstIds.natures_aura),
     rustic(ConstIds.rustic),
     thaumcraft_fix(ConstIds.thaumcraft_fix),
@@ -56,6 +57,7 @@ public enum ModIds {
         public static final String harken_scythe = "harkenscythe";
         public static final String harvestcraft = "harvestcraft";
         public static final String immersive_engineering = "immersiveengineering";
+        public static final String immersive_intelligence = "immersiveintelligence";
         public static final String natures_aura = "naturesaura";
         public static final String rustic = "rustic";
         public static final String thaumcraft = "thaumcraft";

@@ -36,7 +36,7 @@ public class CommonProxy {
     private void registerResearch() {
     	ResearchCategories.registerCategory(
                 "CONGREGA_MYSTICA", "FIRSTSTEPS", new AspectList(),
-    			new ResourceLocation(CongregaMystica.MOD_ID, "textures/items/cluster_amber.png"),
+    			new ResourceLocation(CongregaMystica.MOD_ID, "textures/research/r_congrega_mystica.png"),
     			new ResourceLocation(CongregaMystica.MOD_ID, "textures/gui/research_background.jpg"),
                 new ResourceLocation(Thaumcraft.MODID, "textures/gui/gui_research_back_over.png"));
         ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID, "research/misc"));

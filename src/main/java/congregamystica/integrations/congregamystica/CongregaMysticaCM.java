@@ -2,7 +2,6 @@ package congregamystica.integrations.congregamystica;
 
 import congregamystica.api.IModModule;
 import congregamystica.config.ConfigHandlerCM;
-import congregamystica.integrations.congregamystica.additions.IntegrationsCM;
 import congregamystica.integrations.congregamystica.golems.GolemMaterialSteel;
 import congregamystica.integrations.congregamystica.items.*;
 import congregamystica.integrations.congregamystica.util.ClusterData;
@@ -24,7 +23,6 @@ public class CongregaMysticaCM implements IModModule {
     @Override
     public void preInit() {
         RegistrarCM.addAdditionToRegister(new GolemMaterialSteel());
-        RegistrarCM.addAdditionToRegister(new IntegrationsCM());
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         RegistrarCM.addAdditionToRegister(new ItemMimicForkRanged());
         RegistrarCM.addAdditionToRegister(new ItemFluxCaster());

@@ -5,6 +5,8 @@ import congregamystica.api.util.EnumSortType;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.utils.helpers.AspectHelperCM;
+import congregamystica.utils.helpers.PechHelper;
+import congregamystica.utils.misc.EnumPechType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.text.translation.I18n;
@@ -73,6 +75,10 @@ public class ItemNativeCluster extends AbstractItemAddition {
                         new OreIngredient(this.getAssociatedOre()),
                         new AspectList().add(Aspect.METAL, 5).add(Aspect.ORDER, 5)
                 ));
+            }
+
+            if(ConfigHandlerCM.clusters.registerPechTrades) {
+                PechHelper.addPechTrade(EnumPechType.MINER, 1, this.getDefaultInstance());
             }
 
             if (!outputIngot.isEmpty()) {

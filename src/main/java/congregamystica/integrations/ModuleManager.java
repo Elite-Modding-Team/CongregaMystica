@@ -18,7 +18,7 @@ import congregamystica.utils.libs.ModIds;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InitIntegrations {
+public class ModuleManager {
     private static List<IModModule> MOD_MODULES;
 
     private static void initModModules() {

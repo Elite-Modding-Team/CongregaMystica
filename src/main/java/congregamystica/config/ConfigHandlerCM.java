@@ -1,10 +1,15 @@
 package congregamystica.config;
 
+import congregamystica.CongregaMystica;
 import congregamystica.config.generics.CasterConfigCategory.FluxCasterCategory;
 import congregamystica.config.generics.CasterConfigCategory.GenericCasterCategory;
 import congregamystica.config.generics.DrillHeadCategory;
 import congregamystica.config.generics.GolemMaterialCategory;
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 //TODO: Remove comment before release
 // @Mod(modid = CongregaMystica.MOD_ID)
@@ -322,5 +327,15 @@ public class ConfigHandlerCM {
         @Config.Name("Void Siphon")
         @Config.Comment("Enables Void Siphon The One Probe progress info.")
         public boolean voidSiphon = true;
+    }
+
+    @Mod.EventBusSubscriber
+    public static class ConfigChangeListener {
+        @SubscribeEvent
+        public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+            if(event.getModID().equals(CongregaMystica.MOD_ID)) {
+                ConfigManager.sync(CongregaMystica.MOD_ID, Config.Type.INSTANCE);
+            }
+        }
     }
 }

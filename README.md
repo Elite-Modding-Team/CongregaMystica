@@ -65,8 +65,8 @@ If [Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-a
   - **Void Siphon:** Displays the current Void Seed creation progress of the Void Siphon
 
 ## **Superseded Addons**
-These addons are already merged in and should not be installed with Congrega Mystica.
-
-- **Engineered Golems**
-- **Expanded Arcanum**
-- **Rustic Thaumaturgy**
+- **[Engineered Golems](https://www.curseforge.com/minecraft/mc-mods/engineered-golems)**
+- **[Expanded Arcanum](https://www.curseforge.com/minecraft/mc-mods/expanded-arcanum)**
+- **[ReForbidden Magic](https://www.curseforge.com/minecraft/mc-mods/reforbidden-magic)** (partial)
+- **[Rustic Thaumaturgy](https://www.curseforge.com/minecraft/mc-mods/rustic-thaumaturgy)**
+- **[Thaumcraft Integration](https://www.curseforge.com/minecraft/mc-mods/thaumcraft-integration)** (partial)

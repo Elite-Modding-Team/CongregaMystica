@@ -1,6 +1,12 @@
 # Congrega Mystica
 The Thaumcraft 6 integration addon.
 
+Code from this mod is licensed under GNU General Public License v3 (see LICENSE).
+
+API related features from this mod are licensed as MIT (see LICENSE_API).
+
+Assets created for this mod are licensed as All Rights Reserved (see LICENSE_ASSETS).
+
 ## Notable Features
 ### Dynamic Native Cluster
 Congrega Mystica features fully dynamic configuration-based Native Cluster creation. New cluster types are fully dynamic and can be added or removed very easily by editing the Congrega Mystica config. Newly created clusters will automatically be registered with metal purification Crucible recipes, Infernal Furnace smelting bonuses, in-world harvest yields with Refining infusion enchant. 

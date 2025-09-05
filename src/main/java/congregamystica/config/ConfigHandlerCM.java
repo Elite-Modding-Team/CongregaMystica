@@ -11,8 +11,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-//TODO: Remove comment before release
-// @Mod(modid = CongregaMystica.MOD_ID)
+@Mod(modid = CongregaMystica.MOD_ID)
 public class ConfigHandlerCM {
     @Config.Name("Native Clusters")
     public static ClustersCategory clusters = new ClustersCategory();

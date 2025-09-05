@@ -19,7 +19,6 @@ public class AdditionBrassFeatures implements IAddition, IProxy {
         RegistrarCM.addAdditionToRegister(new BlockCandleCM("candle_brass"));
         //Candelabra - Rustic 1.2.0+
         if(RusticCM.isNewRustic) {
-            //TODO: See if this causes crashes with earlier versions of rustic
             RegistrarCM.addAdditionToRegister(new BlockCandleDoubleCM("candle_double_brass"));
         }
         RegistrarCM.addAdditionToRegister(new BlockCandleLeverCM("candle_lever_brass"));

@@ -28,6 +28,7 @@ If [Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-a
 
 ### New Golem Materials
 - **Biomass Golem (Harken Scythe):** Golem Material that rapidly regenerates health and gains a shield over time
+- **Ironwood Golem (Rustic):** Golem Material that is slightly stronger than normal wood
 - **Livingmetal Golem (Harken Scythe):** Golem Material that fully repairs the golem after killing an enemy
 - **Steel Golem:** High HP and high armor golem material
 - **Treated Wood Golem (Immersive Engineering):** Golem Material that is slightly stronger than normal wood
@@ -62,3 +63,10 @@ If [Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-a
   - **Vis Battery:** Displays the amount of Vis stored in the Vis Battery
   - **Vis Generator:** Displays the amount of RF stored in the Vis Generator
   - **Void Siphon:** Displays the current Void Seed creation progress of the Void Siphon
+
+## **Superseded Addons**
+These addons are already merged in and should not be installed with Congrega Mystica.
+
+- **Engineered Golems**
+- **Expanded Arcanum**
+- **Rustic Thaumaturgy**

@@ -67,6 +67,4 @@ If [Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-a
 ## **Superseded Addons**
 - **[Engineered Golems](https://www.curseforge.com/minecraft/mc-mods/engineered-golems)**
 - **[Expanded Arcanum](https://www.curseforge.com/minecraft/mc-mods/expanded-arcanum)**
-- **[ReForbidden Magic](https://www.curseforge.com/minecraft/mc-mods/reforbidden-magic)** (partial)
 - **[Rustic Thaumaturgy](https://www.curseforge.com/minecraft/mc-mods/rustic-thaumaturgy)**
-- **[Thaumcraft Integration](https://www.curseforge.com/minecraft/mc-mods/thaumcraft-integration)** (partial)

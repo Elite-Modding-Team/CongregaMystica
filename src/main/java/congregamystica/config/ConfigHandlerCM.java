@@ -11,7 +11,7 @@ import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = CongregaMystica.MOD_ID)
+@Config(modid = CongregaMystica.MOD_ID)
 public class ConfigHandlerCM {
     @Config.Name("Native Clusters")
     public static ClustersCategory clusters = new ClustersCategory();
@@ -328,7 +328,7 @@ public class ConfigHandlerCM {
         public boolean voidSiphon = true;
     }
 
-    @Mod.EventBusSubscriber
+    @Mod.EventBusSubscriber(modid = CongregaMystica.MOD_ID)
     public static class ConfigChangeListener {
         @SubscribeEvent
         public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {

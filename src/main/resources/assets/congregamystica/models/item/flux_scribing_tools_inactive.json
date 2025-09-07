@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "congregamystica:items/flux_scribing_tools_inactive"
+  }
+}

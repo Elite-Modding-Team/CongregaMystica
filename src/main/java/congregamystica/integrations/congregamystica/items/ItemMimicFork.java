@@ -234,7 +234,7 @@ public class ItemMimicFork extends AbstractItemAddition {
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
         ThaumcraftApi.addFakeCraftingRecipe(new ResourceLocation(CongregaMystica.MOD_ID, "mimic_fork_fake"), new ShapedOreRecipe(
                 new ResourceLocation(""),
-                this.getDefaultInstance(),
+                new ItemStack(this),
                 "I I",
                 "IMI",
                 " S ",
@@ -250,7 +250,7 @@ public class ItemMimicFork extends AbstractItemAddition {
                 .add(Aspect.SENSES, 10)
                 .add(Aspect.AIR, 10)
                 .add(Aspect.TOOL, 8);
-        aspectMap.put(this.getDefaultInstance(), aspectList);
+        aspectMap.put(new ItemStack(this), aspectList);
     }
 
     @Override

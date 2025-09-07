@@ -158,7 +158,7 @@ public class ItemMimicForkRanged extends ItemMimicFork {
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
         ThaumcraftApi.addInfusionCraftingRecipe(this.getRegistryName(), new InfusionRecipe(
                 "CM_MIMIC_FORK_RANGED",
-                this.getDefaultInstance(),
+                new ItemStack(this),
                 3,
                 new AspectList().add(Aspect.AIR, 50).add(Aspect.SENSES, 50).add(Aspect.ELDRITCH, 20),
                 Ingredient.fromItem(ModItemsCM.MIMIC_FORK),

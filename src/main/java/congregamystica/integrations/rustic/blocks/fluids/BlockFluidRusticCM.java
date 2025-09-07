@@ -9,6 +9,8 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import rustic.common.blocks.fluids.BlockFluidRustic;
 
@@ -30,6 +32,7 @@ public class BlockFluidRusticCM extends BlockFluidRustic implements IBlockAdditi
 
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void registerModel(ModelRegistryEvent event) {
         Item item = Item.getItemFromBlock(this);

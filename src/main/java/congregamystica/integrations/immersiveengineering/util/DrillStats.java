@@ -1,6 +1,8 @@
 package congregamystica.integrations.immersiveengineering.util;
 
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class DrillStats {
     public final String repairMaterial;
@@ -11,6 +13,7 @@ public class DrillStats {
     public final int drillAttack;
     public final int maxDamage;
     public final String textureLoc;
+    @SideOnly(Side.CLIENT)
     public TextureAtlasSprite sprite;
 
     public DrillStats(String repairMaterial, int drillSize, int drillDepth, int drillLevel, int drillSpeed, int drillAttack, int maxDamage, String textureLoc) {

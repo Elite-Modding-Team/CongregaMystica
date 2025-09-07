@@ -56,7 +56,7 @@ public class ItemEldritchCluster extends ItemNativeCluster {
             if (!outputIngot.isEmpty()) {
                 //Cluster smelting
                 outputIngot.setCount(3);
-                GameRegistry.addSmelting(this.getDefaultInstance(), outputIngot, 1.0f);
+                GameRegistry.addSmelting(new ItemStack(this), outputIngot, 1.0f);
 
                 //Infernal Smelting Bonus
                 if (!outputNugget.isEmpty()) {
@@ -78,7 +78,7 @@ public class ItemEldritchCluster extends ItemNativeCluster {
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        aspectMap.put(this.getDefaultInstance(), AspectHelperCM.getEldritchClusterAspects(this.clusterData));
+        aspectMap.put(new ItemStack(this), AspectHelperCM.getEldritchClusterAspects(this.clusterData));
     }
 
     @Override

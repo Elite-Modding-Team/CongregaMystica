@@ -19,6 +19,8 @@ import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
@@ -72,6 +74,7 @@ public class ItemFluxCaster extends AbstractItemCasterCM {
         stack.setTagInfo("energy", new NBTTagInt(energy));
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, @NotNull List<String> tooltip, @NotNull ITooltipFlag flagIn) {
         tooltip.add(I18n.format(StringHelper.getTranslationKey("rf", "tooltip", "info"), this.getEnergyStored(stack), this.getMaxEnergyStored(stack)));

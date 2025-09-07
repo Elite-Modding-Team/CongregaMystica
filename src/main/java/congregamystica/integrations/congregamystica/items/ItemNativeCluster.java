@@ -78,13 +78,13 @@ public class ItemNativeCluster extends AbstractItemAddition {
             }
 
             if(ConfigHandlerCM.clusters.registerPechTrades) {
-                PechHelper.addPechTrade(EnumPechType.MINER, 1, this.getDefaultInstance());
+                PechHelper.addPechTrade(EnumPechType.MINER, 1, new ItemStack(this));
             }
 
             if (!outputIngot.isEmpty()) {
                 //Cluster smelting
                 outputIngot.setCount(2);
-                GameRegistry.addSmelting(this.getDefaultInstance(), outputIngot, 1.0f);
+                GameRegistry.addSmelting(new ItemStack(this), outputIngot, 1.0f);
 
                 //Mining Bonus - This may need to be moved to IProxy postInit()
                 if(isGemOutput && ConfigHandlerCM.clusters.specialGemHarvest) {
@@ -111,7 +111,7 @@ public class ItemNativeCluster extends AbstractItemAddition {
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        aspectMap.put(this.getDefaultInstance(), AspectHelperCM.getNativeClusterAspects(this.clusterData));
+        aspectMap.put(new ItemStack(this), AspectHelperCM.getNativeClusterAspects(this.clusterData));
     }
 
     @Override

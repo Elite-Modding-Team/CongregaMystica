@@ -65,6 +65,7 @@ public abstract class AbstractDrillHead extends AbstractItemAddition implements 
         return (double) this.getHeadDamage(stack) / (double) this.getMaximumHeadDamage(stack);
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack head, @Nullable World worldIn, List<String> tooltip, @NotNull ITooltipFlag flagIn) {
         tooltip.add(I18n.format(Lib.DESC_FLAVOUR + "drillhead.size", this.drillStats.drillSize, this.drillStats.drillDepth));
@@ -197,6 +198,7 @@ public abstract class AbstractDrillHead extends AbstractItemAddition implements 
         ItemNBTHelper.setInt(itemStack, HEAD_DAMAGE, MathHelper.clamp(this.getHeadDamage(itemStack) + i, 0, this.getMaximumHeadDamage(itemStack)));
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public TextureAtlasSprite getDrillTexture(ItemStack itemStack, ItemStack itemStack1) {
         return this.drillStats.sprite;

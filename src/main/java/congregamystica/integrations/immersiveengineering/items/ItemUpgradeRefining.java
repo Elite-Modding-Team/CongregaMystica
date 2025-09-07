@@ -22,6 +22,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -51,6 +53,7 @@ public class ItemUpgradeRefining extends AbstractItemAddition implements IUpgrad
         return ConfigHandlerCM.immersive_engineering.refiningUpgrade.maxUpgrades;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(@NotNull ItemStack stack, @Nullable World worldIn, List<String> tooltip, @NotNull ITooltipFlag flagIn) {
         String[] flavorText = ImmersiveEngineering.proxy.splitStringOnWidth(

@@ -1,6 +1,7 @@
 package congregamystica.network.packets;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -55,10 +56,10 @@ public class PacketParticleToClient implements IMessage {
     public static class Handler implements IMessageHandler<PacketParticleToClient, IMessage> {
         @Override
         public IMessage onMessage(PacketParticleToClient message, MessageContext ctx) {
-            FMLClientHandler.instance().getClient().effectRenderer.spawnEffectParticle(
-                    message.particle.getParticleID(),
+            Minecraft.getMinecraft().addScheduledTask(() -> Minecraft.getMinecraft().player.world.spawnParticle(
+                    message.particle,
                     message.xPos, message.yPos, message.zPos,
-                    message.xSpeed, message.ySpeed, message.zSpeed);
+                    message.xSpeed, message.ySpeed, message.zSpeed));
             return null;
         }
     }

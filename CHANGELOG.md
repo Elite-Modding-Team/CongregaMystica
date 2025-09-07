@@ -1,4 +1,10 @@
 # Changelog Congrega Mystica
+## 1.0.3
+### Changed
+- Changed particle packet to improve task handling
+
+---
+
 ## 1.0.2
 ### Fixed
 - Fixed no class found server crash

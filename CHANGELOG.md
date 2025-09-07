@@ -2,6 +2,7 @@
 ## 1.0.2
 ### Fixed
 - Fixed no class found server crash
+- Fixed Mimic Fork particle position in negative x and z coordinates
 
 ---
 

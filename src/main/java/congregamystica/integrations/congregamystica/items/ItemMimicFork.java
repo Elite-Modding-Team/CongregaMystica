@@ -113,9 +113,9 @@ public class ItemMimicFork extends AbstractItemAddition {
             world.playSound(null, pos, getInstrumentSound(event.getInstrument()), SoundCategory.PLAYERS, 3.0F, pitch);
             if(world.isRemote) {
                 world.spawnParticle(EnumParticleTypes.NOTE,
-                        pos.getX() + 0.5D,
+                        pos.getX() + (0.5D * (pos.getX() < 0 ? -1 : 1)),
                         pos.getY() + 0.2D,
-                        pos.getZ() + 0.5D,
+                        pos.getZ() + (0.5D * (pos.getZ() < 0 ? -1 : 1)),
                         (double) note / 24.0D,
                         0.0D,
                         0.0D);

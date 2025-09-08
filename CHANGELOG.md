@@ -2,6 +2,7 @@
 ## 1.0.3
 ### Changed
 - Changed particle packet to improve task handling
+- Removed Thaumcraft Fix requirement from Whisperweed
 
 ---
 

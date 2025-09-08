@@ -3,8 +3,8 @@ itemGroup.CongregaMysticaTab=Congrega Mystica
 # Blocks
 tile.botania:flower.taintthistle.name=Taintthistle
 tile.botania:flower.taintthistle.reference=Mr. Clean
-tile.botania:flower.whisperweed.name=Whisperweed
-tile.botania:flower.whisperweed.reference=Indirect Cannibalism
+tile.botania:flower.weedwhisperer.name=Whisperweed
+tile.botania:flower.weedwhisperer.reference=Indirect Cannibalism
 tile.congregamystica:candle_brass.name=Brass Candle
 tile.congregamystica:candle_double_brass.name=Brass Candelabra
 tile.congregamystica:candle_lever_brass.name=Brass Candle Lever
@@ -233,8 +233,8 @@ congregamystica.research.upgrade_refining.stage.1=Infusion enchantments have pro
 congregamystica.research.upgrade_refining.stage.2=I have been able to create a set of infused augers capable of refining ores even as it tears them apart.<BR>By adding these Native Cluster Extraction Modules to my Mining Drill, it is able to act exactly like a pickaxe with Refining.<BR>Though less efficient than pickaxes, multiple upgrades can be stacked, with each increasing the chance to harvest native clusters by a small amount.
 
 # -- WHISPERWEED
-congregamystica.research.whisperweed.title=Whisperweed
-congregamystica.research.whisperweed.stage.1=This creepy-looking flower is the result of Botany and dark arts. It has an appetite for zombie brains, and retains a small amount of knowlege from each brain it consumes.<BR>Once it has had its fill, I can interact with it to gain a small amount of knowledge.<BR>For further information, I can consult the Lexica Botanica.
+congregamystica.research.weedwhisperer.title=Whisperweed
+congregamystica.research.weedwhisperer.stage.1=This creepy-looking flower is the result of Botany and dark arts. It has an appetite for zombie brains, and retains a small amount of knowlege from each brain it consumes.<BR>Once it has had its fill, I can interact with it to gain a small amount of knowledge.<BR>For further information, I can consult the Lexica Botanica.
 
 
 # Research Misc
@@ -252,8 +252,8 @@ botania.page.taintthistle0=A friend to the less scrupulous thaumaturge, the &1Ta
 botania.page.taintthistle1=&oEldritch ShamWoW&r
 
 # -- WHISPERWEED
-botania.entry.whisperweed=Whisperweed
-botania.tagline.whisperweed=Knowledge from brains
-botania.page.whisperweed0=The &1Whisperweed&0 is a unique flower with a very particular appetite.<br>It consumes any nearby &1Zombie Brains&0 stores a small amount of the previous owner's knowledge within the flower. If there is insufficient &4Mana&0, the brain will be consumed, but no knowledge will be gained.<br>Once enough knowledge has been stored, fledgling
-botania.page.whisperweed1=thaumaturges can interact with the flower to gain some of that knowledge. Be warned, as sometimes this knowledge will cause the player to gain a small amount of &1Warp&0.<br>You can see the current amount of knowledge stored within the flower by hovering over the &1Whisperweed&0 while holding a &1Wand of the Forest&0.
-botania.page.whisperweed2=&oFloral Wan Shi Tong&r
+botania.entry.weedwhisperer=Whisperweed
+botania.tagline.weedwhisperer=Knowledge from brains
+botania.page.weedwhisperer0=The &1Whisperweed&0 is a unique flower with a very particular appetite.<br>It consumes any nearby &1Zombie Brains&0 stores a small amount of the previous owner's knowledge within the flower. If there is insufficient &4Mana&0, the brain will be consumed, but no knowledge will be gained.<br>Once enough knowledge has been stored, fledgling
+botania.page.weedwhisperer1=thaumaturges can interact with the flower to gain some of that knowledge. Be warned, as sometimes this knowledge will cause the player to gain a small amount of &1Warp&0.<br>You can see the current amount of knowledge stored within the flower by hovering over the &1Whisperweed&0 while holding a &1Wand of the Forest&0.
+botania.page.weedwhisperer2=&oFloral Wan Shi Tong&r

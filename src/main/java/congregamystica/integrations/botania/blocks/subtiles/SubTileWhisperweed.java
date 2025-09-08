@@ -28,6 +28,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.fml.common.Optional;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -40,6 +41,7 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.capabilities.IPlayerKnowledge;
 import thaumcraft.api.capabilities.IPlayerWarp;
 import thaumcraft.api.items.ItemsTC;
+import thaumcraft.api.research.ResearchCategories;
 import thaumcraft.api.research.ResearchCategory;
 import thaumcraft.common.lib.SoundsTC;
 import thaumcraft.common.lib.network.PacketHandler;
@@ -62,8 +64,10 @@ import vazkii.botania.common.lexicon.page.PagePetalRecipe;
 import vazkii.botania.common.lexicon.page.PageText;
 
 import java.awt.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class SubTileWhisperweed extends SubTileFunctional implements IAddition, IProxy {
     private static final int MANA_COST = ConfigHandlerCM.botania.whisperweed.manaCost;
@@ -157,23 +161,25 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
             return false;
         }
         if(!(player instanceof FakePlayer) && this.progress >= PROG_REQ) {
-            ResearchCategory[] categories = ResearchCategoryTheorycraftFilter.getAllowedTheorycraftCategories().toArray(new ResearchCategory[0]);
             int theoryProgress = IPlayerKnowledge.EnumKnowledgeType.THEORY.getProgression();
 
             //10% chance to add between 1 and 3 warp
             if(!world.isRemote && world.rand.nextInt(10) == 0) {
                 ThaumcraftApi.internalMethods.addWarpToPlayer(player, 1 + player.world.rand.nextInt(3), IPlayerWarp.EnumWarpType.TEMPORARY);
                 for(int i = 0; i < 40; i++) {
-                    PacketHandler.INSTANCE.sendToAllAround(new PacketFXPollute(pos, 2f), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 12.0));
+                    PacketHandler.INSTANCE.sendToAllAround(new PacketFXPollute(pos, 1.0f), new NetworkRegistry.TargetPoint(world.provider.getDimension(), pos.getX(), pos.getY(), pos.getZ(), 12.0));
                 }
             }
             world.playSound(player, pos, SoundsTC.whispers, SoundCategory.BLOCKS, 0.6f, 0.8f);
 
-            ThaumcraftApi.internalMethods.addKnowledge(
-                    player,
-                    IPlayerKnowledge.EnumKnowledgeType.THEORY,
-                    categories[player.getRNG().nextInt(categories.length)],
-                    MathHelper.getInt(player.getRNG(), theoryProgress / 3, theoryProgress / 2));
+            ResearchCategory[] categories = this.getResearchCategories();
+            if(categories.length > 0) {
+                ThaumcraftApi.internalMethods.addKnowledge(
+                        player,
+                        IPlayerKnowledge.EnumKnowledgeType.THEORY,
+                        categories[player.getRNG().nextInt(categories.length)],
+                        MathHelper.getInt(player.getRNG(), theoryProgress / 3, theoryProgress / 2));
+            }
 
             this.progress -= PROG_REQ;
             this.supertile.getWorld().updateComparatorOutputLevel(this.getPos(), this.supertile.getBlockType());
@@ -206,6 +212,22 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
     @Override
     public RadiusDescriptor getRadius() {
         return new RadiusDescriptor.Circle(this.toBlockPos(), RANGE);
+    }
+
+    private ResearchCategory[] getResearchCategories() {
+        if(ModIds.thaumcraft_fix.isLoaded) {
+            return ResearchCategoryTheorycraftFilter.getAllowedTheorycraftCategories().toArray(new ResearchCategory[0]);
+        } else {
+            Set<ResearchCategory> categories = new HashSet<>();
+            categories.add(ResearchCategories.getResearchCategory("ALCHEMY"));
+            categories.add(ResearchCategories.getResearchCategory("ARTIFICE"));
+            categories.add(ResearchCategories.getResearchCategory("AUROMANCY"));
+            categories.add(ResearchCategories.getResearchCategory("BASICS"));
+            categories.add(ResearchCategories.getResearchCategory("GOLEMANCY"));
+            categories.add(ResearchCategories.getResearchCategory("INFUSION"));
+            categories.add(ResearchCategories.getResearchCategory("ELDRITCH"));
+            return categories.toArray(new ResearchCategory[0]);
+        }
     }
 
     public boolean isEntityItemValid(EntityItem entityItem, int slowdown) {
@@ -320,6 +342,6 @@ public class SubTileWhisperweed extends SubTileFunctional implements IAddition, 
 
     @Override
     public boolean isEnabled() {
-        return ModIds.thaumcraft_fix.isLoaded && ConfigHandlerCM.botania.whisperweed.enable;
+        return ConfigHandlerCM.botania.whisperweed.enable;
     }
 }

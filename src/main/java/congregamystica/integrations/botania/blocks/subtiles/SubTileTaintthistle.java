@@ -5,6 +5,7 @@ import congregamystica.api.IAddition;
 import congregamystica.api.IProxy;
 import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.botania.BotaniaCM;
+import congregamystica.integrations.botania.lexicon.LexiconEntryCM;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.ItemStack;
@@ -37,7 +38,6 @@ import vazkii.botania.common.block.ModBlocks;
 import vazkii.botania.common.crafting.ModPetalRecipes;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
-import vazkii.botania.common.lexicon.BasicLexiconEntry;
 import vazkii.botania.common.lexicon.page.PagePetalRecipe;
 import vazkii.botania.common.lexicon.page.PageText;
 
@@ -139,7 +139,7 @@ public class SubTileTaintthistle extends SubTileFunctional implements IAddition,
 
     @Override
     public void postInit() {
-        SubTileTaintthistle.TAINTTHISTLE_ENTRY = new BasicLexiconEntry(BotaniaCM.TAINTTHISTLE, BotaniaAPI.categoryFunctionalFlowers);
+        SubTileTaintthistle.TAINTTHISTLE_ENTRY = new LexiconEntryCM(BotaniaCM.TAINTTHISTLE, BotaniaAPI.categoryFunctionalFlowers);
         SubTileTaintthistle.TAINTTHISTLE_ENTRY.setIcon(ItemBlockSpecialFlower.ofType(BotaniaCM.TAINTTHISTLE));
         SubTileTaintthistle.TAINTTHISTLE_ENTRY.setLexiconPages(
                 new PageText("0"),

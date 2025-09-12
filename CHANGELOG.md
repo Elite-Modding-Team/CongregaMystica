@@ -4,6 +4,9 @@
 - Changed particle packet to improve task handling
 - Removed Thaumcraft Fix requirement from Whisperweed
 
+### Fixed
+- Fixed Ironwood Golem requiring olive wood
+
 ---
 
 ## 1.0.2

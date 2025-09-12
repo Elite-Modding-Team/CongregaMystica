@@ -26,7 +26,7 @@ public class GolemMaterialIronwood implements IGolemAddition {
     @Override
     public void registerOreDicts() {
         //Ironwood needs a custom oreDict value registered.
-        OreDictionary.registerOre("plankIronwood", new ItemStack(ModBlocks.LOG, 1, 0));
+        OreDictionary.registerOre("plankIronwood", new ItemStack(ModBlocks.LOG, 1, 1));
     }
 
     @Override

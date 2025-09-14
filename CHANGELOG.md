@@ -1,11 +1,15 @@
 # Changelog Congrega Mystica
 ## 1.0.3
+### Added
+- Added config to generate Eldritch Clusters without requiring Native Clusters
+
 ### Changed
 - Changed particle packet to improve task handling
 - Removed Thaumcraft Fix requirement from Whisperweed
 
 ### Fixed
 - Fixed Ironwood Golem requiring olive wood
+- Fixed several missing configuration comment descriptions
 
 ---
 

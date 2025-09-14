@@ -26,7 +26,7 @@ public class CongregaMysticaCM implements IModModule {
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         RegistrarCM.addAdditionToRegister(new ItemMimicForkRanged());
         RegistrarCM.addAdditionToRegister(new ItemFluxCaster());
-        getClustersFromConfig();
+        getNativeClustersFromConfig();
         ModItemsCM.getNativeClusters().forEach(RegistrarCM::addAdditionToRegister);
     }
     
@@ -39,7 +39,7 @@ public class CongregaMysticaCM implements IModModule {
         PechHelper.addPechTrade(EnumPechType.MAGE, 2, PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.HEALING));
     }
 
-    private void getClustersFromConfig() {
+    private void getNativeClustersFromConfig() {
         for(String configString : ConfigHandlerCM.clusters.additionalClusters) {
             try {
                 Pattern pattern = Pattern.compile("^(ore\\w+);(\\w+);?(0[xX][0-9a-fA-F]{6})?$");

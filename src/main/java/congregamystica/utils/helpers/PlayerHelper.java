@@ -4,6 +4,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.UUID;
 
 public class PlayerHelper {
     public static RayTraceResult rayTrace(EntityPlayer player, float partialTicks) {
@@ -16,4 +21,14 @@ public class PlayerHelper {
         Vec3d reach = height.add(look.x * blockReachDistance, look.y * blockReachDistance, look.z * blockReachDistance);
         return entityLiving.world.rayTraceBlocks(height, reach, false, false, true);
     }
+
+    @Nullable
+    public static EntityPlayer getPlayerFromUUID(UUID uuid) {
+        return FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT ? null : FMLCommonHandler.instance().getMinecraftServerInstance().getPlayerList().getPlayerByUUID(uuid);
+    }
+
+    public static UUID getUUIDFromPlayer(EntityPlayer player) {
+        return player.getUniqueID();
+    }
+
 }

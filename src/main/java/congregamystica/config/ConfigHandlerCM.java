@@ -31,6 +31,8 @@ public class ConfigHandlerCM {
     public static ImmersiveIntelligenceCategory immersive_intelligence = new ImmersiveIntelligenceCategory();
     @Config.Name("Rustic")
     public static RusticCategory rustic = new RusticCategory();
+    @Config.Name("Thaumic Wonders")
+    public static ThaumicWondersCategory thaumic_wonders = new ThaumicWondersCategory();
     @Config.Name("The One Probe")
     public static TheOneProbeCategory the_one_probe = new TheOneProbeCategory();
 
@@ -58,7 +60,7 @@ public class ConfigHandlerCM {
             public boolean enable = true;
 
             @Config.Name("Eldritch Orb Capacity")
-            @Config.Comment("The Eldritch Blood Orb soul network capacity")
+            @Config.Comment("The Eldritch Blood Orb soul network capacity. A capacity of 10,000,000 is equal to the Archmage Blood Orb.")
             public int capacity = 50000000;
 
             @Config.RangeInt(min = 1, max = 6)
@@ -100,7 +102,7 @@ public class ConfigHandlerCM {
         public static class WhisperweedCategory {
             @Config.RequiresMcRestart
             @Config.Name("Enable Whsiperweed")
-            @Config.Comment("")
+            @Config.Comment("Enables the Whisperweed, a mana that converts Zombie Brains and mana into research knowledge granted to the player.")
             public boolean enable = true;
 
             @Config.RequiresMcRestart
@@ -291,19 +293,44 @@ public class ConfigHandlerCM {
 
         @Config.RequiresMcRestart
         @Config.Name("Enable Cinderfire Whiskey")
-        @Config.Comment("")
+        @Config.Comment("Enables Rustic Cinderfire Whiskey, an alcoholic beverage that grants fire resistance and regeneration.")
         public boolean enableCinderfireWhiskey = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Enable Shimmerdew Sprits")
-        @Config.Comment("")
+        @Config.Comment("Enables Rustic Shimmerdew Spirits, an alcoholic beverage that grants Warp Ward.")
         public boolean enableShimmerdewSpirits = true;
 
         @Config.RequiresMcRestart
         @Config.Name("Enable Viscous Brew")
-        @Config.Comment("")
+        @Config.Comment("Enables Visous Brew, an alcoholic beverage that dispells nearby illusions and negates warp effects.")
         public boolean enableViscousBrew = true;
 
+    }
+
+    public static class ThaumicWondersCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Additional Eldritch Cluster Types")
+        @Config.Comment
+                ({
+                        "Additional Eldrich Clusters that will be registered if Thaumic Wonders is installed. Only use this",
+                        "option if another mod is handling Native Clusters (such as JAOPCA) but you still want dynamic Eldritch",
+                        "clusters.",
+                        "Format:",
+                        "  oreblock;outputtype;colorcode",
+                        "  oreblock;outputtype",
+                        "",
+                        "  oreblock - The ore block oredictionary value. This value is case sensitive.",
+                        "  outputtype - The output oredict type (ingotIron = ingot, gemDiamond = gem, et cetera)",
+                        "  colorcode - (optional) The hexidecimal RBG color color code used for dynamic generation.",
+                        "",
+                        "If the color code value is excluded from a cluster, a non-dynamic cluster will be registered, requiring",
+                        "manual creation of a model and texture file.",
+                        "",
+                        "Due to the dynamic nature of these clusters, occasionally the cluster display name will be incorrect.",
+                        "You can override the default name by adding the cluster's translation key to a language file."
+                })
+        public String[] additionalClusters = new String[] {};
     }
 
     public static class TheOneProbeCategory {

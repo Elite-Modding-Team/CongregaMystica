@@ -6,8 +6,10 @@
 ### Changed
 - Changed particle packet to improve task handling
 - Removed Thaumcraft Fix requirement from Whisperweed
+- Botania flower page entries on the Lexica Botanica now have a `[Congrega Mystica]` subtitle
 
 ### Fixed
+- Fixed Botania flowers conflicting with ReForbidden Magic
 - Fixed Ironwood Golem requiring olive wood
 - Fixed several missing configuration comment descriptions
 

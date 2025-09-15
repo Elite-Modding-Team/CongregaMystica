@@ -3,8 +3,8 @@ itemGroup.CongregaMysticaTab=Congrega Mystica
 # Blocks
 tile.botania:flower.taintthistle.name=Taintthistle
 tile.botania:flower.taintthistle.reference=Mr. Clean
-tile.botania:flower.weedwhisperer.name=Whisperweed
-tile.botania:flower.weedwhisperer.reference=Indirect Cannibalism
+tile.botania:flower.whisperweed_cm.name=Whisperweed
+tile.botania:flower.whisperweed_cm.reference=Indirect Cannibalism
 tile.congregamystica:candle_brass.name=Brass Candle
 tile.congregamystica:candle_double_brass.name=Brass Candelabra
 tile.congregamystica:candle_lever_brass.name=Brass Candle Lever
@@ -252,8 +252,8 @@ botania.page.taintthistle0=A friend to the less scrupulous thaumaturge, the &1Ta
 botania.page.taintthistle1=&oEldritch ShamWoW&r
 
 # -- WHISPERWEED
-botania.entry.weedwhisperer=Whisperweed
-botania.tagline.weedwhisperer=Knowledge from brains
-botania.page.weedwhisperer0=The &1Whisperweed&0 is a unique flower with a very particular appetite.<br>It consumes any nearby &1Zombie Brains&0 stores a small amount of the previous owner's knowledge within the flower. If there is insufficient &4Mana&0, the brain will be consumed, but no knowledge will be gained.<br>Once enough knowledge has been stored, fledgling
-botania.page.weedwhisperer1=thaumaturges can interact with the flower to gain some of that knowledge. Be warned, as sometimes this knowledge will cause the player to gain a small amount of &1Warp&0.<br>You can see the current amount of knowledge stored within the flower by hovering over the &1Whisperweed&0 while holding a &1Wand of the Forest&0.
-botania.page.weedwhisperer2=&oFloral Wan Shi Tong&r
+botania.entry.whisperweed_cm=Whisperweed
+botania.tagline.whisperweed_cm=Knowledge from brains
+botania.page.whisperweed_cm0=The &1Whisperweed&0 is a unique flower with a very particular appetite.<br>It consumes any nearby &1Zombie Brains&0 stores a small amount of the previous owner's knowledge within the flower. If there is insufficient &4Mana&0, the brain will be consumed, but no knowledge will be gained.<br>Once enough knowledge has been stored, fledgling
+botania.page.whisperweed_cm1=thaumaturges can interact with the flower to gain some of that knowledge. Be warned, as sometimes this knowledge will cause the player to gain a small amount of &1Warp&0.<br>You can see the current amount of knowledge stored within the flower by hovering over the &1Whisperweed&0 while holding a &1Wand of the Forest&0.
+botania.page.whisperweed_cm2=&oFloral Wan Shi Tong&r

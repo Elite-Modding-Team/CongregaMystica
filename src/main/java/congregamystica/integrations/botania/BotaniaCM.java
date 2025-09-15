@@ -12,7 +12,7 @@ import thaumcraft.api.ThaumcraftApi;
 
 public class BotaniaCM implements IModModule {
     public static final String TAINTTHISTLE = "taintthistle";
-    public static final String WHISPERWEED = "weedwhisperer";
+    public static final String WHISPERWEED = "whisperweed_cm";
 
     public static BlockSpecialFlowerCM<SubTileTaintthistle> taintthistle;
     public static BlockSpecialFlowerCM<SubTileWhisperweed> whisperweed;

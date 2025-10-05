@@ -1,4 +1,10 @@
 # Changelog Congrega Mystica
+## 1.0.4
+### Fixed
+- Fixed an issue causing multiple registered Certus Quartz native clusters when JAOPCA was installed
+
+---
+
 ## 1.0.3
 ### Added
 - Added config to generate Eldritch Clusters without requiring Native Clusters

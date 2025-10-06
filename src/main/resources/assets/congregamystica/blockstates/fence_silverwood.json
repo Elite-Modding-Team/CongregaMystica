@@ -1,0 +1,45 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "fence_post",
+    "textures": {
+      "texture": "congregamystica:blocks/plank_silverwood_smooth"
+    }
+  },
+  "variants": {
+    "normal": {
+      "model": "fence_inventory"
+    },
+    "inventory": {
+      "model": "fence_inventory"
+    },
+    "east": {
+      "true": {
+        "submodel": "fence_side",
+        "y": 90
+      },
+      "false": {}
+    },
+    "north": {
+      "true": {
+        "submodel": "fence_side",
+        "y": 0
+      },
+      "false": {}
+    },
+    "south": {
+      "true": {
+        "submodel": "fence_side",
+        "y": 180
+      },
+      "false": {}
+    },
+    "west": {
+      "true": {
+        "submodel": "fence_side",
+        "y": 270
+      },
+      "false": {}
+    }
+  }
+}

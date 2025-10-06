@@ -2,6 +2,8 @@ package congregamystica.integrations.congregamystica;
 
 import congregamystica.api.IModModule;
 import congregamystica.config.ConfigHandlerCM;
+import congregamystica.integrations.congregamystica.blocks.BlockFenceGateWood;
+import congregamystica.integrations.congregamystica.blocks.BlockFenceWood;
 import congregamystica.integrations.congregamystica.golems.GolemMaterialSteel;
 import congregamystica.integrations.congregamystica.items.*;
 import congregamystica.integrations.congregamystica.util.ClusterData;
@@ -10,6 +12,7 @@ import congregamystica.registry.RegistrarCM;
 import congregamystica.utils.helpers.LogHelper;
 import congregamystica.utils.helpers.PechHelper;
 import congregamystica.utils.misc.EnumPechType;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.init.Items;
 import net.minecraft.init.PotionTypes;
 import net.minecraft.item.ItemStack;
@@ -26,6 +29,10 @@ public class CongregaMysticaCM implements IModModule {
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         RegistrarCM.addAdditionToRegister(new ItemMimicForkRanged());
         RegistrarCM.addAdditionToRegister(new ItemFluxCaster());
+        RegistrarCM.addAdditionToRegister(new BlockFenceWood("fence_greatwood", MapColor.WOOD));
+        RegistrarCM.addAdditionToRegister(new BlockFenceWood("fence_silverwood", MapColor.WHITE_STAINED_HARDENED_CLAY));
+        RegistrarCM.addAdditionToRegister(new BlockFenceGateWood("fence_gate_greatwood", MapColor.WOOD));
+        RegistrarCM.addAdditionToRegister(new BlockFenceGateWood("fence_gate_silverwood", MapColor.WHITE_STAINED_HARDENED_CLAY));
         getNativeClustersFromConfig();
         ModItemsCM.getNativeClusters().forEach(RegistrarCM::addAdditionToRegister);
     }

@@ -1,5 +1,8 @@
 # Changelog Congrega Mystica
 ## 1.0.4
+### Added
+- Added missing fences and fence gates for Greatwood and Silverwood
+
 ### Fixed
 - Fixed an issue causing multiple registered Certus Quartz native clusters when JAOPCA was installed
 

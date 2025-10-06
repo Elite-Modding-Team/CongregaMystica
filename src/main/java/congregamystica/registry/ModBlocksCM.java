@@ -15,6 +15,10 @@ public class ModBlocksCM {
     public static final Block CHAIR_SILVERWOOD = null;
     public static final Block CHANDELIER_BRASS = null;
     public static final Block CINDERMOTE = null;
+    public static final Block FENCE_GREATWOOD = null;
+    public static final Block FENCE_SILVERWOOD = null;
+    public static final Block FENCE_GATE_GREATWOOD = null;
+    public static final Block FENCE_GATE_SILVERWOOD = null;
     public static final Block LANTERN_BRASS = null;
     public static final Block SHIMMERDEW_BULB = null;
     public static final Block TABLE_GREATWOOD = null;

@@ -3,6 +3,9 @@
 ### Added
 - Added missing fences and fence gates for Greatwood and Silverwood
 
+### Changed
+- Improved textures for Silverwood Rustic furniture
+
 ### Fixed
 - Fixed an issue causing multiple registered Certus Quartz native clusters when JAOPCA was installed
 

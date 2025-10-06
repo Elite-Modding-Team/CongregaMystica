@@ -1,7 +1,7 @@
 {
   "parent": "rustic:block/chair_oak",
   "textures": {
-    "0": "thaumcraft:blocks/plank_silverwood",
-    "particle": "thaumcraft:blocks/plank_silverwood"
+    "0": "congregamystica:blocks/plank_silverwood_smooth",
+    "particle": "congregamystica:blocks/plank_silverwood_smooth"
   }
 }

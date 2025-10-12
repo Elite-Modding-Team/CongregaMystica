@@ -65,7 +65,7 @@ public class ConfigHandlerCM {
 
             @Config.RangeInt(min = 1, max = 6)
             @Config.Name("Required Altar Tier")
-            @Config.Comment("The Blood Atlar tier required to fill the Eldritch Blood Orb.")
+            @Config.Comment("The Blood Altar tier required to fill the Eldritch Blood Orb.")
             public int tier = 5;
 
             @Config.RangeInt(min = 1, max = 10000)
@@ -110,7 +110,7 @@ public class ConfigHandlerCM {
             @Config.Name("Mana Cost")
             @Config.Comment
                     ({
-                            "The amount of mana consumed every time the Whispwerweed consumes a Zombie Brain. Consuming",
+                            "The amount of mana consumed every time the Whisperweed consumes a Zombie Brain. Consuming",
                             "operations occur approximately every 15 seconds."
                     })
             public int manaCost = 300;
@@ -303,7 +303,7 @@ public class ConfigHandlerCM {
 
         @Config.RequiresMcRestart
         @Config.Name("Enable Viscous Brew")
-        @Config.Comment("Enables Visous Brew, an alcoholic beverage that dispells nearby illusions and negates warp effects.")
+        @Config.Comment("Enables Visous Brew, an alcoholic beverage that dispels nearby illusions and negates warp effects.")
         public boolean enableViscousBrew = true;
 
     }

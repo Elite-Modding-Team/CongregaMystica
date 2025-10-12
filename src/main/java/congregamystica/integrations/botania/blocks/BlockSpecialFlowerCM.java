@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import thaumcraft.api.aspects.AspectEventProxy;
@@ -73,6 +75,7 @@ public class BlockSpecialFlowerCM<T extends SubTileEntity & IAddition & IProxy> 
         this.subTile.registerRecipe(registry);
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void registerModel(ModelRegistryEvent event) {
         this.subTile.registerModel(event);

@@ -7,6 +7,8 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemEldritchClusterDynamic extends ItemEldritchCluster implements IColoredItem {
     public ItemEldritchClusterDynamic(ClusterData clusterData) {
@@ -21,6 +23,7 @@ public class ItemEldritchClusterDynamic extends ItemEldritchCluster implements I
     //##########################################################
     // IItemAddition
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void registerModel(ModelRegistryEvent event) {
         ModelResourceLocation loc = new ModelResourceLocation(new ResourceLocation(CongregaMystica.MOD_ID, "eldritch_cluster"), "inventory");

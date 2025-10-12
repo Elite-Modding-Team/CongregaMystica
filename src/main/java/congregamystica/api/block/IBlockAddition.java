@@ -8,6 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public interface IBlockAddition extends IItemAddition {
@@ -27,6 +29,7 @@ public interface IBlockAddition extends IItemAddition {
         }
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     default void registerModel(ModelRegistryEvent event) {
         if(this instanceof Block && ((Block) this).getRegistryName() != null) {

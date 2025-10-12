@@ -3,6 +3,8 @@ package congregamystica.api;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
@@ -22,6 +24,7 @@ public interface IAddition {
     /**
      * Registers the model for the item or block. This method must be called to register the model.
      */
+    @SideOnly(Side.CLIENT)
     default void registerModel(ModelRegistryEvent event) {}
 
     /**

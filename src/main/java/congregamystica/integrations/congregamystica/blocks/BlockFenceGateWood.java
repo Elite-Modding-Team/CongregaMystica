@@ -15,6 +15,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import org.jetbrains.annotations.NotNull;
 
 public class BlockFenceGateWood extends BlockFenceGate implements IBlockAddition {
     private final MapColor mapColor;
@@ -32,17 +35,18 @@ public class BlockFenceGateWood extends BlockFenceGate implements IBlockAddition
     }
 
     @Override
-    public int getFlammability(IBlockAccess world, BlockPos pos, EnumFacing face) {
+    public int getFlammability(@NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EnumFacing face) {
         return Blocks.PLANKS.getFlammability(world, pos, face);
     }
 
     @Override
-    public int getFireSpreadSpeed(IBlockAccess world, BlockPos pos, EnumFacing face) {
+    public int getFireSpreadSpeed(@NotNull IBlockAccess world, @NotNull BlockPos pos, @NotNull EnumFacing face) {
         return Blocks.PLANKS.getFireSpreadSpeed(world, pos, face);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public MapColor getMapColor(IBlockState state, IBlockAccess world, BlockPos pos) {
+    public @NotNull MapColor getMapColor(@NotNull IBlockState state, @NotNull IBlockAccess world, @NotNull BlockPos pos) {
         return mapColor;
     }
 
@@ -60,6 +64,7 @@ public class BlockFenceGateWood extends BlockFenceGate implements IBlockAddition
         return true;
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void registerModel(ModelRegistryEvent event) {
         IBlockAddition.super.registerModel(event);

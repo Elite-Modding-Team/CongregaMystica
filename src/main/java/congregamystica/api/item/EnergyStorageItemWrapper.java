@@ -97,6 +97,6 @@ public class EnergyStorageItemWrapper implements IEnergyStorage, ICapabilityProv
 
     @Override
     public @Nullable <T> T getCapability(@NotNull Capability<T> capability, @Nullable EnumFacing facing) {
-        return CapabilityEnergy.ENERGY.cast(this);
+        return capability == CapabilityEnergy.ENERGY ? CapabilityEnergy.ENERGY.cast(this) : null;
     }
 }

@@ -9,6 +9,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -17,6 +18,7 @@ import net.minecraft.nbt.NBTTagInt;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IRarity;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,7 +33,7 @@ import java.util.List;
 
 public class ItemFluxScribingTools extends AbstractItemAddition implements IScribeTools {
     private static final int COST = 1000;
-    private static final int USES = 400;
+    private static final int USES = 200;
     private static final int MAX_ENERGY = COST * USES; // 1000 RF = 1 Vis
 
     public ItemFluxScribingTools() {
@@ -95,6 +97,11 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
     @Override
     public boolean showDurabilityBar(@NotNull ItemStack stack) {
         return true;
+    }
+    
+    @Override
+    public @NotNull IRarity getForgeRarity(@NotNull ItemStack stack) {
+        return EnumRarity.UNCOMMON;
     }
 
     @Override

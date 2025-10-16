@@ -29,6 +29,7 @@ public class CongregaMysticaCM implements IModModule {
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         RegistrarCM.addAdditionToRegister(new ItemMimicForkRanged());
         RegistrarCM.addAdditionToRegister(new ItemFluxCaster());
+        RegistrarCM.addAdditionToRegister(new ItemFluxScribingTools());
         RegistrarCM.addAdditionToRegister(new BlockFenceWood("fence_greatwood", MapColor.WOOD));
         RegistrarCM.addAdditionToRegister(new BlockFenceWood("fence_silverwood", MapColor.WHITE_STAINED_HARDENED_CLAY));
         RegistrarCM.addAdditionToRegister(new BlockFenceGateWood("fence_gate_greatwood", MapColor.WOOD));
@@ -36,7 +37,7 @@ public class CongregaMysticaCM implements IModModule {
         getNativeClustersFromConfig();
         ModItemsCM.getNativeClusters().forEach(RegistrarCM::addAdditionToRegister);
     }
-    
+
     @Override
     public void init() {
         //Pech trade fixes

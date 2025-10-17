@@ -1,4 +1,3 @@
-- Energized Scribing Tools - Uses RF
 - Autocrafting Arcane Workbench
 - Crystal Sconces from Rustic Thaumaturgy
 

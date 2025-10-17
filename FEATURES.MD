@@ -58,6 +58,7 @@ Eldritch Clusters are only added when Thaumic Wonders Unofficial is also install
   - Whisperweed
 - Congrega Mystica
   - Energized Caster's Gauntlet
+  - Energized Scribing Tools
   - Ethereal Mimic Fork
   - Mimic Fork
 - Embers

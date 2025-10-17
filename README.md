@@ -24,7 +24,7 @@ If [Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-a
 - **Botanist Caster's Gauntlet (Nature's Aura):** Casting Gauntlet that uses Aura to reduce spell Vis cost
 - **Clockwork Caster's Gauntlet (Embers):** Casting Gauntlet that uses Ember to reduce spell Vis cost
 - **Elementium Caster's Gauntlet (Botania):** Casting Gauntlet that uses Mana to reduce spell Vis cost
-- **Energized Caster's Gauntlet:** Casting Gauntlet that uses RF to reduce spell Vis cost
+- **Energized Caster's Gauntlet:** Casting Gauntlet that uses FE/RF to reduce spell Vis cost
 
 ### New Golem Materials
 - **Biomass Golem (Harken Scythe):** Golem Material that rapidly regenerates health and gains a shield over time

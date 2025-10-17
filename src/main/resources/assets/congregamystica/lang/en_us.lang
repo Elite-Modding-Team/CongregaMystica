@@ -191,6 +191,11 @@ congregamystica.research.drill_head_void.stage.1=The Void Drill Head digs by 5x5
 congregamystica.research.eldritch_blood_orb.title=Eldritch Blood Orb
 congregamystica.research.eldritch_blood_orb.stage.1=Channeling the energies of a Blood Altar into a perfect Primordial Pearl yields a new powerful blood orb.<BR>The Eldritch Blood Orb taps into power of a realm beyond my understanding, significantly increasing the capacity of my soul network.
 
+# -- Energized Scribing Tools
+congregamystica.research.flux_scribing_tools.title=Energized Scribing Tools
+congregamystica.research.flux_scribing_tools.stage.1=I should expand my new tech making abilities into my scribing tools to make them accept mundane power sources. Being able to utilize another ink soruce will be viable for my research.
+congregamystica.research.flux_scribing_tools.stage.2=I've modified regular scribing tools with a basic mechanism and a Redstone Inlay to create new scribing tools that will accept mundane energy. I can use a Vis Powered Generator to generate more FE/RF if I also want to utilize Vis to power them.
+
 # -- MATERIAL STUDIES: BIOMASS
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
 congregamystica.research.golem_mat_biomass.stage.1=Biomass is a very strange material, as if it's alive and sentient... It will slowly regenerate over time and will even develop a layer of hardened material to protect itself from damage.

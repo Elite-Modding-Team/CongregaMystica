@@ -22,24 +22,29 @@ import net.minecraftforge.common.IRarity;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.api.crafting.ShapelessArcaneRecipe;
 import thaumcraft.api.items.IScribeTools;
+import thaumcraft.api.items.ItemsTC;
 
 import java.util.List;
 
 public class ItemFluxScribingTools extends AbstractItemAddition implements IScribeTools {
-    private static final int COST = 1000;
-    private static final int USES = 200;
-    private static final int MAX_ENERGY = COST * USES; // 1000 RF = 1 Vis
+    private static final int ENERGY_COST = ConfigHandlerCM.congrega_mystica.fluxScribingTools.energyCost;
+    private static final int MAX_USES = ConfigHandlerCM.congrega_mystica.fluxScribingTools.maxUses;
+    private static final int MAX_ENERGY = ENERGY_COST * MAX_USES; //1000 RF = 1 Vis
 
     public ItemFluxScribingTools() {
         super("flux_scribing_tools");
         this.setMaxStackSize(1);
-        this.setMaxDamage(USES);
+        this.setMaxDamage(MAX_USES);
         this.setHasSubtypes(false);
         this.setNoRepair();
         this.addPropertyOverride(new ResourceLocation("depleted"), new IItemPropertyGetter() {
@@ -59,9 +64,9 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
     @Override
     public void getSubItems(@NotNull CreativeTabs tab, @NotNull NonNullList<ItemStack> items) {
         if(isInCreativeTab(tab)) {
-            items.add(new ItemStack(this, 1, USES));
+            items.add(new ItemStack(this, 1, MAX_USES));
             ItemStack base = new ItemStack(this);
-            this.setEnergyStored(base, COST * USES);
+            this.setEnergyStored(base, MAX_ENERGY);
             items.add(base);
         }
     }
@@ -71,7 +76,7 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
         int currentDamage = stack.getItemDamage();
 
         if(damage > currentDamage) {
-            int cost = (damage - currentDamage) * COST;
+            int cost = (damage - currentDamage) * ENERGY_COST;
             int energy = this.getEnergyStored(stack);
 
             if(energy >= cost) {
@@ -86,7 +91,7 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
     @Override
     public int getDamage(ItemStack stack) {
         float energy = this.getEnergyStored(stack);
-        return USES - (int) (energy / this.getMaxEnergyStored(stack) * USES);
+        return MAX_USES - (int) (energy / this.getMaxEnergyStored(stack) * MAX_USES);
     }
 
     @Override
@@ -98,7 +103,7 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
     public boolean showDurabilityBar(@NotNull ItemStack stack) {
         return true;
     }
-    
+
     @Override
     public @NotNull IRarity getForgeRarity(@NotNull ItemStack stack) {
         return EnumRarity.UNCOMMON;
@@ -135,6 +140,15 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
 
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
+        ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(CongregaMystica.MOD_ID, "flux_scribing_tools"), new ShapelessArcaneRecipe(
+                new ResourceLocation(""),
+                "CM_FLUX_SCRIBING_TOOLS",
+                25,
+                new AspectList(),
+                new ItemStack(this),
+                new Object[]{new ItemStack(ItemsTC.scribingTools, 1, OreDictionary.WILDCARD_VALUE),
+                        ItemsTC.mechanismSimple, new ItemStack(BlocksTC.inlay, 1)}
+        ));
     }
 
     @Override
@@ -145,7 +159,7 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
 
     @Override
     public boolean isEnabled() {
-        return ConfigHandlerCM.blood_magic.bloodyScribingTools.enable;
+        return ConfigHandlerCM.congrega_mystica.fluxScribingTools.enable;
     }
 
 }

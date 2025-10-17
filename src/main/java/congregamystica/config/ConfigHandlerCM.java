@@ -25,6 +25,8 @@ public class ConfigHandlerCM {
     public static BloodMagicCategory blood_magic = new BloodMagicCategory();
     @Config.Name("Botania")
     public static BotaniaCategory botania = new BotaniaCategory();
+    @Config.Name("Congrega Mystica")
+    public static CongregaMysticaCategory congrega_mystica = new CongregaMysticaCategory();
     @Config.Name("Immersive Engineering")
     public static ImmersiveEngineeringCategory immersive_engineering = new ImmersiveEngineeringCategory();
     @Config.Name("Immersive Intelligence")
@@ -228,7 +230,28 @@ public class ConfigHandlerCM {
                 //Tinkers Construct Ores
                 "oreCobalt;ingot;0x2e7ce6",
                 "oreArdite;ingot;0xe5b740",
-                };
+        };
+    }
+
+    public static class CongregaMysticaCategory {
+        @Config.Name("Energized Scribing Tools")
+        public FluxScribingToolsCategory fluxScribingTools = new FluxScribingToolsCategory();
+
+        public static class FluxScribingToolsCategory {
+            @Config.RequiresMcRestart
+            @Config.Name("Enable Energized Scribing Tools")
+            public boolean enable = true;
+
+            @Config.RangeInt(min = 1)
+            @Config.Name("RF Cost")
+            @Config.Comment("The amount of RF energy drained per use.")
+            public int energyCost = 1000;
+
+            @Config.RangeInt(min = 1)
+            @Config.Name("Max Uses")
+            @Config.Comment("The maximum amount of uses for the scribing tools before needing to recharge. Note that (energy cost * max uses) will end up being the maximum RF energy stored overall.")
+            public int maxUses = 200;
+        }
     }
 
     public static class GolemCategory {
@@ -239,9 +262,9 @@ public class ConfigHandlerCM {
         @Config.Name("Harken Scythe Livingmetal")
         public GolemMaterialCategory livingmetal = new GolemMaterialCategory(20, 8, 5, "ingotLivingmetal");
         @Config.Name("Steel")
-        public GolemMaterialCategory steel = new GolemMaterialCategory( 20, 14, 6,"ingotSteel");
+        public GolemMaterialCategory steel = new GolemMaterialCategory(20, 14, 6, "ingotSteel");
         @Config.Name("Immersive Engineering Treated Wood")
-        public GolemMaterialCategory treatedWood = new GolemMaterialCategory(6, 2, 1,"plankTreatedWood");
+        public GolemMaterialCategory treatedWood = new GolemMaterialCategory(6, 2, 1, "plankTreatedWood");
     }
 
     public static class ImmersiveEngineeringCategory {

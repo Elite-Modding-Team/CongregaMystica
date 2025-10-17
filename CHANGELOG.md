@@ -2,6 +2,15 @@
 ## 1.1.0
 ### Added
 - Added Energized Scribing Tools, a new pair of scribing tools that accept FE/RF energy
+
+---
+
+## 1.0.5
+### Fixed
+- Fixed a server crash
+
+---
+
 ## 1.0.4
 ### Added
 - Added missing fences and fence gates for Greatwood and Silverwood

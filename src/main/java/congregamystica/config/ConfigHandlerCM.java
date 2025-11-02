@@ -203,6 +203,14 @@ public class ConfigHandlerCM {
                 "oreEmerald;gem",
                 //Thaumcraft Ores
                 "oreAmber;gem",
+                //General Gem Ores
+                "oreAmethyst;gem",
+                "oreMalachite;gem",
+                "orePeridot;gem",
+                "oreRuby;gem",
+                "oreSapphire;gem",
+                "oreTanzanite;gem",
+                "oreTopaz;gem",
                 //General Ores
                 "oreAluminum;ingot;0xefeff1",
                 "oreNickel;ingot;0x9ea59e",
@@ -219,12 +227,6 @@ public class ConfigHandlerCM {
                 "oreAstralStarmetal;ingot",
                 //Mekanism
                 "oreOsmium;ingot;0xb5cacc",
-                //Mystical World
-                "oreAmethyst;gem",
-                //Project Red
-                "orePeridot;gem",
-                "oreRuby;gem",
-                "oreSapphire;gem",
                 //Thermal Foundation Ores
                 "oreMithril;ingot;0x5cd6ff", //aka Mana Infused
                 //Tinkers Construct Ores

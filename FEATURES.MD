@@ -11,21 +11,22 @@ Eldritch Clusters are only added when Thaumic Wonders Unofficial is also install
   - Starmetal
 - Common
   - Aluminum
+  - Amethyst
   - Iridium
+  - Malachite
   - Mithril (Mana Infused in Thermal Foundation)
   - Nickel
+  - Peridot
   - Platinum
+  - Ruby
+  - Sapphire
+  - Tanzanite
+  - Topaz
   - Tungsten
   - Uranium
   - Zinc
 - Mekanism
   - Osmium
-- Mystical World
-  - Amethyst
-- Project Red
-  - Peridot
-  - Ruby
-  - Sapphire
 - Thaumcraft
   - Amber
 - Tinkers' Construct

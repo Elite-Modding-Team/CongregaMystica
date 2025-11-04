@@ -197,12 +197,20 @@ public class ConfigHandlerCM {
                         "Due to the dynamic nature of these clusters, occasionally the cluster display name will be incorrect.",
                         "You can override the default name by adding the cluster's translation key to a language file."
                 })
-        public String[] additionalClusters = new String[] {
+        public String[] additionalClusters = new String[]{
                 //Vanilla Ores
                 "oreDiamond;gem",
                 "oreEmerald;gem",
                 //Thaumcraft Ores
                 "oreAmber;gem",
+                //General Gem Ores
+                "oreAmethyst;gem",
+                "oreMalachite;gem",
+                "orePeridot;gem",
+                "oreRuby;gem",
+                "oreSapphire;gem",
+                "oreTanzanite;gem",
+                "oreTopaz;gem",
                 //General Ores
                 "oreAluminum;ingot;0xefeff1",
                 "oreNickel;ingot;0x9ea59e",
@@ -219,12 +227,6 @@ public class ConfigHandlerCM {
                 "oreAstralStarmetal;ingot",
                 //Mekanism
                 "oreOsmium;ingot;0xb5cacc",
-                //Mystical World
-                "oreAmethyst;gem",
-                //Project Red
-                "orePeridot;gem",
-                "oreRuby;gem",
-                "oreSapphire;gem",
                 //Thermal Foundation Ores
                 "oreMithril;ingot;0x5cd6ff", //aka Mana Infused
                 //Tinkers Construct Ores
@@ -236,6 +238,8 @@ public class ConfigHandlerCM {
     public static class CongregaMysticaCategory {
         @Config.Name("Energized Scribing Tools")
         public FluxScribingToolsCategory fluxScribingTools = new FluxScribingToolsCategory();
+        @Config.Name("Goggled Thaumium Helmet")
+        public GoggledThaumiumHelmetCategory goggledThaumiumHelmet = new GoggledThaumiumHelmetCategory();
 
         public static class FluxScribingToolsCategory {
             @Config.RequiresMcRestart
@@ -251,6 +255,17 @@ public class ConfigHandlerCM {
             @Config.Name("Max Uses")
             @Config.Comment("The maximum amount of uses for the scribing tools before needing to recharge. Note that (energy cost * max uses) will end up being the maximum RF energy stored overall.")
             public int maxUses = 200;
+        }
+
+        public static class GoggledThaumiumHelmetCategory {
+            @Config.RequiresMcRestart
+            @Config.Name("Enable Goggled Thaumium Helmet")
+            public boolean enable = true;
+
+            @Config.RangeInt(min = 1, max = 100)
+            @Config.Name("Goggled Thaumium Helmet Vis Discount")
+            @Config.Comment("The Vis discount granted by the Goggled Thaumium Helmet.")
+            public int visDiscount = 5;
         }
     }
 
@@ -353,7 +368,7 @@ public class ConfigHandlerCM {
                         "Due to the dynamic nature of these clusters, occasionally the cluster display name will be incorrect.",
                         "You can override the default name by adding the cluster's translation key to a language file."
                 })
-        public String[] additionalClusters = new String[] {};
+        public String[] additionalClusters = new String[]{};
     }
 
     public static class TheOneProbeCategory {
@@ -382,7 +397,7 @@ public class ConfigHandlerCM {
     public static class ConfigChangeListener {
         @SubscribeEvent
         public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
-            if(event.getModID().equals(CongregaMystica.MOD_ID)) {
+            if (event.getModID().equals(CongregaMystica.MOD_ID)) {
                 ConfigManager.sync(CongregaMystica.MOD_ID, Config.Type.INSTANCE);
             }
         }

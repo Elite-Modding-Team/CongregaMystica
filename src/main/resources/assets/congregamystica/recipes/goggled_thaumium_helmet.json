@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "thaumcraft:thaumium_helm"
+    },
+    {
+      "item": "thaumcraft:goggles"
+    }
+  ],
+  "result": {
+    "item": "congregamystica:goggled_thaumium_helmet",
+    "count": 1
+  },
+  "conditions": [
+    {
+      "type": "minecraft:item_exists",
+      "item": "congregamystica:goggled_thaumium_helmet"
+    }
+  ]
+}

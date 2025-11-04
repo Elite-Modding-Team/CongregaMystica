@@ -142,7 +142,9 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                 if (consumeVis && consumeAlt) {
                     boolean isSuccess;
                     if (ModIds.thaumic_augmentation.isLoaded) {
-                        isSuccess = this.castFocusSpellTA(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
+                        //TODO: Figure out why the cast projectiles are hitting the player when calling the TA method.
+                        //isSuccess = this.castFocusSpellTA(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
+                        isSuccess = this.castFocusSpell(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
                     } else {
                         isSuccess = this.castFocusSpell(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
                     }
@@ -177,7 +179,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
             this.consumeAltResource(world, player, casterStack, alternateResourceVis, false);
             if(world.isRemote) {
                 CasterManager.setCooldown(player, preEvent.getFocus().getCooldown());
-            } else if(this.consumeVis(casterStack, player, preEvent.getFocus().getVisCost(), false, false)) {
+            } else if (this.consumeVis(casterStack, player, /*preEvent.getFocus().getVisCost()*/visCost, false, false)) {
                 FocusUtils.replaceAndFixFoci(focusPackage, player);
                 FocusEngine.castFocusPackage(player, focusPackage, true);
                 CasterManager.setCooldown(player, preEvent.getFocus().getCooldown());

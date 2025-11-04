@@ -2,6 +2,10 @@
 ## 1.1.0
 ### Added
 - Added Energized Scribing Tools, a new pair of scribing tools that accept FE/RF energy
+### Fixed
+- Fixed modded Caster's gauntlets generating nested tag data when Thaumic Agumentation is installed
+- Fixed modded Caster's Gauntlet spell projectiles hitting the player when Thaumic Augmentation is installed
+
 
 ---
 

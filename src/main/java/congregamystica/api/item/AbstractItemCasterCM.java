@@ -51,6 +51,7 @@ import thecodex6824.thaumicaugmentation.api.event.CastEvent;
 import thecodex6824.thaumicaugmentation.api.util.FocusUtils;
 import thecodex6824.thaumicaugmentation.api.util.FocusWrapper;
 import thecodex6824.thaumicaugmentation.common.capability.provider.SimpleCapabilityProvider;
+import thecodex6824.thaumicaugmentation.common.util.ItemHelper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -299,6 +300,10 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                 }
                 tag.setTag("item", itemTag);
             }
+            NBTTagCompound cap = ItemHelper.tryMakeCapabilityTag(stack, CapabilityAugmentableItem.AUGMENTABLE_ITEM);
+            if(cap != null) {
+                tag.setTag("cap", cap);
+            }
             return tag;
         }
         return super.getNBTShareTag(stack);
@@ -325,8 +330,9 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                     stack.setTagInfo("cap", tag.getCompoundTag("cap"));
                 }
             }
+        } else {
+            super.readNBTShareTag(stack, tag);
         }
-        super.readNBTShareTag(stack, tag);
     }
 
     @SideOnly(Side.CLIENT)

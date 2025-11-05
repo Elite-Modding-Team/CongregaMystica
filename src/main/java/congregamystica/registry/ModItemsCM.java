@@ -15,7 +15,6 @@ public class ModItemsCM {
     //Congrega Mystica
     public static final Item ARCANE_FILTER = null;
     public static final Item FLUX_SCRIBING_TOOLS = null;
-    public static final Item GOGGLED_THAUMIUM_HELMET = null;
     public static final Item MIMIC_FORK = null;
     public static final Item MIMIC_FORK_RANGED = null;
 

@@ -26,7 +26,6 @@ public class CongregaMysticaCM implements IModModule {
     @Override
     public void preInit() {
         RegistrarCM.addAdditionToRegister(new GolemMaterialSteel());
-        RegistrarCM.addAdditionToRegister(new ItemGoggledHelmet());
         RegistrarCM.addAdditionToRegister(new ItemMimicFork());
         RegistrarCM.addAdditionToRegister(new ItemMimicForkRanged());
         RegistrarCM.addAdditionToRegister(new ItemFluxCaster());

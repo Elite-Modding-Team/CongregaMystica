@@ -26,7 +26,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.blocks.BlocksTC;
@@ -49,7 +48,7 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
         this.setNoRepair();
         this.addPropertyOverride(new ResourceLocation("depleted"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
-            public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
+            public float apply(@NotNull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
                 if(stack.getTagCompound().getInteger("energy") > 0) {
                     return 1.0F;
                 } else if(stack.getTagCompound().getInteger("energy") <= 0) {
@@ -89,7 +88,7 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
     }
 
     @Override
-    public int getDamage(ItemStack stack) {
+    public int getDamage(@NotNull ItemStack stack) {
         float energy = this.getEnergyStored(stack);
         return MAX_USES - (int) (energy / this.getMaxEnergyStored(stack) * MAX_USES);
     }
@@ -130,7 +129,7 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, World world, @NotNull List<String> tooltip, @NotNull ITooltipFlag flag) {
+    public void addInformation(@NotNull ItemStack stack, World world, @NotNull List<String> tooltip, @NotNull ITooltipFlag flag) {
         tooltip.add(I18n.format(StringHelper.getTranslationKey("rf", "tooltip", "info"), this.getEnergyStored(stack), this.getMaxEnergyStored(stack)));
         super.addInformation(stack, world, tooltip, flag);
     }

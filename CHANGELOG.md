@@ -2,6 +2,7 @@
 ## 1.0.6
 ### Added
 - Added Energized Scribing Tools, a new pair of scribing tools that accept FE/RF energy
+- Added default cluster support for Malachite, Tanzanite and Topaz
 ### Fixed
 - Fixed modded Caster's gauntlets generating nested tag data when Thaumic Augmentation is installed
 - Fixed modded Caster's Gauntlet spell projectiles hitting the player when Thaumic Augmentation is installed

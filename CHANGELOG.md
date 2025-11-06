@@ -1,5 +1,5 @@
 # Changelog Congrega Mystica
-## 1.1.0
+## 1.0.6
 ### Added
 - Added Energized Scribing Tools, a new pair of scribing tools that accept FE/RF energy
 ### Fixed

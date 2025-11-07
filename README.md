@@ -33,6 +33,12 @@ If [Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-a
 - **Steel Golem:** High HP and high armor golem material
 - **Treated Wood Golem (Immersive Engineering):** Golem Material that is slightly stronger than normal wood
 
+## Non-Mod Integrations
+The content listed here does not require mod integration.
+- **Energized Scribing Tools:** A new pair of scribing tools that accept FE/RF energy
+- **Ethereal Mimic Fork:** An upgraded Mimic Fork that has the additional ability to bind to a location
+- **Mimic Fork:** A tool that activates nearby Arcane Ears and Note Blocks
+
 ## Mod Integrations
 - **Blood Magic**
   - **Bloody Scrivener's Tools:** Scribing Tools that drain LP from a player's soul network to use as ink

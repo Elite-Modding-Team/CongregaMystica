@@ -103,26 +103,32 @@ tooltip.congregamystica:rf.info=Energy Stored: %d/%d RF
 # Research
 tc.research_category.CONGREGA_MYSTICA=Congrega Mystica
 congregamystica.research.congrega_mystica_base.title=Congrega Mystica
+//congregamystica.research.congrega_mystica_base.title.subtitle=
 congregamystica.research.congrega_mystica_base.stage.1=Over the course of my research I've come to realize that I've only begun to scratch the surface of what is possible. <BR>I've turned my attention to augmenting Thaumaturgy with other practices with the goal of discovering some unforeseen breakthrough.
 
 # -- EXPANDED STUDIES: BLOOD MAGIC
 congregamystica.research.blood_magic.title=Expanded Studies: Blood Alchemy
+//congregamystica.research.blood_magic.title.subtitle=
 congregamystica.research.blood_magic.stage.1=Blood Magic provides its own methods of alchemy and imbuing based on the blood and souls of creatures.<BR>I can now combine my studies of Thaumaturgy with my knowledge of Blood Alchemy.
 
 # -- EXPANDED STUDIES: BOTANIA
 congregamystica.research.botania.title=Expanded Studies: Botany
+//congregamystica.research.botania.title.subtitle=
 congregamystica.research.botania.stage.1=Botany is the study of magical plants and flowers. This practice also has its own energy source that is commonly referred to as Mana.<BR>I can now combine my studies of Thaumaturgy with my knowledge of Botany.
 
 # -- EXPANDED STUDIES: GOLEMANCY
 congregamystica.research.expanded_golemancy.title=Expanded Studies: Golemancy
+congregamystica.research.expanded_golemancy.title.subtitle=You get a golem material! Everybody gets a golem material!
 congregamystica.research.expanded_golemancy.stage.1=By expanding my research into other professions, I can now access new materials and equipment for my own golems.
 
 # -- EXPANDED STUDIES: IMMERSIVE ENGINEERING
 congregamystica.research.immersiveengineering.title=Expanded Studies: Engineering
+//congregamystica.research.immersiveengineering.title.subtitle=
 congregamystica.research.immersiveengineering.stage.1=Engineering is pretty self-explanatory. I can now combine my studies of Thaumaturgy with my knowledge of powered machinery.
 
 # -- EXPANDED STUDIES: RUSTIC
 congregamystica.research.rustic.title=Expanded Studies: Brewing
+//congregamystica.research.rustic.title.subtitle=
 congregamystica.research.rustic.stage.1=I'm already familiar with using the brewing barrel to make helpful brews of various flavors. Now I must see what kind of brews I can make with the mythical plants I have recently discovered.
 
 # RESEARCH CATEGORIES
@@ -130,121 +136,149 @@ congregamystica.research.caster_augmentation.addenda.1=In addition to its reduce
 
 # -- BLOODY SCRIVENER'S TOOLS
 congregamystica.research.blood_scribing_tools.title=Bloody Scrivener's Tools
+congregamystica.research.blood_scribing_tools.title.subtitle="I'll complete this research if it kills me!"
 congregamystica.research.blood_scribing_tools.stage.1=By infusing ordinary scribing tools at a Blood Altar, I can create a set of scribing tools that replenish their ink by draining LP from my soul network.<BR>I should be careful to bind the tools before use as they are significantly more fragile than other scribing tools.
 
 # -- BREWING: CINDERFIRE WHISKEY
 congregamystica.research.cinderfire_whiskey.title=Cinderfire Whiskey
+//congregamystica.research.cinderfire_whiskey.title.subtitle=
 congregamystica.research.cinderfire_whiskey.stage.1=Cinderfire Whiskey, brewed from wort made of Cinderpearl, has a distinct, spicy flavor, and is rather harsh going down. Drinking it seems to warm the body like normal alcohol, but unlike normal alcohol, it also seems to warm the soul!<BR>I should be careful of the quality I drink, since there is no telling what could happen if your soul gets too hot.
 congregamystica.research.cinderfire_whiskey.addenda.1=I have devised a way to infuse a Cinderpearl plant so it can be cultivated like any other herb.<BR>While this herb is significantly less potent than the original plant, it is more that sufficient for the creation of liquor.
 
 # -- BREWING: SHIMMERDEW SPIRITS
 congregamystica.research.shimmerdew_spirits.title=Shimmerdew Spirits
+//congregamystica.research.shimmerdew_spirits.title.subtitle=
 congregamystica.research.shimmerdew_spirits.stage.1=Shimmerdew Spirits, brewed from wort made of Shimmerleaf, has a smooth, subtle, and almost sweet flavor. The alcohol content, though significant, is barely detectable.<BR>I should take care when brewing it as despite its mind-calming properties, a bad batch could make me very ill. I shudder to think the kind of symptoms a magically-induced digestive infection could bring.
 congregamystica.research.shimmerdew_spirits.addenda.1=I have devised a way to infuse a Shimmeleaf plant so it can be cultivated like any other herb.<BR>While this herb is significantly less potent than the original plant, it is more that sufficient for the creation of liquor.
 
 # -- BREWING: VISCOUS BREW
 congregamystica.research.viscous_brew.title=Viscous Brew
+//congregamystica.research.viscous_brew.title.subtitle=
 congregamystica.research.viscous_brew.stage.1=Viscous Brew, brewed from wort made of Vishroom, has a strong, earthy flavor!<BR>Though many may find the act of consuming the beverage unpleasant, drinking high-quality vintage acts as a magical panacea, cleansing both the mind and body. In fact, imbibing the liquid can even banish illusionary foes.<BR>The brewing of this alcohol should be treated with care, since imbibing some of poor quality could do a number on my mind.
 congregamystica.research.viscous_brew.addenda.1=I have devised a way to infuse a Vishroom plant so it can be cultivated like any other herb.<BR>While this herb is significantly less potent than the original plant, it is more that sufficient for the creation of liquor.
 
 # -- CASTER: BOTANIST
 congregamystica.research.caster_aura.title=Botanist Caster's Gauntlet
+congregamystica.research.caster_aura.title.subtitle=Eco-Friendly
 congregamystica.research.caster_aura.stage.1=While Natural Aura and Vis may share similarities, the two phenomena have very different interactions with living creatures.<BR>Where high levels of Vis results in mutations in both plants and animals, high levels of Natural Aura seem to boost both growth and fertility.<BR>Despite these differences, I still believe that I can find some way to link the two.
 congregamystica.research.caster_aura.stage.2=Experimentation has shown me how to infuse an Aura Trove into a gauntlet, allowing it to augment its casting ability with Natural Aura.<BR>While unable to store aura in the gauntlet, the trove acts as a conduit that feeds into the spell focus, reducing the amount of Vis required to cast the spell.<BR>While the conversion is far from efficient, it is very effective at reducing my impact on the local aura.
 
 # -- CASTER: BOUND
 congregamystica.research.caster_bound.title=Bound Caster's Gauntlet
+congregamystica.research.caster_bound.title.subtitle="Sign here on the dotted line."
 congregamystica.research.caster_bound.stage.1=My experiments have proven that it is possible to use the power stored in my soul network to perform mundane tasks.<BR>All that remains is to find a way to augment my manipulation of Vis using LP.
 congregamystica.research.caster_bound.stage.2=By binding a gauntlet to myself, I have been able to create a gauntlet capable of draining LP directly from my soul network.<BR>The LP is channeled through the spell focus, reducing the amount of Vis required to cast the spell.<BR>While the conversion is far from efficient, it is very effective at reducing my impact on the local aura.
 
 # -- CASTER: CLOCKWORK
 congregamystica.research.caster_clockwork.title=Clockwork Caster's Gauntlet
+congregamystica.research.caster_clockwork.title.subtitle=Like clockwork
 congregamystica.research.caster_clockwork.stage.1=The raw power and heat contained in the mantle has long been utilized by the dwarves that live far below the surface.<BR>Most interestingly the clockwork tools powered by this Ember resource. Perhaps I can find a way to utilize this captured heat...
 congregamystica.research.caster_clockwork.stage.2=I have been able to infuse a Mantle Jar into a gauntlet, allow it to augment its casting ability with Ember.<BR>While unable to store ember directly in the gauntlet, the mantle jar acts as a conduit that feeds Ember directly into the spell focus, reducing the amount of Vis required to cast a spell.
 
 # -- CASTER: ELEMENTIUM
 congregamystica.research.caster_elementium.title=Elementium Caster's Gauntlet
+congregamystica.research.caster_elementium.title.subtitle=The Secret of Mana
 congregamystica.research.caster_elementium.stage.1=While Mana does have a much more physical form than many of the substances I normally interact with, it does share some striking similarities to raw essentia.<BR>If I can figure out a link between the two, it may reveal entirely new avenues of research.
 congregamystica.research.caster_elementium.stage.2=Using materials native to Alfheim, I have been able to infuse a Mana Tablet into a gauntlet, allowing it to augment its casting ability with Mana.<BR>While unable to store Mana in the gauntlet, the tablet acts as a conduit that feeds Mana directly into the spell focus, reducing the amount of Vis required to cast the spell.<BR>While the conversion is far from efficient, it is very effective at reducing my impact on the local aura.
 
 # -- CASTER: REDSTONE FLUX
 congregamystica.research.caster_flux.title=Energized Caster's Gauntlet
+//congregamystica.research.caster_flux.title.subtitle=
 congregamystica.research.caster_flux.stage.1=My research has shown that it is possible to convert Vis into mundane energy, but I can't help but wonder if the reverse is possible.<BR>While common sense says that it should not be possible, when has that stopped me before?
 congregamystica.research.caster_flux.stage.2=Though wildly inefficient, my studies have shown me how to use mundane energy to supercharge small quantities of Vis, making them more potent than they would normally be.<BR>Who could have predicted that the solution was as easy as hooking up a Vis Generator in reverse...
 
 # -- DRILL HEAD THAUMIUM
 congregamystica.research.drill_head_thaumium.title=Thaumium Drill Head
+//congregamystica.research.drill_head_thaumium.title.subtitle=
 congregamystica.research.drill_head_thaumium.stage.1=The Thaumium Drill Head digs by 3x3x1 and is weaker than steel, but makes up for it with increased mining speed.
 
 # -- DRILL HEAD TIPPED THAUMIUM
 congregamystica.research.drill_head_tipped_thaumium.title=Diamond-Tipped Thaumium Drill Head
+//congregamystica.research.drill_head_tipped_thaumium.title.subtitle=
 congregamystica.research.drill_head_tipped_thaumium.stage.1=I can upgrade my Thaumium Drill Head with extra thaumium and diamonds. This upgraded drill head digs by 4x4x1 and has other increased stats.
 
 # -- DRILL HEAD TIPPED VOID
 congregamystica.research.drill_head_tipped_void.title=Diamond-Tipped Void Drill Head
+//congregamystica.research.drill_head_tipped_void.title.subtitle=
 congregamystica.research.drill_head_tipped_void.stage.1=I can upgrade my Void Drill Head with extra void metal and diamonds. This upgraded drill head digs faster and has other increased stats.
 
 # -- DRILL HEAD VOID
 congregamystica.research.drill_head_void.title=Void Drill Head
+//congregamystica.research.drill_head_void.title.subtitle=
 congregamystica.research.drill_head_void.stage.1=The Void Drill Head digs by 5x5x1 and is slower than other drill heads due to its heavy weight.<BR>It has the ability to repair itself when damaged, making it an extremely powerful choice for my Mining Drill.
+
+# -- DRILL UPGRADE: REFINING
+congregamystica.research.upgrade_refining.title=Drill Upgrade: Refining
+//congregamystica.research.upgrade_refining.title.subtitle=
+congregamystica.research.upgrade_refining.stage.1=Infusion enchantments have proven to be quite useful for my own pickaxes, but the Mining Drill has far from the same precision as the handheld tools.<BR>Perhaps there is a way to give the augers this ability?
+congregamystica.research.upgrade_refining.stage.2=I have been able to create a set of infused augers capable of refining ores even as it tears them apart.<BR>By adding these Native Cluster Extraction Modules to my Mining Drill, it is able to act exactly like a pickaxe with Refining.<BR>Though less efficient than pickaxes, multiple upgrades can be stacked, with each increasing the chance to harvest native clusters by a small amount.
 
 # -- ELDRITCH BLOOD ORB
 congregamystica.research.eldritch_blood_orb.title=Eldritch Blood Orb
+congregamystica.research.eldritch_blood_orb.title.subtitle=Storing blood in the unknown
 congregamystica.research.eldritch_blood_orb.stage.1=Channeling the energies of a Blood Altar into a perfect Primordial Pearl yields a new powerful blood orb.<BR>The Eldritch Blood Orb taps into power of a realm beyond my understanding, significantly increasing the capacity of my soul network.
 
 # -- Energized Scribing Tools
 congregamystica.research.flux_scribing_tools.title=Energized Scribing Tools
+//congregamystica.research.flux_scribing_tools.title.subtitle=
 congregamystica.research.flux_scribing_tools.stage.1=I should expand my new tech making abilities into my scribing tools to make them accept mundane power sources. Being able to utilize another ink soruce will be viable for my research.
 congregamystica.research.flux_scribing_tools.stage.2=I've modified regular scribing tools with a basic mechanism and a Redstone Inlay to create new scribing tools that will accept mundane energy. I can use a Vis Powered Generator to generate more FE/RF if I also want to utilize Vis to power them.
 
 # -- MATERIAL STUDIES: BIOMASS
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
+congregamystica.research.golem_mat_biomass.title.subtitle=Advanced Biomass Crafting
 congregamystica.research.golem_mat_biomass.stage.1=Biomass is a very strange material, as if it's alive and sentient... It will slowly regenerate over time and will even develop a layer of hardened material to protect itself from damage.
 
 # -- MATERIAL STUDIES: IRONWOOD
 congregamystica.research.golem_mat_ironwood.title=Material Studies: Ironwood
+congregamystica.research.golem_mat_ironwood.title.subtitle=Advanced Ironwood Crafting
 congregamystica.research.golem_mat_ironwood.stage.1=Ironwood is heavier than greatwood, but not as heavy as iron. It is rather resistant to explosions.
 
 # -- MATERIAL STUDIES: LIVINGMETAL
 congregamystica.research.golem_mat_livingmetal.title=Material Studies: Livingmetal
+congregamystica.research.golem_mat_livingmetal.title.subtitle=Advanced Livingmetal Crafting
 congregamystica.research.golem_mat_livingmetal.stage.1=Livingmetal has a light humming noise to it. It will fully repair a golem after slaying an enemy.
 
 # -- MATERIAL STUDIES: STEEL
 congregamystica.research.golem_mat_steel.title=Material Studies: Steel
+congregamystica.research.golem_mat_steel.title.subtitle=Advanced Steel Crafting
 congregamystica.research.golem_mat_steel.stage.1=Steel is quite durable, more so than iron. It has a certain rigidity to it, similar to thaumium.
 
 # -- MATERIAL STUDIES: TREATED WOOD
 congregamystica.research.golem_mat_treated_wood.title=Material Studies: Treated Wood
+congregamystica.research.golem_mat_treated_wood.title.subtitle=Advanced Treated Wood Crafting
 congregamystica.research.golem_mat_treated_wood.stage.1=Treated Wood is of higher quality than normal wood. Due to its oil-laden nature however, it is not as light.
 
 # -- METAL PURIFICATION: EXPANDED ELDRITCH CLUSTERS
 congregamystica.research.metal_corruption_expanded.title=Expanded Studies: Metal Corruption
+//congregamystica.research.metal_corruption_expanded.title.subtitle=
 congregamystica.research.metal_corruption_expanded.stage.1=The expanded native cluster materials are also available in Eldritch form. I can obtain these by refining ores in a Catalyst Chamber slotted with an Alienist's Stone.
 
 # -- METAL PURIFICATION: EXPANDED NATIVE CLUSTERS
 congregamystica.research.metal_purification_expanded.title=Expanded Studies: Metal Purification
+//congregamystica.research.metal_purification_expanded.title.subtitle=
 congregamystica.research.metal_purification_expanded.stage.1=The variety of native clusters at my disposal has been greatly expanded. These clusters will produce twice the normal amount of ingots when smelted, and can be refined alchemically if I so choose.
 
 # -- MIMIC FORK
 congregamystica.research.mimic_fork.title=Mimic Fork
+//congregamystica.research.mimic_fork.title.subtitle=
 congregamystica.research.mimic_fork.stage.1=Note Blocks are a device I've been thinking of a lot lately. They are simple things that respond to touch or can be activated with redstone to emit one single pure note... but of what utility are they really?<BR>Any usage requires very specific placement and cumbersome contraptions in order to emit the desired note.<BR>There must be a better way...
 congregamystica.research.mimic_fork.stage.2=I've found my answer with the Mimic Fork!<BR>The Mimic Fork is a modified tuning fork that can store musical notes and sound them at any time.<BR>This allows me remotely activate nearby Arcane Ears with a simple tap of the tines.<BR>The fork's tone and note can be set by right-clicking an Arcane Ear or Note Block in the world. I can also set the tone type of a given Note Block or Arcane Ear by instead sneaking and right-clicking the device with a configured Mimic Fork.
 
 # -- ETHEREAL MIMIC FORK
 congregamystica.research.mimic_fork_ranged.title=Ethereal Mimic Fork
+//congregamystica.research.mimic_fork_ranged.title.subtitle=
 congregamystica.research.mimic_fork_ranged.stage.1=While the Mimic Fork does have its uses, the relatively small range is a major limitation of its use.<BR>Perhaps I can make use some form of teleportation to throw the sound to another location.
 congregamystica.research.mimic_fork_ranged.stage.2=I consider this experiment a success. The Ethereal Mimic Fork is a mimic fork capable of playing a note at a specified location, rather than at my position.<BR>In addition to the functionality of the Mimic Fork, I can sneak right-click on a block to bind the fork to that location. From that point on, any time I activate the mimic fork, it will play a note at the linked location.<BR>Should I wish to change the location, I can sneak right-click another block or sneak right-click air to remove the link.
 
 # -- TAINTTHISTLE
 congregamystica.research.taintthistle.title=Taintthistle
+congregamystica.research.taintthistle.title.subtitle=Mr. Clean
 congregamystica.research.taintthistle.stage.1=Despite the appearance and name, it is actually a friendly flower. When supplied with Mana, it consumes nearby tainted blocks or flux goo, destroying them completely.<BR>For further information, I can consult the Lexica Botanica.
-
-congregamystica.research.upgrade_refining.title=Drill Upgrade: Refining
-congregamystica.research.upgrade_refining.stage.1=Infusion enchantments have proven to be quite useful for my own pickaxes, but the Mining Drill has far from the same precision as the handheld tools.<BR>Perhaps there is a way to give the augers this ability?
-congregamystica.research.upgrade_refining.stage.2=I have been able to create a set of infused augers capable of refining ores even as it tears them apart.<BR>By adding these Native Cluster Extraction Modules to my Mining Drill, it is able to act exactly like a pickaxe with Refining.<BR>Though less efficient than pickaxes, multiple upgrades can be stacked, with each increasing the chance to harvest native clusters by a small amount.
 
 # -- WHISPERWEED
 congregamystica.research.whisperweed.title=Whisperweed
+congregamystica.research.whisperweed.title.subtitle=Indirect Cannibalism
 congregamystica.research.whisperweed.stage.1=This creepy-looking flower is the result of Botany and dark arts. It has an appetite for zombie brains, and retains a small amount of knowlege from each brain it consumes.<BR>Once it has had its fill, I can interact with it to gain a small amount of knowledge.<BR>For further information, I can consult the Lexica Botanica.
 
 

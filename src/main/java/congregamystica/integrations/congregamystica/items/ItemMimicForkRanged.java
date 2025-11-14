@@ -76,7 +76,7 @@ public class ItemMimicForkRanged extends ItemMimicFork {
                 this.clearPositionAndDimension(heldStack);
                 return ActionResult.newResult(EnumActionResult.SUCCESS, heldStack);
             }
-        } else {
+        } else if(heldStack.getItem() == this) {
             World targetWorld = this.getDimensionWorld(heldStack);
             BlockPos targetPos = this.getPosition(heldStack);
             if (targetWorld != null && targetPos != null && !player.isSneaking()) {

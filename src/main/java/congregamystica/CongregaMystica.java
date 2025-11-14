@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 )
 public class CongregaMystica {
     public static final String MOD_ID = Tags.MOD_ID;
-    public static final String MOD_NAME = "Congrega Mystica";
+    public static final String MOD_NAME = Tags.MOD_NAME;
     public static final String MOD_VERSION = Tags.VERSION;
     public static final String DEPENDENCIES = "required-after:thaumcraft" +
             ";after:" + ModIds.ConstIds.applied_energistics +

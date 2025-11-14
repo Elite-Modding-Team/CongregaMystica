@@ -76,7 +76,7 @@ public class ItemMimicFork extends AbstractItemAddition {
                 this.setTone(heldStack, ((TileArcaneEar) tile).tone);
                 return EnumActionResult.SUCCESS;
             }
-        } else {
+        } else if(heldStack.getItem() == this) {
             if (tile instanceof TileArcaneEar) {
                 ((TileArcaneEar) tile).note = this.getNote(heldStack);
                 tile.markDirty();

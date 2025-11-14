@@ -1,4 +1,11 @@
 # Changelog Congrega Mystica
+## 1.0.7
+### Fixed
+- Fixed missing Flux Scribing Tools recipe
+- Fixed Mimic Fork and Ethereal Mimic Fork playing sound twice
+
+---
+
 ## 1.0.6
 ### Added
 - Added Energized Scribing Tools, a new pair of scribing tools that accept FE/RF energy
@@ -6,7 +13,6 @@
 ### Fixed
 - Fixed modded Caster's gauntlets generating nested tag data when Thaumic Augmentation is installed
 - Fixed modded Caster's Gauntlet spell projectiles hitting the player when Thaumic Augmentation is installed
-
 
 ---
 

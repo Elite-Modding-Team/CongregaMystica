@@ -140,7 +140,7 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
         ThaumcraftApi.addArcaneCraftingRecipe(new ResourceLocation(CongregaMystica.MOD_ID, "flux_scribing_tools"), new ShapelessArcaneRecipe(
-                new ResourceLocation(""),
+                new ResourceLocation("CM_FLUX_SCRIBING_TOOLS"),
                 "CM_FLUX_SCRIBING_TOOLS",
                 25,
                 new AspectList(),

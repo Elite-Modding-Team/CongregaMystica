@@ -1,6 +1,7 @@
 package congregamystica.api.item;
 
 import congregamystica.CongregaMystica;
+import congregamystica.api.IProxy;
 import congregamystica.api.util.EnumSortType;
 import congregamystica.network.PacketHandlerCM;
 import congregamystica.network.packets.PacketAuraToClient;
@@ -9,6 +10,9 @@ import congregamystica.utils.helpers.PlayerHelper;
 import congregamystica.utils.helpers.StringHelper;
 import congregamystica.utils.libs.ModIds;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -61,7 +65,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public abstract class AbstractItemCasterCM extends AbstractItemAddition implements IArchitect, IAlternateResourceCaster {
+public abstract class AbstractItemCasterCM extends AbstractItemAddition implements IArchitect, IAlternateResourceCaster, IProxy {
     public static final String TAG_FOCUS = "storedFocus";
     public static final String TAG_BLOCK = "pickedBlock";
     protected static final DecimalFormat DECIMAL_FORMATTER = new DecimalFormat("#######.#");
@@ -521,6 +525,18 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
 
     //##########################################################
     // IItemAddition
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void initClient() {
+        ItemColors itemColors = Minecraft.getMinecraft().getItemColors();
+        IItemColor itemCasterColourHandler = (stack, tintIndex) -> {
+            AbstractItemCasterCM item = (AbstractItemCasterCM)stack.getItem();
+            ItemFocus focus = item.getFocus(stack);
+            return (tintIndex > 0 && focus != null) ? focus.getFocusColor(item.getFocusStack(stack)) : -1;
+        };
+        itemColors.registerItemColorHandler(itemCasterColourHandler, this);
+    }
 
     @Override
     public abstract void registerRecipe(IForgeRegistry<IRecipe> registry);

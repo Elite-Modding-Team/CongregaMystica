@@ -2,8 +2,8 @@
 ## 1.0.7
 ### Fixed
 - Fixed missing Flux Scribing Tools recipe
-- Fixed Mimic Fork and Ethereal Mimic Fork playing sound twice
-- Fixed caster gaunlet Foci not changing color
+- Fixed Mimic Fork and Ethereal Mimic Fork playing sounds twice
+- Fixed caster gauntlet Foci not changing color
 
 ---
 

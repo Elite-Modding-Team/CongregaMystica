@@ -10,14 +10,7 @@ import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.registry.ModItemsCM;
 import congregamystica.registry.RegistrarCM;
 import congregamystica.utils.helpers.LogHelper;
-import congregamystica.utils.helpers.PechHelper;
-import congregamystica.utils.misc.EnumPechType;
 import net.minecraft.block.material.MapColor;
-import net.minecraft.init.Items;
-import net.minecraft.init.PotionTypes;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.potion.PotionUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,15 +29,6 @@ public class CongregaMysticaCM implements IModModule {
         RegistrarCM.addAdditionToRegister(new BlockFenceGateWood("fence_gate_silverwood", MapColor.WHITE_STAINED_HARDENED_CLAY));
         getNativeClustersFromConfig();
         ModItemsCM.getNativeClusters().forEach(RegistrarCM::addAdditionToRegister);
-    }
-
-    @Override
-    public void init() {
-        //Pech trade fixes
-        PechHelper.removePechTrade(EnumPechType.MAGE, Ingredient.fromStacks(new ItemStack(Items.POTIONITEM, 1, 8193)));
-        PechHelper.removePechTrade(EnumPechType.MAGE, Ingredient.fromStacks(new ItemStack(Items.POTIONITEM, 1, 8261)));
-        PechHelper.addPechTrade(EnumPechType.MAGE, 2, PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.REGENERATION));
-        PechHelper.addPechTrade(EnumPechType.MAGE, 2, PotionUtils.addPotionToItemStack(new ItemStack(Items.POTIONITEM), PotionTypes.HEALING));
     }
 
     private void getNativeClustersFromConfig() {

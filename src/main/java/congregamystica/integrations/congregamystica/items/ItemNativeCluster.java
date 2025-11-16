@@ -6,7 +6,7 @@ import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.util.ClusterData;
 import congregamystica.utils.helpers.AspectHelperCM;
 import congregamystica.utils.helpers.PechHelper;
-import congregamystica.utils.misc.EnumPechType;
+import congregamystica.utils.helpers.PechHelper.EnumPechType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.text.translation.I18n;

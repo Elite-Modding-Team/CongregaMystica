@@ -1,6 +1,5 @@
 package congregamystica.utils.helpers;
 
-import congregamystica.utils.misc.EnumPechType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import thaumcraft.common.entities.monster.EntityPech;
@@ -41,5 +40,12 @@ public class PechHelper {
     @Nullable
     private static  ArrayList<List> getPechTrades(EnumPechType pechType) {
         return getPechTrades().get(pechType.ordinal());
+    }
+
+    public enum EnumPechType {
+        MINER,
+        MAGE,
+        ARCHER,
+        COMMON
     }
 }

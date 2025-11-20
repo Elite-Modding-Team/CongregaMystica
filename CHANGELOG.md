@@ -1,4 +1,10 @@
 # Changelog Congrega Mystica
+## 1.0.8
+### Fixed
+- Fixed rare crash when retrieving Flux Scribing Tool item icon
+
+---
+
 ## 1.0.7
 ### Fixed
 - Fixed missing Flux Scribing Tools recipe

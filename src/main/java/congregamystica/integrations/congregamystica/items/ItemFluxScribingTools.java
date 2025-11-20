@@ -49,12 +49,13 @@ public class ItemFluxScribingTools extends AbstractItemAddition implements IScri
         this.addPropertyOverride(new ResourceLocation("depleted"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(@NotNull ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
-                if(stack.getTagCompound().getInteger("energy") > 0) {
-                    return 1.0F;
-                } else if(stack.getTagCompound().getInteger("energy") <= 0) {
-                    return 2.0F;
+                if(stack.getTagCompound() != null) {
+                    if (stack.getTagCompound().getInteger("energy") > 0) {
+                        return 1.0F;
+                    } else if (stack.getTagCompound().getInteger("energy") <= 0) {
+                        return 2.0F;
+                    }
                 }
-
                 return 0.0F;
             }
         });

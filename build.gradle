@@ -115,13 +115,15 @@ dependencies {
     runtimeOnly 'com.cleanroommc:osxnarratorblocker:1.0'
     compileOnly 'org.jetbrains:annotations:24.1.0'
 
-    // Example of deobfuscating a dependency
-    implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
+    // Had Enough Items
+    implementation rfg.deobf('curse.maven:had-enough-items-557549:7282920')
     implementation rfg.deobf('curse.maven:thaumic-jei-285492:2705304')
 
+    // Thaumcraft, Baubles, and addons
     implementation rfg.deobf("curse.maven:thaumcraft-223628:2629023")
     implementation rfg.deobf('curse.maven:baubles-227083:2518667')
 
+    // CraftTweaker and GroovyScript
     implementation "CraftTweaker2:CraftTweaker2-API:4.1.20.695"
     implementation "CraftTweaker2:ZenScript:4.1.20.695"
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.695"
@@ -130,6 +132,7 @@ dependencies {
     def modMap = [:]
     def loadMap = [:]
 
+    // Mod Integration - Optional
     modMap.put(["curse.maven:ae2-extended-life-570458:5411078"], project.use_appliedenergistics2)
     modMap.put(["curse.maven:astral-sorcery-241721:3044416"], project.use_astralsorcery)
     modMap.put(["curse.maven:blood-magic-224791:2822288", "curse.maven:guide-api-228832:2645992"], project.use_bloodmagic)

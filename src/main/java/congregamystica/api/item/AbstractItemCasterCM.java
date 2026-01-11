@@ -146,9 +146,7 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
                 if (consumeVis && consumeAlt) {
                     boolean isSuccess;
                     if (ModIds.thaumic_augmentation.isLoaded) {
-                        //TODO: Figure out why the cast projectiles are hitting the player when calling the TA method.
-                        //isSuccess = this.castFocusSpellTA(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
-                        isSuccess = this.castFocusSpell(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
+                        isSuccess = this.castFocusSpellTA(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
                     } else {
                         isSuccess = this.castFocusSpell(worldIn, player, heldStack, focusPackage, activationTime, visCost, altVisCost);
                     }
@@ -183,9 +181,13 @@ public abstract class AbstractItemCasterCM extends AbstractItemAddition implemen
             this.consumeAltResource(world, player, casterStack, alternateResourceVis, false);
             if(world.isRemote) {
                 CasterManager.setCooldown(player, preEvent.getFocus().getCooldown());
-            } else if (this.consumeVis(casterStack, player, /*preEvent.getFocus().getVisCost()*/visCost, false, false)) {
+            } else {
+                this.consumeVis(casterStack, player, visCost, false, false);
                 FocusUtils.replaceAndFixFoci(focusPackage, player);
-                FocusEngine.castFocusPackage(player, focusPackage, true);
+                FocusEngine.castFocusPackage(player, focusPackage);
+                //This was the problem right here. For some reason copying the focus package results
+                // in the projectiles hitting the player.
+                //FocusEngine.castFocusPackage(player, focusPackage, true);
                 CasterManager.setCooldown(player, preEvent.getFocus().getCooldown());
                 MinecraftForge.EVENT_BUS.post(new CastEvent.Post(player, casterStack, preEvent.getFocus()));
             }

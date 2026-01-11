@@ -1,4 +1,10 @@
 # Changelog Congrega Mystica
+## 1.0.9
+### Fixed
+- Fixed Thaumic Augmentation augments not working when applied to CM gauntlets
+
+---
+
 ## 1.0.8
 ### Fixed
 - Fixed rare crash when retrieving Flux Scribing Tool item icon

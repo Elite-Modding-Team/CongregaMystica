@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "inventory": { "model": "congregamystica:arcane_crafter_inv", "transform": "forge:default-block"},
+    "facing=east":  { "model": "congregamystica:arcane_crafter", "y": 90 },
+    "facing=west":  { "model": "congregamystica:arcane_crafter", "y": 270 },
+    "facing=north": { "model": "congregamystica:arcane_crafter" },
+    "facing=south": { "model": "congregamystica:arcane_crafter", "y": 180 }
+  }
+}

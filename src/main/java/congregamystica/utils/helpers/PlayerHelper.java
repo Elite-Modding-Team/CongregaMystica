@@ -7,6 +7,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import org.jetbrains.annotations.Nullable;
+import thaumcraft.api.capabilities.IPlayerKnowledge;
+import thaumcraft.api.capabilities.ThaumcraftCapabilities;
 
 import java.util.UUID;
 
@@ -28,7 +30,11 @@ public class PlayerHelper {
     }
 
     public static UUID getUUIDFromPlayer(EntityPlayer player) {
-        return player.getUniqueID();
+        return player.getGameProfile().getId();
     }
 
+    public static boolean doesPlayerHaveKnowledge(EntityPlayer player, String research) {
+        IPlayerKnowledge knowledge = ThaumcraftCapabilities.getKnowledge(player);
+        return knowledge != null && knowledge.isResearchKnown(research);
+    }
 }

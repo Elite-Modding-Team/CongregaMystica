@@ -6,6 +6,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(CongregaMystica.MOD_ID)
 public class ModBlocksCM {
+    //Congrega Mystica
+    public static final Block ARCANE_CRAFTER = null;
+
     //Rustic
     public static final Block CANDLE_BRASS = null;
     public static final Block CANDLE_DOUBLE_BRASS = null;

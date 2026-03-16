@@ -1,0 +1,10 @@
+{
+  "parent": "thaumcraft:block/pattern_crafter_inv",
+  "textures": {
+    "side": "congregamystica:blocks/arcane_crafter_outside",
+    "top": "congregamystica:blocks/arcane_crafter_top",
+    "panels": "congregamystica:blocks/arcane_crafter",
+    "particle": "congregamystica:blocks/arcane_crafter",
+    "inside": "congregamystica:blocks/arcane_crafter_inside"
+  }
+}

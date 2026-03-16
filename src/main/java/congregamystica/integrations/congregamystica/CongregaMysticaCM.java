@@ -2,6 +2,7 @@ package congregamystica.integrations.congregamystica;
 
 import congregamystica.api.IModModule;
 import congregamystica.config.ConfigHandlerCM;
+import congregamystica.integrations.congregamystica.blocks.BlockArcaneCrafter;
 import congregamystica.integrations.congregamystica.blocks.BlockFenceGateWood;
 import congregamystica.integrations.congregamystica.blocks.BlockFenceWood;
 import congregamystica.integrations.congregamystica.golems.GolemMaterialSteel;
@@ -23,6 +24,9 @@ public class CongregaMysticaCM implements IModModule {
         RegistrarCM.addAdditionToRegister(new ItemMimicForkRanged());
         RegistrarCM.addAdditionToRegister(new ItemFluxCaster());
         RegistrarCM.addAdditionToRegister(new ItemFluxScribingTools());
+        //TODO: This needs a config toggle.
+        RegistrarCM.addAdditionToRegister(new ItemAddition("crafter_placeholder", true));
+        RegistrarCM.addAdditionToRegister(new BlockArcaneCrafter());
         RegistrarCM.addAdditionToRegister(new BlockFenceWood("fence_greatwood", MapColor.WOOD));
         RegistrarCM.addAdditionToRegister(new BlockFenceWood("fence_silverwood", MapColor.WHITE_STAINED_HARDENED_CLAY));
         RegistrarCM.addAdditionToRegister(new BlockFenceGateWood("fence_gate_greatwood", MapColor.WOOD));

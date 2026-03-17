@@ -1,4 +1,3 @@
-- Autocrafting Arcane Workbench
 - Crystal Sconces from Rustic Thaumaturgy
 
 ### Aspect Support

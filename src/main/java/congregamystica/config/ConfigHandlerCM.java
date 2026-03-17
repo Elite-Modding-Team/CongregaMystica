@@ -236,10 +236,19 @@ public class ConfigHandlerCM {
     }
 
     public static class CongregaMysticaCategory {
+        @Config.Name("Arcane Crafter")
+        public ArcaneCrafterCategory arcaneCrafter = new ArcaneCrafterCategory();
         @Config.Name("Energized Scribing Tools")
         public FluxScribingToolsCategory fluxScribingTools = new FluxScribingToolsCategory();
         @Config.Name("Goggled Thaumium Helmet")
         public GoggledThaumiumHelmetCategory goggledThaumiumHelmet = new GoggledThaumiumHelmetCategory();
+
+        public static class ArcaneCrafterCategory {
+            @Config.RequiresMcRestart
+            @Config.Name("Enable Arcane Crafter")
+            @Config.Comment("Enables the Arcane Crafter block used for simple automation for Arcane Workbench recipes.")
+            public boolean enable = true;
+        }
 
         public static class FluxScribingToolsCategory {
             @Config.RequiresMcRestart

@@ -7,6 +7,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -128,25 +129,24 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
         return filled;
     }
 
-    public InventoryCrafting getInventoryCrafting() {
+    @SuppressWarnings("ConstantConditions")
+    public InventoryCrafting getInventoryCrafting(boolean skipPlaceholders) {
         InventoryCrafting craft = new ArcaneCrafterInventoryCraft();
-
-        for(int i = 0; i < this.getSlots(); i++) {
+        for(int i = 0; i < getSlots(); i++) {
             if(i == SLOT_FILTER || i == SLOT_OUTPUT)
                 continue;
             ItemStack stack = this.getStackInSlot(i);
             int craftSlot = i - (i > SLOT_FILTER ? 1 : 0);
-            if(stack.isEmpty() || stack.getItem() == ModItemsCM.CRAFTER_PLACEHOLDER)
-                continue;
-            craft.setInventorySlotContents(craftSlot, stack);
+            if (!stack.isEmpty() && (stack.getItem() != ModItemsCM.CRAFTER_PLACEHOLDER || !skipPlaceholders)) {
+                craft.setInventorySlotContents(craftSlot, stack);
+            }
         }
-
         return craft;
     }
 
     @Nullable
     public IArcaneRecipe getMatchingArcaneRecipe(EntityPlayer player) {
-        return this.getMatchingArcaneRecipe(player, this.getInventoryCrafting());
+        return this.getMatchingArcaneRecipe(player, this.getInventoryCrafting(true));
     }
 
     public IArcaneRecipe getMatchingArcaneRecipe(EntityPlayer player, InventoryCrafting craft) {
@@ -159,25 +159,63 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
         return null;
     }
 
-    public boolean attemptCraft(EntityPlayer player, BlockPos tilePos) {
+    public boolean canCraft(EntityPlayer player, World tileWorld, BlockPos tilePos) {
+        if(this.isInventoryFull()) {
+            InventoryCrafting craft = this.getInventoryCrafting(true);
+            IArcaneRecipe recipe = this.cachedRecipe;
+            if (recipe == null) {
+                recipe = this.getMatchingArcaneRecipe(player, craft);
+                return recipe != null;
+            } else {
+                if (!recipe.matches(craft, tileWorld)) {
+                    this.getMatchingArcaneRecipe(player, craft);
+                    return false;
+                } else if(ThaumcraftCapabilities.knowsResearch(player, recipe.getResearch())) {
+                    return AuraHelper.getVis(tileWorld, tilePos) >= (float) (recipe.getVis() + 1);
+                }
+            }
+        }
+        return false;
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public boolean attemptCraft(EntityPlayer player, World tileWorld, BlockPos tilePos) {
         if(!this.isInventoryFull())
             return false;
 
-        InventoryCrafting craft = this.getInventoryCrafting();
+        InventoryCrafting craft = this.getInventoryCrafting(true);
         IArcaneRecipe recipe = this.getMatchingArcaneRecipe(player, craft);
         if(recipe != null && ThaumcraftCapabilities.knowsResearch(player, recipe.getResearch())) {
-            int vis = recipe.getVis();
-            if(AuraHelper.getVis(player.world, tilePos) >= vis) {
-                AuraHelper.drainVis(player.world, tilePos, vis, false);
+            int vis = recipe.getVis() + 1;
+            if(AuraHelper.getVis(tileWorld, tilePos) >= (float) vis) {
+                AuraHelper.drainVis(tileWorld, tilePos, vis, false);
                 this.setStackInSlot(SLOT_OUTPUT, recipe.getRecipeOutput());
                 List<ItemStack> remainders = recipe.getRemainingItems(craft);
                 for(int i = 0; i < craft.getSizeInventory(); i++) {
-                    ItemStack stack = remainders.get(i);
-                    ItemStack slotStack = this.getStackInSlot(i);
-                    if(!slotStack.isEmpty() && slotStack.getItem() == ModItemsCM.CRAFTER_PLACEHOLDER) {
-                        continue;
+                    if(i < SLOT_FILTER) {
+                        ItemStack slotStack = this.getStackInSlot(i);
+                        if(slotStack.getItem() != ModItemsCM.CRAFTER_PLACEHOLDER) {
+                            this.setStackInSlot(i, remainders.get(i));
+                        }
+                    } else {
+                        int slot = i + 1;
+                        ItemStack slotStack = this.getStackInSlot(slot);
+                        if(!slotStack.isEmpty() && slotStack.getItem() instanceof ItemCrystalEssence) {
+                            ItemCrystalEssence crystal = (ItemCrystalEssence) slotStack.getItem();
+                            AspectList itemAspects = crystal.getAspects(slotStack);
+                            if(itemAspects.size() == 1) {
+                                Aspect itemAspect = itemAspects.getAspects()[0];
+                                AspectList recipeAspects = recipe.getCrystals();
+                                int recipeAmount = recipeAspects.getAmount(itemAspect);
+                                if(recipeAmount > 0) {
+                                    slotStack.shrink(recipeAmount);
+                                    this.setStackInSlot(slot, !slotStack.isEmpty() ? slotStack : ItemStack.EMPTY);
+                                }
+                                continue;
+                            }
+                        }
+                        this.setStackInSlot(slot, remainders.get(i));
                     }
-                    this.setStackInSlot(i, stack);
                 }
                 return true;
             }
@@ -206,16 +244,14 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
         return stack.getItem() == ModItemsCM.CRAFTER_PLACEHOLDER;
     }
 
-    private class ArcaneCrafterInventoryCraft extends InventoryCrafting implements IArcaneWorkbench {
+    private static class ArcaneCrafterInventoryCraft extends InventoryCrafting implements IArcaneWorkbench {
         public ArcaneCrafterInventoryCraft() {
             super(new Container() {
                 @Override
-                public boolean canInteractWith(EntityPlayer playerIn) {
+                public boolean canInteractWith(@NotNull EntityPlayer playerIn) {
                     return false;
                 }
             }, 5, 3);
-
-
         }
     }
 }

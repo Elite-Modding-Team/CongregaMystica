@@ -147,10 +147,10 @@ dependencies {
     modMap.put(["curse.maven:the-one-probe-245211:2667280"], project.use_theoneprobe)
 
     if(project.use_thaumcraftfix.toBoolean()) {
-        implementation rfg.deobf("curse.maven:thaumcraftfix-1069346:6645719")
+        implementation rfg.deobf("curse.maven:thaumcraftfix-1069346:7288369")
         implementation "zone.rong:mixinbooter:${project.mixin_booter_version}"
     } else {
-        compileOnly rfg.deobf("curse.maven:thaumcraftfix-1069346:6645719")
+        compileOnly rfg.deobf("curse.maven:thaumcraftfix-1069346:7288369")
     }
 
     loadMap.clear()

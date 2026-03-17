@@ -2,6 +2,7 @@ package congregamystica.integrations.congregamystica.blocks.tiles;
 
 import congregamystica.integrations.congregamystica.blocks.inventories.ArcaneCrafterStackHandler;
 import congregamystica.utils.helpers.PlayerHelper;
+import congregamystica.utils.helpers.StringHelper;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,6 +16,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants;
@@ -33,6 +35,8 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
     public ArcaneCrafterStackHandler stackHandler = new ArcaneCrafterStackHandler(this);
     protected UUID playerId;
     private EntityPlayer boundPlayer;
+    public int progress;
+    public int progressMax = 20;
     public boolean shouldEject;
     public float rotation;
     public double rp;
@@ -57,6 +61,7 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         super.readFromNBT(compound);
         this.playerId = UUID.fromString(compound.getString("playerId"));
         this.stackHandler.deserializeNBT(compound.getCompoundTag("inventory"));
+        this.progress = compound.getInteger("progress");
         this.shouldEject = compound.getBoolean("shouldEject");
     }
 
@@ -65,6 +70,7 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         super.writeToNBT(compound);
         compound.setString("playerId", this.playerId.toString());
         compound.setTag("inventory", this.stackHandler.serializeNBT());
+        compound.setInteger("progress", this.progress);
         compound.setBoolean("shouldEject", this.shouldEject);
         return compound;
     }
@@ -72,41 +78,144 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
     @Override
     public void update() {
         boolean did = false;
-        if(!this.world.isRemote && !this.world.isBlockPowered(this.pos)) {
-            if(this.attemptCraft()) {
-                this.shouldEject = true;
-                this.world.addBlockEvent(this.pos, this.getBlockType(), 1, 0);
-                did = true;
-            }
-
-            if(!this.shouldEject && this.stackHandler.isInventoryFull()) {
-                this.shouldEject = true;
-                did = true;
-            }
-
-            if(this.shouldEject && this.attemptEject()) {
-                this.shouldEject = !this.stackHandler.isEmpty();
-                did = true;
+        if(!this.world.isRemote) {
+            if(!this.world.isBlockPowered(this.pos)) {
+                did |= this.handleProgress();
+                did |= this.attemptCraft();
+                did |= this.attemptEject();
             }
         } else {
-            if (this.rotTicks > 0) {
-                this.rotTicks--;
-                if ((double) this.rotTicks % Math.floor(Math.max(1.0, this.rp)) == 0.0) {
-                    this.world.playSound(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5, SoundsTC.clack, SoundCategory.BLOCKS, 0.2F, 1.7F, false);
-                }
-
-                this.rp++;
-            } else {
-                this.rp *= 0.8F;
-            }
-
-            this.rotation += (float) this.rp;
+            this.handleGearRotation();
         }
 
         if(did) {
             this.markDirty();
         }
     }
+
+    public boolean handleProgress() {
+        if(this.canCraft()) {
+            if(this.progress > 0) {
+                this.progress--;
+            } else {
+                this.progress = this.progressMax;
+            }
+            return true;
+        } else if(this.progress > 0) {
+            this.progress = 0;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean attemptCraft() {
+        if(this.progress <= 0) {
+            EntityPlayer player = this.getBoundPlayer();
+            if(player != null) {
+                if(this.stackHandler.attemptCraft(player, this.world, this.pos)) {
+                    this.shouldEject = true;
+                    this.world.addBlockEvent(this.pos, this.getBlockType(), 1, 0);
+                    return true;
+                } else if(this.stackHandler.isInventoryFull()) {
+                    this.shouldEject = true;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean attemptEject() {
+        if(this.shouldEject) {
+            if (!this.stackHandler.isEmpty()) {
+                if (this.world.isAirBlock(this.pos.offset(EnumFacing.DOWN))) {
+                    this.shouldEject = false;
+                    return this.ejectIntoWorld();
+                } else {
+                    IItemHandler handler = this.getHandlerBelow();
+                    if (handler != null && this.ejectIntoTarget(handler)) {
+                        this.shouldEject = !this.stackHandler.isEmpty();
+                        return true;
+                    }
+                }
+            } else {
+                this.shouldEject = false;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean ejectIntoWorld() {
+        if(!this.world.isRemote) {
+            for (int slot = 0; slot < this.stackHandler.getSlots(); slot++) {
+                ItemStack stack = this.stackHandler.getStackInSlot(slot);
+                if(!stack.isEmpty()) {
+                    EntityItem entityItem = new EntityItem(this.world, this.pos.getX() + 0.5, this.pos.getY() - 0.5, this.pos.getZ() + 0.5, stack.copy());
+                    this.world.spawnEntity(entityItem);
+                    this.stackHandler.setStackInSlot(slot, ItemStack.EMPTY);
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean ejectIntoTarget(IItemHandler target) {
+        boolean didEject = false;
+        for(int slot = 0; slot < this.stackHandler.getSlots(); slot++) {
+            ItemStack slotStack = this.stackHandler.getStackInSlot(slot);
+            if(!slotStack.isEmpty()) {
+                ItemStack rem = ItemHandlerHelper.insertItem(target, slotStack.copy(), false);
+                if(rem.isEmpty() || rem.getCount() != slotStack.getCount()) {
+                    this.stackHandler.setStackInSlot(slot, rem);
+                    didEject = true;
+                }
+            }
+        }
+        return didEject;
+    }
+
+    public void handleGearRotation() {
+        if (this.rotTicks > 0) {
+            this.rotTicks--;
+            if ((double) this.rotTicks % Math.floor(Math.max(1.0, this.rp)) == 0.0) {
+                this.world.playSound(this.pos.getX() + 0.5, this.pos.getY() + 0.5, this.pos.getZ() + 0.5,
+                        SoundsTC.clack, SoundCategory.BLOCKS, 0.2F, 1.7F, false);
+            }
+
+            this.rp++;
+        } else {
+            this.rp *= 0.8F;
+        }
+
+        this.rotation += (float) this.rp;
+    }
+
+    @Override
+    public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos blockPos, EnumFacing enumFacing, EnumHand enumHand) {
+        if(!world.isRemote) {
+            if (entityPlayer.isSneaking() || this.getBoundPlayer() == null) {
+                this.setPlayer(entityPlayer);
+                entityPlayer.sendMessage(new TextComponentTranslation(StringHelper.getTranslationKey("arcane_crafter", "chat", "bind_player"), entityPlayer.getDisplayName()));
+            } else {
+                this.shouldEject = true;
+                this.attemptEject();
+                this.markDirty();
+            }
+        }
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     @Nullable
     public IArcaneRecipe getRecipe() {
@@ -118,42 +227,9 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         return this.stackHandler.getFilledCraftingSlots();
     }
 
-    public boolean attemptCraft() {
+    public boolean canCraft() {
         EntityPlayer player = this.getBoundPlayer();
-        return player != null && this.stackHandler.attemptCraft(player, this.pos);
-    }
-
-    public boolean attemptEject() {
-        if(this.world.isAirBlock(this.pos.offset(EnumFacing.DOWN))) {
-            if(!this.world.isRemote) {
-                for (int slot = 0; slot < this.stackHandler.getSlots(); slot++) {
-                    ItemStack stack = this.stackHandler.getStackInSlot(slot);
-                    if(!stack.isEmpty()) {
-                        EntityItem entityItem = new EntityItem(this.world, this.pos.getX() + 0.5, this.pos.getY() - 0.5, this.pos.getZ() + 0.5, stack.copy());
-                        this.world.spawnEntity(entityItem);
-                        this.stackHandler.setStackInSlot(slot, ItemStack.EMPTY);
-                    }
-                }
-            }
-            return true;
-        } else {
-            IItemHandler handler = this.getHandlerBelow();
-            if(handler != null) {
-                boolean successful = false;
-                for(int slot = 0; slot < this.stackHandler.getSlots(); slot++) {
-                    ItemStack slotStack = this.stackHandler.getStackInSlot(slot);
-                    if(!slotStack.isEmpty()) {
-                        ItemStack rem = ItemHandlerHelper.insertItem(handler, slotStack.copy(), false);
-                        if(rem.isEmpty() || rem.getCount() != slotStack.getCount()) {
-                            successful = true;
-                        }
-                        this.stackHandler.setStackInSlot(slot, rem);
-                    }
-                }
-                return successful;
-            }
-        }
-        return false;
+        return player != null && this.stackHandler.canCraft(player, this.world, this.pos);
     }
 
     @Nullable
@@ -165,17 +241,6 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         return null;
     }
 
-    @Override
-    public boolean onCasterRightClick(World world, ItemStack itemStack, EntityPlayer entityPlayer, BlockPos blockPos, EnumFacing enumFacing, EnumHand enumHand) {
-        if(this.getBoundPlayer() == null) {
-            this.setPlayer(entityPlayer);
-        } else {
-            this.shouldEject = true;
-            this.attemptEject();
-            this.markDirty();
-        }
-        return true;
-    }
 
     @Override
     public boolean hasCapability(@NotNull Capability<?> capability, @Nullable EnumFacing facing) {
@@ -195,6 +260,7 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         super.markDirty();
         IBlockState state = this.world.getBlockState(this.pos);
         this.world.notifyBlockUpdate(this.pos, state, state, Constants.BlockFlags.DEFAULT);
+        world.markBlockRangeForRenderUpdate(this.pos, this.pos);
     }
 
     @Override
@@ -209,17 +275,22 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
     }
 
     @Override
+    public boolean shouldRefresh(@NotNull World world, @NotNull BlockPos pos, IBlockState oldState, IBlockState newSate) {
+        return oldState.getBlock() != newSate.getBlock();
+    }
+
+    @Override
     public @Nullable SPacketUpdateTileEntity getUpdatePacket() {
         return new SPacketUpdateTileEntity(this.pos, Constants.BlockFlags.DEFAULT, this.getUpdateTag());
     }
 
     @Override
-    public NBTTagCompound getUpdateTag() {
+    public @NotNull NBTTagCompound getUpdateTag() {
         return this.writeToNBT(new NBTTagCompound());
     }
 
     @Override
-    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+    public void onDataPacket(@NotNull NetworkManager net, SPacketUpdateTileEntity pkt) {
         this.readFromNBT(pkt.getNbtCompound());
     }
 }

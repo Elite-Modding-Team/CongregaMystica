@@ -1,10 +1,15 @@
 package congregamystica.integrations.congregamystica.blocks;
 
 import congregamystica.CongregaMystica;
+import congregamystica.api.IProxy;
 import congregamystica.api.block.IBlockAddition;
 import congregamystica.api.util.EnumSortType;
+import congregamystica.config.ConfigHandlerCM;
 import congregamystica.integrations.congregamystica.blocks.render.TileArcaneCrafterTESR;
 import congregamystica.integrations.congregamystica.blocks.tiles.TileArcaneCrafter;
+import congregamystica.registry.ModBlocksCM;
+import congregamystica.registry.ModItemsCM;
+import congregamystica.utils.helpers.PlayerHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockHorizontal;
@@ -14,8 +19,16 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.tileentity.TileEntity;
@@ -27,7 +40,10 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -35,14 +51,26 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.ThaumcraftApiHelper;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.blocks.BlocksTC;
+import thaumcraft.api.casters.ICaster;
+import thaumcraft.api.crafting.ShapedArcaneRecipe;
+import thaumcraft.api.items.ItemsTC;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition {
+public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition, IProxy {
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
+    public static final AxisAlignedBB AABB_TOP = new AxisAlignedBB(0, 0.625, 0, 1.0, 1.0, 1.0);
+    public static final AxisAlignedBB AABB_BOTTOM = new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.625, 0.75);
+    public static int[] crystalX = new int[] {19, -29, 66, -29, 66, 19};
+    public static int[] crystalY = new int[] {-31, -5, -5, 41, 41, 67};
 
     public BlockArcaneCrafter() {
         super(Material.IRON);
@@ -55,15 +83,21 @@ public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
-    public @NotNull AxisAlignedBB getBoundingBox(@NotNull IBlockState state, @NotNull IBlockAccess source, @NotNull BlockPos pos) {
-        //TODO: make the adjusted bounding box for the tile face.
-        return super.getBoundingBox(state, source, pos);
+    public void addCollisionBoxToList(@NotNull IBlockState state, @NotNull World worldIn, @NotNull BlockPos pos, @NotNull AxisAlignedBB entityBox, @NotNull List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn, boolean isActualState) {
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_TOP);
+        addCollisionBoxToList(pos, entityBox, collidingBoxes, AABB_BOTTOM);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public @Nullable RayTraceResult collisionRayTrace(@NotNull IBlockState blockState, @NotNull World worldIn, @NotNull BlockPos pos, @NotNull Vec3d start, @NotNull Vec3d end) {
-        return super.collisionRayTrace(blockState, worldIn, pos, start, end);
+        if(rayTrace(pos, start, end, AABB_TOP) != null || rayTrace(pos, start, end, AABB_BOTTOM) != null) {
+            return super.collisionRayTrace(blockState, worldIn, pos, start, end);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -162,24 +196,123 @@ public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition
         return new BlockStateContainer(this, FACING);
     }
 
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void onDrawScreenPost(RenderGameOverlayEvent.Post event) {
+        if(event.getType() == RenderGameOverlayEvent.ElementType.ALL) {
+            Minecraft mc = Minecraft.getMinecraft();
+            ItemStack mhStack = mc.player.getHeldItemMainhand();
+            ItemStack ohStack = mc.player.getHeldItemOffhand();
+            if (mhStack.getItem() instanceof ICaster || ohStack.getItem() instanceof ICaster) {
+                RayTraceResult trace = PlayerHelper.rayTrace(mc.player, 0);
+                if (trace != null && trace.typeOfHit == RayTraceResult.Type.BLOCK) {
+                    TileEntity tile = mc.world.getTileEntity(trace.getBlockPos());
+                    if (tile instanceof TileArcaneCrafter) {
+                        this.renderArcaneCrafterHud(mc, event.getResolution(), (TileArcaneCrafter) tile);
+                    }
+                }
+            }
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void renderArcaneCrafterHud(Minecraft mc, ScaledResolution resolution, TileArcaneCrafter crafter) {
+        InventoryCrafting craft = crafter.stackHandler.getInventoryCrafting(false);
+        int width = 52;
+        int height = 52;
+        int xc = resolution.getScaledWidth() / 2 + 40;
+        int yc = resolution.getScaledHeight() / 2 - height / 2;
+
+        Gui.drawRect(xc - 6, yc - 6, xc + width + 6, yc + height + 6, 0x22000000);
+        Gui.drawRect(xc - 4, yc - 4, xc + width + 4, yc + height + 4, 0x22000000);
+
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                int index = i * 3 + j;
+                int xp = xc + j * 18;
+                int yp = yc + i * 18;
+
+                Gui.drawRect(xp, yp, xp + 16, yp + 16, 0x22FFFFFF);
+
+                ItemStack stack = craft.getStackInSlot(index);
+                RenderHelper.enableGUIStandardItemLighting();
+                GlStateManager.enableRescaleNormal();
+                mc.getRenderItem().renderItemAndEffectIntoGUI(stack, xp, yp);
+                mc.getRenderItem().renderItemOverlayIntoGUI(mc.fontRenderer, stack, xp, yp, null);
+                RenderHelper.disableStandardItemLighting();
+            }
+        }
+
+        for(int i = 9; i < craft.getSizeInventory(); i++) {
+            int meta = i - 9;
+            if(meta < 6) {
+                ItemStack stack = craft.getStackInSlot(i);
+                RenderHelper.enableGUIStandardItemLighting();
+                GlStateManager.enableRescaleNormal();
+                mc.getRenderItem().renderItemAndEffectIntoGUI(stack, xc + crystalX[meta], yc + crystalY[meta]);
+                mc.getRenderItem().renderItemOverlayIntoGUI(mc.fontRenderer, stack, xc + crystalX[meta], yc + crystalY[meta], null);
+                RenderHelper.disableStandardItemLighting();
+            }
+        }
+
+        GlStateManager.color(1f, 1f, 1f, 1f);
+    }
+
+    //##########################################################
+    // IProxy
+
+    @Override
+    public void preInitClient() {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+
     //##########################################################
     // IBlockAddition
 
     //TODO: Possibly render a hover fake arcane workbench to display current items
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public void registerRecipe(IForgeRegistry<IRecipe> registry) {
-        //TODO
+        //Arcane Crafter
+        ThaumcraftApi.addArcaneCraftingRecipe(ModBlocksCM.ARCANE_CRAFTER.getRegistryName(), new ShapedArcaneRecipe(new ResourceLocation(""),
+                "CM_ARCANE_CRAFTER",
+                50,
+                new AspectList().add(Aspect.WATER, 1).add(Aspect.ORDER, 1).add(Aspect.EARTH, 1),
+                new ItemStack(this),
+                "RH ",
+                "MCM",
+                " W ",
+                'R', ItemsTC.visResonator,
+                'H', Blocks.HOPPER,
+                'M', ItemsTC.mechanismComplex,
+                'C', BlocksTC.arcaneWorkbench,
+                'W', BlocksTC.plankGreatwood
+        ));
+        //Crafting Placeholder
+        ThaumcraftApi.addArcaneCraftingRecipe(ModItemsCM.CRAFTER_PLACEHOLDER.getRegistryName(), new ShapedArcaneRecipe(new ResourceLocation(""),
+                "CM_ARCANE_CRAFTER",
+                5,
+                new AspectList().add(Aspect.ORDER, 1),
+                new ItemStack(ModItemsCM.CRAFTER_PLACEHOLDER, 9),
+                "PPP",
+                "PCP",
+                "PPP",
+                'P', "paper",
+                'C', ThaumcraftApiHelper.makeCrystal(Aspect.VOID)
+        ));
     }
 
     @Override
     public void registerResearchLocation() {
-        //TODO
+        ThaumcraftApi.registerResearchLocation(new ResourceLocation(CongregaMystica.MOD_ID,
+                "research/congregamystica/arcane_crafter"));
     }
 
     @Override
     public void registerAspects(AspectEventProxy registry, Map<ItemStack, AspectList> aspectMap) {
-        //TODO
+
     }
 
     @Override
@@ -195,8 +328,7 @@ public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition
 
     @Override
     public boolean isEnabled() {
-        //TODO: Config toggle
-        return true;
+        return ConfigHandlerCM.congrega_mystica.arcaneCrafter.enable;
     }
 
     @SideOnly(Side.CLIENT)

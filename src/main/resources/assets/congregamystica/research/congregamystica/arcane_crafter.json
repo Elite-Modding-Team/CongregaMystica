@@ -1,0 +1,23 @@
+{
+  "entries": [
+    {
+      "key": "CM_ARCANE_CRAFTER",
+      "name": "congregamystica.research.arcane_crafter.title",
+      "icons": ["congregamystica:arcane_crafter"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CONGREGA_MYSTICA_BASE", "~ARCANEPATTERNCRAFTER"],
+      "meta": ["HIDDEN"],
+      "location": [0, -2],
+      "stages": [
+        {
+          "text": "congregamystica.research.arcane_crafter.stage.1",
+          "required_knowledge": ["THEORY;ARTIFICE;1"]
+        },
+        {
+          "text": "congregamystica.research.arcane_crafter.stage.2",
+          "recipes": ["congregamystica:crafter_placeholder", "congregamystica:arcane_crafter"]
+        }
+      ]
+    }
+  ]
+}

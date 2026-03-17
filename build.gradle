@@ -28,6 +28,12 @@ java {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    sourceCompatibility = 17
+    options.release.set(8)
+    javaCompiler.set(javaToolchains.compilerFor {
+        languageVersion.set(JavaLanguageVersion.of(16))
+        vendor.set(JvmVendorSpec.AZUL)
+    })
 }
 
 configurations {

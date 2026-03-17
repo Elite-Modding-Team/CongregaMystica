@@ -206,17 +206,6 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         return true;
     }
 
-
-
-
-
-
-
-
-
-
-
-
     @Nullable
     public IArcaneRecipe getRecipe() {
         EntityPlayer player = this.getBoundPlayer();
@@ -241,7 +230,6 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         return null;
     }
 
-
     @Override
     public boolean hasCapability(@NotNull Capability<?> capability, @Nullable EnumFacing facing) {
         return facing != EnumFacing.DOWN && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
@@ -260,7 +248,6 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         super.markDirty();
         IBlockState state = this.world.getBlockState(this.pos);
         this.world.notifyBlockUpdate(this.pos, state, state, Constants.BlockFlags.DEFAULT);
-        world.markBlockRangeForRenderUpdate(this.pos, this.pos);
     }
 
     @Override

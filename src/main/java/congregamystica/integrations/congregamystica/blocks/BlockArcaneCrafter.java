@@ -22,8 +22,13 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.GlStateManager.DestFactor;
+import net.minecraft.client.renderer.GlStateManager.SourceFactor;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -66,6 +71,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition, IProxy {
+    public static final ResourceLocation HUD_ARCANE_CRAFTER = new ResourceLocation(CongregaMystica.MOD_ID, "textures/gui/hud_arcane_crafter.png");
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final AxisAlignedBB AABB_TOP = new AxisAlignedBB(0, 0.625, 0, 1.0, 1.0, 1.0);
     public static final AxisAlignedBB AABB_BOTTOM = new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.625, 0.75);
@@ -223,8 +229,14 @@ public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition
         int xc = resolution.getScaledWidth() / 2 + 40;
         int yc = resolution.getScaledHeight() / 2 - height / 2;
 
-        Gui.drawRect(xc - 6, yc - 6, xc + width + 6, yc + height + 6, 0x22000000);
-        Gui.drawRect(xc - 4, yc - 4, xc + width + 4, yc + height + 4, 0x22000000);
+        mc.getTextureManager().bindTexture(HUD_ARCANE_CRAFTER);
+        GlStateManager.enableBlend();
+        mc.ingameGUI.drawTexturedModalRect(xc - 6, yc - 6, 0, 0, width + 12, height + 12);
+        GlStateManager.disableBlend();
+        mc.getTextureManager().bindTexture(Gui.ICONS);
+
+//        Gui.drawRect(xc - 6, yc - 6, xc + width + 6, yc + height + 6, 0x22000000);
+//        Gui.drawRect(xc - 4, yc - 4, xc + width + 4, yc + height + 4, 0x22000000);
 
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {

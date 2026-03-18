@@ -62,6 +62,7 @@ public class RusticCM implements IModModule {
         //TODO: Remaining stuff
         //  Brass lattice
         //  Vis Crystal Sconces - See about making them one block with a dynamic appearance
+        //RegistrarCM.addAdditionToRegister(new BlockCrystalSconce("candle_crystal"));
     }
 
     private void initFluids() {

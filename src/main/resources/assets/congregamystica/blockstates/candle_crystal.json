@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=north":	{ "model": "congregamystica:candle_wall_crystal" },
+    "facing=east":	{ "model": "congregamystica:candle_wall_crystal", "y": 90},
+    "facing=south":	{ "model": "congregamystica:candle_wall_crystal", "y": 180 },
+    "facing=west":	{ "model": "congregamystica:candle_wall_crystal", "y": 270 },
+    "facing=up":	{ "model": "congregamystica:candle_crystal" }
+  }
+}

@@ -7,8 +7,10 @@ import congregamystica.api.IProxy;
 import congregamystica.api.golem.IGolemAddition;
 import congregamystica.integrations.ModuleManager;
 import congregamystica.network.PacketHandlerCM;
+import congregamystica.registry.ModGuiHandlerCM;
 import congregamystica.registry.RegistrarCM;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import thaumcraft.Thaumcraft;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.AspectList;
@@ -28,6 +30,7 @@ public class CommonProxy {
     }
 
     public void postInit() {
+        NetworkRegistry.INSTANCE.registerGuiHandler(CongregaMystica.instance, new ModGuiHandlerCM());
         ModuleManager.getModModules().forEach(IModModule::postInit);
         RegistrarCM.getGolemAdditions().forEach(IGolemAddition::registerGolemMaterial);
         RegistrarCM.getProxyAdditions().forEach(IProxy::postInit);

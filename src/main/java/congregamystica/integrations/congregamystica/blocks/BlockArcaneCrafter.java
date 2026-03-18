@@ -22,13 +22,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.GlStateManager.DestFactor;
-import net.minecraft.client.renderer.GlStateManager.SourceFactor;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -75,8 +70,8 @@ public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final AxisAlignedBB AABB_TOP = new AxisAlignedBB(0, 0.625, 0, 1.0, 1.0, 1.0);
     public static final AxisAlignedBB AABB_BOTTOM = new AxisAlignedBB(0.25, 0, 0.25, 0.75, 0.625, 0.75);
-    public static int[] crystalX = new int[] {19, -29, 66, -29, 66, 19};
-    public static int[] crystalY = new int[] {-31, -5, -5, 41, 41, 67};
+    public static int[] crystalX = new int[] {48, 3, 94, 3, 94, 48};
+    public static int[] crystalY = new int[] {2, 25, 25, 70, 70, 92};
 
     public BlockArcaneCrafter() {
         super(Material.IRON);
@@ -224,14 +219,14 @@ public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition
     @SideOnly(Side.CLIENT)
     public void renderArcaneCrafterHud(Minecraft mc, ScaledResolution resolution, TileArcaneCrafter crafter) {
         InventoryCrafting craft = crafter.stackHandler.getInventoryCrafting(false);
-        int width = 52;
-        int height = 52;
-        int xc = resolution.getScaledWidth() / 2 + 40;
+        int width = 112;
+        int height = 110;
+        int xc = resolution.getScaledWidth() / 2 + 20;
         int yc = resolution.getScaledHeight() / 2 - height / 2;
 
         mc.getTextureManager().bindTexture(HUD_ARCANE_CRAFTER);
         GlStateManager.enableBlend();
-        mc.ingameGUI.drawTexturedModalRect(xc - 6, yc - 6, 0, 0, width + 12, height + 12);
+        mc.ingameGUI.drawTexturedModalRect(xc, yc, 0, 0, width, height);
         GlStateManager.disableBlend();
         mc.getTextureManager().bindTexture(Gui.ICONS);
 
@@ -241,10 +236,10 @@ public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
                 int index = i * 3 + j;
-                int xp = xc + j * 18;
-                int yp = yc + i * 18;
+                int xp = xc + j * 18 + 30;
+                int yp = yc + i * 18 + 29;
 
-                Gui.drawRect(xp, yp, xp + 16, yp + 16, 0x22FFFFFF);
+//                Gui.drawRect(xp, yp, xp + 16, yp + 16, 0x22FFFFFF);
 
                 ItemStack stack = craft.getStackInSlot(index);
                 RenderHelper.enableGUIStandardItemLighting();

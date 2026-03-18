@@ -146,12 +146,12 @@ congregamystica.research.arcane_crafter.stage.1=The need to constantly craft new
 congregamystica.research.arcane_crafter.stage.2=[WIP]
 #<BR>Insert surrounding aspect crystals
 #<BR>Insert Crafter Placeholder to designate no additional aspect crystals.
-#<BR>Insert the crafting items one at a time as they appear on the recipe, left to right, top to bottom. Empty spaces are denoted by adding a Crafting Placeholder to the crafter at that slot location. You can see the currently filled slots in the display on the front of the machine.
+#<BR>Insert the crafting items one at a time as they appear on the recipe, left to right, top to bottom. Empty spaces are denoted by adding a Crafting Placeholder at that slot location. You can see the currently filled slots in the display on the front of the machine, or by targeting the crafter while holding a caster's gauntlet.
 #<BR>Once the crafting inventory is full, the machine will attempt a craft using the contained items. If no recipe is found, all items will be ejected.
 #<BR>Outputs from the machine will be placed into the inventory below the crafter. If there is an air block below the crafter, the items will be instead spawned into the world.
 #<BR>Crafting cost is equal to the recipe vis cost + 1.
-#<BR>You can eject all contained items at any time by interacting with the crafter using a caster's gauntlet
-#<BR>The crafter must be bound to a player. Should you wish to change the player linked to the crafter, you can sneak right-click the crafter with a caster's gauntlet.
+congregamystica.research.arcane_crafter.addenda.1=Targeting the arcane crafter while holding a caster's gauntlet will allow me to see the contents of that crafter.<BR>If the device jams or I need to empty its inventory, I can interact with the crafter with a caster's gauntlet.
+congregamystica.research.arcane_crafter.addenda.2=The crafter appears to be linked to a single player and can only craft recipes known to that individual.<BR>I can change the linked player by interacting with the arcane crafter with a caster's gauntlet while sneaking.
 
 # -- BLOODY SCRIVENER'S TOOLS
 congregamystica.research.blood_scribing_tools.title=Bloody Scrivener's Tools

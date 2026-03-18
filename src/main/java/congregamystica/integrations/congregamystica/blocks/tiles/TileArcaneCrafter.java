@@ -1,6 +1,6 @@
 package congregamystica.integrations.congregamystica.blocks.tiles;
 
-import congregamystica.integrations.congregamystica.blocks.inventories.ArcaneCrafterStackHandler;
+import congregamystica.integrations.congregamystica.blocks.inventories.handlers.ArcaneCrafterStackHandler;
 import congregamystica.utils.helpers.PlayerHelper;
 import congregamystica.utils.helpers.StringHelper;
 import net.minecraft.block.state.IBlockState;
@@ -125,7 +125,13 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         return false;
     }
 
-    public boolean attemptEject() {
+    public void ejectInventory() {
+        this.shouldEject = true;
+        this.attemptEject();
+        this.markDirty();
+    }
+
+    protected boolean attemptEject() {
         if(this.shouldEject) {
             if (!this.stackHandler.isEmpty()) {
                 if (this.world.isAirBlock(this.pos.offset(EnumFacing.DOWN))) {
@@ -146,7 +152,7 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         return false;
     }
 
-    public boolean ejectIntoWorld() {
+    protected boolean ejectIntoWorld() {
         if(!this.world.isRemote) {
             for (int slot = 0; slot < this.stackHandler.getSlots(); slot++) {
                 ItemStack stack = this.stackHandler.getStackInSlot(slot);
@@ -160,7 +166,7 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         return true;
     }
 
-    public boolean ejectIntoTarget(IItemHandler target) {
+    protected boolean ejectIntoTarget(IItemHandler target) {
         boolean didEject = false;
         for(int slot = 0; slot < this.stackHandler.getSlots(); slot++) {
             ItemStack slotStack = this.stackHandler.getStackInSlot(slot);
@@ -175,7 +181,7 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
         return didEject;
     }
 
-    public void handleGearRotation() {
+    protected void handleGearRotation() {
         if (this.rotTicks > 0) {
             this.rotTicks--;
             if ((double) this.rotTicks % Math.floor(Math.max(1.0, this.rp)) == 0.0) {
@@ -198,9 +204,7 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
                 this.setPlayer(entityPlayer);
                 entityPlayer.sendMessage(new TextComponentTranslation(StringHelper.getTranslationKey("arcane_crafter", "chat", "bind_player"), entityPlayer.getDisplayName()));
             } else {
-                this.shouldEject = true;
-                this.attemptEject();
-                this.markDirty();
+                this.ejectInventory();
             }
         }
         return true;

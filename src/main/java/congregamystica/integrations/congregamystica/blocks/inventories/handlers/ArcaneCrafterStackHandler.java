@@ -1,4 +1,4 @@
-package congregamystica.integrations.congregamystica.blocks.inventories;
+package congregamystica.integrations.congregamystica.blocks.inventories.handlers;
 
 import congregamystica.integrations.congregamystica.blocks.tiles.TileArcaneCrafter;
 import congregamystica.registry.ModItemsCM;
@@ -24,14 +24,14 @@ import java.util.List;
 
 public class ArcaneCrafterStackHandler extends ItemStackHandler {
     /** Designated slot for the filter item separating the Vis Crystals from the crafting grid. */
-    public static final int SLOT_FILTER = 9;
-    private static final int SLOT_AIR = 10;
-    private static final int SLOT_FIRE = 11;
-    private static final int SLOT_WATER = 12;
-    private static final int SLOT_EARTH = 13;
-    private static final int SLOT_ORDER = 14;
-    private static final int SLOT_ENTROPY = 15;
-    public static final int SLOT_OUTPUT = 16;
+    public static final int SLOT_AIR = 9;
+    public static final int SLOT_FIRE = 10;
+    public static final int SLOT_WATER = 11;
+    public static final int SLOT_EARTH = 12;
+    public static final int SLOT_ORDER = 13;
+    public static final int SLOT_ENTROPY = 14;
+    public static final int SLOT_OUTPUT = 15;
+    public static final int SLOT_FILTER = 16;
 
     private final TileArcaneCrafter tile;
     private IArcaneRecipe cachedRecipe;
@@ -46,6 +46,10 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
         return this.isItemValid(slot, stack) ? super.insertItem(slot, stack, simulate) : stack;
     }
 
+    public @NotNull ItemStack insertInternal(int slot, @NotNull ItemStack stack, boolean simulate) {
+        return super.insertItem(slot, stack, simulate);
+    }
+
     @Override
     public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
         return ItemStack.EMPTY;
@@ -58,7 +62,7 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
     @Override
     protected int getStackLimit(int slot, @NotNull ItemStack stack) {
         validateSlotIndex(slot);
-        if(slot <= SLOT_FILTER) {
+        if(slot < SLOT_AIR || slot == SLOT_FILTER) {
             //Separator slot and crafting slots
             return this.isItemValid(slot, stack) ? 1 : 0;
         } else {
@@ -92,7 +96,7 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
                     return false;
             }
         } else {
-            return slot < SLOT_FILTER;
+            return slot < SLOT_AIR;
         }
     }
 
@@ -102,7 +106,7 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
     }
 
     public boolean isInventoryFull() {
-        for(int i = 0; i < SLOT_FILTER; i++) {
+        for(int i = 0; i < SLOT_AIR; i++) {
             if(this.getStackInSlot(i).isEmpty()) {
                 return false;
             }
@@ -121,7 +125,7 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
 
     public int getFilledCraftingSlots() {
         int filled = 0;
-        for(int slot = 0; slot < SLOT_FILTER; slot++) {
+        for(int slot = 0; slot < SLOT_AIR; slot++) {
             if(!this.getStackInSlot(slot).isEmpty()) {
                 filled++;
             }
@@ -136,9 +140,8 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
             if(i == SLOT_FILTER || i == SLOT_OUTPUT)
                 continue;
             ItemStack stack = this.getStackInSlot(i);
-            int craftSlot = i - (i > SLOT_FILTER ? 1 : 0);
             if (!stack.isEmpty() && (stack.getItem() != ModItemsCM.CRAFTER_PLACEHOLDER || !skipPlaceholders)) {
-                craft.setInventorySlotContents(craftSlot, stack);
+                craft.setInventorySlotContents(i, stack);
             }
         }
         return craft;
@@ -192,14 +195,12 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
                 this.setStackInSlot(SLOT_OUTPUT, recipe.getRecipeOutput());
                 List<ItemStack> remainders = recipe.getRemainingItems(craft);
                 for(int i = 0; i < craft.getSizeInventory(); i++) {
-                    if(i < SLOT_FILTER) {
-                        ItemStack slotStack = this.getStackInSlot(i);
+                    ItemStack slotStack = this.getStackInSlot(i);
+                    if(i < SLOT_AIR) {
                         if(slotStack.getItem() != ModItemsCM.CRAFTER_PLACEHOLDER) {
                             this.setStackInSlot(i, remainders.get(i));
                         }
                     } else {
-                        int slot = i + 1;
-                        ItemStack slotStack = this.getStackInSlot(slot);
                         if(!slotStack.isEmpty() && slotStack.getItem() instanceof ItemCrystalEssence) {
                             ItemCrystalEssence crystal = (ItemCrystalEssence) slotStack.getItem();
                             AspectList itemAspects = crystal.getAspects(slotStack);
@@ -209,12 +210,12 @@ public class ArcaneCrafterStackHandler extends ItemStackHandler {
                                 int recipeAmount = recipeAspects.getAmount(itemAspect);
                                 if(recipeAmount > 0) {
                                     slotStack.shrink(recipeAmount);
-                                    this.setStackInSlot(slot, !slotStack.isEmpty() ? slotStack : ItemStack.EMPTY);
+                                    this.setStackInSlot(i, !slotStack.isEmpty() ? slotStack : ItemStack.EMPTY);
                                 }
                                 continue;
                             }
                         }
-                        this.setStackInSlot(slot, remainders.get(i));
+                        this.setStackInSlot(i, remainders.get(i));
                     }
                 }
                 return true;

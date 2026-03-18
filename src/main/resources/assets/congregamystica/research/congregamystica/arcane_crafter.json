@@ -17,6 +17,16 @@
           "text": "congregamystica.research.arcane_crafter.stage.2",
           "recipes": ["congregamystica:crafter_placeholder", "congregamystica:arcane_crafter"]
         }
+      ],
+      "addenda": [
+        {
+          "text": "congregamystica.research.arcane_crafter.addenda.1",
+          "required_research": ["CM_ARCANE_CRAFTER@2"]
+        },
+        {
+          "text": "congregamystica.research.arcane_crafter.addenda.2",
+          "required_research": ["CM_ARCANE_CRAFTER@2"]
+        }
       ]
     }
   ]

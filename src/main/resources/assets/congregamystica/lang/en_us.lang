@@ -314,6 +314,12 @@ research.f_CM_LIVINGMETAL.text=Examine livingmetal
 research.f_CM_STEEL.text=Examine steel
 research.f_CM_TREATED_WOOD.text=Examine treated wood
 
+# Blood Magic
+# -- RITUAL OF DELAYED INSANITY
+ritual.congregamystica.delayed_insanity=Ritual of Delayed Insanity
+ritual.congregamystica.delayed_insanity.info=Casts warp ward on players within its range.
+ritual.congregamystica.delayed_insanity.ward.info=(Ward) Players within this range will receive a warp ward buff.
+
 # Botania
 # -- TAINTTHISTLE
 botania.entry.taintthistle=Taintthistle

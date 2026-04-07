@@ -2,6 +2,7 @@
 ## 1.1.0
 ### Added
 - Added Ethereal Rapier, a new Blood Magic sword that uses Vis and LP to bypass armor
+- Added Ritual of Delayed Insanity, a Blood Ritual that grants warp ward in a small area
 
 ---
 

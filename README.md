@@ -43,6 +43,7 @@ The content listed here does not require mod integration.
 - **Blood Magic**
   - **Bloody Scrivener's Tools:** Scribing Tools that drain LP from a player's soul network to use as ink
   - **Eldritch Blood Orb:** High-tier blood orb that significantly increases Soul Network LP capacity
+  - **Ethereal Rapier:** Sword that uses LP and Vis to bypass armor
 - **Botania**
   - **Taintthistle:** Consumes Mana to destroy nearby taint blocks and flux goo
   - **Whisperweed:** Consumes Mana and Zombie Brains to reward the player with research knowledge

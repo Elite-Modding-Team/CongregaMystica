@@ -4,6 +4,7 @@ import congregamystica.CongregaMystica;
 import congregamystica.integrations.congregamystica.items.ItemNativeCluster;
 import congregamystica.integrations.thaumicwonders.items.ItemEldritchCluster;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSword;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class ModItemsCM {
     //Blood Magic
     public static final Item BLOOD_SCRIBING_TOOLS = null;
     public static final Item CASTER_BOUND = null;
+    public static final ItemSword ETHEREAL_RAPIER = null;
 
     //Botania
     public static final Item CASTER_ELEMENTIUM = null;

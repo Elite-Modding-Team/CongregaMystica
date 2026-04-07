@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "congregamystica:items/bloodmagic/ethereal_rapier"
+  }
+}

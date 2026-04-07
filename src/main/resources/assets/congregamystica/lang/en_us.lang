@@ -44,6 +44,7 @@ tile.congregamystica:viscous_brew.name=Viscous Brew
 # Items
 item.bloodmagic.orb.bloodmagic:eldritch.name=Eldritch Blood Orb
 item.congregamystica:blood_scribing_tools.name=Bloody Scrivener's Tools
+item.congregamystica:ethereal_rapier.name=Ethereal Rapier
 item.congregamystica:caster_aura.name=Botanist Caster's Gauntlet
 item.congregamystica:caster_bound.name=Bound Caster's Gauntlet
 item.congregamystica:caster_clockwork.name=Clockwork Caster's Gauntlet
@@ -237,11 +238,16 @@ congregamystica.research.eldritch_blood_orb.title=Eldritch Blood Orb
 congregamystica.research.eldritch_blood_orb.title.subtitle=Storing blood in the unknown
 congregamystica.research.eldritch_blood_orb.stage.1=Channeling the energies of a Blood Altar into a perfect Primordial Pearl yields a new powerful blood orb.<BR>The Eldritch Blood Orb taps into power of a realm beyond my understanding, significantly increasing the capacity of my soul network.
 
-# -- Energized Scribing Tools
+# -- ENERGIZED SCRIBING TOOLS
 congregamystica.research.flux_scribing_tools.title=Energized Scribing Tools
 #congregamystica.research.flux_scribing_tools.title.subtitle=
 congregamystica.research.flux_scribing_tools.stage.1=I should expand my new tech making abilities into my scribing tools to make them accept mundane power sources. Being able to utilize another ink soruce will be viable for my research.
 congregamystica.research.flux_scribing_tools.stage.2=I've modified regular scribing tools with a basic mechanism and a Redstone Inlay to create new scribing tools that will accept mundane energy. I can use a Vis Powered Generator to generate more FE/RF if I also want to utilize Vis to power them.
+
+# -- ETHEREAL RAPIER
+congregamystica.research.ethereal_rapier.title=Ethereal Rapier
+congregamystica.research.ethereal_rapier.stage.1=My experiments with blood alchemy have shown me a strange resonance between life essence and aural vis.<BR>While the two energies are completely different in nature, one being based in sentient life and the other in natural balance, forcibly combining the two energies causes any material it comes in contact with to become semi-ethereal.<BR>The material gains the ability to pass through physical objects, yet remains fully corporeal when it comes in contact with tissue, both alive and dead.
+congregamystica.research.ethereal_rapier.stage.2=An anathema to all living beings, the Ethereal Rapier forcibly merges life essence with pure aural energy making the blade nearly ephemeral.<BR>Strikes with a charged blade will bypass armor and deal double damage to creatures protected by shielding effects.
 
 # -- MATERIAL STUDIES: BIOMASS
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
@@ -284,7 +290,7 @@ congregamystica.research.mimic_fork.title=Mimic Fork
 congregamystica.research.mimic_fork.stage.1=Note Blocks are a device I've been thinking of a lot lately. They are simple things that respond to touch or can be activated with redstone to emit one single pure note... but of what utility are they really?<BR>Any usage requires very specific placement and cumbersome contraptions in order to emit the desired note.<BR>There must be a better way...
 congregamystica.research.mimic_fork.stage.2=I've found my answer with the Mimic Fork!<BR>The Mimic Fork is a modified tuning fork that can store musical notes and sound them at any time.<BR>This allows me remotely activate nearby Arcane Ears with a simple tap of the tines.<BR>The fork's tone and note can be set by right-clicking an Arcane Ear or Note Block in the world. I can also set the tone type of a given Note Block or Arcane Ear by instead sneaking and right-clicking the device with a configured Mimic Fork.
 
-# -- ETHEREAL MIMIC FORK
+# -- MIMIC FORK (ETHEREAL)
 congregamystica.research.mimic_fork_ranged.title=Ethereal Mimic Fork
 #congregamystica.research.mimic_fork_ranged.title.subtitle=
 congregamystica.research.mimic_fork_ranged.stage.1=While the Mimic Fork does have its uses, the relatively small range is a major limitation of its use.<BR>Perhaps I can make use some form of teleportation to throw the sound to another location.

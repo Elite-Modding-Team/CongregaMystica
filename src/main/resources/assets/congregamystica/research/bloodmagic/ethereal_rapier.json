@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "key": "CM_ETHEREAL_RAPIER",
+      "name": "congregamystica.research.ethereal_rapier.title",
+      "icons": ["congregamystica:ethereal_rapier"],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_CASTER_BOUND"],
+      "siblings": [],
+      "meta": ["HIDDEN"],
+      "location": [-3, 5],
+      "stages": [
+        {
+          "text": "congregamystica.research.ethereal_rapier.stage.1",
+          "required_knowledge": ["THEORY;AUROMANCY;1", "THEORY;INFUSION;1"]
+        },
+        {
+          "text": "congregamystica.research.ethereal_rapier.stage.2",
+          "recipes": ["congregamystica:ethereal_rapier"]
+        }
+      ]
+    }
+  ]
+}

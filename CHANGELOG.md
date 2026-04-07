@@ -1,4 +1,10 @@
 # Changelog Congrega Mystica
+## 1.1.0
+### Added
+- Added Ethereal Rapier, a new Blood Magic sword that uses Vis and LP to bypass armor
+
+---
+
 ## 1.0.9
 ### Fixed
 - Fixed Thaumic Augmentation augments not working when applied to CM gauntlets

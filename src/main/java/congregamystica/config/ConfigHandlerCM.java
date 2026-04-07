@@ -44,6 +44,8 @@ public class ConfigHandlerCM {
         @Config.RequiresMcRestart
         @Config.Name("Eldritch Blood Orb")
         public EldritchOrbCategory eldritchOrb = new EldritchOrbCategory();
+        @Config.Name("Ethereal Rapier")
+        public EtherealRapierCategory etherealRapier = new EtherealRapierCategory();
 
         public static class BloodScribingToolsCategory {
             @Config.RequiresMcRestart
@@ -53,6 +55,18 @@ public class ConfigHandlerCM {
             @Config.RangeInt(min = 1, max = 10000)
             @Config.Name("LP Cost")
             @Config.Comment("The amount of LP drained from the player's soul network per use.")
+            public int lpCost = 100;
+        }
+
+        public static class EtherealRapierCategory {
+            @Config.RequiresMcRestart
+            @Config.Name("Enable Ethereal Rapier")
+            @Config.Comment("Enables the Ethereal Rapier, a blade that consumes Vis and LP to bypass armor and deal double damage to absorb effects.")
+            public boolean enable = true;
+
+            @Config.RangeInt(min = 1, max = 10000)
+            @Config.Name("LP Cost")
+            @Config.Comment("The amount of LP drained from the player's soul network per each time it deals damage.")
             public int lpCost = 100;
         }
 

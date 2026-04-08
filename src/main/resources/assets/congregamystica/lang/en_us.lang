@@ -1,6 +1,10 @@
 itemGroup.CongregaMysticaTab=Congrega Mystica
 
 # Blocks
+tile.botania:flower.primagalium.name=Primagalium
+tile.botania:flower.primagalium.reference=Rockhound
+tile.botania:flower.primal_bloom.name=Primal Bloom
+tile.botania:flower.primal_bloom.reference=Crystal Husbandry
 tile.botania:flower.taintthistle.name=Taintthistle
 tile.botania:flower.taintthistle.reference=Mr. Clean
 tile.botania:flower.whisperweed_cm.name=Whisperweed
@@ -249,6 +253,21 @@ congregamystica.research.ethereal_rapier.title=Ethereal Rapier
 congregamystica.research.ethereal_rapier.stage.1=My experiments with blood alchemy have shown me a strange resonance between life essence and aural vis.<BR>While the two energies are completely different in nature, one being based in sentient life and the other in natural balance, forcibly combining the two energies causes any material it comes in contact with to become semi-ethereal.<BR>The material gains the ability to pass through physical objects, yet remains fully corporeal when it comes in contact with tissue, both alive and dead.
 congregamystica.research.ethereal_rapier.stage.2=An anathema to all living beings, the Ethereal Rapier forcibly merges life essence with pure aural energy making the blade nearly ephemeral.<BR>Strikes with a charged blade will bypass armor and deal double damage to creatures protected by shielding effects.
 
+# -- FLOWER: PRIMAL FLOWERS
+congregamystica.research.primal_flowers.title=Primal Flowers
+congregamystica.research.primal_flowers.title.subtitle=Primal Botany
+congregamystica.research.primal_flowers.stage.1=My studies into botany have yielded several interesting interactions that occur between the primal aspects and mana.<BR>I have discovered several flowers capable of utilizing this resonance for more practical purposes.<PAGE>§oPrimagalium§r<DIV>I have found that certain flowers are capable of producing mana by consuming materials.<BR>It is relatively simple to modify these recipes to create a similar flower that consumes primal aspectus crystals.<BR>The order of the crystals consumed appears to be important, perhaps a botanist's wand will give me more information.<PAGE>§oPrimal Bloom§r<DIV>As many thaumaturges know, the natural growth of primal vis crystals alternates between covering every surface, or never growing at all.<BR>The Primal Bloom removes some of this guesswork, injecting mana directly into the crystaline structures, allowing them to grow and spread more easily.
+
+# -- FLOWER: TAINTTHISTLE
+congregamystica.research.taintthistle.title=Taintthistle
+congregamystica.research.taintthistle.title.subtitle=Mr. Clean
+congregamystica.research.taintthistle.stage.1=Despite the appearance and name, it is actually a friendly flower. When supplied with Mana, it consumes nearby tainted blocks or flux goo, destroying them completely.<BR>For further information, I can consult the Lexica Botanica.
+
+# -- FLOWER: WHISPERWEED
+congregamystica.research.whisperweed.title=Whisperweed
+congregamystica.research.whisperweed.title.subtitle=Indirect Cannibalism
+congregamystica.research.whisperweed.stage.1=This creepy-looking flower is the result of Botany and dark arts. It has an appetite for zombie brains, and retains a small amount of knowlege from each brain it consumes.<BR>Once it has had its fill, I can interact with it to gain a small amount of knowledge.<BR>For further information, I can consult the Lexica Botanica.
+
 # -- MATERIAL STUDIES: BIOMASS
 congregamystica.research.golem_mat_biomass.title=Material Studies: Biomass
 congregamystica.research.golem_mat_biomass.title.subtitle=Advanced Biomass Crafting
@@ -296,16 +315,6 @@ congregamystica.research.mimic_fork_ranged.title=Ethereal Mimic Fork
 congregamystica.research.mimic_fork_ranged.stage.1=While the Mimic Fork does have its uses, the relatively small range is a major limitation of its use.<BR>Perhaps I can make use some form of teleportation to throw the sound to another location.
 congregamystica.research.mimic_fork_ranged.stage.2=I consider this experiment a success. The Ethereal Mimic Fork is a mimic fork capable of playing a note at a specified location, rather than at my position.<BR>In addition to the functionality of the Mimic Fork, I can sneak right-click on a block to bind the fork to that location. From that point on, any time I activate the mimic fork, it will play a note at the linked location.<BR>Should I wish to change the location, I can sneak right-click another block or sneak right-click air to remove the link.
 
-# -- TAINTTHISTLE
-congregamystica.research.taintthistle.title=Taintthistle
-congregamystica.research.taintthistle.title.subtitle=Mr. Clean
-congregamystica.research.taintthistle.stage.1=Despite the appearance and name, it is actually a friendly flower. When supplied with Mana, it consumes nearby tainted blocks or flux goo, destroying them completely.<BR>For further information, I can consult the Lexica Botanica.
-
-# -- WHISPERWEED
-congregamystica.research.whisperweed.title=Whisperweed
-congregamystica.research.whisperweed.title.subtitle=Indirect Cannibalism
-congregamystica.research.whisperweed.stage.1=This creepy-looking flower is the result of Botany and dark arts. It has an appetite for zombie brains, and retains a small amount of knowlege from each brain it consumes.<BR>Once it has had its fill, I can interact with it to gain a small amount of knowledge.<BR>For further information, I can consult the Lexica Botanica.
-
 
 # Research Misc
 research.f_CM_BIOMASS.text=Examine the biomass colony...
@@ -321,6 +330,19 @@ ritual.congregamystica.delayed_insanity.info=Casts warp ward on players within i
 ritual.congregamystica.delayed_insanity.ward.info=(Ward) Players within this range will receive a warp ward buff.
 
 # Botania
+# -- PRIMAGALIUM
+botania.entry.primagalium=Primagalium
+botania.tagline.primagalium=Mana from vis crystals
+botania.page.primagalium0=The &1Primagalium&0 is a flower that is particularly fond of primal vis crystals. It will absorb any and all &1Vis Crystals&0 dropped near the flower and create mana from them.<br>There's a caveat though. This flower is picky as to what aspect it wants. Starting from Terra, after it absorbs one &1Vis Crystal&0, it will rotate to the next Primal Aspect.
+botania.page.primagalium1=While it will consume all &1Vis Crystals&0 around, it will only create mana if the crystal matches the aspect the flower wants, so haphazardly tossing &1Vis Crystals&0 at the flower is a wasteful strategy.<br>The aspect the flower wants can be seen by hovering over the flower with a &1Wand of the Forest&0.
+botania.page.primagalium2=&oPrimal Rock Soup&r
+
+# -- PRIMAL BLOOM
+botania.entry.primal_bloom=Primal Bloom
+botania.tagline.primal_bloom=Grows primal crystals
+botania.page.primal_bloom0=The painfully slow growth of naturally occurring vis crystals can be a frustration for budding thaumaturges. The &1Primal Bloom&0 injects mana directly into these crystals, causing them to grow and spread at a substantially increased rate.
+botania.page.primal_bloom1=&oAspect Accelerator&r
+
 # -- TAINTTHISTLE
 botania.entry.taintthistle=Taintthistle
 botania.tagline.taintthistle=Eradicates tainted materials

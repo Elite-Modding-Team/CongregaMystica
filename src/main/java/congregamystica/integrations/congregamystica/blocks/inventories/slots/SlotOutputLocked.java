@@ -1,6 +1,5 @@
 package congregamystica.integrations.congregamystica.blocks.inventories.slots;
 
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 

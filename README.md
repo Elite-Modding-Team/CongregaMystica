@@ -46,6 +46,8 @@ The content listed here does not require mod integration.
   - **Ethereal Rapier:** Sword that uses LP and Vis to bypass armor
   - **Ritual of Delayed Insanity:** Blood Ritual that grants warp ward in a small area
 - **Botania**
+  - **Primagalium:** Consumes Primal Vis Crystals to produce mana
+  - **Primal Bloom:** Consumes Mana to accelerate the growth of nearby Aspect Crystals
   - **Taintthistle:** Consumes Mana to destroy nearby taint blocks and flux goo
   - **Whisperweed:** Consumes Mana and Zombie Brains to reward the player with research knowledge
 - **Immersive Engineering**

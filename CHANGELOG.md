@@ -3,6 +3,8 @@
 ### Added
 - Added Ethereal Rapier, a new Blood Magic sword that uses Vis and LP to bypass armor
 - Added Ritual of Delayed Insanity, a Blood Ritual that grants warp ward in a small area
+- Added Primagalium, a Botania flower that conumes primal vis crystals in a specified order to produce mana
+- Added Primal Bloom, a Botania flower that uses mana to accelerate the growth of nearby Vis Crystals
 
 ---
 

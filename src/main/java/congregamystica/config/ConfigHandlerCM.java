@@ -92,10 +92,35 @@ public class ConfigHandlerCM {
     }
 
     public static class BotaniaCategory {
+        @Config.Name("Primal Flowers")
+        public PrimalFlowersCategory primalFlowers = new PrimalFlowersCategory();
         @Config.Name("Taintthistle")
         public TaintthistleCategory taintthistle = new TaintthistleCategory();
         @Config.Name("Whisperweed")
         public WhisperweedCategory whisperweed = new WhisperweedCategory();
+
+        public static class PrimalFlowersCategory {
+            @Config.RequiresMcRestart
+            @Config.Name("Enable Primal Flowers")
+            @Config.Comment({
+                    "Enables the Primagalium and Primal Bloom",
+                    "  Primagalium - A generating flower that consumes primal vis crystals to produce mana",
+                    "  Primal Bloom - A functional flower that consumes mana to accelerate the spread of nearby vis crystals"
+            })
+            public boolean enable = true;
+
+            @Config.RequiresMcRestart
+            @Config.RangeInt(min = 0, max = 100000)
+            @Config.Name("Primal Bloom Mana Cost")
+            @Config.Comment("The amount of mana consumed each time the Primal Bloom grows a vis crystal.")
+            public int primalBloomManaCost = 20;
+
+            @Config.RequiresMcRestart
+            @Config.RangeInt(min = 1, max = 16000)
+            @Config.Name("Primagalium Mana Produced")
+            @Config.Comment("The amount of mana produced when the Primagaloum consumes a valid vis crystal.")
+            public int primagaliumManaProduced = 2400;
+        }
 
         public static class TaintthistleCategory {
             @Config.RequiresMcRestart

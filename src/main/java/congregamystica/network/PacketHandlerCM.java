@@ -2,6 +2,7 @@ package congregamystica.network;
 
 import congregamystica.CongregaMystica;
 import congregamystica.network.packets.PacketAuraToClient;
+import congregamystica.network.packets.PacketCrystalGrowth;
 import congregamystica.network.packets.PacketParticleToClient;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -14,6 +15,7 @@ public class PacketHandlerCM {
         int id = 0;
         INSTANCE.registerMessage(PacketParticleToClient.Handler.class, PacketParticleToClient.class, id++, Side.CLIENT);
         INSTANCE.registerMessage(PacketAuraToClient.Handler.class, PacketAuraToClient.class, id++, Side.CLIENT);
+        INSTANCE.registerMessage(PacketCrystalGrowth.Handler.class, PacketCrystalGrowth.class, id++, Side.CLIENT);
     }
 
     static {

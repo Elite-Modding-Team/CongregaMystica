@@ -1,0 +1,22 @@
+{
+  "entries": [
+    {
+      "key": "CM_PRIMAL_FLOWERS",
+      "name": "congregamystica.research.primal_flowers.title",
+      "icons": [
+        "congregamystica:textures/blocks/botania/primagalium.png",
+        "congregamystica:textures/blocks/botania/primal_bloom.png"
+      ],
+      "category": "CONGREGA_MYSTICA",
+      "parents": ["CM_BOTANIA", "~CRYSTALFARMER"],
+      "siblings": [],
+      "meta": ["ROUND", "HIDDEN"],
+      "location": [-5, -1],
+      "stages": [
+        {
+          "text": "congregamystica.research.primal_flowers.stage.1"
+        }
+      ]
+    }
+  ]
+}

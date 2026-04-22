@@ -1,6 +1,7 @@
 # Changelog Congrega Mystica
 ## 1.1.0
 ### Added
+- Added Arcane Crafter, a pattern crafter used to automate Arcane Workbench recipes
 - Added Ethereal Rapier, a new Blood Magic sword that uses Vis and LP to bypass armor
 - Added Ritual of Delayed Insanity, a Blood Ritual that grants warp ward in a small area
 - Added Primagalium, a Botania flower that conumes primal vis crystals in a specified order to produce mana

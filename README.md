@@ -35,6 +35,7 @@ If [Thaumic Augmentation](https://www.curseforge.com/minecraft/mc-mods/thaumic-a
 
 ## Non-Mod Integrations
 The content listed here does not require mod integration.
+- **Arcane Crafter:** A new pattern crafter used to automate Arcane Workbench recipes
 - **Energized Scribing Tools:** A new pair of scribing tools that accept FE/RF energy
 - **Ethereal Mimic Fork:** An upgraded Mimic Fork that has the additional ability to bind to a location
 - **Mimic Fork:** A tool that activates nearby Arcane Ears and Note Blocks

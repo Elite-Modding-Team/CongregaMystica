@@ -266,18 +266,12 @@ public class BlockArcaneCrafter extends BlockContainer implements IBlockAddition
     }
 
     //##########################################################
-    // IProxy
+    // IBlockAddition
 
     @Override
     public void preInitClient() {
         MinecraftForge.EVENT_BUS.register(this);
     }
-
-
-    //##########################################################
-    // IBlockAddition
-
-    //TODO: Possibly render a hover fake arcane workbench to display current items
 
     @SuppressWarnings("ConstantConditions")
     @Override

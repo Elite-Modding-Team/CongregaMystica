@@ -2,6 +2,8 @@
 - Magic Crystal Gauntlet for Electroblob's Wizardry
 - Vinteum/Witchwood Gauntlet for Ars Magica 2: Rekindled
 
+NOTE: AM2:R also has the option to make EBW work with its mana and remove EBW's mana. It should account for that if both gauntlets are added.
+
 ### Aspect Support
 - Astral Sorcery
 - Applied Energistics 2

@@ -1,4 +1,6 @@
 - Crystal Sconces from Rustic Thaumaturgy
+- Magic Crystal Gauntlet for Electroblob's Wizardry
+- Vinteum/Witchwood Gauntlet for Ars Magica 2: Rekindled
 
 ### Aspect Support
 - Astral Sorcery

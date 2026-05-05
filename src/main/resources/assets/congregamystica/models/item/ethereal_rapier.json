@@ -1,6 +1,6 @@
 {
-  "parent": "congregamystica:item/handheld_rapier",
-  "textures": {
-    "layer0": "congregamystica:items/bloodmagic/ethereal_rapier"
-  }
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "congregamystica:items/bloodmagic/ethereal_rapier"
+	}
 }

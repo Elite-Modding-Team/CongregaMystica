@@ -5,7 +5,7 @@
     "description": "The Thaumcraft 6 integration addon.",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "https://github.com/Elite-Modding-Team/CongregaMystica",
+    "url": "https://github.com/Thaumic-Modding-Team/CongregaMystica",
     "authorList": [
       "Invadermonky", "IcarussOne"
     ],

@@ -264,6 +264,11 @@ public class ConfigHandlerCM {
                 "oreChargedQuartzCertus;gem",
                 //Astral Sorcery Ores
                 "oreAstralStarmetal;ingot",
+                //Ars Magica 2 Ores
+                "oreBlueTopaz;gem",
+                "oreChimerite;gem",
+                "oreMoonstone;gem",
+                "oreSunstone;gem",
                 //Mekanism
                 "oreOsmium;ingot;0xb5cacc",
                 //Thermal Foundation Ores

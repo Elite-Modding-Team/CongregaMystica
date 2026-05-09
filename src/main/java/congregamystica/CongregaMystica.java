@@ -24,6 +24,7 @@ public class CongregaMystica {
     public static final String MOD_VERSION = Tags.VERSION;
     public static final String DEPENDENCIES = "required-after:thaumcraft" +
             ";after:" + ModIds.ConstIds.applied_energistics +
+            ";after:" + ModIds.ConstIds.ars_magica +
             ";after:" + ModIds.ConstIds.blood_magic +
             ";after:" + ModIds.ConstIds.botania +
             ";after:" + ModIds.ConstIds.harvestcraft +

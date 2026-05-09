@@ -241,7 +241,7 @@ public class TileArcaneCrafter extends TileEntity implements ITickable, IInterac
 
     @Override
     public @Nullable <T> T getCapability(@NotNull Capability<T> capability, @Nullable EnumFacing facing) {
-        if (facing != EnumFacing.DOWN) {
+        if (facing != EnumFacing.DOWN && capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(this.stackHandler);
         }
         return super.getCapability(capability, facing);
